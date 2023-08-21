@@ -1,0 +1,159 @@
+.x-container{
+    background: radial-gradient(circle, #dcd0eb, #c394e6);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    min-height: 100vh;
+    padding-bottom: 2rem;
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+
+  
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+  
+    textarea {
+      width: 80%;
+      height: 200px;
+      padding: 10px;
+      font-size: 1.25rem;
+      border: none;
+      background: rgba(255, 255, 255, 0.8);
+      color: black;
+      resize: none;
+      outline: none;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-sizing: border-box;
+    }
+  
+    .buttons {
+      display: flex;
+      justify-content: space-around;
+      width: 80%;
+    }
+    button {
+        padding: 10px 20px;
+        background-color: #6d2e86;
+        color: #ffffff;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        border-radius: 5px;
+        position: relative;
+          &:hover {
+            background: linear-gradient(to right, #6d2e86, #c11c44);
+          }
+          
+        &:active {
+          transform: scale(0.95);
+        }
+  
+       
+      }
+    .result {
+      margin-top: 30px;
+      text-align: center;
+  
+      h2 {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+      }
+  
+      .clear-btn {
+        padding: 10px 20px;
+        background-color: #8a2fb0;
+        color: #ffffff;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+  
+        &:hover {
+          background-color: #5c1a74;
+        }
+      }
+  
+      .copy-btn,
+      .download-btn {
+        padding: 10px 20px;
+        color: #ffffff;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 10px;
+        border-radius: 5px;
+  
+        &:hover {
+          background-color: darken(#b43391, 15%);
+        }
+  
+        &:active {
+          transform: scale(0.95);
+        }
+  
+        transition: background-color 0.2s, transform 0.2s;
+      }
+  
+      .copy-btn {
+        margin-right: 1rem;
+      }
+  
+      .download-btn {
+        background-color: #c11c44;
+  
+        &:hover {
+          background-color: darken(#c11c44, 15%);
+        }
+      }
+    }
+  
+    @media (max-width: 850px) {
+      textarea {
+        width: 90%;
+      }
+  
+      .buttons {
+        flex-direction: column;
+        width: 90%;
+  
+        button {
+          margin-bottom: 10px;
+        }
+      }
+  
+      .result {
+        h2 {
+          font-size: 1.5rem;
+        }
+  
+        .clear-btn,
+        .copy-btn,
+        .download-btn {
+          width: 100%;
+        }
+      }
+    }
+  
+    @media (max-width: 320px) {
+      h1 {
+        font-size: 2rem;
+      }
+  
+      textarea {
+        width: 95%;
+      }
+    }
+  }
+}
+  

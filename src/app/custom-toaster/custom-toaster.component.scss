@@ -1,0 +1,22 @@
+.toast {
+    position: fixed;
+    right: -100%;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    z-index: 9999;
+    top: 10vh;
+    cursor: pointer;
+    animation: right-animation 0.5s forwards;
+    background: linear-gradient(to right, #6d2e86, #c11c44);
+
+    @keyframes right-animation {
+        to{
+            right: 2rem;
+        }
+    }
+  }
+  

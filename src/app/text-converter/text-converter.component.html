@@ -1,0 +1,23 @@
+<div class="x-container">
+    <h2> Text Conversion</h2>
+    <div class="container">
+        <!-- <h1>Text Conversion</h1> -->
+        <textarea [(ngModel)]="text" (keydown)="convertText()" placeholder="Enter text here..."></textarea>
+        <div class="buttons">
+            <button (click)="convertToLowercase()">Lowercase</button>
+            <button (click)="convertToUppercase()">Uppercase</button>
+      <button (click)="convertToTitlecase()">Titlecase</button>
+      <button (click)="convertToCapitalizedCase()">Capitalized Case</button>
+      <button (click)="convertToInverseCase()">InVeRsE CaSe</button>
+      <button class="clear-btn" (click)="clearTextArea()">Clear</button>
+    </div>
+    <div class="result">
+        <button class="copy-btn" (click)="copyText()">Copy</button>
+        <button class="download-btn" (click)="downloadText()">Download</button>
+    </div>
+</div>
+<div></div>
+</div>
+
+<!-- Your existing HTML code -->
+<app-custom-toaster *ngIf="toasterMessage" [message]="toasterMessage" [type]="toasterType" ></app-custom-toaster>
