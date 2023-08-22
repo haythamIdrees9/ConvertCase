@@ -46,62 +46,15 @@
       &:active {
         transform: scale(0.95);
       }
-
-
     }
 
-    .result {
-      margin-top: 2rem;
-      text-align: center;
-      display: grid;
-      grid-template-columns: 1fr;
-      column-gap: 8px;
-      max-width: 436px;
 
-      button {
-        padding: 10px 20px;
-        color: #ffffff;
-        border: none;
-        cursor: pointer;
-        font-size: 16px;
-        margin-top: 10px;
-        border-radius: 5px;
-        max-width: 140px;
-
-        &:hover {
-          background-color: darken(#b43391, 15%);
-        }
-
-        &:active {
-          transform: scale(0.95);
-        }
-
-        transition: background-color 0.2s,
-        transform 0.2s;
-      }
-
-      .download-btn {
-        background-color: #c11c44;
-
-        &:hover {
-          background-color: darken(#c11c44, 15%);
-        }
-      }
-    }
 
   }
 
   @include mobileFirst('xsm') {
     .container {
       margin-top: 3rem;
-
-      .result {
-        grid-template-columns: 1fr 1fr 1fr;
-
-        button {
-          height: 40px;
-        }
-      }
 
       button {
         font-size: 1rem;
@@ -118,9 +71,6 @@
         grid-template-columns: repeat(4, 1fr);
       }
 
-      .result {
-        margin-top: 4rem;
-      }
     }
 
     @include mobileFirst('mlg') {

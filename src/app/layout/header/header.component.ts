@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit{
   isMenuOpened: boolean = false;
   menuRouts = [
     {path:'/text-case-tools',label:'Text Convert Case'},
-    {path:'/text-case-tools',label:'Encoding and Decoding'},
+    {path:'/url-encode-decode',label:'URL Encoding and Decoding'},
   ]
 
   selectedRouteIndex = 1;

@@ -13,18 +13,8 @@
         <button (click)="convertToSnakeCase();executeFn=convertToSnakeCase">snake_case</button>
         <button (click)="convertToInverseCase();executeFn=convertToInverseCase">InVeRsE CaSe</button>
       </div>
-      <div class="result">
-        <button class="clear-btn" (click)="clearTextArea();boxes.clear()">Clear</button>
-        <button class="copy-btn" (click)="copyText()">Copy</button>
-        <button class="download-btn" (click)="downloadText()">Download</button>
-      </div>
+      <app-result-actions-btn (onClear)="clearTextArea();boxes.clear()" [text]="text"></app-result-actions-btn>
     </div>
   </div>
   
   <!-- Your existing HTML code -->
-  <app-custom-toaster
-    *ngIf="toasterMessage"
-    [message]="toasterMessage"
-    [type]="'success'"
-  ></app-custom-toaster>
-  
