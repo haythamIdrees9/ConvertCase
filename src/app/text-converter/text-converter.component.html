@@ -1,22 +1,30 @@
 <div class="x-container">
     <h1>Text Conversion</h1>
     <div class="container">
-        <textarea [(ngModel)]="text" (keydown)="convertText()" placeholder="Enter text here..."></textarea>
-        <div class="buttons">
-            <button (click)="convertToLowercase()">Lowercase</button>
-            <button (click)="convertToUppercase()">Uppercase</button>
-      <button (click)="convertToTitlecase()">Titlecase</button>
-      <button (click)="convertToCapitalizedCase()">Capitalized Case</button>
-      <button (click)="convertToInverseCase()">InVeRsE CaSe</button>
-      <button class="clear-btn" (click)="clearTextArea()">Clear</button>
-    </div>
-    <div class="result">
+      <label for="inputText" style="display: none;">Enter text here:</label>
+      <app-in-out-text-boxes #boxes [result]="text" [storedKey]="'convertedText'" (onChangeEmitter)="setOriginalText($event)"></app-in-out-text-boxes>
+      <div class="buttons" role="group" aria-labelledby="conversionInstructions">
+        <button (click)="convertToLowercase();executeFn=convertToLowercase">lower case</button>
+        <button (click)="convertToUppercase();executeFn=convertToUppercase">UPPER CASE</button>
+        <button (click)="convertToTitleCase();executeFn=convertToTitleCase">Title Case</button>
+        <button (click)="convertToCapitalizedCase();executeFn=convertToCapitalizedCase">Capitalized Case</button>
+        <button (click)="convertToCamelCase();executeFn=convertToCamelCase">camelCase</button>
+        <button (click)="textToKebabCase();executeFn=textToKebabCase">kebab-case</button>
+        <button (click)="convertToSnakeCase();executeFn=convertToSnakeCase">snake_case</button>
+        <button (click)="convertToInverseCase();executeFn=convertToInverseCase">InVeRsE CaSe</button>
+      </div>
+      <div class="result">
+        <button class="clear-btn" (click)="clearTextArea();boxes.clear()">Clear</button>
         <button class="copy-btn" (click)="copyText()">Copy</button>
         <button class="download-btn" (click)="downloadText()">Download</button>
+      </div>
     </div>
-</div>
-<div></div>
-</div>
-
-<!-- Your existing HTML code -->
-<app-custom-toaster *ngIf="toasterMessage" [message]="toasterMessage" [type]="toasterType" ></app-custom-toaster>
+  </div>
+  
+  <!-- Your existing HTML code -->
+  <app-custom-toaster
+    *ngIf="toasterMessage"
+    [message]="toasterMessage"
+    [type]="'success'"
+  ></app-custom-toaster>
+  

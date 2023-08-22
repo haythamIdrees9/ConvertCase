@@ -1,0 +1,18 @@
+@mixin activeHover {
+    @media (hover: hover) {
+      &:hover{
+          @content;
+      }
+    }
+    &:active {
+      @content;
+    }
+  }
+  
+  @mixin filter($filter-effect) {
+    -webkit-filter: $filter-effect;
+    -moz-filter: $filter-effect;
+    -ms-filter: $filter-effect;
+    -o-filter: $filter-effect;
+    filter: $filter-effect;
+  }

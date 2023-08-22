@@ -1,0 +1,21 @@
+.f-row{
+    display: flex;
+}
+
+.f-col{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.a-center{
+    align-items: center;
+}
+
+.j-center{
+    justify-content: center;
+}
+
+.j-between{
+    justify-content: space-between;
+}

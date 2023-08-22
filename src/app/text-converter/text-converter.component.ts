@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { minorWords } from '../utils/words';
 
 @Component({
   selector: 'app-text-converter',
@@ -8,51 +9,31 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 export class TextConverterComponent implements OnInit {
   text: string = '';
   toasterMessage: string = '';
-  toasterType: 'success' | 'error' | 'info' | 'warning' = 'success';
+
+  originalText = '';
+  executeFn = () => {};
   constructor() { }
 
   ngOnInit(): void {
-    const savedText = localStorage.getItem('convertedText');
-    console.log('savedText', savedText);
 
-    if (savedText) {
-      this.text = savedText;
-    }
+  }
+
+  setOriginalText(text: string) {
+    this.originalText = text;
+    this.executeFn()
   }
 
   convertToLowercase() {
-    this.text = this.text.toLowerCase();
-    this.convertText();
+    this.text = this.originalText.toLowerCase();
   }
 
   convertToUppercase() {
-    this.text = this.text.toUpperCase();
-    this.convertText();
+    this.text = this.originalText.toUpperCase();
   }
 
-  convertToTitlecase() {
-    this.text = this.text.toLowerCase();
-    const minorWords = [
-      'a',
-      'an',
-      'and',
-      'as',
-      'at',
-      'but',
-      'by',
-      'for',
-      'in',
-      'nor',
-      'of',
-      'on',
-      'or',
-      'so',
-      'the',
-      'to',
-      'up',
-      'yet',
-    ];
-    this.text = this.text.replace(/(^|\n).+?($|\n)/g, (match) => {
+  convertToTitleCase() {
+    this.text = this.originalText.toLowerCase();
+    this.text = this.originalText.replace(/(^|\n).+?($|\n)/g, (match) => {
       return match.replace(/\b\w+/g, (word) => {
         if (
           !minorWords.includes(word.toLowerCase()) ||
@@ -64,17 +45,16 @@ export class TextConverterComponent implements OnInit {
         }
       });
     });
-    this.convertText();
+
   }
 
   convertToCapitalizedCase() {
-    this.text = this.text.toLowerCase();
+    this.text = this.originalText.toLowerCase();
     this.text = this.text.replace(/\b\w/g, (txt) => txt.toUpperCase());
-    this.convertText();
   }
 
   convertToInverseCase() {
-    this.text = this.text
+    this.text = this.originalText
       .split('')
       .map((char) => {
         if (char === char.toUpperCase()) {
@@ -86,34 +66,55 @@ export class TextConverterComponent implements OnInit {
         }
       })
       .join('');
-    this.convertText();
   }
+
+
+  textToKebabCase() {
+    this.text = this.originalText.replace(/[^a-zA-Z0-9]+/g, '-').toLowerCase();
+  }
+
+  convertToCamelCase() {
+    this.text = this.originalText.replace(/(?:^\w|[A-Z]|\b\w)/g, function (letter, index) {
+      return index === 0 ? letter.toLowerCase() : letter.toUpperCase();
+    }).replace(/\s+/g, '');
+  }
+
+  convertToSnakeCase() {
+    this.text = this.originalText.replace(/\s+/g, '_').toLowerCase();
+  }
+
+
+  removeSpaces() {
+    this.text = this.originalText.replace(/\s/g, '');
+  }
+
+  reverseText() {
+    this.text = this.originalText.split('').reverse().join('');
+  }
+
+
 
   clearTextArea() {
     this.text = '';
+    this.originalText = ''
   }
 
   copyText() {
     const textarea = document.createElement('textarea');
-    textarea.textContent = this.text;
+    textarea.textContent = this.originalText;
     document.body.appendChild(textarea);
     textarea.select();
     document.execCommand('copy');
     document.body.removeChild(textarea);
     this.toasterMessage = 'Converted text copied to clipboard!';
-    this.toasterType = 'success';
-
     // Clear the toaster message after 3 seconds
     setTimeout(() => {
       this.clearToasterMessage();
     }, 3000);
-
-    // alert('Converted text copied to clipboard!');
   }
 
   clearToasterMessage() {
     this.toasterMessage = '';
-    this.toasterType = 'success';
   }
 
   downloadText() {
@@ -128,7 +129,4 @@ export class TextConverterComponent implements OnInit {
     window.URL.revokeObjectURL(url);
   }
 
-  convertText() {
-    localStorage.setItem('convertedText', this.text);
-  }
 }

@@ -4,12 +4,14 @@ import { AppComponent } from './app.component';
 import { TextConverterComponent } from './text-converter/text-converter.component';
 import { FormsModule } from '@angular/forms';
 import { CustomToasterComponent } from './custom-toaster/custom-toaster.component';
+import { InOutTextBoxesComponent } from './UI/in-out-text-boxes/in-out-text-boxes.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TextConverterComponent,
-    CustomToasterComponent
+    CustomToasterComponent,
+    InOutTextBoxesComponent
   ],
   imports: [
     BrowserModule,

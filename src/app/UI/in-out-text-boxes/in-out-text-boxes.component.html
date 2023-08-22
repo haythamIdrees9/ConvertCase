@@ -1,0 +1,7 @@
+<div class="boxes f-col a-between">
+    <textarea [(ngModel)]="userText" (keyup)="onInputChange()"  placeholder="Enter text here..."
+        aria-label="Input Text" aria-describedby="conversionInstructions"></textarea>
+
+    <textarea [(ngModel)]="result"  readonly  placeholder="Converted result will appear here..."  aria-label="result Text"
+        aria-describedby="conversionInstructions"></textarea>
+</div>

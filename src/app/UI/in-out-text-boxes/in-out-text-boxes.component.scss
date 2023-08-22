@@ -1,0 +1,52 @@
+@import '../../../styles/responsive';
+
+:host {
+    width: 100%;
+}
+
+.boxes {
+    width: 100%;
+
+    textarea {
+        width: 100%;
+        height: 200px;
+        padding: 10px;
+        font-size: 1rem;
+        border: none;
+        background: white;
+        color: black;
+        resize: none;
+        outline: none;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        box-sizing: border-box;
+
+        &:first-child {
+            margin-bottom: 1rem;
+        }
+
+        &:read-only {
+            background-color: #dcdcdc;
+            border-color: #dcdcdc;
+            color: #000000;
+            cursor: default;
+        }
+    }
+
+    @include mobileFirst('xsm'){
+        flex-direction: row;
+        justify-content: space-between;
+        textarea{
+            width: calc(50% - 0.5rem);
+            &:first-child{
+                margin: 0 0 1rem 0;
+            }
+        }
+    }
+    @include mobileFirst('mlg'){
+        textarea{
+            font-size: 1.25rem;
+        }
+    }
+
+}
