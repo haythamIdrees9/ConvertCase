@@ -1,8 +1,10 @@
-<header class="header  f-row a-center">
+<header class="header  f-row a-center j-between">
     <button class="btn-resting c-pointer" (click)="toggleMenuState($event)" aria-label="Toggle Menu">
         <img class="icon menu-icon" src="assets/images/menu.svg" width="24" height="24" alt="menu" />
     </button>
-
+    <a href="https://www.buymeacoffee.com/haythamidrt" class="support-me" target="_blank">
+        <img src="assets/images/support-me.png" alt="Buy Me A Coffee" >
+    </a>
     <div class="menu" [class.menu-opened]="isMenuOpened">
         <div class="content">
             <div class="logo f-row a-center"></div>
