@@ -1,0 +1,11 @@
+<div class="result">
+    <button class="clear-btn" (click)="onClear.emit()">Clear</button>
+    <button class="copy-btn" (click)="copyText()">Copy</button>
+    <button class="download-btn" (click)="downloadText()">Download</button>
+  </div>
+
+  <app-custom-toaster
+  *ngIf="toasterMessage"
+  [message]="toasterMessage"
+  [type]="'success'"
+></app-custom-toaster>

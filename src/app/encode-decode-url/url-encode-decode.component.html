@@ -1,0 +1,12 @@
+<div class="x-container">
+  <h1>Text Conversion</h1>
+  <div class="container">
+    <label for="inputText" style="display: none;">Enter text here:</label>
+    <app-in-out-text-boxes #boxes [result]="text" [storedKey]="'convertedText'"
+      (onChangeEmitter)="setOriginalText($event)"></app-in-out-text-boxes>
+    <div class="buttons" role="group" aria-labelledby="conversionInstructions">
+      <button (click)="urlEncode();executeFn=urlEncode">Encode URl</button>
+    </div>
+    <app-result-actions-btn (onClear)="clearTextArea();boxes.clear()" [text]="text"></app-result-actions-btn>
+  </div>
+</div>
