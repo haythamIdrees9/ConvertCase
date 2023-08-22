@@ -1,23 +1,31 @@
-import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit{
+
   @ViewChild('search_field') searchField!:ElementRef ; 
   isSearchOpened: boolean = false;
   isMenuOpened: boolean = false;
   menuRouts = [
-    {path:'/home',label:'HOME'},
-    {path:'/books',label:'BOOKS'},
-    {path:'/reviews',label:'REVIEWS'},
-    {path:'/news',label:'NEWS'},
-    {path:'/contact',label:'CONTACTS'},
+    {path:'/text-case-tools',label:'Text Convert Case'},
+    {path:'/text-case-tools',label:'Encoding and Decoding'},
   ]
 
   selectedRouteIndex = 1;
+  constructor(private location: Location){
+
+  }
+  ngOnInit(): void {
+    const path = this.location.path();
+    this.selectedRouteIndex = this.menuRouts.findIndex(item => item.path === path)
+    console.log('path',path);
+    
+  }
 
   toggleSearchState(event: Event) {
     event.stopPropagation()
@@ -44,7 +52,4 @@ export class HeaderComponent {
     this.isMenuOpened = false;
   }
 
-  onSearch(term:string){
-    this.backToMainMode();
-  }
 }

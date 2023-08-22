@@ -17,7 +17,7 @@ body {
         // background-color: #424242;
         color: #ffffff;
         box-sizing: border-box;
-        min-height: 100vh;
+        min-height: calc(100vh - 84px);
         padding-bottom: 2rem;
         padding: 3rem 1rem;
         display: flex;
