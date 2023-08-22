@@ -1,21 +1,17 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { TextConverterComponent } from './text-converter/text-converter.component';
-import { FormsModule } from '@angular/forms';
-import { CustomToasterComponent } from './custom-toaster/custom-toaster.component';
-import { InOutTextBoxesComponent } from './UI/in-out-text-boxes/in-out-text-boxes.component';
+import { HeaderComponent } from './layout/header/header.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TextConverterComponent,
-    CustomToasterComponent,
-    InOutTextBoxesComponent
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
