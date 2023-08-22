@@ -1,0 +1,19 @@
+<header class="header  f-row a-center">
+    <button class="btn-resting c-pointer" (click)="toggleMenuState($event)" aria-label="Toggle Menu">
+        <img class="icon menu-icon" src="assets/images/menu.svg" width="24" height="24" alt="menu" />
+    </button>
+
+    <div class="menu" [class.menu-opened]="isMenuOpened">
+        <div class="content">
+            <div class="logo f-row a-center"></div>
+            <nav>
+                <ul>
+                    <li class="w-100p" *ngFor="let route of menuRouts; let index = index"
+                        [class.selected]="selectedRouteIndex === index">
+                        <a class="w-100p" [routerLink]="route.path">{{ route.label }}</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
