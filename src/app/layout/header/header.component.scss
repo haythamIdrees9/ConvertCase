@@ -63,13 +63,16 @@ $bg-color: #8957E5;
             transition: all 0.35s;
             box-sizing: border-box;
 
-            ul li {
-                list-style-type: none;
+            ul {
+                padding: 0;
+                li {
+                    list-style-type: none;
                 padding: 0;
                 margin: 0;
-
+                
                 a {
                     display: inline-block;
+                    width: 100%;
                     box-sizing: border-box;
                     padding: 1rem;
                     background-color: white;
@@ -83,7 +86,8 @@ $bg-color: #8957E5;
                 }
             }
         }
-
+        
+    }
         &.menu-opened {
             width: 100vw;
             left: 0;
