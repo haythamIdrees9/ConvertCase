@@ -8,7 +8,7 @@ import { minorWords } from '../utils/words';
 })
 export class TextConverterComponent implements OnInit {
   text: string = '';
-
+  storageKey = 'convertedText'
   originalText = '';
   executeFn = () => {};
   constructor() { }

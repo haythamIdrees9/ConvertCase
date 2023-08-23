@@ -1,12 +1,13 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CustomToasterComponent } from '../custom-toaster/custom-toaster.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-result-actions-btn',
   templateUrl: './result-actions-btn.component.html',
   styleUrls: ['./result-actions-btn.component.scss'],
   standalone:true,
-  imports:[CustomToasterComponent]
+  imports:[CustomToasterComponent,CommonModule]
 })
 export class ResultActionsBtnComponent {
   @Output('onClear') onClear = new EventEmitter()
@@ -22,14 +23,10 @@ export class ResultActionsBtnComponent {
     document.execCommand('copy');
     document.body.removeChild(textarea);
     this.toasterMessage = 'Converted text copied to clipboard!';
-    // Clear the toaster message after 3 seconds
-    setTimeout(() => {
-      this.clearToasterMessage();
-    }, 3000);
-  }
 
-  clearToasterMessage() {
-    this.text = '';
+    setTimeout(() => {
+      this.toasterMessage = '';
+    }, 3000);
   }
 
   downloadText() {

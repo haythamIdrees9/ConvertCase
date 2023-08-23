@@ -21,7 +21,10 @@ export class HeaderComponent implements OnInit{
 
   }
   ngOnInit(): void {
-    const path = this.location.path();
+    let path = this.location.path();
+    if(!path){
+      path = this.menuRouts[0].path;
+    }
     this.selectedRouteIndex = this.menuRouts.findIndex(item => item.path === path)
     console.log('path',path);
     

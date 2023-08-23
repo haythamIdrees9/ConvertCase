@@ -1,12 +1,26 @@
 <div class="x-container">
-  <h1>Text Conversion</h1>
+  <h1>Encoding and Decoding</h1>
   <div class="container">
-    <label for="inputText" style="display: none;">Enter text here:</label>
-    <app-in-out-text-boxes #boxes [result]="text" [storedKey]="'convertedText'"
+    <app-in-out-text-boxes #boxes [result]="text" [storageKey]="storageKey"
       (onChangeEmitter)="setOriginalText($event)"></app-in-out-text-boxes>
     <div class="buttons" role="group" aria-labelledby="conversionInstructions">
-      <button (click)="urlEncode();executeFn=urlEncode">Encode URl</button>
+      <button [class.selected]="executeFn === urlEncode" (click)="urlEncode(); executeFn=urlEncode">URl Encoder</button>
+      <button [class.selected]="executeFn === urlDecode" (click)="urlDecode(); executeFn=urlDecode">URl Decoder</button>
+      <button [class.selected]="executeFn === htmlEncode" (click)="htmlEncode();executeFn=htmlEncode">HTML Encoder</button>
+      <button [class.selected]="executeFn === htmlDecode" (click)="htmlDecode();executeFn=htmlDecode">HTML Decoder</button>
+      <button [class.selected]="executeFn === rot13" (click)="rot13();executeFn=rot13">ROT13</button>
+      <button [class.selected]="executeFn === rot47" (click)="rot47();executeFn=rot47">ROT47</button>
+      <button [class.selected]="executeFn === punycodeEncode" (click)="punycodeEncode();executeFn=punycodeEncode">Punycode Encoder</button>
+      <button [class.selected]="executeFn === punycodeDecode" (click)="punycodeDecode();executeFn=punycodeDecode">Punycode Decoder</button>
+      <button [class.selected]="executeFn === utf8Encode" (click)="utf8Encode();executeFn=utf8Encode">utf8 Encoder</button>
+      <button [class.selected]="executeFn === utf8Decode" (click)="utf8Decode();executeFn=utf8Decode">utf8 Decoder</button>
+      <button [class.selected]="executeFn === utf16Encode" (click)="utf16Encode();executeFn=utf16Encode">utf16 Encoder</button>
+      <button [class.selected]="executeFn === utf16Decode" (click)="utf16Decode();executeFn=utf16Decode">utf16 Decoder</button>
+
     </div>
     <app-result-actions-btn (onClear)="clearTextArea();boxes.clear()" [text]="text"></app-result-actions-btn>
   </div>
 </div>
+
+
+<app-custom-toaster *ngIf="toasterMessage" [message]="toasterMessage" [type]="'error'"></app-custom-toaster>

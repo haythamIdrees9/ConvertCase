@@ -2,7 +2,7 @@
     <h1>Text Conversion</h1>
     <div class="container">
       <label for="inputText" style="display: none;">Enter text here:</label>
-      <app-in-out-text-boxes #boxes [result]="text" [storedKey]="'convertedText'" (onChangeEmitter)="setOriginalText($event)"></app-in-out-text-boxes>
+      <app-in-out-text-boxes #boxes [result]="text" [storageKey]="storageKey" (onChangeEmitter)="setOriginalText($event)"></app-in-out-text-boxes>
       <div class="buttons" role="group" aria-labelledby="conversionInstructions">
         <button (click)="convertToLowercase();executeFn=convertToLowercase">lower case</button>
         <button (click)="convertToUppercase();executeFn=convertToUppercase">UPPER CASE</button>

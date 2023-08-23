@@ -11,12 +11,19 @@
     top: 10vh;
     cursor: pointer;
     animation: right-animation 0.5s forwards;
-    background: linear-gradient(to right, #6d2e86, #c11c44);
+    
+    &.success {
+        background: linear-gradient(to right, #ffe95b, #FFDD00);
+        color: black;
+    }
+
+    &.error {
+        background: linear-gradient(to right, #e57373, #f44336);
+    }
 
     @keyframes right-animation {
-        to{
+        to {
             right: 2rem;
         }
     }
-  }
-  
+}
