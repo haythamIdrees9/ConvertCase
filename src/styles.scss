@@ -1,69 +1,93 @@
 @import './styles/flex';
 @import "./styles/responsive";
 $theme-color: radial-gradient(circle, #4d2779, #300036);
+
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+  background: $theme-color;
+
+  a {
+    text-decoration: none;
+  }
+
+  .x-container {
+
     background: $theme-color;
-    a {
-        text-decoration: none;
+    // background-color: #424242;
+    color: #ffffff;
+    box-sizing: border-box;
+    min-height: calc(100vh - 84px);
+    padding-bottom: 2rem;
+    padding: 3rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 0.25rem max(1rem, calc(50vw - 500px));
+
+    @include mobileFirst("mlg") {
+      padding: 0.25rem max(1rem, 50vw - 520px) 0.25rem max(1rem, 50vw - 450px);
     }
 
-    .x-container {
+    @include mobileFirst("xl") {
+      padding: 0.25rem max(1rem, 50vw - 600px) 0.25rem max(1rem, 50vw - 540px);
+    }
 
-        background: $theme-color;
-        // background-color: #424242;
-        color: #ffffff;
-        box-sizing: border-box;
-        min-height: calc(100vh - 84px);
-        padding-bottom: 2rem;
-        padding: 3rem 1rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        
-        padding: 0.25rem max(1rem, calc(50vw - 500px));
-        
-        @include mobileFirst("mlg") {
-          padding: 0.25rem max(1rem, 50vw - 520px) 0.25rem max(1rem, 50vw - 450px);
-        }
-        @include mobileFirst("xl") {
-          padding: 0.25rem max(1rem, 50vw - 600px) 0.25rem max(1rem, 50vw - 540px);
-        }
-        @include mobileFirst("xxl") {
-          padding: 0.25rem max(1rem, 50vw - 690px);
-        }
-      }
+    @include mobileFirst("xxl") {
+      padding: 0.25rem max(1rem, 50vw - 690px);
+    }
+  }
+
+  .btn-theme {
+    padding: 6px;
+    background-color: #6d2e86;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    position: relative;
+    height: 40px;
+    transition: all 0.3s;
+
+    &:hover {
+      background: linear-gradient(to right, #6d2e86, #c11c44);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
 
 }
 
 body::-webkit-scrollbar {
-    background: #c1c1c1;
-    border-radius: 10px;
-    max-width: 6px;
+  background: #c1c1c1;
+  border-radius: 10px;
+  max-width: 6px;
 }
 
 
 body::-webkit-scrollbar-track {
-    background: #e7e7e7;
+  background: #e7e7e7;
 }
 
 body::-webkit-scrollbar-thumb {
-    background: #9a9a9a;
-    border-radius: 3px;
-    max-width: 2px;
+  background: #9a9a9a;
+  border-radius: 3px;
+  max-width: 2px;
 }
 
 
 .c-pointer {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .btn-resting {
-    background: transparent;
-    border: none;
-    padding: 0;
-    margin: 0;
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
 }
