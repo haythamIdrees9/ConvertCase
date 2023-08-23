@@ -1,0 +1,10 @@
+<div class="custom-container" [class.show]="show" (click)="$event.stopPropagation()">
+    <button class="btn-theme custom-button" (click)="show = true">{{text}}</button>
+    <div class="d-container">
+        <div class="label">{{formInfo}}</div>
+        <div class="f-row a-center j-center">
+            <input type="number" value="1"  #routerInput [placeholder]="placeholder">
+            <button class="btn-theme" (click)="onClick.emit(+routerInput.value);show = false">Select</button>
+        </div>
+    </div>
+  </div>

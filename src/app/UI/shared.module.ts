@@ -4,7 +4,8 @@ import { InOutTextBoxesModule } from './in-out-text-boxes/in-out-text-boxes.modu
 import { CustomToasterComponent } from './custom-toaster/custom-toaster.component';
 
 @NgModule({
-    declarations:[],
+    declarations:[
+  ],
     imports: [
         CommonModule,
         InOutTextBoxesModule,CustomToasterComponent],

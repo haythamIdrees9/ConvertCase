@@ -1,7 +1,7 @@
 <div class="result">
-    <button class="clear-btn" (click)="onClear.emit()">Clear</button>
-    <button class="copy-btn" (click)="copyText()">Copy</button>
-    <button class="download-btn" (click)="downloadText()">Download</button>
+    <button class="btn-theme clear-btn" (click)="onClear.emit()">Clear</button>
+    <button class="btn-theme copy-btn" (click)="copyText()">Copy</button>
+    <button class="btn-theme download-btn" (click)="downloadText()">Download</button>
   </div>
   <app-custom-toaster
   *ngIf="toasterMessage"

@@ -1,0 +1,10 @@
+<div class="custom-container" [class.show]="show" (click)="$event.stopPropagation()">
+    <button class="btn-theme custom-button" (click)="show = true">{{text}}</button>
+    <div class="d-container f-col">
+        <div class="f-row a-center j-center">
+            <input   #input1 [placeholder]="placeholder1">
+            <input   #input2 [placeholder]="placeholder2">
+        </div>
+        <button class="btn-theme apply" (click)="onClick.emit({first:input1.value,second:input2.value});show = false">{{apply}}</button>
+    </div>
+  </div>

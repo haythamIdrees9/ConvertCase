@@ -157,9 +157,6 @@ export class EncodeDecodeUrlComponent {
     this.text = decodedString;
   };
   
-  
-  
-
   clearTextArea() {
     this.text = '';
     this.originalText = ''

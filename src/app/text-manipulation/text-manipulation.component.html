@@ -1,0 +1,32 @@
+<div class="x-container">
+    <h1>Text Manipulation</h1>
+    <div class="container">
+      <label for="inputText" style="display: none;">Enter text here:</label>
+      <app-in-out-text-boxes #boxes [result]="text" [storageKey]="storageKey" (onChangeEmitter)="setOriginalText($event)"></app-in-out-text-boxes>
+      <div class="buttons" role="group" aria-labelledby="conversionInstructions">
+        <button class="btn-theme" [class.selected]="executeFn === textReverser" (click)="textReverser(); executeFn = textReverser">Text Reverser</button>
+        <button class="btn-theme" [class.selected]="executeFn === textRandomization" (click)="textRandomization(); executeFn = textRandomization">Text Randomization</button>
+        <button class="btn-theme" [class.selected]="executeFn === textSorting" (click)="textSorting(); executeFn = textSorting">Sort</button>
+        
+        <app-button-with-counter class="right-issue" [placeholder]="'rotation direction'" [text]="'Text Rotator'" [formInfo]="'router amount'" (onClick)="textRotator($event);executeFn = textRotator" ></app-button-with-counter>
+        <app-button-with-counter class="left-issue" [placeholder]="'column width'" [text]="'Text Column Formatter'" [formInfo]="'Text Column Formatter'" (onClick)="textColumnFormatter($event);executeFn = textColumnFormatter" ></app-button-with-counter>
+        <app-button-with-counter [placeholder]="'repetitions'" [text]="'Text Repeater'" [formInfo]="'repetitions'" (onClick)="textRepeater($event);executeFn = textRepeater" ></app-button-with-counter>
+        <button class="btn-theme" [class.selected]="executeFn === textTransposer" (click)="textTransposer(); executeFn = textTransposer">Text Transposer</button>
+        
+        <app-button-with-two-option class="right-issue" [placeholder1]="'Replace this'" [placeholder2]="'With this'"
+         [text]="'Text Replacer'" [apply]="'apply'" (onClick)="textReplacer($event.first,$event.second);executeFn = textReplacer" ></app-button-with-two-option>
+        
+      </div>
+      <app-result-actions-btn (onClear)="clearTextArea();boxes.clear()" [text]="text"></app-result-actions-btn>
+    </div>
+  </div>
+
+  <ng-template #customContainer let-label=>
+    <div class="custom-container">
+        <button class="custom-button">Text Rotator</button>
+        <div class="d-time-container" >
+          <input type="number" value="1"  #routerInput placeholder="rotation direction">
+          <button (click)="textRotator(+routerInput.value)">Select</button>
+        </div>
+      </div>
+  </ng-template>
