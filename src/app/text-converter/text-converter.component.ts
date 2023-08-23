@@ -8,8 +8,7 @@ import { minorWords } from '../utils/words';
 })
 export class TextConverterComponent implements OnInit {
   text: string = '';
-  toasterMessage: string = '';
-
+  storageKey = 'convertedText'
   originalText = '';
   executeFn = () => {};
   constructor() { }
@@ -99,34 +98,5 @@ export class TextConverterComponent implements OnInit {
     this.originalText = ''
   }
 
-  copyText() {
-    const textarea = document.createElement('textarea');
-    textarea.textContent = this.originalText;
-    document.body.appendChild(textarea);
-    textarea.select();
-    document.execCommand('copy');
-    document.body.removeChild(textarea);
-    this.toasterMessage = 'Converted text copied to clipboard!';
-    // Clear the toaster message after 3 seconds
-    setTimeout(() => {
-      this.clearToasterMessage();
-    }, 3000);
-  }
-
-  clearToasterMessage() {
-    this.toasterMessage = '';
-  }
-
-  downloadText() {
-    const blob = new Blob([this.text], { type: 'text/plain' });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'converted_text.txt';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    window.URL.revokeObjectURL(url);
-  }
 
 }

@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit{
   isMenuOpened: boolean = false;
   menuRouts = [
     {path:'/text-case-tools',label:'Text Convert Case'},
-    {path:'/text-case-tools',label:'Encoding and Decoding'},
+    {path:'/url-encode-decode',label:'URL Encoding and Decoding'},
   ]
 
   selectedRouteIndex = 1;
@@ -21,7 +21,10 @@ export class HeaderComponent implements OnInit{
 
   }
   ngOnInit(): void {
-    const path = this.location.path();
+    let path = this.location.path();
+    if(!path){
+      path = this.menuRouts[0].path;
+    }
     this.selectedRouteIndex = this.menuRouts.findIndex(item => item.path === path)
     console.log('path',path);
     

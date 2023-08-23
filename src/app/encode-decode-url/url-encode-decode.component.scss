@@ -16,10 +16,6 @@
     justify-content: center;
     height: 100%;
     width: 100%;
-
-
-
-
     .buttons {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -39,7 +35,7 @@
       position: relative;
       height: 40px;
 
-      &:hover {
+      &:hover,&.selected {
         background: linear-gradient(to right, #6d2e86, #c11c44);
       }
 
@@ -62,7 +58,7 @@
     }
   }
 
-  @include mobileFirst('sm') {
+  @include mobileFirst('md') {
     .container {
       margin-top: 5rem;
       max-width: 700px;
@@ -80,7 +76,7 @@
         max-width: 1155px;
 
         .buttons {
-          grid-template-columns: repeat(8, 1fr);
+          grid-template-columns: repeat(6, 1fr);
         }
       }
     }

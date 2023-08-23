@@ -2,7 +2,7 @@
     <h1>Text Conversion</h1>
     <div class="container">
       <label for="inputText" style="display: none;">Enter text here:</label>
-      <app-in-out-text-boxes #boxes [result]="text" [storedKey]="'convertedText'" (onChangeEmitter)="setOriginalText($event)"></app-in-out-text-boxes>
+      <app-in-out-text-boxes #boxes [result]="text" [storageKey]="storageKey" (onChangeEmitter)="setOriginalText($event)"></app-in-out-text-boxes>
       <div class="buttons" role="group" aria-labelledby="conversionInstructions">
         <button (click)="convertToLowercase();executeFn=convertToLowercase">lower case</button>
         <button (click)="convertToUppercase();executeFn=convertToUppercase">UPPER CASE</button>
@@ -13,18 +13,8 @@
         <button (click)="convertToSnakeCase();executeFn=convertToSnakeCase">snake_case</button>
         <button (click)="convertToInverseCase();executeFn=convertToInverseCase">InVeRsE CaSe</button>
       </div>
-      <div class="result">
-        <button class="clear-btn" (click)="clearTextArea();boxes.clear()">Clear</button>
-        <button class="copy-btn" (click)="copyText()">Copy</button>
-        <button class="download-btn" (click)="downloadText()">Download</button>
-      </div>
+      <app-result-actions-btn (onClear)="clearTextArea();boxes.clear()" [text]="text"></app-result-actions-btn>
     </div>
   </div>
   
   <!-- Your existing HTML code -->
-  <app-custom-toaster
-    *ngIf="toasterMessage"
-    [message]="toasterMessage"
-    [type]="'success'"
-  ></app-custom-toaster>
-  
