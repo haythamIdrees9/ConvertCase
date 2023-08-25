@@ -16,7 +16,12 @@
       <button class="btn-theme" [class.selected]="executeFn === utf8Decode" (click)="utf8Decode();executeFn=utf8Decode">utf8 Decoder</button>
       <button class="btn-theme" [class.selected]="executeFn === utf16Encode" (click)="utf16Encode();executeFn=utf16Encode">utf16 Encoder</button>
       <button class="btn-theme" [class.selected]="executeFn === utf16Decode" (click)="utf16Decode();executeFn=utf16Decode">utf16 Decoder</button>
-
+      <button class="btn-theme" [class.selected]="executeFn === base64Encode" (click)="base64Encode(); executeFn = base64Encode">base64 Encode</button>
+      <button class="btn-theme" [class.selected]="executeFn === base64Decode" (click)="base64Decode(); executeFn = base64Decode">base64 Decode</button>
+      <button class="btn-theme" [class.selected]="executeFn === morseCodeEncode" (click)="morseCodeEncode(); executeFn = morseCodeEncode">morse EnCode</button>
+      <button class="btn-theme" [class.selected]="executeFn === morseCodeDecode" (click)="morseCodeDecode(); executeFn = morseCodeDecode">morse Decode</button>
+      <button class="btn-theme" [class.selected]="executeFn === bcdEncode" (click)="bcdEncode(); executeFn = bcdEncode" title="Binary Coded Decimal">BCD Encode</button>
+      <button class="btn-theme" [class.selected]="executeFn === bcdDecode" (click)="bcdDecode(); executeFn = bcdDecode" title="Binary Coded Decimal">BCD Decode</button>
     </div>
     <app-result-actions-btn (onClear)="clearTextArea();boxes.clear()" [text]="text"></app-result-actions-btn>
   </div>

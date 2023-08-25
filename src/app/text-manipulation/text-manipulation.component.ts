@@ -15,6 +15,9 @@ export class TextManipulationComponent {
   repetitions:number = 1;
   replacement: string = '';
   search: string = '';
+
+  
+  
   setOriginalText(text: string) {
     this.originalText = text;
     this.executeFn()
@@ -102,4 +105,5 @@ export class TextManipulationComponent {
     characters.sort();
     this.text = characters.join('');
   }
+
 }
