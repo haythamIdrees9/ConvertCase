@@ -122,6 +122,10 @@ export class EncodeDecodeUrlComponent {
     } catch (error:any) {
       console.error("Error decoding punycode:", error.message);
       this.toasterMessage = 'Error: Invalid input'
+
+      setTimeout(()=>{
+        this.toasterMessage = ''
+      },5000)
     }
   }
 
