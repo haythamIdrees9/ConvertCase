@@ -1,0 +1,53 @@
+<div class="x-container">
+    <h1>Data Format Converter</h1>
+    <div class="container">
+      <label for="inputData" style="display: none;">Enter data here:</label>
+      <app-in-out-text-boxes #boxes [result]="text" [storageKey]="storageKey" (onChangeEmitter)="setOriginalText($event)"></app-in-out-text-boxes>
+      <div class="buttons" role="group" aria-labelledby="conversionInstructions">
+        <a [routerLink]="['/','data-format-converter', 'json-to-xml']">
+          <button class="btn-theme" [class.selected]="executeFn === convertJSONtoXML" (click)="boxes.focus();onSelect(convertJSONtoXML)">JSON to XML</button>
+        </a>
+        <a [routerLink]="['/','data-format-converter', 'xml-to-json']">
+          <button class="btn-theme" [class.selected]="executeFn === convertXMLtoJSON" (click)="boxes.focus();onSelect(convertXMLtoJSON)">XML to JSON</button>
+        </a>
+        <a [routerLink]="['/','data-format-converter', 'json-to-csv']">
+          <button class="btn-theme" [class.selected]="executeFn === convertJSONtoCSV" (click)="boxes.focus();onSelect(convertJSONtoCSV)">JSON to CSV</button>
+        </a>
+        <a [routerLink]="['/','data-format-converter', 'csv-to-json']">
+          <button class="btn-theme" [class.selected]="executeFn === convertCSVtoJSON" (click)="boxes.focus();onSelect(convertCSVtoJSON)">CSV to JSON</button>
+        </a>
+        <a [routerLink]="['/','data-format-converter', 'json-to-yaml']">
+          <button class="btn-theme" [class.selected]="executeFn === convertJSONtoYAML" (click)="boxes.focus();onSelect(convertJSONtoYAML)">JSON to YAML</button>
+        </a>
+        <a [routerLink]="['/','data-format-converter', 'yaml-to-json']">
+          <button class="btn-theme" [class.selected]="executeFn === convertYAMLtoJSON" (click)="boxes.focus();onSelect(convertYAMLtoJSON)">YAML to JSON</button>
+        </a>
+        <a [routerLink]="['/','data-format-converter', 'xml-to-csv']">
+          <button class="btn-theme" [class.selected]="executeFn === convertXMLtoCSV" (click)="boxes.focus();onSelect(convertXMLtoCSV)">XML to CSV</button>
+        </a>
+        <a [routerLink]="['/','data-format-converter', 'csv-to-xml']">
+          <button class="btn-theme" [class.selected]="executeFn === convertCSVtoXML" (click)="boxes.focus();onSelect(convertCSVtoXML)">CSV to XML</button>
+        </a>
+        <a [routerLink]="['/','data-format-converter', 'xml-to-yaml']">
+          <button class="btn-theme" [class.selected]="executeFn === convertXMLtoYAML" (click)="boxes.focus();onSelect(convertXMLtoYAML)">XML to YAML</button>
+        </a>
+        <a [routerLink]="['/','data-format-converter', 'yaml-to-xml']">
+          <button class="btn-theme" [class.selected]="executeFn === convertYAMLtoXML" (click)="boxes.focus();onSelect(convertYAMLtoXML)">YAML to XML</button>
+        </a>
+        <a [routerLink]="['/','data-format-converter', 'xml-to-tsv']">
+          <button class="btn-theme" [class.selected]="executeFn === convertXMLtoTSV" (click)="boxes.focus();onSelect(convertXMLtoTSV)">XML to TSV</button>
+        </a>
+        <a [routerLink]="['/','data-format-converter', 'tsv-to-xml']">
+          <button class="btn-theme" [class.selected]="executeFn === convertTSVtoXML" (click)="boxes.focus();onSelect(convertTSVtoXML)">TSV to XML</button>
+        </a>
+      </div>
+      <app-result-actions-btn (onClear)="clearTextArea();boxes.clear()" [text]="text"></app-result-actions-btn>
+    </div>
+  </div>
+  <app-custom-toaster
+  *ngIf="toasterMessage"
+  [message]="toasterMessage"
+  [type]="'error'"
+></app-custom-toaster>
+
+  
