@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-text-manipulation',
@@ -12,11 +13,34 @@ export class TextManipulationComponent {
   executeFn:any = () => { };
   columnWidth:number = 1;
   textRouterCount:number = 1;
-  repetitions:number = 1;
+  repetitions:number = 2;
   replacement: string = '';
   search: string = '';
-
   
+  readonly buttonMappings:{[key:string]:any} = {
+    'text-reverser': this.textReverser,
+    'text-randomization': this.textRandomization,
+    'text-sorting': this.textSorting,
+    'text-rotator': this.textRotator,
+    'text-column-formatter': this.textColumnFormatter,
+    'text-repeater': this.textRepeater,
+    'text-transposer': this.textTransposer,
+    'text-replacer': this.textReplacer
+  };
+  
+  constructor(private route:ActivatedRoute) { }
+
+  ngOnInit(): void {
+    const action = this.route.snapshot.params['action'];
+    if(action && this.buttonMappings[action]){
+      this.executeFn = this.buttonMappings[action]; 
+    }    
+  }
+
+  onSelect(executeFn:() => void){
+    this.executeFn = executeFn;
+    this.executeFn(); 
+  }
   
   setOriginalText(text: string) {
     this.originalText = text;

@@ -10,6 +10,7 @@ import { ResultActionsBtnComponent } from '../UI/result-actions-btn/result-actio
   imports: [sharedModule,
       FormsModule,
       ResultActionsBtnComponent,
-       RouterModule.forChild([{ path: '', component: TextConverterComponent }])]
+       RouterModule.forChild([{ path: '', component: TextConverterComponent}, {path: ':action', component: TextConverterComponent }])]
+
 })
 export class TextConverterModule { }
