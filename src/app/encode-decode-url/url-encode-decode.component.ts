@@ -13,7 +13,11 @@ export class EncodeDecodeUrlComponent {
   toasterMessage: string = '';
   originalText = '';
   executeFn = () => { };
-  storageKey = 'urlEncodeDecode'
+  storageKey = 'urlEncodeDecode';
+  readonly morseCodeMap: {[key:string]:string}  = {
+    'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.', 'G': '--.', 'H': '....', 'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..', 'M': '--', 'N': '-.', 'O': '---', 'P': '.--.', 'Q': '--.-', 'R': '.-.', 'S': '...', 'T': '-', 'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-', 'Y': '-.--', 'Z': '--..',
+    '0': '-----', '1': '.----', '2': '..---', '3': '...--', '4': '....-', '5': '.....', '6': '-....', '7': '--...', '8': '---..', '9': '----.'
+  };
   constructor() { }
 
   ngOnInit(): void {
@@ -160,6 +164,93 @@ export class EncodeDecodeUrlComponent {
   clearTextArea() {
     this.text = '';
     this.originalText = ''
+  }
+
+  // base64Encode() {
+  //   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
+  //   let result = '';
+  //   let i = 0;
+  
+  //   while (i < this.originalText.length) {
+  //     const char1 = this.originalText.charCodeAt(i++);
+  //     const char2 = this.originalText.charCodeAt(i++);
+  //     const char3 = this.originalText.charCodeAt(i++);
+  
+  //     const byte1 = char1 >> 2;
+  //     const byte2 = ((char1 & 3) << 4) | (char2 >> 4);
+  //     const byte3 = ((char2 & 15) << 2) | (char3 >> 6);
+  //     const byte4 = char3 & 63;
+  
+  //     result +=
+  //       chars.charAt(byte1) +
+  //       chars.charAt(byte2) +
+  //       (isNaN(char2) ? '=' : chars.charAt(byte3)) +
+  //       (isNaN(char3) ? '=' : chars.charAt(byte4));
+  //   }
+  
+  //   this.text = result;
+  // }
+  
+  // base64Decode() {
+  //   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
+  //   let result = '';
+  //   let i = 0;
+  
+  //   const input = this.originalText.replace(/[^A-Za-z0-9+/=]/g, ''); // Remove invalid characters
+  
+  //   while (i < input.length) {
+  //     const char1 = chars.indexOf(input.charAt(i++));
+  //     const char2 = chars.indexOf(input.charAt(i++));
+  //     const char3 = chars.indexOf(input.charAt(i++));
+  //     const char4 = chars.indexOf(input.charAt(i++));
+  
+  //     const byte1 = (char1 << 2) | (char2 >> 4);
+  //     const byte2 = ((char2 & 15) << 4) | (char3 >> 2);
+  //     const byte3 = ((char3 & 3) << 6) | char4;
+  
+  //     result += String.fromCharCode(byte1);
+  
+  //     if (char3 !== 64) {
+  //       result += String.fromCharCode(byte2);
+  //     }
+  //     if (char4 !== 64) {
+  //       result += String.fromCharCode(byte3);
+  //     }
+  //   }
+  
+  //   this.text =  result;
+  // }
+  
+  morseCodeEncode() {
+    this.text = this.originalText.toUpperCase()
+      .split('')
+      .map((char:string) => this.morseCodeMap[char] || char)
+      .join(' ');
+  }
+  
+   morseCodeDecode() {
+    const reverseMap: {[key:string]:string} = {};
+    Object.keys(this.morseCodeMap).forEach((key:string) => {
+      reverseMap[this.morseCodeMap[key]] = key;
+    });
+    this.text = this.originalText.split(' ')
+      .map((code) => reverseMap[code] || code)
+      .join('');
+  }
+  
+  bcdEncode() {
+    this.text = this.originalText.split('')
+      .map((digit) => ('0000' + parseInt(digit).toString(2)).slice(-4))
+      .join('');
+  }
+  
+  bcdDecode() {
+    const binaryDigits = this.originalText.match(/.{1,4}/g);
+    if(!binaryDigits){
+      this.text = 'Enter valid value'
+      return;
+    }
+    this.text = binaryDigits.map((binaryDigit) => parseInt(binaryDigit, 2).toString()).join('');
   }
 
 }

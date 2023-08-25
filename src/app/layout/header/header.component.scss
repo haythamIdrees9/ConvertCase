@@ -11,7 +11,7 @@ $bg-color: #8957E5;
     z-index: 1000;
     padding: 0 1rem;
 
-    .support-me img {
+    .support-me ,.support-me img {
         height: 50px !important;
         width: 180px !important;
     }
@@ -49,6 +49,9 @@ $bg-color: #8957E5;
             font-weight: 800;
             height: 60px;
             box-sizing: border-box;
+            img{
+                filter: invert(100%);
+            }
         }
 
         .content {

@@ -1,5 +1,6 @@
 <div class="x-container">
     <h1>Text Manipulation</h1>
+    <ng-container [ngTemplateOutlet]="ads"></ng-container>
     <div class="container">
       <label for="inputText" style="display: none;">Enter text here:</label>
       <app-in-out-text-boxes #boxes [result]="text" [storageKey]="storageKey" (onChangeEmitter)="setOriginalText($event)"></app-in-out-text-boxes>
@@ -17,16 +18,22 @@
          [text]="'Text Replacer'" [apply]="'apply'" (onClick)="textReplacer($event.first,$event.second);executeFn = textReplacer" ></app-button-with-two-option>
         
       </div>
+      <ng-container [ngTemplateOutlet]="ads"></ng-container>
       <app-result-actions-btn (onClear)="clearTextArea();boxes.clear()" [text]="text"></app-result-actions-btn>
     </div>
   </div>
 
-  <ng-template #customContainer let-label=>
-    <div class="custom-container">
-        <button class="custom-button">Text Rotator</button>
-        <div class="d-time-container" >
-          <input type="number" value="1"  #routerInput placeholder="rotation direction">
-          <button (click)="textRotator(+routerInput.value)">Select</button>
-        </div>
-      </div>
+  <ng-template #ads>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8746065127850305"
+       crossorigin="anonymous"></script>
+  <!-- text convert -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-8746065127850305"
+       data-ad-slot="1432195349"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
   </ng-template>
