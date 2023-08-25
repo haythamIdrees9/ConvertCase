@@ -25,6 +25,8 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
+              "src/og.png",
+              "src/ads.txt",
               "src/assets"
             ],
             "styles": [
