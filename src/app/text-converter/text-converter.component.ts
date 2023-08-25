@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { minorWords } from '../utils/words';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-text-converter',
@@ -11,10 +12,28 @@ export class TextConverterComponent implements OnInit {
   storageKey = 'convertedText'
   originalText = '';
   executeFn = () => {};
-  constructor() { }
+  readonly buttonMappings:{[key:string]:any}  = {
+    'convert-to-uppercase': this.convertToUppercase,
+    'convert-to-lowercase': this.convertToLowercase,
+    'convert-to-title-case': this.convertToTitleCase,
+    'convert-to-capitalized-case': this.convertToCapitalizedCase,
+    'convert-to-camel-case': this.convertToCamelCase,
+    'text-to-kebab-case': this.textToKebabCase,
+    'convert-to-snake-case': this.convertToSnakeCase,
+    'convert-to-inverse-case': this.convertToInverseCase,
+  };
+  constructor(private route:ActivatedRoute) { }
 
   ngOnInit(): void {
+    const action = this.route.snapshot.params['action'];
+    if(action && this.buttonMappings[action]){
+      this.executeFn = this.buttonMappings[action]; 
+    }    
+  }
 
+  onSelect(executeFn:() => void){
+    this.executeFn = executeFn;
+    this.executeFn(); 
   }
 
   setOriginalText(text: string) {

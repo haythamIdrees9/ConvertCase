@@ -15,6 +15,6 @@ import { ButtonWithTwoOptionComponent } from '../UI/button-with-two-option/butto
     ResultActionsBtnComponent,
     ButtonWithCounterComponent,
     ButtonWithTwoOptionComponent,
-    RouterModule.forChild([{ path: '', component: TextManipulationComponent }])]
+    RouterModule.forChild([{ path: '', component: TextManipulationComponent }, {path: ':action', component: TextManipulationComponent }])]
 })
 export class TextManipulationModule { }

@@ -1,35 +1,34 @@
 <div class="x-container">
     <h1>Text Conversion</h1>
-    <ng-container [ngTemplateOutlet]="ads"></ng-container>
     <div class="container">
       <label for="inputText" style="display: none;">Enter text here:</label>
       <app-in-out-text-boxes #boxes [result]="text" [storageKey]="storageKey" (onChangeEmitter)="setOriginalText($event)"></app-in-out-text-boxes>
       <div class="buttons" role="group" aria-labelledby="conversionInstructions">
-        <button class="btn-theme" [class.selected]="executeFn === convertToUppercase" (click)="convertToUppercase();executeFn=convertToUppercase">UPPER CASE</button>
-        <button class="btn-theme" [class.selected]="executeFn === convertToLowercase" (click)="convertToLowercase();executeFn=convertToLowercase">lower case</button>
-        <button class="btn-theme" [class.selected]="executeFn === convertToTitleCase" (click)="convertToTitleCase();executeFn=convertToTitleCase">Title Case</button>
-        <button class="btn-theme" [class.selected]="executeFn === convertToCapitalizedCase" (click)="convertToCapitalizedCase();executeFn=convertToCapitalizedCase">Capitalized Case</button>
-        <button class="btn-theme" [class.selected]="executeFn === convertToCamelCase" (click)="convertToCamelCase();executeFn=convertToCamelCase">camelCase</button>
-        <button class="btn-theme" [class.selected]="executeFn === textToKebabCase" (click)="textToKebabCase();executeFn=textToKebabCase">kebab-case</button>
-        <button class="btn-theme" [class.selected]="executeFn === convertToSnakeCase" (click)="convertToSnakeCase();executeFn=convertToSnakeCase">snake_case</button>
-        <button class="btn-theme" [class.selected]="executeFn === convertToInverseCase" (click)="convertToInverseCase();executeFn=convertToInverseCase">InVeRsE CaSe</button>
+        <a [routerLink]="['/','text-case-tools', 'convert-to-uppercase']">
+          <button class="btn-theme" [class.selected]="executeFn === convertToUppercase" (click)="boxes.focus();onSelect(convertToUppercase)">UPPER CASE</button>
+        </a>
+        <a [routerLink]="['/','text-case-tools', 'convert-to-lowercase']">
+          <button class="btn-theme" [class.selected]="executeFn === convertToLowercase" (click)="boxes.focus();onSelect(convertToLowercase)">lower case</button>
+        </a>
+        <a [routerLink]="['/','text-case-tools', 'convert-to-title-case']">
+          <button class="btn-theme" [class.selected]="executeFn === convertToTitleCase" (click)="boxes.focus();onSelect(convertToTitleCase)">Title Case</button>
+        </a>
+        <a [routerLink]="['/','text-case-tools', 'convert-to-capitalized-case']">
+          <button class="btn-theme" [class.selected]="executeFn === convertToCapitalizedCase" (click)="boxes.focus();onSelect(convertToCapitalizedCase)">Capitalized Case</button>
+        </a>
+        <a [routerLink]="['/','text-case-tools', 'convert-to-camel-case']">
+          <button class="btn-theme" [class.selected]="executeFn === convertToCamelCase" (click)="boxes.focus();onSelect(convertToCamelCase)">camelCase</button>
+        </a>
+        <a [routerLink]="['/','text-case-tools', 'text-to-kebab-case']">
+          <button class="btn-theme" [class.selected]="executeFn === textToKebabCase" (click)="boxes.focus();onSelect(textToKebabCase)">kebab-case</button>
+        </a>
+        <a [routerLink]="['/','text-case-tools', 'convert-to-snake-case']">
+          <button class="btn-theme" [class.selected]="executeFn === convertToSnakeCase" (click)="boxes.focus();onSelect(convertToSnakeCase)">snake_case</button>
+        </a>
+        <a [routerLink]="['/','text-case-tools', 'convert-to-inverse-case']">
+          <button class="btn-theme" [class.selected]="executeFn === convertToInverseCase" (click)="boxes.focus();onSelect(convertToInverseCase)">InVeRsE CaSe</button>
+        </a>
       </div>
-      <ng-container [ngTemplateOutlet]="ads"></ng-container>
       <app-result-actions-btn (onClear)="clearTextArea();boxes.clear()" [text]="text"></app-result-actions-btn>
     </div>
   </div>
-
-  <ng-template #ads>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8746065127850305"
-       crossorigin="anonymous"></script>
-  <!-- text convert -->
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-8746065127850305"
-       data-ad-slot="1432195349"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-  <script>
-       (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-  </ng-template>

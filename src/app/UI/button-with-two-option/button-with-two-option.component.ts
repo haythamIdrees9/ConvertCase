@@ -7,11 +7,12 @@ import { Component, EventEmitter, HostListener, Input, Output } from '@angular/c
   standalone:true
 })
 export class ButtonWithTwoOptionComponent {
-  @Output('onClick') onClick = new EventEmitter<{first:string,second:string}>();
+  @Output('apply') onClick = new EventEmitter<{first:string,second:string}>();
   @Input('placeholder1') placeholder1!:string;
   @Input('placeholder2') placeholder2!:string;
   @Input('text') text!:string;
   @Input('apply') apply!:string;
+ @Input('selected') selected!:boolean;
   
   show:boolean = false;
 
@@ -19,6 +20,12 @@ export class ButtonWithTwoOptionComponent {
   @HostListener('document:click')
   clickOutSide(){
     this.show = false;
+  }
+
+  setShowState(show:boolean){
+    setTimeout(()=>{
+    this.show = show;
+    })  
   }
  }
  

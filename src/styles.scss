@@ -52,7 +52,7 @@ body {
     height: 40px;
     transition: all 0.3s;
 
-    &:hover {
+    &:hover,&.selected {
       background: linear-gradient(to right, #6d2e86, #c11c44);
     }
 

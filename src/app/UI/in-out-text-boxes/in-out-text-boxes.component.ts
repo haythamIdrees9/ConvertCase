@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-in-out-text-boxes[result][storageKey]',
@@ -6,6 +6,11 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./in-out-text-boxes.component.scss']
 })
 export class InOutTextBoxesComponent implements OnInit {
+  @ViewChild('input_area') set inputRef(inputArea:ElementRef){
+    this.inputArea = inputArea;
+    this.inputArea?.nativeElement?.focus()
+  }
+  inputArea!:ElementRef;
   userText:string = '';
   @Input('result') result:string = '';
   @Input('storageKey') storageKey:string = '';
@@ -15,9 +20,15 @@ export class InOutTextBoxesComponent implements OnInit {
   ngOnInit(): void {
     const savedText = localStorage.getItem(this.storageKey);
     if (savedText) {
-      this.userText = savedText;
-      this.onChangeEmitter.emit(this.userText)
+      setTimeout(()=>{
+        this.userText = savedText;
+        this.onChangeEmitter.emit(this.userText)
+      });
     }
+  }
+
+  focus(){
+    this.inputArea.nativeElement.focus()
   }
 
   onInputChange(){

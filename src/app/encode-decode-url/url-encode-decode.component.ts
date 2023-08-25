@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import {encode as punycodeEncode, decode as punycodeDecode} from "punycode"
 
 @Component({
@@ -18,15 +19,47 @@ export class EncodeDecodeUrlComponent {
     'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.', 'G': '--.', 'H': '....', 'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..', 'M': '--', 'N': '-.', 'O': '---', 'P': '.--.', 'Q': '--.-', 'R': '.-.', 'S': '...', 'T': '-', 'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-', 'Y': '-.--', 'Z': '--..',
     '0': '-----', '1': '.----', '2': '..---', '3': '...--', '4': '....-', '5': '.....', '6': '-....', '7': '--...', '8': '---..', '9': '----.'
   };
-  constructor() { }
+
+  readonly buttonMappings:{[key:string]:any} = {
+    'url-encode': this.urlEncode,
+    'url-decode': this.urlDecode,
+    'html-encode': this.htmlEncode,
+    'html-decode': this.htmlDecode,
+    'rot13': this.rot13,
+    'rot47': this.rot47,
+    'punycode-encode': this.punycodeEncode,
+    'punycode-decode': this.punycodeDecode,
+    'utf8-encode': this.utf8Encode,
+    'utf8-decode': this.utf8Decode,
+    'utf16-encode': this.utf16Encode,
+    'utf16-decode': this.utf16Decode,
+    'base64-encode': this.base64Encode,
+    'base64-decode': this.base64Decode,
+    'morse-encode': this.morseCodeEncode,
+    'morse-decode': this.morseCodeDecode,
+    'bcd-encode': this.bcdEncode,
+    'bcd-decode': this.bcdDecode
+  };
+
+  
+  constructor(private route:ActivatedRoute) { }
 
   ngOnInit(): void {
-
+    const action = this.route.snapshot.params['action'];
+    if(action && this.buttonMappings[action]){
+      this.executeFn = this.buttonMappings[action]; 
+    }    
   }
 
   setOriginalText(text: string) {
     this.originalText = text;
     this.executeFn()
+  }
+
+  onSelect(executeFn:() => void){
+    this.executeFn = executeFn;
+    this.executeFn(); 
+
   }
 
   urlEncode() {
@@ -166,61 +199,6 @@ export class EncodeDecodeUrlComponent {
     this.originalText = ''
   }
 
-  // base64Encode() {
-  //   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
-  //   let result = '';
-  //   let i = 0;
-  
-  //   while (i < this.originalText.length) {
-  //     const char1 = this.originalText.charCodeAt(i++);
-  //     const char2 = this.originalText.charCodeAt(i++);
-  //     const char3 = this.originalText.charCodeAt(i++);
-  
-  //     const byte1 = char1 >> 2;
-  //     const byte2 = ((char1 & 3) << 4) | (char2 >> 4);
-  //     const byte3 = ((char2 & 15) << 2) | (char3 >> 6);
-  //     const byte4 = char3 & 63;
-  
-  //     result +=
-  //       chars.charAt(byte1) +
-  //       chars.charAt(byte2) +
-  //       (isNaN(char2) ? '=' : chars.charAt(byte3)) +
-  //       (isNaN(char3) ? '=' : chars.charAt(byte4));
-  //   }
-  
-  //   this.text = result;
-  // }
-  
-  // base64Decode() {
-  //   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
-  //   let result = '';
-  //   let i = 0;
-  
-  //   const input = this.originalText.replace(/[^A-Za-z0-9+/=]/g, ''); // Remove invalid characters
-  
-  //   while (i < input.length) {
-  //     const char1 = chars.indexOf(input.charAt(i++));
-  //     const char2 = chars.indexOf(input.charAt(i++));
-  //     const char3 = chars.indexOf(input.charAt(i++));
-  //     const char4 = chars.indexOf(input.charAt(i++));
-  
-  //     const byte1 = (char1 << 2) | (char2 >> 4);
-  //     const byte2 = ((char2 & 15) << 4) | (char3 >> 2);
-  //     const byte3 = ((char3 & 3) << 6) | char4;
-  
-  //     result += String.fromCharCode(byte1);
-  
-  //     if (char3 !== 64) {
-  //       result += String.fromCharCode(byte2);
-  //     }
-  //     if (char4 !== 64) {
-  //       result += String.fromCharCode(byte3);
-  //     }
-  //   }
-  
-  //   this.text =  result;
-  // }
-  
   morseCodeEncode() {
     this.text = this.originalText.toUpperCase()
       .split('')

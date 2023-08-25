@@ -7,10 +7,11 @@ import { Component, EventEmitter, HostListener, Input, Output } from '@angular/c
   standalone:true
 })
 export class ButtonWithCounterComponent {
- @Output('onClick') onClick = new EventEmitter<number>();
+ @Output('apply') onClick = new EventEmitter<number>();
  @Input('placeholder') placeholder!:string;
  @Input('text') text!:string;
  @Input('formInfo') formInfo!:string;
+ @Input('selected') selected!:boolean;
 
  show:boolean = false;
 
@@ -19,4 +20,10 @@ export class ButtonWithCounterComponent {
  clickOutSide(){
    this.show = false;
  }
+
+ setShowState(show:boolean){
+  setTimeout(()=>{
+  this.show = show;
+  })  
+}
 }

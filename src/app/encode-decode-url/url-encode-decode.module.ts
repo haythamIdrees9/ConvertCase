@@ -11,6 +11,6 @@ import { ResultActionsBtnComponent } from '../UI/result-actions-btn/result-actio
     sharedModule,
     FormsModule,
     ResultActionsBtnComponent,
-    RouterModule.forChild([{ path: '', component: EncodeDecodeUrlComponent }])]
+    RouterModule.forChild([{ path: '', component: EncodeDecodeUrlComponent}, {path: ':action', component: EncodeDecodeUrlComponent }])]
 })
 export class URLEncodeDecodeModule { }

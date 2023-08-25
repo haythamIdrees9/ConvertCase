@@ -16,7 +16,7 @@
                 <ul>
                     <li class="w-100p" *ngFor="let route of menuRouts; let index = index"
                         [class.selected]="selectedRouteIndex === index">
-                        <a class="w-100p" [routerLink]="route.path">{{ route.label }}</a>
+                        <a class="w-100p" [routerLink]="route.path" (click)="toggleMenuState($event)">{{ route.label }}</a>
                     </li>
                 </ul>
             </nav>
