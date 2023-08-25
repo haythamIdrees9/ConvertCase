@@ -5,9 +5,13 @@
     <a href="https://www.buymeacoffee.com/haythamidrt" class="support-me" target="_blank">
         <img src="assets/images/support-me.png" alt="Buy Me A Coffee" >
     </a>
-    <div class="menu" [class.menu-opened]="isMenuOpened">
-        <div class="content">
-            <div class="logo f-row a-center"></div>
+    <div class="menu" [class.menu-opened]="isMenuOpened" >
+        <div class="content" (click)="$event.stopPropagation()">
+            <div class="logo f-row a-center">
+                <button class="btn-resting c-pointer" (click)="toggleMenuState($event)">
+                    <img width="20" height="20" src="assets/images/back.svg" alt="">
+                </button>
+            </div>
             <nav>
                 <ul>
                     <li class="w-100p" *ngFor="let route of menuRouts; let index = index"
