@@ -1,0 +1,29 @@
+<div class="x-container">
+    <h1>Encoding and Decoding</h1>
+    <div class="container">
+      <app-in-out-text-inputs #boxes [type]="'number'" [result]="text" [storageKey]="storageKey"
+        (onChangeEmitter)="setOriginalText($event)"></app-in-out-text-inputs>
+      <div class="buttons" role="group" aria-labelledby="conversionInstructions">
+        <a [routerLink]="['/','temperature-converters', 'celsius-to-fahrenheit']">
+            <button class="btn-theme" [class.selected]="executeFn === celsiusToFahrenheit" (click)="boxes.focus();onSelect(celsiusToFahrenheit)">Celsius to Fahrenheit</button>
+          </a>
+          <a [routerLink]="['/','temperature-converters', 'fahrenheit-to-celsius']">
+            <button class="btn-theme" [class.selected]="executeFn === fahrenheitToCelsius" (click)="boxes.focus();onSelect(fahrenheitToCelsius)">Fahrenheit to Celsius</button>
+          </a>
+          <a [routerLink]="['/','temperature-converters', 'kelvin-to-celsius']">
+            <button class="btn-theme" [class.selected]="executeFn === kelvinToCelsius" (click)="boxes.focus();onSelect(kelvinToCelsius)">Kelvin to Celsius</button>
+          </a>
+          <a [routerLink]="['/','temperature-converters', 'celsius-to-kelvin']">
+            <button class="btn-theme" [class.selected]="executeFn === celsiusToKelvin" (click)="boxes.focus();onSelect(celsiusToKelvin)">Celsius to Kelvin</button>
+          </a>
+          <a [routerLink]="['/','temperature-converters', 'kelvin-to-fahrenheit']">
+            <button class="btn-theme" [class.selected]="executeFn === kelvinToFahrenheit" (click)="boxes.focus();onSelect(kelvinToFahrenheit)">Kelvin to Fahrenheit</button>
+          </a>
+          <a [routerLink]="['/','temperature-converters', 'fahrenheit-to-kelvin']">
+            <button class="btn-theme" [class.selected]="executeFn === fahrenheitToKelvin" (click)="boxes.focus();onSelect(fahrenheitToKelvin)">Fahrenheit to Kelvin</button>
+          </a>          
+      </div>
+      <app-result-actions-btn (onClear)="clearTextArea();boxes.clear()" [text]="text"></app-result-actions-btn>
+    </div>
+  </div>
+  
