@@ -77,35 +77,46 @@ export class DataFormatConverterComponent implements OnInit {
       this.showToaster("Invalid XML input. Please provide valid XML.");    
     }
   }
-  
 
-  convertJSONtoCSV(jsonData: any): string {
-    const separator = ",";
-    const keys = Object.keys(jsonData[0]);
+  convertJSONtoCSV() {
+    try {
+      let jsonArray = JSON.parse(this.originalText);
+      console.log('test',this.text);
   
-    // Generate the CSV header
-    const csvHeader = keys.join(separator);
-  
-    // Generate the CSV rows
-    const csvRows = jsonData.map((item: any) => {
-      const values = keys.map((key) => {
-        const value = item[key];
-        return typeof value === "string" ? `"${value}"` : value;
-      });
-      return values.join(separator);
-    });
-  
-    // Combine the header and rows
-    const csvContent = [csvHeader, ...csvRows].join("\n");
-  
-    return csvContent;
+    if (!Array.isArray(jsonArray)) {
+        jsonArray = [jsonArray];
+    }
+
+    if (!jsonArray || jsonArray.length === 0) {
+        
+      this.text = ''; 
+      return;
+    }
+
+    const headers = Object.keys(jsonArray[0]);
+    const csvRows = [headers.join(',')];
+
+    for (const obj of jsonArray) {
+        const values = headers.map(header => {
+            const value = obj[header];
+            return typeof value === 'string' ? `"${value}"` : value;
+        });
+        csvRows.push(values.join(','));
+    }
+
+    this.text =  csvRows.join('\n');
+    } catch (error: any) {
+      console.error('Error parsing or processing JSON:', error.message);
+      this.text =  '';
+    }
   }
-  
 
-  convertCSVtoJSON(csvData: string): any[] {
-    const lines = csvData.trim().split("\n");
+
+  convertCSVtoJSON() {
+    const lines = this.originalText.trim().split("\n");
     if (lines.length === 0) {
-      return [];
+      this.text = '';
+      return;
     }
   
     const keys = lines[0].split(",");
@@ -135,7 +146,7 @@ export class DataFormatConverterComponent implements OnInit {
       jsonData.push(entry);
     }
   
-    return jsonData;
+    this.text =  JSON.stringify(jsonData, null, 2);;
   }
   
   convertJSONtoYAML() {
@@ -147,10 +158,12 @@ export class DataFormatConverterComponent implements OnInit {
         for (const key in obj) {
           if (obj.hasOwnProperty(key)) {
             const value = obj[key];
+            const keyIndex = Array.isArray(obj)?` -`:`${key}:`
             if (typeof value === 'object') {
-              yamlLines.push(`${indent}${key}:`);
+              yamlLines.push(`${indent}${keyIndex}`);
               processObject(value, `${indent}  `);
             } else {
+              
               yamlLines.push(`${indent}${key}: ${value}`);
             }
           }
@@ -158,51 +171,69 @@ export class DataFormatConverterComponent implements OnInit {
       }
   
       processObject(jsonData, '');
-  
-      this.text = yamlLines.join('\n');
+      this.text = this.prettifyYAML(yamlLines)
     } catch (error) {
-      this.showToaster("Error: Invalid JSON");    
-    
+      this.showToaster("Error: Invalid JSON");
     }
   }
+
+  prettifyYAML(yamlLines:string[]) {
+    const prettifiedLines = [];
+    let currentIndentation = 0;
+    console.log('yamlLines',);
+    
+    for (const line of yamlLines) {
+      const trimmedLine = line.trim();
   
+      if (trimmedLine.endsWith(':')) {
+        prettifiedLines.push(' '.repeat(currentIndentation) + trimmedLine);
+        currentIndentation += 2; // Increase indentation by 2 spaces
+      } else if (trimmedLine === '-') {
+        prettifiedLines.push(' '.repeat(currentIndentation) + trimmedLine);
+      } else {
+          console.log('trimm',trimmedLine)
+        prettifiedLines.push(' '.repeat(currentIndentation) + trimmedLine);
+        // currentIndentation -= 2; // Decrease indentation by 2 spaces
+        // currentIndentation = Math.max(currentIndentation,2)
+      } 
+    }
+    return prettifiedLines.join('\n');
+  }
+
 
   convertYAMLtoJSON() {
     try {
       const yamlLines = this.originalText.trim().split('\n');
-      const jsonData = this.parseYAMLLines(yamlLines);
+      console.log('yamlLines',yamlLines);
+      
+      const jsonData = this.prettifyYAMaL(yamlLines);
       this.text = JSON.stringify(jsonData, null, 2);
     } catch (error) {
       this.showToaster("Error: Invalid YAML");    
     }
   }
   
-  private parseYAMLLines(lines: string[]) {
-    const jsonData = {};
-    let currentLevel:any = jsonData;
-    const stack = [];
+  private prettifyYAMaL(yamlLines:String[]) {
+    const prettifiedLines = [];
+    let currentIndentation = 0;
   
-    for (const line of lines) {
-      const [key, value] = line.split(':');
-      const level = this.calculateIndentationLevel(line);
+    for (const line of yamlLines) {
+      const trimmedLine = line.trim();
   
-      while (stack.length > level) {
-        stack.pop();
-        currentLevel = stack.length === 0 ? jsonData : stack[stack.length - 1];
-      }
-  
-      const formattedKey = key.trim();
-      if (value !== undefined) {
-        currentLevel[formattedKey] = value.trim();
-      } else {
-        currentLevel[formattedKey] = {};
-        stack.push(currentLevel[formattedKey]);
-        currentLevel = currentLevel[formattedKey];
+      if (trimmedLine.endsWith(':')) {
+        prettifiedLines.push(' '.repeat(currentIndentation) + trimmedLine);
+        currentIndentation += 2; // Increase indentation by 2 spaces
+      } else if (trimmedLine === '-') {
+        prettifiedLines.push(' '.repeat(currentIndentation) + trimmedLine);
+      } else if(currentIndentation > 0) {
+          console.log('trimm',trimmedLine)
+        prettifiedLines.push(' '.repeat(currentIndentation) + trimmedLine);
+        currentIndentation -= 2; // Decrease indentation by 2 spaces
       }
     }
-  
-    return jsonData;
   }
+  
+    
   
   private calculateIndentationLevel(line: string) {
     let level = 0;
