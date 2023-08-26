@@ -1,0 +1,17 @@
+@import '../../../styles/responsive';
+
+.x-container {
+
+  @include mobileFirst('md') {
+    .container  .buttons {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include mobileFirst('xl') {
+      .container .buttons {
+          grid-template-columns: repeat(6, 1fr);
+      }
+    }
+
+  }
+}
