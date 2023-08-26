@@ -1,0 +1,49 @@
+<div class="x-container">
+    <h1>Mass Converters</h1>
+    <div class="container">
+      <app-in-out-text-boxes #boxes [result]="text" [storageKey]="storageKey"
+        (onChangeEmitter)="setOriginalText($event)"></app-in-out-text-boxes>
+      <div class="buttons" role="group" aria-labelledby="conversionInstructions">
+        <a [routerLink]="['/', 'mass-converters', 'pounds-to-kilograms']">
+            <button class="btn-theme" [class.selected]="executeFn === poundsToKilograms" (click)="boxes.focus();onSelect(poundsToKilograms)">Pounds to Kilograms</button>
+          </a>
+          <a [routerLink]="['/', 'mass-converters', 'kilograms-to-pounds']">
+            <button class="btn-theme" [class.selected]="executeFn === kilogramsToPounds" (click)="boxes.focus();onSelect(kilogramsToPounds)">Kilograms to Pounds</button>
+          </a>
+          <a [routerLink]="['/', 'mass-converters', 'ounces-to-grams']">
+            <button class="btn-theme" [class.selected]="executeFn === ouncesToGrams" (click)="boxes.focus();onSelect(ouncesToGrams)">Ounces to Grams</button>
+          </a>
+          <a [routerLink]="['/', 'mass-converters', 'grams-to-ounces']">
+            <button class="btn-theme" [class.selected]="executeFn === gramsToOunces" (click)="boxes.focus();onSelect(gramsToOunces)">Grams to Ounces</button>
+          </a>
+          <a [routerLink]="['/', 'mass-converters', 'pounds-to-ounces']">
+            <button class="btn-theme" [class.selected]="executeFn === poundsToOunces" (click)="boxes.focus();onSelect(poundsToOunces)">Pounds to Ounces</button>
+          </a>
+          <a [routerLink]="['/', 'mass-converters', 'ounces-to-pounds']">
+            <button class="btn-theme" [class.selected]="executeFn === ouncesToPounds" (click)="boxes.focus();onSelect(ouncesToPounds)">Ounces to Pounds</button>
+          </a>
+          <a [routerLink]="['/', 'mass-converters', 'milligrams-to-grams']">
+            <button class="btn-theme" [class.selected]="executeFn === milligramsToGrams" (click)="boxes.focus();onSelect(milligramsToGrams)">Milligrams to Grams</button>
+          </a>
+          <a [routerLink]="['/', 'mass-converters', 'grams-to-milligrams']">
+            <button class="btn-theme" [class.selected]="executeFn === gramsToMilligrams" (click)="boxes.focus();onSelect(gramsToMilligrams)">Grams to Milligrams</button>
+          </a>
+          <a [routerLink]="['/', 'mass-converters', 'kilograms-to-tons']">
+            <button class="btn-theme" [class.selected]="executeFn === kilogramsToTons" (click)="boxes.focus();onSelect(kilogramsToTons)">Kilograms to Tons</button>
+          </a>
+          <a [routerLink]="['/', 'mass-converters', 'tons-to-kilograms']">
+            <button class="btn-theme" [class.selected]="executeFn === tonsToKilograms" (click)="boxes.focus();onSelect(tonsToKilograms)">Tons to Kilograms</button>
+          </a>
+          <a [routerLink]="['/', 'mass-converters', 'pounds-to-stones']">
+            <button class="btn-theme" [class.selected]="executeFn === poundsToStones" (click)="boxes.focus();onSelect(poundsToStones)">Pounds to Stones</button>
+          </a>
+          <a [routerLink]="['/', 'mass-converters', 'stones-to-pounds']">
+            <button class="btn-theme" [class.selected]="executeFn === stonesToPounds" (click)="boxes.focus();onSelect(stonesToPounds)">Stones to Pounds</button>
+          </a>
+          
+        
+      </div>
+      <app-result-actions-btn (onClear)="clearTextArea();boxes.clear()" [text]="text"></app-result-actions-btn>
+    </div>
+  </div>
+  
