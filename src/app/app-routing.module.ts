@@ -7,6 +7,7 @@ const routes: Route[] = [
   {path:'text-manipulation',loadChildren:() => import('./components/text-manipulation/text-manipulation.module').then(m => m.TextManipulationModule) },
   {path:'temperature-converters',loadChildren:() => import('./components/temperature-converters/temperature-converters.module').then(m => m.TemperatureConvertersModule) },
   {path:'distance-converters',loadChildren:() => import('./components/distance-conversions/distance-conversions.module').then(m => m.DistanceConversionsModule) },
+  {path:'mass-converters',loadChildren:() => import('./components/mass-converter-tool/mass-converter-tool.module').then(m => m.MassConverterToolModule) },
   
   
   {path:'**', redirectTo:'text-case-tools',pathMatch:'full'},

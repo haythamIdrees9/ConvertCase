@@ -19,6 +19,7 @@ export class HeaderComponent implements OnInit{
     {path:'/text-manipulation',label:'Text Manipulation'},
     {path:'/temperature-converters',label:'Temperature Converstion'},
     {path:'/distance-converters',label:'Distance Converters'},
+    {path:'/mass-converters',label:'Mass Converters'},
     
     
   ]
