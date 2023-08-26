@@ -12,7 +12,7 @@
         height: 200px;
         padding: 10px;
         font-size: 1rem;
-        border: none;
+        border: 1px solid #005522;
         background: white;
         color: black;
         resize: none;
@@ -20,7 +20,6 @@
         margin-bottom: 20px;
         border-radius: 8px;
         box-sizing: border-box;
-
         &:first-child {
             margin-bottom: 1rem;
         }

@@ -1,6 +1,9 @@
 @import './styles/flex';
 @import "./styles/responsive";
-$theme-color: radial-gradient(circle, #4d2779, #300036);
+// $theme-color: radial-gradient(circle, #4d2779, #300036);
+// $theme-color: linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
+$theme-color: #f7f3ff;
+
 
 body {
   margin: 0;
@@ -8,6 +11,7 @@ body {
   font-family: Arial, sans-serif;
   overflow-x: hidden;
   background: $theme-color;
+  background-color: #f3ecff;  
 
   a {
     text-decoration: none;
@@ -16,8 +20,7 @@ body {
   .x-container {
 
     background: $theme-color;
-    // background-color: #424242;
-    color: #ffffff;
+    color: #228855;
     box-sizing: border-box;
     min-height: calc(100vh - 84px);
     padding-bottom: 2rem;
@@ -104,17 +107,17 @@ body {
   }
   .btn-theme {
     padding: 6px;
-    background-color: #6d2e86;
+    background: linear-gradient(to right, #228855, #228855);
     color: #ffffff;
     border: none;
     cursor: pointer;
     border-radius: 5px;
     position: relative;
     height: 40px;
-    transition: all 0.3s;
+    transition: all 0.5s;
 
     &:hover,&.selected {
-      background: linear-gradient(to right, #6d2e86, #c11c44);
+      background: linear-gradient(to right, #228855, #22aa66);
     }
 
     &:active {

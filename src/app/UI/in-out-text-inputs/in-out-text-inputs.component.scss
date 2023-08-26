@@ -13,7 +13,7 @@
         height: 100px;
         padding: 10px;
         font-size: 1rem;
-        border: none;
+        border: 1px solid #005522;
         background: white;
         color: black;
         resize: none;
@@ -40,28 +40,6 @@
         
         -moz-appearance: textfield;
     }
-
-
-
-    // input {
-    //     display: block;
-    //     width: 100%;
-    //     height: auto;
-    //     min-height: 100px; /* Adjust as needed */
-    //     padding: 8px;
-    //     font-size: 14px;
-    //     line-height: 1.5;
-    //     resize: vertical;
-    //     border: 1px solid #ccc;
-    //     border-radius: 4px;
-    //     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-    //   }
-      
-    //   /* Optional: Hover and focus styles for better user interaction */
-    //   input:hover,
-    //   input:focus {
-    //     outline: none;
-    //   }
 
     @include mobileFirst('xsm'){
         flex-direction: row;
