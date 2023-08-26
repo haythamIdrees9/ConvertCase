@@ -11,7 +11,7 @@ export class TemperatureConvertersComponent {
   toasterMessage: string = '';
   originalText = '';
   executeFn = () => { };
-  storageKey = 'unitConverter';
+  storageKey = 'TemperatureConverter';
 
   buttonMappings: {[key: string]: any} = {
     'celsius-to-fahrenheit': this.celsiusToFahrenheit,
