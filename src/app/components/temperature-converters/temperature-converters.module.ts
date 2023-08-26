@@ -14,8 +14,6 @@ import { TemperatureConvertersComponent } from './temperature-converters.compone
     sharedModule,
     FormsModule,
     ResultActionsBtnComponent,
-    ButtonWithCounterComponent,
-    ButtonWithTwoOptionComponent,
     InOutTextInputModule,
     RouterModule.forChild([{ path: '', component: TemperatureConvertersComponent }, {path: ':action', component: TemperatureConvertersComponent }])]
 })
