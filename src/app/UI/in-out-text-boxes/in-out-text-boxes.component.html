@@ -11,7 +11,7 @@ data-full-width-responsive="true"></ins>
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 <div class="boxes f-col a-between">
-    <textarea #input_area [(ngModel)]="userText" (keyup)="onInputChange()"  placeholder="Enter text here..."
+    <textarea type="number" #input_area [(ngModel)]="userText" (keyup)="onInputChange()"  placeholder="Enter text here..."
         aria-label="Input Text" aria-describedby="conversionInstructions"></textarea>
 
     <textarea [(ngModel)]="result"  readonly  placeholder="Converted result will appear here..."  aria-label="result Text"

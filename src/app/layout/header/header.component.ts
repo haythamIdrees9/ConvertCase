@@ -16,7 +16,9 @@ export class HeaderComponent implements OnInit{
   menuRouts = [
     {path:'/text-case-tools',label:'Text Convert Case'},
     {path:'/url-encode-decode',label:'URL Encoding and Decoding'},
-    {path:'/text-manipulation',label:'Text Manipulation'}
+    {path:'/text-manipulation',label:'Text Manipulation'},
+    {path:'/temperature-converters',label:'Unit Converstion'},
+    
   ]
 
   selectedRouteIndex = 1;
