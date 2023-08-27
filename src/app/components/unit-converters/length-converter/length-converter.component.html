@@ -1,0 +1,30 @@
+<div class="unit-container">
+    <h1>Length Converters</h1>
+    <div class="container">
+        <app-in-out-text-inputs #boxes [type]="'number'" [placeholder]="'Enter number here...'" [result]="text"
+            [storageKey]="storageKey" (onChangeEmitter)="setOriginalText($event)"></app-in-out-text-inputs>
+        <div class="selects-container f-row j-between">
+            <div class="select-container">
+                <app-select-always-open [selected]="lengthUnits[0]" (onSelect)="conversionRate1 = $event.conversionRate;updateResult()" [items]="lengthUnits"></app-select-always-open>
+            </div>
+            <div class="select-container">
+                <app-select-always-open [selected]="lengthUnits[1]" (onSelect)="conversionRate2 = $event.conversionRate;updateResult()" [items]="lengthUnits"></app-select-always-open>
+            </div>
+        </div>
+      <app-result-actions-btn (onClear)="clearTextArea();boxes.clear()" [text]="text"></app-result-actions-btn>
+    </div>
+    <h2>Popular length unit conversions</h2>
+    <div class="popular-units f-row">
+        <ul>
+            <li *ngFor="let unit of popularLengthUnits"> 
+            <a [routerLink]="['.',unit?.route]">{{unit?.labelRoute}}</a>    
+            </li>
+        </ul>
+
+        <ul>
+            <li *ngFor="let unit of popularLengthUnits"> 
+            <a [routerLink]="['.',unit?.reverseRoute]">{{unit?.labelReverseRoute}}</a>    
+            </li>
+        </ul>
+    </div>
+</div>

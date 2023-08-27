@@ -1,0 +1,22 @@
+<div class="unit-container">
+    <h1>{{title}}</h1>
+    <div class="container">
+        <app-in-out-text-inputs [switchLink]="switchLink" [userText]="originalText" #boxes [type]="'number'" [placeholder]="'Enter number here...'" [result]="text"
+            [storageKey]="storageKey" (onChangeEmitter)="setOriginalText($event)"></app-in-out-text-inputs>
+      <app-result-actions-btn (onClear)="clearTextArea();boxes.clear()" [text]="text"></app-result-actions-btn>
+    </div>
+    <h2>Popular length unit conversions</h2>
+    <div class="popular-units f-row">
+        <ul>
+            <li *ngFor="let unit of popularLengthUnits"> 
+            <a [routerLink]="['..',unit?.route]">{{unit?.labelRoute}}</a>    
+            </li>
+        </ul>
+
+        <ul>
+            <li *ngFor="let unit of popularLengthUnits"> 
+            <a [routerLink]="['..',unit?.reverseRoute]">{{unit?.labelReverseRoute}}</a>    
+            </li>
+        </ul>
+    </div>
+</div>
