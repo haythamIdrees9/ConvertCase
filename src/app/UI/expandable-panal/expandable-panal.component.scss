@@ -1,0 +1,21 @@
+.expandable-container{
+    height: 2rem;
+    overflow: hidden;
+    border: 1px solid #228866;
+    border-right: 0;
+    border-left: 0;
+    transition: height 0.5s;
+    &.opened{
+        height: 200px;
+    }
+    .title{
+        height: 2rem;
+        width: 100%;
+        padding: 0.5rem;
+        background-color: #EEEEEE;
+        box-sizing: border-box;
+    }
+    .description{
+        padding: 0.5rem;
+    }
+}

@@ -1,0 +1,11 @@
+<div class="expandable-container c-pointer" (click)="openPanal()" [class.opened]="opened">
+    <div class="title f-row j-between a-cetner">
+        <div>
+            <ng-content select="[title]"></ng-content>
+        </div>
+        <img src="assets/images/arrow.svg" width="20" height="20" alt=""> 
+    </div>
+    <div class="description">
+        <ng-content select="[content]"></ng-content>
+        </div>
+</div>
