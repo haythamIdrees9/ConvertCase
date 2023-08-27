@@ -6,8 +6,9 @@
     display: none;
   }
   .selected-label{
-    height: 24px;
+    height: 32px;
     width: 100%;
+    margin: 0.5rem 0;
   }
 
   .select {
@@ -21,7 +22,6 @@
     border-radius: 8px;
     overflow-y: auto;
 
-    /* Set the background color to green */
     &:focus {
       outline: none;
     }

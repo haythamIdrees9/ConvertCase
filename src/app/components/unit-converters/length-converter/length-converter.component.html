@@ -1,14 +1,17 @@
+<a class="back-link f-row a-center" [routerLink]="['../']"><img src="assets/images/arrow.svg" width="18" height="18" alt=""> Common Converters</a>
 <div class="unit-container">
     <h1>Length Converters</h1>
     <div class="container">
-        <app-in-out-text-inputs #boxes [type]="'number'" [placeholder]="'Enter number here...'" [result]="text"
+        <div class="user-input-cotnainer">
+            <app-in-out-text-inputs [userText]="originalText" #boxes [type]="'number'" [placeholder]="'Enter number here...'" [result]="text"
             [storageKey]="storageKey" (onChangeEmitter)="setOriginalText($event)"></app-in-out-text-inputs>
-        <div class="selects-container f-row j-between">
-            <div class="select-container">
-                <app-select-always-open [selected]="lengthUnits[0]" (onSelect)="conversionRate1 = $event.conversionRate;updateResult()" [items]="lengthUnits"></app-select-always-open>
-            </div>
-            <div class="select-container">
-                <app-select-always-open [selected]="lengthUnits[1]" (onSelect)="conversionRate2 = $event.conversionRate;updateResult()" [items]="lengthUnits"></app-select-always-open>
+            <div class="selects-container f-row j-between">
+                <div class="select-container">
+                    <app-select-always-open [selected]="lengthUnits[0]" (onSelect)="conversionRate1 = $event.conversionRate;updateResult()" [items]="lengthUnits"></app-select-always-open>
+                </div>
+                <div class="select-container">
+                    <app-select-always-open [selected]="lengthUnits[1]" (onSelect)="conversionRate2 = $event.conversionRate;updateResult()" [items]="lengthUnits"></app-select-always-open>
+                </div>
             </div>
         </div>
       <app-result-actions-btn (onClear)="clearTextArea();boxes.clear()" [text]="text"></app-result-actions-btn>

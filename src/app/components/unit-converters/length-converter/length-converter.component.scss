@@ -1,8 +1,30 @@
+@import "../../../../styles/mixins";
+
+.back-link {
+    color: #228855;
+    text-decoration: none;
+    font-size: 1rem;
+    img{
+        transform: rotateZ(90deg);
+        @include filter(invert(42%) sepia(17%) saturate(2473%) hue-rotate(101deg) brightness(91%) contrast(73%));
+    }
+}
 .unit-container{
     width: min(600px,90vw);
     color: #228855;
+    padding-top: 2rem;
+    h1{
+        text-align: left;
+    }
     .container  {
         margin-top: 2rem;
+        align-items: flex-start;
+        .user-input-cotnainer{
+            width: min(560px,90vw);
+            background-color: #EEEEEE;
+            padding: 1rem;
+            border-radius: 0.5rem;
+        }
     }
     .selects-container{
         width: 100%;
