@@ -5,7 +5,6 @@ import { CustomToasterComponent } from './custom-toaster/custom-toaster.componen
 
 @NgModule({
     declarations:[
-  
   ],
     imports: [
         CommonModule,

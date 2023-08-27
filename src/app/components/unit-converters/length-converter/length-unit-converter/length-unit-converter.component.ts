@@ -17,7 +17,9 @@ export class LengthUnitConverterComponent {
   convertTo: string = 'km';
   resultValue: number = 0;
   title = "Length Converters"
-  popularLengthUnits: readonly { route: string, reverseRoute: string,labelRoute:string,labelReverseRoute:string }[] = []
+  popularLengthUnits: readonly { route: string, reverseRoute: string,labelRoute:string,labelReverseRoute:string }[] = [];
+  pairsWithMeter: readonly { route: string, reverseRoute: string,labelRoute:string,labelReverseRoute:string,label:string }[] = [];
+
   conversionRate!:number;
   switchLink = ''
   constructor( private lengthUnitsService:LengthUnitsService,private route:ActivatedRoute){
@@ -30,6 +32,8 @@ export class LengthUnitConverterComponent {
 
   ngOnInit() {
     this.popularLengthUnits = this.lengthUnitsService.popularLengthUnits;
+    this.pairsWithMeter = this.lengthUnitsService.pairsWithMeter;
+    
     this.route.params.subscribe((params)=>{
       const unitsType = params['units-type'].split('-');
       this.switchLink = `${unitsType[1]}-${unitsType[0]}`

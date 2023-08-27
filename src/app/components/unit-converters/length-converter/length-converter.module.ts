@@ -7,16 +7,22 @@ import { LengthConverterComponent } from './length-converter.component';
 import { ResultActionsBtnComponent } from 'src/app/UI/result-actions-btn/result-actions-btn.component';
 import { LengthUnitsService } from './length-units.service';
 import { CommonModule } from '@angular/common';
+import { PoppularLinksComponent } from '../poppular-links/poppular-links.component';
+import { LengthUnitConverterComponent } from './length-unit-converter/length-unit-converter.component';
 
 @NgModule({
-  declarations: [LengthConverterComponent],
+  declarations: [LengthConverterComponent,LengthUnitConverterComponent],
   imports: [
       FormsModule,
       CommonModule,
       SelectAlwaysOpenComponent,
       InOutTextInputModule,
       ResultActionsBtnComponent,
-      RouterModule.forChild([{ path: '', component: LengthConverterComponent}, {path: ':units-type', loadChildren:() => import('./length-unit-converter/length-unit-converter.module').then(m => m.LengthUnitConverterModule) }])],
+      PoppularLinksComponent,
+      RouterModule.forChild([{ path: '', component: LengthConverterComponent}, 
+      
+      {path: ':units-type', component:LengthUnitConverterComponent }
+    ])],
       providers:[LengthUnitsService]
 
 })

@@ -115,7 +115,20 @@ popularLengthUnits = Object.freeze([
   { route: "micrometer-meter", reverseRoute: "meter-micrometer", labelRoute: "Micrometer to Meter", labelReverseRoute: "Meter to Micrometer" },
 ]);
 
+pairsWithMeter = this.lengthUnits
+.filter(unit => unit.key !== 'meter') // Exclude the [meter] unit itself
+.map(unit => ({
+  route: `${unit.key}-meter`,
+  reverseRoute: `meter-${unit.key}`,
+  labelRoute: `${unit.label} to Meter`,
+  labelReverseRoute: `Meter to ${unit.label}`,
+  label: `1 ${unit.label} = ${unit.conversionRate} meter`,
+
+}))
+
   constructor() {    
+    console.log('lengthUnits',this.pairsWithMeter);
+    
   }
 
 

@@ -16,13 +16,12 @@ export class LengthConverterComponent implements OnInit {
   convertTo: string = 'km';
   resultValue: number = 0;
 
-  lengthUnits: readonly { key: string, label: string, conversionRate: number }[] = []
-  popularLengthUnits: readonly { route: string, reverseRoute: string,labelRoute:string,labelReverseRoute:string }[] = []
+  lengthUnits: readonly { key: string, label: string, conversionRate: number }[] = [];
+  popularLengthUnits: readonly { route: string, reverseRoute: string,labelRoute:string,labelReverseRoute:string }[] = [];
+  pairsWithMeter: readonly { route: string, reverseRoute: string,labelRoute:string,labelReverseRoute:string,label:string }[] = [];
   conversionRate1!:number;
   conversionRate2!:number;
-  constructor( private lengthUnitsService:LengthUnitsService){
-    console.log('iiin');
-    
+  constructor( private lengthUnitsService:LengthUnitsService){    
   }
 
   updateResult() {
@@ -34,6 +33,7 @@ export class LengthConverterComponent implements OnInit {
 
   ngOnInit() {
     this.popularLengthUnits = this.lengthUnitsService.popularLengthUnits;
+    this.pairsWithMeter = this.lengthUnitsService.pairsWithMeter;
     this.lengthUnits = this.lengthUnitsService.lengthUnits;
     this.conversionRate1 = this.lengthUnits[0].conversionRate;
     this.conversionRate2 = this.lengthUnits[1].conversionRate;
