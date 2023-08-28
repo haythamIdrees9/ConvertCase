@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import Decimal from 'decimal.js';
-import { WeightUnitsService } from './weight-units.service';
+import { VolumeUnitsService } from './volume-units.service';
 
 @Component({
-  selector: 'app-weight-converter',
-  templateUrl: './weight-converter.component.html',
+  selector: 'app-volume-converter',
+  templateUrl: './volume-converter.component.html',
   styleUrls: ['../main-converters.scss'],
 })
-export class WeightConverterComponent implements OnInit {
-  storageKey = "weightUnitsConvert";
+export class VolumeConverterComponent implements OnInit {
+  storageKey = "volumeUnitsConvert";
   originalText:string = '1';
   text:string = '';
   inputValue: number = 0;
@@ -17,7 +17,7 @@ export class WeightConverterComponent implements OnInit {
   pairsWithKg: readonly { route: string, reverseRoute: string,labelRoute:string,labelReverseRoute:string,label:string }[] = [];
   conversionRate1!:number;
   conversionRate2!:number;
-  constructor( private weightUnitsService:WeightUnitsService){    
+  constructor( private volumeUnitsService:VolumeUnitsService){    
   }
 
   updateResult() {
@@ -28,9 +28,9 @@ export class WeightConverterComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.popularUnits = this.weightUnitsService.popularUnits;
-    this.pairsWithKg = this.weightUnitsService.pairsWithKg;
-    this.units = this.weightUnitsService.units;
+    this.popularUnits = this.volumeUnitsService.popularUnits;
+    this.pairsWithKg = this.volumeUnitsService.pairsWithKg;
+    this.units = this.volumeUnitsService.units;
     this.conversionRate1 = this.units[0].conversionRate;
     this.conversionRate2 = this.units[1].conversionRate;
     this.updateResult();

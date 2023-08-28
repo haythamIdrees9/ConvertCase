@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import Decimal from 'decimal.js';
 
 @Injectable()
-export class WightUnitsService {
+export class WeightUnitsService {
 
   units: readonly { key: string; label: string; conversionRate: number; }[] = Object.freeze([
     { key: 'kilogram', label: 'kilogram [kg]', conversionRate: 1 },
