@@ -20,6 +20,8 @@ import { CommonModule } from '@angular/common';
           {path: 'length', loadChildren: () => import('./types/length-converter/length-converter.module').then(m => m.LengthConverterModule)},
           {path: 'weight-and-mass', loadChildren: () => import('./types/weight-converter/weight-converter.module').then(m => m.WeightConverterModule)},
           {path: 'volume', loadChildren: () => import('./types/volume-converter/volume-converter.module').then(m => m.VolumeConverterModule)},
+          {path: 'temperature', loadChildren: () => import('./types/temperature-converter/temperature-converter.module').then(m => m.TemperatureConverterModule)},
+          
         ],
           
         }

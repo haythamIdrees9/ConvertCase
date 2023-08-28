@@ -1,6 +1,6 @@
 <a class="back-link f-row a-center" [routerLink]="['../../']"><img src="assets/images/arrow.svg" width="18" height="18" alt=""> Common Converters</a>
 <div class="unit-container">
-    <h1>Weight and Mass Converters</h1>
+    <h1>Temperature Converters</h1>
     <div class="container">
         <div class="user-input-cotnainer">
             <app-in-out-text-inputs [userText]="originalText" #boxes [type]="'number'" [placeholder]="'Enter number here...'" [result]="text"
@@ -17,5 +17,5 @@
 
       <app-result-actions-btn (onClear)="clearTextArea();boxes.clear()" [text]="text"></app-result-actions-btn>
     </div>
-    <app-poppular-links [popular]="popularUnits"  [popularTitle]="'Popular length Weight abd Mass conversions'" ></app-poppular-links>
+    <app-poppular-links [popular]="popularUnits" [popularTitle]="'Popular length Temperature conversions'" ></app-poppular-links>
 </div>

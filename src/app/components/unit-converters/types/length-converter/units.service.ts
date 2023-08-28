@@ -117,11 +117,6 @@ export class UnitsService {
  { route: "millimeter-to-meter", reverseRoute: "meter-to-millimeter", labelRoute: "Millimeter to Meter", labelReverseRoute: "Meter to Millimeter"   },
  { route: "micrometer-to-meter", reverseRoute: "meter-to-micrometer", labelRoute: "Micrometer to Meter", labelReverseRoute: "Meter to Micrometer" },]);
 
-pairs = this.units
-.filter(unit => unit.key !== 'meter') // Exclude the [meter] unit itself
-.map(unit => ({
-  route: `${unit.key}-meter`,  reverseRoute: `meter-${unit.key}`,  labelRoute: `${unit.label} to Meter`,  labelReverseRoute: `Meter to ${unit.label}`,  label: `1 ${unit.label} = ${unit.conversionRate} meter`,
-}))
 
   constructor() {    
   }

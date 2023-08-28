@@ -15,7 +15,6 @@ export class UnitConverterComponent implements OnInit {
   inputValue: number = 0;
   units: readonly { key: string, label: string, conversionRate: number }[] = [];
   popularUnits: readonly { route: string, reverseRoute: string, labelRoute: string, labelReverseRoute: string, }[] = [];
-  pairs: readonly { route: string, reverseRoute: string, labelRoute: string, labelReverseRoute: string, label: string }[] = [];
   switchLink = ''
   title = 'Voulme Convert'
   conversionRate!: number;
@@ -30,7 +29,6 @@ export class UnitConverterComponent implements OnInit {
 
   ngOnInit() {
     this.popularUnits = this.unitsService.popularUnits;
-    this.pairs = this.unitsService.pairs;
     this.units = this.unitsService.units;
     this.conversionRate = this.unitsService.calculateConversionRate(this.units[1].conversionRate, this.units[0].conversionRate)
     this.handleParamsChange();

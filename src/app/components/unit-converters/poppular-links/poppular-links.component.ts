@@ -10,7 +10,6 @@ import { RouterModule } from '@angular/router';
   imports:[CommonModule,RouterModule]
 })
 export class PoppularLinksComponent {
-  @Input("pairs") pairs!:readonly { route: string, reverseRoute: string,labelRoute:string,labelReverseRoute:string,label:string }[];
   @Input("popular") popular!: readonly { route: string, reverseRoute: string,labelRoute:string,labelReverseRoute:string }[];
   @Input("pairTitle") pairTitle!:string;
   @Input("popularTitle") popularTitle!:string;

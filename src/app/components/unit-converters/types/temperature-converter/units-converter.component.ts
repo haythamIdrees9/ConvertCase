@@ -1,37 +1,35 @@
 import { Component, OnInit } from '@angular/core';
-import Decimal from 'decimal.js';
 import { UnitsService } from './units.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-length-converter',
+  selector: 'app-temperature-converter',
   templateUrl: './units-converter.component.html',
   styleUrls: ['../../main-converters.scss'],
 })
 export class UnitConverterComponent implements OnInit {
-  storageKey = "lengthUnitsConvert";
+  storageKey = "temperatureUnitsConvert";
   originalText: string = '1';
   text: string = '';
   inputValue: number = 0;
-  units: readonly { key: string, label: string, conversionRate: number }[] = [];
+  units: readonly { key: string; label: string; convertToCelsius: (key: any) => any;convertFromCelsius:(key: any) => any }[] = [];
   popularUnits: readonly { route: string, reverseRoute: string, labelRoute: string, labelReverseRoute: string, }[] = [];
   switchLink = ''
   title = 'Voulme Convert'
-  conversionRate!: number;
   linkUnitType:string [] = ['cubickilometer','cubicmeter'];
+  currentUnits:readonly { key: string; label: string; convertToCelsius: (key: any) => any;convertFromCelsius:(key: any) => any }[]  = []
   constructor(private unitsService: UnitsService, private route: ActivatedRoute) {
   }
 
- 
   updateResult() {
-    const inputDecimal = new Decimal(Number(this.originalText));
-    this.text = `${inputDecimal.times(this.conversionRate)}`;
+    const celsiusValue = this.currentUnits[0].convertToCelsius(Number(this.originalText));
+    this.text = this.currentUnits[1].convertFromCelsius(celsiusValue);
   }
 
   ngOnInit() {
     this.popularUnits = this.unitsService.popularUnits;
     this.units = this.unitsService.units;
-    this.conversionRate = this.unitsService.calculateConversionRate(this.units[1].conversionRate, this.units[0].conversionRate)
+    this.currentUnits = [this.units[0], this.units[1]];
     this.handleParamsChange();
     this.updateResult();
   }
@@ -45,7 +43,7 @@ export class UnitConverterComponent implements OnInit {
       this.switchLink = `${this.linkUnitType[1]}-${this.linkUnitType[0]}`
       this.title = `Convert ${this.linkUnitType[0]} to ${this.linkUnitType[1]}`
       this.unitsService.getConversionRate(this.linkUnitType[0], this.linkUnitType[1])
-      this.conversionRate = this.unitsService.getConversionRate(this.linkUnitType[0], this.linkUnitType[1]);
+      this.currentUnits = this.unitsService.getConversionRate(this.linkUnitType[0], this.linkUnitType[1]);
       this.updateResult();
     })
   }

@@ -89,15 +89,6 @@ popularUnits = Object.freeze([
   { route: 'nanogram-to-kilogram', reverseRoute: 'kilogram-to-nanogram', labelRoute: 'nanogram [ng] to Kilogram', labelReverseRoute: 'Kilogram to nanogram [ng]', },
 ]);
 
-pairs = this.units
-.filter(unit => unit.key !== 'CubicMeter') 
-.map(unit => ({
-  route: `${unit.key}-CubicMeter`,
-  reverseRoute: `CubicMeter-${unit.key}`,
-  labelRoute: `${unit.label} to Cubic Meter`,
-  labelReverseRoute: `Cubic Meter to ${unit.label}`,
-  label: `1 ${unit.label} = ${unit.conversionRate} cubic meter`,
-}));
 
   constructor() {    
   }

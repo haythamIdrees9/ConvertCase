@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { PreloadAllModules, Route, RouterModule } from "@angular/router";
+import { Route, RouterModule } from "@angular/router";
 
 const routes: Route[] = [
   {path:'text-case-tools',loadChildren: () => import('./components/text-converter/text-converter.module').then(m => m.TextConverterModule)},
