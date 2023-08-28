@@ -5,6 +5,14 @@ $theme-color: #228855;
     justify-content: center;
     align-items: flex-start;
     padding-top: 1rem;
+    ul{
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        li{
+            line-height: 1.5;
+        }
+    }
     .links-conainer {
         width: 300px;
         // min-height: 400px;

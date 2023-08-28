@@ -1,5 +1,7 @@
+@import "../../../../styles/responsive";
+
 h2{
-    margin-bottom: 0;
+    margin-bottom: 1rem;
     margin-top: 2rem;
 }
 ul{
@@ -10,17 +12,17 @@ ul{
         margin-right: 2rem;
     }
     a{
-        font-size: 1.25rem;
+        font-size: 1rem;
         text-decoration: none;
         color: #228855;
     }
 }
 
-.pair-with-meter{
+.pair-with-base{
     .convert-label{
         color: black;
         font-weight: bold;
-        font-size: 1.25rem;
+        font-size: 1rem;
     }
     ul{
         background-color: #f8f7fc;
@@ -28,6 +30,7 @@ ul{
         border: 1px solid #228855;
         border-radius: 0.25rem;
         box-shadow: 0 0 16px -7px #228855;
+        margin: 0;
         li {
             &:not(:first-child){
                 margin-top: 1rem;
@@ -37,5 +40,11 @@ ul{
             }
         }
         
+    }
+}
+
+@include mobileFirst('sm') {
+    .pair-with-base .convert-label , ul a {
+                font-size: 1.25rem;
     }
 }

@@ -17,7 +17,10 @@ import { CommonModule } from '@angular/common';
        RouterModule.forChild([
         { path: '', component: UnitConvertersComponent,children:[
           {path:'',component:MainComponent},
-          {path: 'length', loadChildren: () => import('./length-converter/length-converter.module').then(m => m.LengthConverterModule)}]
+          {path: 'length', loadChildren: () => import('./length-converter/length-converter.module').then(m => m.LengthConverterModule)},
+          {path: 'weight-and-mass', loadChildren: () => import('./weight-converter/weight-converter.module').then(m => m.WeightConverterModule)}
+        ],
+          
         }
       ])
     ]

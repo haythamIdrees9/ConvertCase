@@ -1,4 +1,5 @@
-@import "../../../../styles/mixins";
+@import "../../../styles/mixins";
+@import "../../../styles/responsive";
 
 .back-link {
     color: #228855;
@@ -10,17 +11,20 @@
     }
 }
 .unit-container{
-    width: min(600px,90vw);
+    width: min(600px,calc(100vw - 2rem));
     color: #228855;
     padding-top: 2rem;
     h1{
         text-align: left;
+        font-size: 1.5rem;
     }
     .container  {
         margin-top: 2rem;
         align-items: flex-start;
+        align-items: center;
         .user-input-cotnainer{
-            width: min(560px,90vw);
+            width: 100%;
+            box-sizing: border-box;
             box-shadow: 0 0 2px 0px #228855;
             background-color: #EEEEEE;
             padding: 1rem;
@@ -29,8 +33,24 @@
     }
     .selects-container{
         width: 100%;
+        flex-direction: column;
         .select-container{
-            width: calc(50% - 0.5rem);
+            width: calc(100% - 0.5rem);
+        }
+    }
+
+    
+    @include mobileFirst('sm'){
+        .selects-container{
+            flex-direction: row;
+            .select-container{
+                width: calc(50% - 0.5rem);
+            }
+        }
+    }
+    @include mobileFirst('md'){
+        h1{
+            font-size: 2rem;
         }
     }
 

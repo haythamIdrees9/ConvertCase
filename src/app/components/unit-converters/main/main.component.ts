@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
 })
 export class MainComponent {
 
-  pages = [{path:'length',label:'Length'}]
+  pages = [ {path:'length',label:'Length'},{path:'weight-and-mass',label:'Weight'}]
 }

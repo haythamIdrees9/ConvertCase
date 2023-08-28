@@ -1,0 +1,9 @@
+<div class="unit-container">
+    <h1>{{title}}</h1>
+    <div class="container">
+        <app-in-out-text-inputs [switchLink]="switchLink" [userText]="originalText" #boxes [type]="'number'" [placeholder]="'Enter number here...'" [result]="text"
+            [storageKey]="storageKey" (onChangeEmitter)="setOriginalText($event)"></app-in-out-text-inputs>
+      <app-result-actions-btn (onClear)="clearTextArea();boxes.clear()" [text]="text"></app-result-actions-btn>
+    </div>
+    <app-poppular-links [popular]="popularUnits" [pairs]="pairsWithKg" [pairTitle]="'Complete list of weight units for conversion'" [popularTitle]="'Popular weight unit conversions'"></app-poppular-links>
+</div>

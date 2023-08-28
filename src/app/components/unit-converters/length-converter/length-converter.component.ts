@@ -5,16 +5,12 @@ import { LengthUnitsService } from './length-units.service';
 @Component({
   selector: 'app-length-converter',
   templateUrl: './length-converter.component.html',
-  styleUrls: ['./length-converter.component.scss'],
+  styleUrls: ['../main-converters.scss'],
 })
 export class LengthConverterComponent implements OnInit {
   storageKey = "lengthUnitsConvert";
   originalText:string = '1';
   text:string = '';
-  inputValue: number = 0;
-  convertFrom: string = 'm';
-  convertTo: string = 'km';
-  resultValue: number = 0;
 
   lengthUnits: readonly { key: string, label: string, conversionRate: number }[] = [];
   popularLengthUnits: readonly { route: string, reverseRoute: string,labelRoute:string,labelReverseRoute:string }[] = [];

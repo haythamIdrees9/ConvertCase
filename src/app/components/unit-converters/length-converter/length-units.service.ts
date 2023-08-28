@@ -127,8 +127,6 @@ pairsWithMeter = this.lengthUnits
 }))
 
   constructor() {    
-    console.log('lengthUnits',this.pairsWithMeter);
-    
   }
 
 

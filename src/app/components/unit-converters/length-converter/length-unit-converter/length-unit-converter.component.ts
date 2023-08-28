@@ -6,16 +6,13 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-length-unit-converter',
   templateUrl: './length-unit-converter.component.html',
-  styleUrls: ['./length-unit-converter.component.scss']
+  styleUrls: ['../../unit-converter.scss']
 })
 export class LengthUnitConverterComponent {
   storageKey = "lengthUnitConvert";
   originalText:string = '1';
   text:string = '';
   inputValue: number = 0;
-  convertFrom: string = 'm';
-  convertTo: string = 'km';
-  resultValue: number = 0;
   title = "Length Converters"
   popularLengthUnits: readonly { route: string, reverseRoute: string,labelRoute:string,labelReverseRoute:string }[] = [];
   pairsWithMeter: readonly { route: string, reverseRoute: string,labelRoute:string,labelReverseRoute:string,label:string }[] = [];
