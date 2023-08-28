@@ -1,9 +1,0 @@
-<div class="unit-container">
-    <h1>{{title}}</h1>
-    <div class="container">
-        <app-in-out-text-inputs [switchLink]="switchLink" [userText]="originalText" #boxes [type]="'number'" [placeholder]="'Enter number here...'" [result]="text"
-            [storageKey]="storageKey" (onChangeEmitter)="setOriginalText($event)"></app-in-out-text-inputs>
-      <app-result-actions-btn (onClear)="clearTextArea();boxes.clear()" [text]="text"></app-result-actions-btn>
-    </div>
-    <app-poppular-links [popular]="popularLengthUnits" [pairs]="pairsWithMeter" [pairTitle]="'Complete list of length units for conversion'" [popularTitle]="'Popular length unit conversions'"></app-poppular-links>
-</div>

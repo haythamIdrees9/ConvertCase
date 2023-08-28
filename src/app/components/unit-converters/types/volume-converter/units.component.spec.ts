@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { UnitConverterComponent } from './units-converter.component';
 
-import { LengthConverterComponent } from './length-converter.component';
 
 describe('LengthConverterComponent', () => {
-  let component: LengthConverterComponent;
-  let fixture: ComponentFixture<LengthConverterComponent>;
+  let component: UnitConverterComponent;
+  let fixture: ComponentFixture<UnitConverterComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [LengthConverterComponent]
+      declarations: [UnitConverterComponent]
     });
-    fixture = TestBed.createComponent(LengthConverterComponent);
+    fixture = TestBed.createComponent(UnitConverterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

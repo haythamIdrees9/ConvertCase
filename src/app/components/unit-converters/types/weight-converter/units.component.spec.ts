@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { UnitConverterComponent } from './units-converter.component';
 
-import { WeightConverterComponent } from './weight-converter.component';
 
 describe('LengthConverterComponent', () => {
-  let component: WeightConverterComponent;
-  let fixture: ComponentFixture<WeightConverterComponent>;
+  let component: UnitConverterComponent;
+  let fixture: ComponentFixture<UnitConverterComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [WeightConverterComponent]
+      declarations: [UnitConverterComponent]
     });
-    fixture = TestBed.createComponent(WeightConverterComponent);
+    fixture = TestBed.createComponent(UnitConverterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

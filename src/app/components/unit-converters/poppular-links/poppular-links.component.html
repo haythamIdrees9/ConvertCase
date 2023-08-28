@@ -2,26 +2,13 @@
 <div class="popular-units f-row">
     <ul>
         <li *ngFor="let unit of popular"> 
-        <a [routerLink]="['.',unit?.route]">{{unit?.labelRoute}}</a>    
+        <a [routerLink]="['..',unit?.route]">{{unit?.labelRoute}}</a>    
         </li>
     </ul>
 
     <ul>
         <li *ngFor="let unit of popular"> 
-        <a [routerLink]="['.',unit?.reverseRoute]">{{unit?.labelReverseRoute}}</a>    
+        <a [routerLink]="['..',unit?.reverseRoute]">{{unit?.labelReverseRoute}}</a>    
         </li>
     </ul>
 </div>
-
-<h2> {{pairTitle}}</h2>
-<nav class="pair-with-base">
-    <ul>
-        <li *ngFor="let unit of pairs"> 
-        <div class="convert-label">{{unit.label}}</div>  
-        <div class="f-row">
-            <a [routerLink]="['.',unit?.route]">{{unit?.labelRoute}}</a>  
-            <a [routerLink]="['.',unit?.reverseRoute]">{{unit?.labelReverseRoute}}</a>  
-        </div>
-    </li>
-</ul>
-</nav>

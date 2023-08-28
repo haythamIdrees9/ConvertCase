@@ -1,4 +1,5 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-in-out-text-inputs[result][storageKey]',
@@ -20,9 +21,12 @@ export class InOutTextInputComponent implements OnInit {
   
   @Output() onChangeEmitter = new EventEmitter();
   
-  constructor() { }
+  constructor(private route:ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.route.params.subscribe(() => {
+      this.inputArea?.nativeElement?.focus()
+    })
     const savedText = sessionStorage.getItem(this.storageKey);
     if (savedText) {
       setTimeout(()=>{

@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import Decimal from 'decimal.js';
 
 @Injectable()
-export class WeightUnitsService {
+export class UnitsService {
 
-  units: readonly { key: string; label: string; conversionRate: number; }[] = Object.freeze([
+  units: readonly { key: string; label: string; conversionRate: number }[] = Object.freeze([
     { key: 'kilogram', label: 'kilogram [kg]', conversionRate: 1 },
     { key: 'gram', label: 'gram [g]', conversionRate: 0.001 },
     { key: 'milligram', label: 'milligram [mg]', conversionRate: 0.000001 },
@@ -63,44 +63,49 @@ export class WeightUnitsService {
     { key: 'moon_mass', label: "Moon's mass", conversionRate: 7.342e22 },
     { key: 'mars_mass', label: "Mars's mass", conversionRate: 6.4171e23 },
     { key: 'suns_mass', label: "Sun's mass", conversionRate: 1.9885e30 },
-  ]);
+]
+);
 
 popularUnits = Object.freeze([
-  { route: 'gram-kilogram', reverseRoute: 'kilogram-gram', labelRoute: 'gram [g] to Kilogram', labelReverseRoute: 'Kilogram to gram [g]', },
-  { route: 'milligram-kilogram', reverseRoute: 'kilogram-milligram', labelRoute: 'milligram [mg] to Kilogram', labelReverseRoute: 'Kilogram to milligram [mg]', },
-  { route: 'ton_metric-kilogram', reverseRoute: 'kilogram-ton_metric', labelRoute: 'ton (metric) [t] to Kilogram', labelReverseRoute: 'Kilogram to ton (metric) [t]', },
-  { route: 'pound-kilogram', reverseRoute: 'kilogram-pound', labelRoute: 'pound [lbs] to Kilogram', labelReverseRoute: 'Kilogram to pound [lbs]', },
-  { route: 'ounce-kilogram', reverseRoute: 'kilogram-ounce', labelRoute: 'ounce [oz] to Kilogram', labelReverseRoute: 'Kilogram to ounce [oz]', },
-  { route: 'carat-kilogram', reverseRoute: 'kilogram-carat', labelRoute: 'carat [car, ct] to Kilogram', labelReverseRoute: 'Kilogram to carat [car, ct]', },
-  { route: 'ton_us_short-kilogram', reverseRoute: 'kilogram-ton_us_short', labelRoute: 'ton (short) [ton (US)] to Kilogram', labelReverseRoute: 'Kilogram to ton (short) [ton (US)]', },
-  { route: 'ton_uk_long-kilogram', reverseRoute: 'kilogram-ton_uk_long', labelRoute: 'ton (long) [ton (UK)] to Kilogram', labelReverseRoute: 'Kilogram to ton (long) [ton (UK)]', },
-  { route: 'atomic_mass_unit-kilogram', reverseRoute: 'kilogram-atomic_mass_unit', labelRoute: 'Atomic mass unit [u] to Kilogram', labelReverseRoute: 'Kilogram to Atomic mass unit [u]', },
-  { route: 'exagram-kilogram', reverseRoute: 'kilogram-exagram', labelRoute: 'exagram [Eg] to Kilogram', labelReverseRoute: 'Kilogram to exagram [Eg]', },
-  { route: 'petagram-kilogram', reverseRoute: 'kilogram-petagram', labelRoute: 'petagram [Pg] to Kilogram', labelReverseRoute: 'Kilogram to petagram [Pg]', },
-  { route: 'teragram-kilogram', reverseRoute: 'kilogram-teragram', labelRoute: 'teragram [Tg] to Kilogram', labelReverseRoute: 'Kilogram to teragram [Tg]', },
-  { route: 'gigagram-kilogram', reverseRoute: 'kilogram-gigagram', labelRoute: 'gigagram [Gg] to Kilogram', labelReverseRoute: 'Kilogram to gigagram [Gg]', },
-  { route: 'megagram-kilogram', reverseRoute: 'kilogram-megagram', labelRoute: 'megagram [Mg] to Kilogram', labelReverseRoute: 'Kilogram to megagram [Mg]', },
-  { route: 'hectogram-kilogram', reverseRoute: 'kilogram-hectogram', labelRoute: 'hectogram [hg] to Kilogram', labelReverseRoute: 'Kilogram to hectogram [hg]', },
-  { route: 'dekagram-kilogram', reverseRoute: 'kilogram-dekagram', labelRoute: 'dekagram [dag] to Kilogram', labelReverseRoute: 'Kilogram to dekagram [dag]', },
-  { route: 'decigram-kilogram', reverseRoute: 'kilogram-decigram', labelRoute: 'decigram [dg] to Kilogram', labelReverseRoute: 'Kilogram to decigram [dg]', },
-  { route: 'centigram-kilogram', reverseRoute: 'kilogram-centigram', labelRoute: 'centigram [cg] to Kilogram', labelReverseRoute: 'Kilogram to centigram [cg]', },
-  { route: 'microgram-kilogram', reverseRoute: 'kilogram-microgram', labelRoute: 'microgram [µg] to Kilogram', labelReverseRoute: 'Kilogram to microgram [µg]', },
-  { route: 'nanogram-kilogram', reverseRoute: 'kilogram-nanogram', labelRoute: 'nanogram [ng] to Kilogram', labelReverseRoute: 'Kilogram to nanogram [ng]', },
+  { route: 'gram-to-kilogram', reverseRoute: 'kilogram-to-gram', labelRoute: 'gram [g] to Kilogram', labelReverseRoute: 'Kilogram to gram [g]', },
+  { route: 'milligram-to-kilogram', reverseRoute: 'kilogram-to-milligram', labelRoute: 'milligram [mg] to Kilogram', labelReverseRoute: 'Kilogram to milligram [mg]', },
+  { route: 'ton_metric-to-kilogram', reverseRoute: 'kilogram-to-ton_metric', labelRoute: 'ton (metric) [t] to Kilogram', labelReverseRoute: 'Kilogram to ton (metric) [t]', },
+  { route: 'pound-to-kilogram', reverseRoute: 'kilogram-to-pound', labelRoute: 'pound [lbs] to Kilogram', labelReverseRoute: 'Kilogram to pound [lbs]', },
+  { route: 'ounce-to-kilogram', reverseRoute: 'kilogram-to-ounce', labelRoute: 'ounce [oz] to Kilogram', labelReverseRoute: 'Kilogram to ounce [oz]', },
+  { route: 'carat-to-kilogram', reverseRoute: 'kilogram-to-carat', labelRoute: 'carat [car, ct] to Kilogram', labelReverseRoute: 'Kilogram to carat [car, ct]', },
+  { route: 'ton_us_short-to-kilogram', reverseRoute: 'kilogram-to-ton_us_short', labelRoute: 'ton (short) [ton (US)] to Kilogram', labelReverseRoute: 'Kilogram to ton (short) [ton (US)]', },
+  { route: 'ton_uk_long-to-kilogram', reverseRoute: 'kilogram-to-ton_uk_long', labelRoute: 'ton (long) [ton (UK)] to Kilogram', labelReverseRoute: 'Kilogram to ton (long) [ton (UK)]', },
+  { route: 'atomic_mass_unit-to-kilogram', reverseRoute: 'kilogram-to-atomic_mass_unit', labelRoute: 'Atomic mass unit [u] to Kilogram', labelReverseRoute: 'Kilogram to Atomic mass unit [u]', },
+  { route: 'exagram-to-kilogram', reverseRoute: 'kilogram-to-exagram', labelRoute: 'exagram [Eg] to Kilogram', labelReverseRoute: 'Kilogram to exagram [Eg]', },
+  { route: 'petagram-to-kilogram', reverseRoute: 'kilogram-to-petagram', labelRoute: 'petagram [Pg] to Kilogram', labelReverseRoute: 'Kilogram to petagram [Pg]', },
+  { route: 'teragram-to-kilogram', reverseRoute: 'kilogram-to-teragram', labelRoute: 'teragram [Tg] to Kilogram', labelReverseRoute: 'Kilogram to teragram [Tg]', },
+  { route: 'gigagram-to-kilogram', reverseRoute: 'kilogram-to-gigagram', labelRoute: 'gigagram [Gg] to Kilogram', labelReverseRoute: 'Kilogram to gigagram [Gg]', },
+  { route: 'megagram-to-kilogram', reverseRoute: 'kilogram-to-megagram', labelRoute: 'megagram [Mg] to Kilogram', labelReverseRoute: 'Kilogram to megagram [Mg]', },
+  { route: 'hectogram-to-kilogram', reverseRoute: 'kilogram-to-hectogram', labelRoute: 'hectogram [hg] to Kilogram', labelReverseRoute: 'Kilogram to hectogram [hg]', },
+  { route: 'dekagram-to-kilogram', reverseRoute: 'kilogram-to-dekagram', labelRoute: 'dekagram [dag] to Kilogram', labelReverseRoute: 'Kilogram to dekagram [dag]', },
+  { route: 'decigram-to-kilogram', reverseRoute: 'kilogram-to-decigram', labelRoute: 'decigram [dg] to Kilogram', labelReverseRoute: 'Kilogram to decigram [dg]', },
+  { route: 'centigram-to-kilogram', reverseRoute: 'kilogram-to-centigram', labelRoute: 'centigram [cg] to Kilogram', labelReverseRoute: 'Kilogram to centigram [cg]', },
+  { route: 'microgram-to-kilogram', reverseRoute: 'kilogram-to-microgram', labelRoute: 'microgram [µg] to Kilogram', labelReverseRoute: 'Kilogram to microgram [µg]', },
+  { route: 'nanogram-to-kilogram', reverseRoute: 'kilogram-to-nanogram', labelRoute: 'nanogram [ng] to Kilogram', labelReverseRoute: 'Kilogram to nanogram [ng]', },
 ]);
 
-pairsWithKg = this.units
-  .filter(unit => unit.key !== 'kilogram') 
-  .map(unit => ({
-    route: `${unit.key}-kilogram`,
-    reverseRoute: `kilogram-${unit.key}`,
-    labelRoute: `${unit.label} to Kilogram`,
-    labelReverseRoute: `Kilogram to ${unit.label}`,
-    label: `1 ${unit.label} = ${unit.conversionRate} kilogram`,
-  }));
+pairs = this.units
+.filter(unit => unit.key !== 'CubicMeter') 
+.map(unit => ({
+  route: `${unit.key}-CubicMeter`,
+  reverseRoute: `CubicMeter-${unit.key}`,
+  labelRoute: `${unit.label} to Cubic Meter`,
+  labelReverseRoute: `Cubic Meter to ${unit.label}`,
+  label: `1 ${unit.label} = ${unit.conversionRate} cubic meter`,
+}));
 
   constructor() {    
   }
 
+
+  getUnits(key:string){
+    return this.units.find(unit => unit.key === key);
+  }
 
   getConversionRate(fromUnit:string, toUnit:string) {
     const fromUnitData = this.units.find(unit => unit.key === fromUnit);
@@ -109,8 +114,12 @@ pairsWithKg = this.units
     if (!fromUnitData || !toUnitData) {
       throw new Error("Invalid length units provided.");
     }
-    const rate1 = new Decimal(toUnitData.conversionRate);
-    const rate2 = new Decimal(fromUnitData.conversionRate);
+    return this.calculateConversionRate(toUnitData.conversionRate,fromUnitData.conversionRate)
+  }
+
+  calculateConversionRate(conversionRate1:number,conversionRate2:number){
+    const rate1 = new Decimal(conversionRate1);
+    const rate2 = new Decimal(conversionRate2);
     return rate2.div(rate1).toNumber()
   }
 

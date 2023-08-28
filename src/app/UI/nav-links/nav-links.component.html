@@ -1,0 +1,13 @@
+<div class="custom-dropdown">
+    <label for="nav-links" class="label">Select an Option</label>
+    <div class="selected-label">Selected Unit: <strong>{{selected}}</strong></div>
+    <nav id="nav-links" #dropdown class="nav-links custom-hover">
+      <ul>
+        <li class="f-row a-center j-ceneter" *ngFor="let item of items" [value]="item.key" [class.selected]="selected && selected === item.key">
+          <a [routerLink]="['../',prefix+item.key+suffix]">{{item.label}}</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  
+  
