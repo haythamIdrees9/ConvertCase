@@ -15,6 +15,7 @@ export class LengthUnitsService {
     { key: 'yard', label: 'yard [yd]', conversionRate: 0.9144 },
     { key: 'foot', label: 'foot [ft]', conversionRate: 0.3048 },
     { key: 'inch', label: 'inch [in]', conversionRate: 0.0254 },
+    { key: 'kiloparsec', label: 'kiloparsec [kpc]', conversionRate: 3.086e19 },
     { key: 'light_year', label: 'light year [ly]', conversionRate: 9460730472580800 },
     { key: 'exameter', label: 'exameter [Em]', conversionRate: 1e18 },
     { key: 'petameter', label: 'petameter [Pm]', conversionRate: 1e15 },
@@ -28,7 +29,6 @@ export class LengthUnitsService {
     { key: 'picometer', label: 'picometer [pm]', conversionRate: 1e-12 },
     { key: 'femtometer', label: 'femtometer [fm]', conversionRate: 1e-15 },
     { key: 'attometer', label: 'attometer [am]', conversionRate: 1e-18 },
-    { key: 'kiloparsec', label: 'kiloparsec [kpc]', conversionRate: 3.086e19 },
     { key: 'parsec', label: 'parsec [pc]', conversionRate: 3.086e16 },
     { key: 'astronomical_unit', label: 'astronomical unit [AU]', conversionRate: 1.496e11 },
     { key: 'league', label: 'league [lea]', conversionRate: 4828.032 },
@@ -88,9 +88,11 @@ export class LengthUnitsService {
     { key: 'Planck_length', label: 'Planck length', conversionRate: 1.616255e-35 },
     { key: 'Electron_radius_classical', label: 'Electron radius (classical)', conversionRate: 2.8179e-15 },
     { key: 'Bohr_radius', label: 'Bohr radius', conversionRate: 5.29177210903e-11 },
+    {key: 'Moon_radius',label: 'Moon Equatorial and Polar Radii',conversionRate: 1738140},
     { key: 'Earths_equatorial_radius', label: "Earth's equatorial radius", conversionRate: 6378137 },
     { key: 'Earths_polar_radius', label: "Earth's polar radius", conversionRate: 6356752.3 },
     { key: 'Earths_distance_from_sun', label: "Earth's distance from sun", conversionRate: 149597870000 },
+    {key: 'Mars_radius',label: 'Mars Equatorial and Polar Radii',conversionRate: 3396000},
     { key: 'Suns_radius', label: "Sun's radius", conversionRate: 6.9634e8 },
   ]);
 
