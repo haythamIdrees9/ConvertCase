@@ -1,0 +1,8 @@
+<div class="custom-dropdown">
+    <label for="dropdown-select" class="label">Select an Option</label>
+    <div class="selected-label">Selected Unit: <strong>{{selected && selected.label}}</strong></div>
+    <select id="dropdown-select" #dropdown class="select custom-hover">
+      <option *ngFor="let item of items" [value]="item.key" [class.selected]="selected && selected.key === item.key" (click)="onSelectItem(item)">{{item.label}}</option>
+    </select>
+  </div>
+  

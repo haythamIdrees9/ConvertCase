@@ -1,4 +1,5 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-in-out-text-inputs[result][storageKey]',
@@ -11,16 +12,22 @@ export class InOutTextInputComponent implements OnInit {
     this.inputArea?.nativeElement?.focus()
   }
   inputArea!:ElementRef;
-  userText:string = '';
   @Input('result') result:string = '';
   @Input('storageKey') storageKey:string = '';
   @Input('type') type:string = 'text';
+  @Input('userText') userText:string = '';
+  @Input('switchLink') switchLink:string = '';
+  @Input('placeholder') placeholder:string = 'Enter text here...';
+  
   @Output() onChangeEmitter = new EventEmitter();
-
-  constructor() { }
+  
+  constructor(private route:ActivatedRoute) { }
 
   ngOnInit(): void {
-    const savedText = localStorage.getItem(this.storageKey);
+    this.route.params.subscribe(() => {
+      this.inputArea?.nativeElement?.focus()
+    })
+    const savedText = sessionStorage.getItem(this.storageKey);
     if (savedText) {
       setTimeout(()=>{
         this.userText = savedText;
@@ -34,7 +41,7 @@ export class InOutTextInputComponent implements OnInit {
   }
 
   onInputChange(){
-    localStorage.setItem(this.storageKey, this.userText);
+    sessionStorage.setItem(this.storageKey, this.userText);
     this.onChangeEmitter.emit(this.userText)
   }
 

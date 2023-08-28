@@ -1,0 +1,50 @@
+.custom-dropdown {
+  position: relative;
+  width: 100%;
+
+  .label {
+    display: none;
+  }
+  .selected-label{
+    height: 32px;
+    width: 100%;
+    margin: 0.5rem 0;
+  }
+
+  .select {
+    appearance: none;
+    -webkit-appearance: none;
+    border: none;
+    background: none;
+    width: 100%;
+    font-size: inherit;
+    cursor: pointer;
+    border-radius: 8px;
+    overflow-y: auto;
+
+    &:focus {
+      outline: none;
+    }
+
+    &::-ms-expand {
+      display: none;
+    }
+
+    option {
+      display: block;
+      background-color: white;
+      padding: 10px;
+
+      &:hover {
+        background-color: #4e8cdd;
+        color: white;
+      }
+
+      &.selected {
+        background-color: #1A6DD9;
+        color: white;
+      }
+    }
+  }
+
+}

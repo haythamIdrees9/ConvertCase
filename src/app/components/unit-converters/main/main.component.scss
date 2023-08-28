@@ -1,0 +1,19 @@
+.main-container{
+    width: min(600px,80vw);
+    h1{
+        text-align: left;
+    }
+    ul{
+        padding: 0;
+        list-style-type: none;
+        line-height: 1.5;
+        &:first-child{
+            margin-right: 2rem;
+        }
+        a{
+            font-size: 1.25rem;
+            text-decoration: none;
+            color: #228855;
+        }
+    }
+}

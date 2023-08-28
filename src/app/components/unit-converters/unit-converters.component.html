@@ -1,0 +1,23 @@
+<div class="x-container f-row">
+    <router-outlet></router-outlet>
+    <!-- <div class="links-conainer">
+        <h2 class="conainer-title">All Converters</h2>
+        <app-expandable-panal>
+            <div title>Common Converters</div>
+            <div content><a routerLink="./length">Length</a></div>
+        </app-expandable-panal>
+    </div> -->
+    <div class="links-conainer">
+        <h2 class="conainer-title">Common Converters</h2>
+        <nav class="list-container">
+            <ul>
+                <li *ngFor="let page of pages">
+                    <a [routerLink]="['','unit-converters',page.path]"> {{page.label}}</a>
+                </li>
+            </ul>
+        </nav>
+
+
+    </div>
+
+</div>

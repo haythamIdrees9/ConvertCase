@@ -18,7 +18,7 @@ export class InOutTextBoxesComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    const savedText = localStorage.getItem(this.storageKey);
+    const savedText = sessionStorage.getItem(this.storageKey);
     if (savedText) {
       setTimeout(()=>{
         this.userText = savedText;
@@ -32,7 +32,7 @@ export class InOutTextBoxesComponent implements OnInit {
   }
 
   onInputChange(){
-    localStorage.setItem(this.storageKey, this.userText);
+    sessionStorage.setItem(this.storageKey, this.userText);
     this.onChangeEmitter.emit(this.userText)
   }
 
