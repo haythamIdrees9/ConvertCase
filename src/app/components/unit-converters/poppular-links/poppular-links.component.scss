@@ -22,13 +22,20 @@ ul{
         font-weight: bold;
         font-size: 1.25rem;
     }
-    ul li {
-        &:not(:first-child){
-            margin-top: 0.5rem;
+    ul{
+        background-color: #f8f7fc;
+        padding: 0.5rem;
+        border: 1px solid #228855;
+        border-radius: 0.25rem;
+        box-shadow: 0 0 16px -7px #228855;
+        li {
+            &:not(:first-child){
+                margin-top: 1rem;
+            }
+            .f-row :first-child{
+                margin-right: 1rem;
+            }
         }
-        .f-row :first-child{
-            margin-right: 1rem;
-        }
+        
     }
-
 }

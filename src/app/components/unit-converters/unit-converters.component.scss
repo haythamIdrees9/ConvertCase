@@ -1,3 +1,5 @@
+@import "../../../styles/responsive";
+$theme-color: #228855;
 .x-container {
     flex-direction: row !important;
     justify-content: center;
@@ -5,14 +7,29 @@
     padding-top: 1rem;
     .links-conainer {
         width: 300px;
-        min-height: 400px;
+        // min-height: 400px;
         border-radius: 0.25rem;
-        border: 2px solid #228855;
+        border: 2px solid $theme-color;
         margin-left: 2rem;
+        display: none;
+        .list-container{
+            padding: 1rem;
+        }
+        .conainer-title{
+            background-color: $theme-color;
+            color: white;
+            padding: 0.5rem;
+            margin: 0;
+        }
+        a{
+            color: $theme-color;
+            font-size: 1.25rem;
+            text-decoration: none;
+        }
+        @include mobileFirst('lg'){
+            display: block;
+        }
     }
-    .conainer-title{
-        background-color: #228855;
-        color: white;
-        padding: 0.5rem;
-    }
+
+  
 }
