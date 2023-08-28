@@ -6,6 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./unit-converters.component.scss']
 })
 export class UnitConvertersComponent {
-  pages = [ {path:'length',label:'Length'},{path:'weight-and-mass',label:'Weight and Mass'},{path:'volume',label:'Volume'},{path:'temperature',label:'Temperature'}]
+  pages = [ {path:'length',label:'Length'},{path:'weight-and-mass',label:'Weight and Mass'},{path:'volume',label:'Volume'},
+  {path:'temperature',label:'Temperature'},
+  {path:'area',label:'Area'},
+]
 
 }
