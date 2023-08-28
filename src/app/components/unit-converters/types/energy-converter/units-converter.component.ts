@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import Decimal from 'decimal.js';
 import { UnitsService } from './units.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-volume-converter',
+  selector: 'app-energy-converter',
   templateUrl: './units-converter.component.html',
   styleUrls: ['../../main-converters.scss'],
 })
 export class UnitConverterComponent implements OnInit {
-  storageKey = "volumeUnitsConvert";
+  storageKey = "energyUnitsConvert";
   originalText: string = '1';
   text: string = '';
   inputValue: number = 0;
@@ -17,10 +17,11 @@ export class UnitConverterComponent implements OnInit {
   popularUnits: readonly { route: string, reverseRoute: string, labelRoute: string, labelReverseRoute: string, }[] = [];
   switchLink = ''
   conversionRate!: number;
-  linkUnitType:string [] = ['cubickilometer','cubicmeter'];
+  linkUnitType:string [] = ['joule','calorie'];
   constructor(private unitsService: UnitsService, private route: ActivatedRoute) {
   }
 
+ 
   updateResult() {
     const inputDecimal = new Decimal(Number(this.originalText));
     this.text = `${inputDecimal.times(this.conversionRate)}`;
@@ -40,9 +41,9 @@ export class UnitConverterComponent implements OnInit {
         return;
       }
       this.linkUnitType = (params['units-type'] as string).split('-to-');
-      
       this.switchLink = `${this.linkUnitType[1]}-${this.linkUnitType[0]}`
       this.conversionRate = this.unitsService.getConversionRate(this.linkUnitType[0], this.linkUnitType[1]);
+      console.log(this.linkUnitType,'this.conversionRate',this.conversionRate);
       this.updateResult();
     })
   }

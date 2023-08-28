@@ -16,7 +16,6 @@ export class UnitConverterComponent implements OnInit {
   units: readonly { key: string, label: string, conversionRate: number }[] = [];
   popularUnits: readonly { route: string, reverseRoute: string, labelRoute: string, labelReverseRoute: string, }[] = [];
   switchLink = ''
-  title = 'Voulme Convert'
   conversionRate!: number;
   linkUnitType:string [] = ['cubickilometer','cubicmeter'];
   constructor(private unitsService: UnitsService, private route: ActivatedRoute) {
@@ -43,8 +42,6 @@ export class UnitConverterComponent implements OnInit {
       }
       this.linkUnitType = (params['units-type'] as string).split('-to-');
       this.switchLink = `${this.linkUnitType[1]}-${this.linkUnitType[0]}`
-      this.title = `Convert ${this.linkUnitType[0]} to ${this.linkUnitType[1]}`
-      this.unitsService.getConversionRate(this.linkUnitType[0], this.linkUnitType[1])
       this.conversionRate = this.unitsService.getConversionRate(this.linkUnitType[0], this.linkUnitType[1]);
       this.updateResult();
     })

@@ -76,7 +76,7 @@ export class UnitsService {
     const toUnitData = this.units.find(unit => unit.key === toUnit);
 
     if (!fromUnitData || !toUnitData) {
-      throw new Error("Invalid length units provided.");
+      throw new Error("Invalid units provided.");
     }
     return this.calculateConversionRate(toUnitData.conversionRate,fromUnitData.conversionRate)
   }

@@ -20,10 +20,10 @@ import { NavLinksComponent } from 'src/app/UI/nav-links/nav-links.component';
     PoppularLinksComponent,
     NavLinksComponent,
     RouterModule.forChild([{ 
-      path: '', redirectTo:'cubicmeter-to-cubickilometer',pathMatch:'full' },
+      path: '', redirectTo:'joule-to-calorie',pathMatch:'full' },
     { path: ':units-type', component: UnitConverterComponent }
     ])],
   providers: [UnitsService]
 
 })
-export class VolumeConverterModule { }
+export class EnergyConverterModule { }

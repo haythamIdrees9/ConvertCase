@@ -22,6 +22,8 @@ import { CommonModule } from '@angular/common';
           {path: 'volume', loadChildren: () => import('./types/volume-converter/volume-converter.module').then(m => m.VolumeConverterModule)},
           {path: 'temperature', loadChildren: () => import('./types/temperature-converter/temperature-converter.module').then(m => m.TemperatureConverterModule)},
           {path: 'area', loadChildren: () => import('./types/area-converter/area-converter.module').then(m => m.AreaConverterModule)},
+          {path: 'pressure', loadChildren: () => import('./types/pressure-converter/pressure-converter.module').then(m => m.PressureConverterModule)},
+          {path: 'energy', loadChildren: () => import('./types/energy-converter/energy-converter.module').then(m => m.EnergyConverterModule)},
           
           
         ],

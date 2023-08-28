@@ -57,7 +57,8 @@ popularUnits = Object.freeze([
     const fromUnit = this.units.find(unit => unit.key === fromUnitKey);
     const toUnit = this.units.find(unit => unit.key === toUnitKey);
   
-    if (!fromUnit || !toUnit) {throw new Error('Invalid temperature units.');
+    if (!fromUnit || !toUnit) {
+      throw new Error('Invalid units Provided.');
     }
     return [fromUnit,toUnit]
   }
