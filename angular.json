@@ -28,7 +28,8 @@
               "src/og.png",
               "src/ads.txt",
               "src/robots.txt",
-              "src/assets"
+              "src/assets",
+              "src/sitemap.xml"
             ],
             "styles": [
               "src/styles.scss"
