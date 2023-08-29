@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {encode as punycodeEncode, decode as punycodeDecode} from "punycode"
+import { MetaService } from '../services/meta.service';
 
 @Component({
   selector: 'app-url-encode-decode',
@@ -41,10 +42,39 @@ export class EncodeDecodeUrlComponent {
     'bcd-decode': this.bcdDecode
   };
 
+  readonly metaContent:{[key:string]:any} =  {
+    "url-encode": "Encode URLs with the URL Encode tool. Transform special characters into percent-encoded format for safe sharing and linking.",
+    "url-decode": "Decode URLs with the URL Decode tool. Convert percent-encoded characters back to their original form for easy readability and understanding.",
+    "html-encode": "Encode HTML entities using the HTML Encode tool. Convert special characters to their corresponding HTML entities for secure and valid web content.",
+    "html-decode": "Decode HTML entities with the HTML Decode tool. Transform HTML entities back to their original characters for accurate and natural text representation.",
+    "rot13": "Transform text using the ROT13 cipher. Encrypt and decrypt text using the ROT13 algorithm, a simple letter substitution cipher.",
+    "rot47": "Encrypt and decrypt text using the ROT47 cipher. Similar to ROT13, the ROT47 algorithm provides a higher level of encryption for text.",
+    "punycode-encode": "Encode international domain names using Punycode. Convert non-ASCII characters to ASCII-compatible representations for domain name registration.",
+    "punycode-decode": "Decode Punycode domain names. Convert ASCII-compatible domain names back to their original non-ASCII characters.",
+    "utf8-encode": "Encode text using UTF-8 encoding. Convert characters to their corresponding UTF-8 byte sequences for multilingual compatibility.",
+    "utf8-decode": "Decode UTF-8 encoded text. Convert UTF-8 byte sequences back to their original characters for accurate content representation.",
+    "utf16-encode": "Encode text using UTF-16 encoding. Transform characters into their corresponding UTF-16 code units for various applications.",
+    "utf16-decode": "Decode UTF-16 encoded text. Convert UTF-16 code units back to their original characters for proper text interpretation.",
+    "base64-encode": "Encode text using Base64 encoding. Convert binary data to ASCII text for safe transmission and storage.",
+    "base64-decode": "Decode Base64 encoded text. Convert Base64-encoded data back to its original binary format.",
+    "morse-encode": "Encode text into Morse code. Transform characters into Morse code representations for communication and fun.",
+    "morse-decode": "Decode Morse code back to text. Convert Morse code signals into their corresponding characters for message interpretation.",
+    "bcd-encode": "Encode decimal numbers using Binary-Coded Decimal (BCD) encoding. Convert decimal digits to their BCD representation.",
+    "bcd-decode": "Decode Binary-Coded Decimal (BCD) encoded numbers. Convert BCD digits back to their decimal form for numerical operations."
+  }
+
   
-  constructor(private route:ActivatedRoute) { }
+  constructor(private route:ActivatedRoute,private metaService:MetaService) { }
 
   ngOnInit(): void {
+    this.metaService.setTitle('Encode Decode Tools: Convert Text to Secure Formats and Back');
+    this.metaService.setMeta("description",'Navigate through a collection of encode-decode tools designed to transform text into secure formats and decode it back to its original state. Encode text for safe transmission, storage, and compatibility, and then decode it effortlessly. Explore a range of encoding and decoding utilities for versatile text manipulation.')
+    this.route.params.subscribe(params =>{
+      if(params['action']){
+        this.metaService.setTitle(params['action']);
+        this.metaService.setMeta("description",this.metaContent[params['action']]);
+      }
+    })
     const action = this.route.snapshot.params['action'];
     if(action && this.buttonMappings[action]){
       this.executeFn = this.buttonMappings[action]; 

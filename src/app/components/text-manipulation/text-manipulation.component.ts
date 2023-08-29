@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { MetaService } from '../services/meta.service';
 
 @Component({
   selector: 'app-text-manipulation',
@@ -28,9 +29,28 @@ export class TextManipulationComponent {
     'text-replacer': this.textReplacer
   };
   
-  constructor(private route:ActivatedRoute) { }
+  readonly metaContent:{[key:string]:any} =  {
+    "text-reverser": "Reverse the order of characters in your text using the Text Reverser tool. Flip your text for creative effects and new perspectives.",
+    "text-randomization": "Randomize the order of characters in your text with the Text Randomization tool. Add an element of surprise and playfulness to your content.",
+    "text-sorting": "Sort the characters in your text using the Text Sorting tool. Arrange characters in ascending or descending order for organization and analysis.",
+    "text-rotator": "Rotate the characters in your text using the Text Rotator tool. Shift characters by a certain number of positions for encryption or playful effects.",
+    "text-column-formatter": "Format text as columns using the Text Column Formatter tool. Display text in multiple columns for a structured and organized layout.",
+    "text-repeater": "Repeat your text multiple times with the Text Repeater tool. Create patterns and repetitions for artistic and decorative text displays.",
+    "text-transposer": "Transpose the characters in your text using the Text Transposer tool. Swap rows and columns for a transformed view of your content.",
+    "text-replacer": "Replace specific characters or words in your text with the Text Replacer tool. Make substitutions to modify and refine your content."
+  }
+  
+  constructor(private route:ActivatedRoute, private metaService:MetaService) { }
 
   ngOnInit(): void {
+    this.metaService.setTitle('Text Manipulation Tools: Convert, Reverse, Randomize, and More');
+    this.metaService.setMeta("description",`Explore a range of powerful text manipulation tools. Convert text between cases, reverse content, randomize characters, sort text, and apply creative transformations. Enhance your content with easy-to-use text manipulation utilities for a variety of purposes.`);
+    this.route.params.subscribe(params =>{
+      if(params['action']){
+        this.metaService.setTitle(params['action']);
+        this.metaService.setMeta("description",this.metaContent[params['action']])
+      }
+    })
     const action = this.route.snapshot.params['action'];
     if(action && this.buttonMappings[action]){
       this.executeFn = this.buttonMappings[action]; 

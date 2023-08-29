@@ -1,6 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component,  OnInit } from '@angular/core';
 import { minorWords } from '../../utils/words';
 import { ActivatedRoute } from '@angular/router';
+import { MetaService } from '../services/meta.service';
 
 @Component({
   selector: 'app-text-converter',
@@ -18,16 +19,37 @@ export class TextConverterComponent implements OnInit {
     'convert-to-title-case': this.convertToTitleCase,
     'convert-to-capitalized-case': this.convertToCapitalizedCase,
     'convert-to-camel-case': this.convertToCamelCase,
-    'text-to-kebab-case': this.textToKebabCase,
+    'convert-text-to-kebab-case': this.textToKebabCase,
     'convert-to-snake-case': this.convertToSnakeCase,
     'convert-to-inverse-case': this.convertToInverseCase,
   };
-  constructor(private route:ActivatedRoute) { }
+  readonly metaContent:{[key:string]:any} =  {
+    "convert-to-uppercase": "Convert text to uppercase using the Uppercase Conversion tool. Transform all characters to uppercase for a consistent and bold appearance.",
+    "convert-to-lowercase": "Convert text to lowercase using the Lowercase Conversion tool. Transform all characters to lowercase for a uniform and subdued style.",
+    "convert-to-title-case": "Convert text to title case using the Title Case Conversion tool. Capitalize the first letter of each word for a polished and professional look.",
+    "convert-to-capitalized-case": "Convert text to capitalized case using the Capitalized Case Conversion tool. Capitalize the first letter of the text for a stylish and refined presentation.",
+    "convert-to-camel-case": "Convert text to camel case using the Camel Case Conversion tool. Transform text into a format where words are joined and each word after the first starts with a capital letter.",
+    "convert-text-to-kebab-case": "Convert text to kebab case using the Kebab Case Conversion tool. Join words with hyphens for URLs and identifiers with improved readability.",
+    "convert-to-snake-case": "Convert text to snake case using the Snake Case Conversion tool. Join words with underscores for variable names and identifiers in programming.",
+    "convert-to-inverse-case": "Convert text to inverse case using the Inverse Case Conversion tool. Reverse the case of each character for a unique and eye-catching effect."
+  }
+  
+  constructor(private route:ActivatedRoute,private metaService:MetaService) { }
 
   ngOnInit(): void {
+    this.metaService.setTitle('Text Converter: Transform Text with Encoding, Decoding, and More');
+    this.metaService.setMeta("description",`Discover versatile text conversion tools for encoding, decoding, and transformation. Convert text to URL-safe formats, HTML entities, Unicode encodings, and more. Decode and restore text to its original form. Empower your content with efficient text conversion utilities for various encoding needs.`);
+
     const action = this.route.snapshot.params['action'];
+    this.route.params.subscribe(params =>{
+      if(params['action']){
+        this.metaService.setTitle(params['action']);
+        this.metaService.setMeta("description",this.metaContent[params['action']]);
+      }
+    })
+
     if(action && this.buttonMappings[action]){
-      this.executeFn = this.buttonMappings[action]; 
+      this.executeFn = this.buttonMappings[action];
     }    
   }
 
@@ -63,7 +85,6 @@ export class TextConverterComponent implements OnInit {
         }
       });
     });
-
   }
 
   convertToCapitalizedCase() {
