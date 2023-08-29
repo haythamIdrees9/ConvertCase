@@ -9,7 +9,7 @@ import { MetaService } from '../services/meta.service';
 })
 export class TextManipulationComponent {
   text: string = '';
-  storageKey = 'convertedText'
+  storageKey = 'textManipulation'
   originalText = '';
   executeFn:any = () => { };
   columnWidth:number = 1;
