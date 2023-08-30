@@ -114,10 +114,11 @@ body {
     position: relative;
     height: 40px;
     transition: all 0.35s,color 0.1s;
+    border: 1px solid transparent;
     &:hover,&.selected {
       background: #F7F3FF;
       color: #228866;
-      border: 1px solid #286;
+      border-color:  #286;
       box-shadow: 0 0 10px #286;
     }
 
