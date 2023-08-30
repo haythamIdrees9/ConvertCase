@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MetaService } from '../services/meta.service';
+import { SeoService } from '../services/seo.service';
 
 @Component({
   selector: 'app-text-manipulation',
@@ -40,7 +41,7 @@ export class TextManipulationComponent {
     "text-replacer": "Replace specific characters or words in your text with the Text Replacer tool. Make substitutions to modify and refine your content."
   }
   
-  constructor(private route:ActivatedRoute, private metaService:MetaService, private router:Router) { }
+  constructor(private route:ActivatedRoute, private metaService:MetaService, private router:Router, private seoService:SeoService) { }
 
   ngOnInit(): void {
     this.metaService.setTitle('Text Manipulation Tools: Convert, Reverse, Randomize, and More');
@@ -61,6 +62,7 @@ export class TextManipulationComponent {
     if(action && this.buttonMappings[action]){
       this.executeFn = this.buttonMappings[action]; 
     }    
+    this.seoService.createLinkForCanonicalURL('text-manipulation')
   }
 
   onSelect(executeFn:() => void){
