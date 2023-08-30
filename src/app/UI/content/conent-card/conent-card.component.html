@@ -1,10 +1,5 @@
 <div class="x-container">
-    <div class="container">
-
-        <div class="card">
-            <ng-content></ng-content>
-
-        </div>
+    <div class="a-container">
         <ng-container *ngIf="showAdd">
             <script async
                 src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8746065127850305"
@@ -17,5 +12,7 @@
             </script>
 
         </ng-container>
+            <ng-content></ng-content>
+
     </div>
 </div>
