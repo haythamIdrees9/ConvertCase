@@ -1,3 +1,15 @@
+
+<div class="result">
+    <button class="btn-theme clear-btn" (click)="onClear.emit()">Clear</button>
+    <button class="btn-theme copy-btn" (click)="copyText()">Copy</button>
+    <button class="btn-theme" (click)="downloadText()">Download</button>
+  </div>
+  <app-custom-toaster
+  *ngIf="toasterMessage"
+  [message]="toasterMessage"
+  [type]="'success'"
+></app-custom-toaster>
+
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8746065127850305"
 crossorigin="anonymous"></script>
 <!-- text convert -->
@@ -10,13 +22,3 @@ data-full-width-responsive="true"></ins>
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
-<div class="result">
-    <button class="btn-theme clear-btn" (click)="onClear.emit()">Clear</button>
-    <button class="btn-theme copy-btn" (click)="copyText()">Copy</button>
-    <button class="btn-theme" (click)="downloadText()">Download</button>
-  </div>
-  <app-custom-toaster
-  *ngIf="toasterMessage"
-  [message]="toasterMessage"
-  [type]="'success'"
-></app-custom-toaster>
