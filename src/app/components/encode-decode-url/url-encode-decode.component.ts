@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {encode as punycodeEncode, decode as punycodeDecode} from "punycode"
 import { MetaService } from '../services/meta.service';
 
@@ -64,21 +64,28 @@ export class EncodeDecodeUrlComponent {
   }
 
   
-  constructor(private route:ActivatedRoute,private metaService:MetaService) { }
+  constructor(private route:ActivatedRoute,private metaService:MetaService, private router:Router) { }
 
   ngOnInit(): void {
     this.metaService.setTitle('Encode Decode Tools: Convert Text to Secure Formats and Back');
     this.metaService.setMeta("description",'Navigate through a collection of encode-decode tools designed to transform text into secure formats and decode it back to its original state. Encode text for safe transmission, storage, and compatibility, and then decode it effortlessly. Explore a range of encoding and decoding utilities for versatile text manipulation.')
+    
+    const defaultAction = 'url-encode'; 
+    let action = this.route.snapshot.params['action'];
+    if(!action || !this.buttonMappings[action]){
+      action = defaultAction
+      this.router.navigate(['./',defaultAction],{relativeTo:this.route.parent})
+    }
     this.route.params.subscribe(params =>{
-      if(params['action']){
-        this.metaService.setTitle(params['action']);
-        this.metaService.setMeta("description",this.metaContent[params['action']]);
+      const action = params['action'] || defaultAction;
+      if(action){
+        this.metaService.setTitle(action);
+        this.metaService.setMeta("description",this.metaContent[action]);
       }
     })
-    const action = this.route.snapshot.params['action'];
     if(action && this.buttonMappings[action]){
       this.executeFn = this.buttonMappings[action]; 
-    }    
+    } 
   }
 
   setOriginalText(text: string) {

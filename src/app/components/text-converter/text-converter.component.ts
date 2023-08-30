@@ -1,6 +1,6 @@
 import { Component,  OnInit } from '@angular/core';
 import { minorWords } from '../../utils/words';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MetaService } from '../services/meta.service';
 
 @Component({
@@ -34,20 +34,25 @@ export class TextConverterComponent implements OnInit {
     "convert-to-inverse-case": "Convert text to inverse case using the Inverse Case Conversion tool. Reverse the case of each character for a unique and eye-catching effect."
   }
   
-  constructor(private route:ActivatedRoute,private metaService:MetaService) { }
+  constructor(private route:ActivatedRoute,private metaService:MetaService, private router:Router) { }
 
   ngOnInit(): void {
     this.metaService.setTitle('Text Converter: Transform Text with Encoding, Decoding, and More');
     this.metaService.setMeta("description",`Discover versatile text conversion tools for encoding, decoding, and transformation. Convert text to URL-safe formats, HTML entities, Unicode encodings, and more. Decode and restore text to its original form. Empower your content with efficient text conversion utilities for various encoding needs.`);
-
-    const action = this.route.snapshot.params['action'];
+    const defaultAction = 'convert-to-uppercase'
+    let action = this.route.snapshot.params['action'];
+    if(!action || !this.buttonMappings[action]){
+      action = defaultAction
+      this.router.navigate(['./',defaultAction],{relativeTo:this.route.parent})
+    }
     this.route.params.subscribe(params =>{
-      if(params['action']){
-        this.metaService.setTitle(params['action']);
-        this.metaService.setMeta("description",this.metaContent[params['action']]);
-      }
+      const action = params['action'] || defaultAction;
+      if(action){
+        this.metaService.setTitle(action);
+        this.metaService.setMeta("description",this.metaContent[action]);
+      }    
     })
-
+    
     if(action && this.buttonMappings[action]){
       this.executeFn = this.buttonMappings[action];
     }    

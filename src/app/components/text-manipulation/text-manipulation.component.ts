@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MetaService } from '../services/meta.service';
 
 @Component({
@@ -40,18 +40,24 @@ export class TextManipulationComponent {
     "text-replacer": "Replace specific characters or words in your text with the Text Replacer tool. Make substitutions to modify and refine your content."
   }
   
-  constructor(private route:ActivatedRoute, private metaService:MetaService) { }
+  constructor(private route:ActivatedRoute, private metaService:MetaService, private router:Router) { }
 
   ngOnInit(): void {
     this.metaService.setTitle('Text Manipulation Tools: Convert, Reverse, Randomize, and More');
     this.metaService.setMeta("description",`Explore a range of powerful text manipulation tools. Convert text between cases, reverse content, randomize characters, sort text, and apply creative transformations. Enhance your content with easy-to-use text manipulation utilities for a variety of purposes.`);
+    const defaultAction = 'text-reverser'
+    let action = this.route.snapshot.params['action'];
+    if(!action || !this.buttonMappings[action]){
+      action = defaultAction
+      this.router.navigate(['./',defaultAction],{relativeTo:this.route.parent})
+    }
     this.route.params.subscribe(params =>{
-      if(params['action']){
-        this.metaService.setTitle(params['action']);
-        this.metaService.setMeta("description",this.metaContent[params['action']])
+      const action = params['action'] || 'text-reverser';
+      if(action){
+        this.metaService.setTitle(action);
+        this.metaService.setMeta("description",this.metaContent[action])
       }
     })
-    const action = this.route.snapshot.params['action'];
     if(action && this.buttonMappings[action]){
       this.executeFn = this.buttonMappings[action]; 
     }    
