@@ -4,59 +4,59 @@
     <app-in-out-text-boxes #boxes [result]="text" [storageKey]="storageKey"
       (onChangeEmitter)="setOriginalText($event)"></app-in-out-text-boxes>
     <div class="buttons" role="group" aria-labelledby="conversionInstructions">
-      <a  replaceUrl [routerLink]="['/','url-encode-decode', 'url-encode']">
-        <button class="btn-theme" [class.selected]="executeFn === urlEncode" (click)="boxes.focus();onSelect(urlEncode)">URL Encoder</button>
+      <a replaceUrl [routerLink]="['/', 'url-encode-decode', 'url-encode']">
+        <button class="btn-theme" [class.selected]="executeFn === urlEncode" (click)="boxes.focus();onSelect(urlEncode)" aria-label="URL Encoder">URL Encoder</button>
       </a>
-      <a  replaceUrl [routerLink]="['/','url-encode-decode', 'url-decode']">
-        <button class="btn-theme" [class.selected]="executeFn === urlDecode" (click)="boxes.focus();onSelect(urlDecode)">URL Decoder</button>
+      <a replaceUrl [routerLink]="['/', 'url-encode-decode', 'url-decode']">
+        <button class="btn-theme" [class.selected]="executeFn === urlDecode" (click)="boxes.focus();onSelect(urlDecode)" aria-label="URL Decoder">URL Decoder</button>
       </a>
-      <a  replaceUrl [routerLink]="['/','url-encode-decode', 'html-encode']">
-        <button class="btn-theme" [class.selected]="executeFn === htmlEncode" (click)="boxes.focus();onSelect(htmlEncode)">HTML Encoder</button>
+      <a replaceUrl [routerLink]="['/', 'url-encode-decode', 'html-encode']">
+        <button class="btn-theme" [class.selected]="executeFn === htmlEncode" (click)="boxes.focus();onSelect(htmlEncode)" aria-label="HTML Encoder">HTML Encoder</button>
       </a>
-      <a  replaceUrl [routerLink]="['/','url-encode-decode', 'html-decode']">
-        <button class="btn-theme" [class.selected]="executeFn === htmlDecode" (click)="boxes.focus();onSelect(htmlDecode)">HTML Decoder</button>
+      <a replaceUrl [routerLink]="['/', 'url-encode-decode', 'html-decode']">
+        <button class="btn-theme" [class.selected]="executeFn === htmlDecode" (click)="boxes.focus();onSelect(htmlDecode)" aria-label="HTML Decoder">HTML Decoder</button>
       </a>
-      <a  replaceUrl [routerLink]="['/','url-encode-decode', 'rot13']">
-        <button class="btn-theme" [class.selected]="executeFn === rot13" (click)="boxes.focus();onSelect(rot13)">RT13</button>
+      <a replaceUrl [routerLink]="['/', 'url-encode-decode', 'rot13']">
+        <button class="btn-theme" [class.selected]="executeFn === rot13" (click)="boxes.focus();onSelect(rot13)" aria-label="ROT13">ROT13</button>
       </a>
-      <a  replaceUrl [routerLink]="['/','url-encode-decode', 'rot47']">
-        <button class="btn-theme" [class.selected]="executeFn === rot47" (click)="boxes.focus();onSelect(rot47)">RT47</button>
+      <a replaceUrl [routerLink]="['/', 'url-encode-decode', 'rot47']">
+        <button class="btn-theme" [class.selected]="executeFn === rot47" (click)="boxes.focus();onSelect(rot47)" aria-label="ROT47">ROT47</button>
       </a>
-      <a  replaceUrl [routerLink]="['/','url-encode-decode', 'punycode-encode']">
-        <button class="btn-theme" [class.selected]="executeFn === punycodeEncode" (click)="boxes.focus();onSelect(punycodeEncode)">Punycode Encoder</button>
+      <a replaceUrl [routerLink]="['/', 'url-encode-decode', 'punycode-encode']">
+        <button class="btn-theme" [class.selected]="executeFn === punycodeEncode" (click)="boxes.focus();onSelect(punycodeEncode)" aria-label="Punycode Encoder">Punycode Encoder</button>
       </a>
-      <a  replaceUrl [routerLink]="['/','url-encode-decode', 'punycode-decode']">
-        <button class="btn-theme" [class.selected]="executeFn === punycodeDecode" (click)="boxes.focus();onSelect(punycodeDecode)">Punycode Decoder</button>
+      <a replaceUrl [routerLink]="['/', 'url-encode-decode', 'punycode-decode']">
+        <button class="btn-theme" [class.selected]="executeFn === punycodeDecode" (click)="boxes.focus();onSelect(punycodeDecode)" aria-label="Punycode Decoder">Punycode Decoder</button>
       </a>
-      <a  replaceUrl [routerLink]="['/','url-encode-decode', 'utf8-encode']">
-        <button class="btn-theme" [class.selected]="executeFn === utf8Encode" (click)="boxes.focus();onSelect(utf8Encode)">utf8 Encoder</button>
+      <a replaceUrl [routerLink]="['/', 'url-encode-decode', 'utf8-encode']">
+        <button class="btn-theme" [class.selected]="executeFn === utf8Encode" (click)="boxes.focus();onSelect(utf8Encode)" aria-label="UTF-8 Encoder">UTF-8 Encoder</button>
       </a>
-      <a  replaceUrl [routerLink]="['/','url-encode-decode', 'utf8-decode']">
-        <button class="btn-theme" [class.selected]="executeFn === utf8Decode" (click)="boxes.focus();onSelect(utf8Decode)">utf8 Decoder</button>
+      <a replaceUrl [routerLink]="['/', 'url-encode-decode', 'utf8-decode']">
+        <button class="btn-theme" [class.selected]="executeFn === utf8Decode" (click)="boxes.focus();onSelect(utf8Decode)" aria-label="UTF-8 Decoder">UTF-8 Decoder</button>
       </a>
-      <a  replaceUrl [routerLink]="['/','url-encode-decode', 'utf16-encode']">
-        <button class="btn-theme" [class.selected]="executeFn === utf16Encode" (click)="boxes.focus();onSelect(utf16Encode)">utf16 Encoder</button>
+      <a replaceUrl [routerLink]="['/', 'url-encode-decode', 'utf16-encode']">
+        <button class="btn-theme" [class.selected]="executeFn === utf16Encode" (click)="boxes.focus();onSelect(utf16Encode)" aria-label="UTF-16 Encoder">UTF-16 Encoder</button>
       </a>
-      <a  replaceUrl [routerLink]="['/','url-encode-decode', 'utf16-decode']">
-        <button class="btn-theme" [class.selected]="executeFn === utf16Decode" (click)="boxes.focus();onSelect(utf16Decode)">utf16 Decoder</button>
+      <a replaceUrl [routerLink]="['/', 'url-encode-decode', 'utf16-decode']">
+        <button class="btn-theme" [class.selected]="executeFn === utf16Decode" (click)="boxes.focus();onSelect(utf16Decode)" aria-label="UTF-16 Decoder">UTF-16 Decoder</button>
       </a>
-      <a  replaceUrl [routerLink]="['/','url-encode-decode', 'base64-encode']">
-        <button class="btn-theme" [class.selected]="executeFn === base64Encode" (click)="boxes.focus();onSelect(base64Encode)">base64 Encode</button>
+      <a replaceUrl [routerLink]="['/', 'url-encode-decode', 'base64-encode']">
+        <button class="btn-theme" [class.selected]="executeFn === base64Encode" (click)="boxes.focus();onSelect(base64Encode)" aria-label="Base64 Encoder">Base64 Encoder</button>
       </a>
-      <a  replaceUrl [routerLink]="['/','url-encode-decode', 'base64-decode']">
-        <button class="btn-theme" [class.selected]="executeFn === base64Decode" (click)="boxes.focus();onSelect(base64Decode)">base64 Decode</button>
+      <a replaceUrl [routerLink]="['/', 'url-encode-decode', 'base64-decode']">
+        <button class="btn-theme" [class.selected]="executeFn === base64Decode" (click)="boxes.focus();onSelect(base64Decode)" aria-label="Base64 Decoder">Base64 Decoder</button>
       </a>
-      <a  replaceUrl [routerLink]="['/','url-encode-decode', 'morse-encode']">
-        <button class="btn-theme" [class.selected]="executeFn === morseCodeEncode" (click)="boxes.focus();onSelect(morseCodeEncode)">Morse Encode</button>
+      <a replaceUrl [routerLink]="['/', 'url-encode-decode', 'morse-encode']">
+        <button class="btn-theme" [class.selected]="executeFn === morseCodeEncode" (click)="boxes.focus();onSelect(morseCodeEncode)" aria-label="Morse Encoder">Morse Encoder</button>
       </a>
-      <a  replaceUrl [routerLink]="['/','url-encode-decode', 'morse-decode']">
-        <button class="btn-theme" [class.selected]="executeFn === morseCodeDecode" (click)="boxes.focus();onSelect(morseCodeDecode)">Morse Decode</button>
+      <a replaceUrl [routerLink]="['/', 'url-encode-decode', 'morse-decode']">
+        <button class="btn-theme" [class.selected]="executeFn === morseCodeDecode" (click)="boxes.focus();onSelect(morseCodeDecode)" aria-label="Morse Decoder">Morse Decoder</button>
       </a>
-      <a  replaceUrl [routerLink]="['/','url-encode-decode', 'bcd-encode']">
-        <button class="btn-theme" [class.selected]="executeFn === bcdEncode" (click)="boxes.focus();onSelect(bcdEncode)" title="Binary Coded Decimal">BCD Encode</button>
+      <a replaceUrl [routerLink]="['/', 'url-encode-decode', 'bcd-encode']">
+        <button class="btn-theme" [class.selected]="executeFn === bcdEncode" (click)="boxes.focus();onSelect(bcdEncode)" title="Binary Coded Decimal" aria-label="BCD Encoder">BCD Encoder</button>
       </a>
-      <a  replaceUrl [routerLink]="['/','url-encode-decode', 'bcd-decode']">
-        <button class="btn-theme" [class.selected]="executeFn === bcdDecode" (click)="boxes.focus();onSelect(bcdDecode)" title="Binary Coded Decimal">BCD Decode</button>
+      <a replaceUrl [routerLink]="['/', 'url-encode-decode', 'bcd-decode']">
+        <button class="btn-theme" [class.selected]="executeFn === bcdDecode" (click)="boxes.focus();onSelect(bcdDecode)" title="Binary Coded Decimal" aria-label="BCD Decoder">BCD Decoder</button>
       </a>
       
     </div>

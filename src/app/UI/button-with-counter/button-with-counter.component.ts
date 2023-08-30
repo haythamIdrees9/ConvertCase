@@ -12,6 +12,7 @@ export class ButtonWithCounterComponent {
  @Input('text') text!:string;
  @Input('formInfo') formInfo!:string;
  @Input('selected') selected!:boolean;
+ @Input('ariaLabel') ariaLabel!:string;
 
  show:boolean = false;
 

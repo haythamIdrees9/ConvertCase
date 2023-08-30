@@ -4,8 +4,41 @@
 
     @include mobileFirst('sm') {
         .container .buttons {
-                grid-template-columns: repeat(4, auto);
+            grid-template-columns: repeat(4, auto);
+        }
     }
-}
+
+        @media screen and (max-width:900px)  {
+            ::ng-deep {
+
+                app-button-with-counter,
+                app-button-with-two-option {
+                    &.right-issue .d-container {
+                        left: unset;
+                        right: 0;
+                        transform: unset;
+                    }
+
+                    &.left-issue .d-container {
+                        left: 0;
+                        transform: unset;
+                    }
+                }
+            }
+        }
+        @media screen and (max-width:600px)  {
+            ::ng-deep {
+                app-button-with-counter.sm-right-issue .d-container {
+                        left: unset;
+                        right: 0;
+                        transform: unset;
+                    }
+
+                    &.left-issue .d-container {
+                        left: 0;
+                        transform: unset;
+                    }
+            }
+        }
 
 }
