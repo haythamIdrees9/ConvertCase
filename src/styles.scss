@@ -113,11 +113,13 @@ body {
     border-radius: 5px;
     position: relative;
     height: 40px;
-    transition: all 0.5s;
-
+    transition: all 0.35s,color 0.1s;
+    border: 1px solid transparent;
     &:hover,&.selected {
-      background: linear-gradient(to right, #228855, #5b7);
-      box-shadow: 0 0 4px 0 #3ceb93;
+      background: #F7F3FF;
+      color: #228866;
+      border-color:  #286;
+      box-shadow: 0 0 10px #286;
     }
 
     &:active {

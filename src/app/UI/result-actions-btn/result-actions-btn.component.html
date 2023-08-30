@@ -13,7 +13,7 @@ data-full-width-responsive="true"></ins>
 <div class="result">
     <button class="btn-theme clear-btn" (click)="onClear.emit()">Clear</button>
     <button class="btn-theme copy-btn" (click)="copyText()">Copy</button>
-    <button class="btn-theme download-btn" (click)="downloadText()">Download</button>
+    <button class="btn-theme" (click)="downloadText()">Download</button>
   </div>
   <app-custom-toaster
   *ngIf="toasterMessage"
