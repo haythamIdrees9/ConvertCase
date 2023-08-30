@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import {encode as punycodeEncode, decode as punycodeDecode} from "punycode"
 import { MetaService } from '../services/meta.service';
+import { SeoService } from '../services/seo.service';
 
 @Component({
   selector: 'app-url-encode-decode',
@@ -64,7 +65,7 @@ export class EncodeDecodeUrlComponent {
   }
 
   
-  constructor(private route:ActivatedRoute,private metaService:MetaService, private router:Router) { }
+  constructor(private route:ActivatedRoute,private metaService:MetaService, private router:Router,private seoService:SeoService) { }
 
   ngOnInit(): void {
     this.metaService.setTitle('Encode Decode Tools: Convert Text to Secure Formats and Back');
@@ -86,6 +87,7 @@ export class EncodeDecodeUrlComponent {
     if(action && this.buttonMappings[action]){
       this.executeFn = this.buttonMappings[action]; 
     } 
+    this.seoService.createLinkForCanonicalURL('url-encode-decode')
   }
 
   setOriginalText(text: string) {

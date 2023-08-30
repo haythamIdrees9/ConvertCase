@@ -54,6 +54,11 @@ export class HeaderComponent implements OnInit{
   toggleMenuState(event: Event){
     event.stopPropagation()
     this.isMenuOpened = !this.isMenuOpened;
+    if(this.isMenuOpened){
+      this.stopScrolling();
+    } else {
+      this.enableScrolling();
+    }
     this.isSearchOpened = false;
   }
   stopPropagation(event:Event){
@@ -64,6 +69,22 @@ export class HeaderComponent implements OnInit{
   backToMainMode() {
     this.isSearchOpened = false;
     this.isMenuOpened = false;
+    this.enableScrolling();
+  }
+
+  enableScrolling(){
+    const bodyElement = document.getElementById('body');
+    if (bodyElement) {
+      bodyElement.style.overflow = 'hidden auto'; 
+    }
+  }
+
+  stopScrolling(){
+    this.searchField?.nativeElement?.focus();
+    const bodyElement = document.getElementById('body');
+    if (bodyElement) {
+      bodyElement.style.overflow = 'hidden'; 
+    }
   }
 
 }

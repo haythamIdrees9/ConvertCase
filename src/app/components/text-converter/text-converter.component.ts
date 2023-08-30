@@ -2,6 +2,7 @@ import { Component,  OnInit } from '@angular/core';
 import { minorWords } from '../../utils/words';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MetaService } from '../services/meta.service';
+import { SeoService } from '../services/seo.service';
 
 @Component({
   selector: 'app-text-converter',
@@ -34,7 +35,9 @@ export class TextConverterComponent implements OnInit {
     "convert-to-inverse-case": "Convert text to inverse case using the Inverse Case Conversion tool. Reverse the case of each character for a unique and eye-catching effect."
   }
   
-  constructor(private route:ActivatedRoute,private metaService:MetaService, private router:Router) { }
+  constructor(private route:
+    ActivatedRoute,private metaService:MetaService,
+     private router:Router,private seoService:SeoService) { }
 
   ngOnInit(): void {
     this.metaService.setTitle('Text Converter: Transform Text with Encoding, Decoding, and More');
@@ -55,7 +58,9 @@ export class TextConverterComponent implements OnInit {
     
     if(action && this.buttonMappings[action]){
       this.executeFn = this.buttonMappings[action];
-    }    
+    }  
+    this.seoService.createLinkForCanonicalURL('text-case-tools')
+  
   }
 
   onSelect(executeFn:() => void){
