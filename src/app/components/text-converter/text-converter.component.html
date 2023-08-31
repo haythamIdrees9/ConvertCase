@@ -2,43 +2,41 @@
 <div class="x-container">
   <h1>Text Conversion</h1>
   <div class="container">
-    <label for="inputText" style="display: none;">Enter text here:</label>
     <app-in-out-text-boxes #boxes [result]="text" [storageKey]="storageKey"
       (onChangeEmitter)="setOriginalText($event)"></app-in-out-text-boxes>
     <div class="buttons" role="group" aria-labelledby="conversionInstructions">
       <a replaceUrl [routerLink]="['/', 'text-case-tools', 'convert-to-uppercase']">
         <button class="btn-theme" [class.selected]="executeFn === convertToUppercase"
-          (click)="boxes.focus();onSelect(convertToUppercase)" aria-label="Convert to Uppercase">UPPER CASE</button>
+          (click)="boxes.focus();onSelect(convertToUppercase)" aria-label="UPPER CASE">UPPER CASE</button>
       </a>
       <a replaceUrl [routerLink]="['/', 'text-case-tools', 'convert-to-lowercase']">
         <button class="btn-theme" [class.selected]="executeFn === convertToLowercase"
-          (click)="boxes.focus();onSelect(convertToLowercase)" aria-label="Convert to Lowercase">lower case</button>
+          (click)="boxes.focus();onSelect(convertToLowercase)" aria-label="lower case">lower case</button>
       </a>
       <a replaceUrl [routerLink]="['/', 'text-case-tools', 'convert-to-title-case']">
         <button class="btn-theme" [class.selected]="executeFn === convertToTitleCase"
-          (click)="boxes.focus();onSelect(convertToTitleCase)" aria-label="Convert to Title Case">Title Case</button>
+          (click)="boxes.focus();onSelect(convertToTitleCase)" aria-label="Title Case">Title Case</button>
       </a>
       <a replaceUrl [routerLink]="['/', 'text-case-tools', 'convert-to-capitalized-case']">
         <button class="btn-theme" [class.selected]="executeFn === convertToCapitalizedCase"
           (click)="boxes.focus();onSelect(convertToCapitalizedCase)"
-          aria-label="Convert to Capitalized Case">Capitalized Case</button>
+          aria-label="Capitalized Case">Capitalized Case</button>
       </a>
       <a replaceUrl [routerLink]="['/', 'text-case-tools', 'convert-to-camel-case']">
         <button class="btn-theme" [class.selected]="executeFn === convertToCamelCase"
-          (click)="boxes.focus();onSelect(convertToCamelCase)" aria-label="Convert to Camel Case">camelCase</button>
+          (click)="boxes.focus();onSelect(convertToCamelCase)" aria-label="camelCase">camelCase</button>
       </a>
       <a replaceUrl [routerLink]="['/', 'text-case-tools', 'convert-text-to-kebab-case']">
         <button class="btn-theme" [class.selected]="executeFn === textToKebabCase"
-          (click)="boxes.focus();onSelect(textToKebabCase)" aria-label="Convert to Kebab Case">kebab-case</button>
+          (click)="boxes.focus();onSelect(textToKebabCase)" aria-label="kebab-case">kebab-case</button>
       </a>
       <a replaceUrl [routerLink]="['/', 'text-case-tools', 'convert-to-snake-case']">
         <button class="btn-theme" [class.selected]="executeFn === convertToSnakeCase"
-          (click)="boxes.focus();onSelect(convertToSnakeCase)" aria-label="Convert to Snake Case">snake_case</button>
+          (click)="boxes.focus();onSelect(convertToSnakeCase)" aria-label="snake_case">snake_case</button>
       </a>
       <a replaceUrl [routerLink]="['/', 'text-case-tools', 'convert-to-inverse-case']">
         <button class="btn-theme" [class.selected]="executeFn === convertToInverseCase"
-          (click)="boxes.focus();onSelect(convertToInverseCase)" aria-label="Convert to Inverse Case">InVeRsE
-          CaSe</button>
+          (click)="boxes.focus();onSelect(convertToInverseCase)" aria-label="InVeRsE CaSe">InVeRsE CaSe</button>
       </a>
     </div>
     <app-result-actions-btn (onClear)="clearTextArea();boxes.clear()" [text]="text"></app-result-actions-btn>

@@ -2,7 +2,7 @@
 @import "../../../styles/responsive";
 
 .back-link {
-    color: #228855;
+    color: #144D30;
     text-decoration: none;
     font-size: 1rem;
     img{
@@ -12,7 +12,7 @@
 }
 .unit-container{
     width: min(600px,calc(100vw - 2rem));
-    color: #228855;
+    color: #144D30;
     padding-top: 2rem;
     h1{
         text-align: left;
@@ -25,7 +25,7 @@
         .user-input-cotnainer{
             width: 100%;
             box-sizing: border-box;
-            box-shadow: 0 0 2px 0px #228855;
+            box-shadow: 0 0 2px 0px #144D30;
             background-color: #EEEEEE;
             padding: 1rem;
             border-radius: 0.5rem;

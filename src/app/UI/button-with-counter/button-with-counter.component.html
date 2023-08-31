@@ -1,10 +1,10 @@
 <div class="custom-container" [class.show]="show" >
-    <button class="btn-theme custom-button" [class.selected]="selected" (click)="setShowState(true)" [attr.aria-label]="ariaLabel">{{text}}</button>
+    <button class="btn-theme custom-button" [class.selected]="selected" (click)="setShowState(true)" [attr.aria-label]="text">{{text}}</button>
     <div class="d-container" (click)="$event.stopPropagation();$event.preventDefault()">
         <div class="label">{{formInfo}}</div>
         <div class="f-row a-center j-center">
             <input type="number" value="1"  #routerInput [placeholder]="placeholder">
-            <button class="btn-theme" (click)="onClick.emit(+routerInput.value);setShowState(false)" aria-label="apply number">Select</button>
+            <button class="btn-theme" (click)="onClick.emit(+routerInput.value);setShowState(false)" aria-label="Select">Select</button>
         </div>
     </div>
   </div>

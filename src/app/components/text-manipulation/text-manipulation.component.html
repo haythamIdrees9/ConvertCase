@@ -1,7 +1,6 @@
 <div class="x-container">
   <h1>Text Manipulation</h1>
   <div class="container">
-    <label for="inputText" style="display: none;">Enter text here:</label>
     <app-in-out-text-boxes #boxes [result]="text" [storageKey]="storageKey"
       (onChangeEmitter)="setOriginalText($event)"></app-in-out-text-boxes>
     <div class="buttons" role="group" aria-labelledby="conversionInstructions">
@@ -16,13 +15,13 @@
       </a>
       <a replaceUrl [routerLink]="['/', 'text-manipulation', 'text-sorting']">
         <button class="btn-theme" [class.selected]="executeFn === textSorting"
-          (click)="boxes.focus();onSelect(textSorting)" aria-label="Text Sorting">Sort</button>
+          (click)="boxes.focus();onSelect(textSorting)" aria-label="Sort">Sort</button>
       </a>
 
       <a replaceUrl [routerLink]="['/', 'text-manipulation', 'text-rotator']" (click)="executeFn = textRotator">
         <app-button-with-counter class="right-issue" [placeholder]="'Rotation Direction'" [text]="'Text Rotator'"
           [formInfo]="'Rotation Amount'" [selected]="executeFn === textRotator"
-          (apply)="boxes.focus();textRotator($event)" [ariaLabel]="'Text Rotator'"></app-button-with-counter>
+          (apply)="boxes.focus();textRotator($event)"></app-button-with-counter>
       </a>
 
       <a replaceUrl [routerLink]="['/', 'text-manipulation', 'text-column-formatter']"
@@ -30,13 +29,13 @@
         <app-button-with-counter class="left-issue" [placeholder]="'Column Width'" [text]="'Text Column Formatter'"
           [formInfo]="'Text Column Formatter'" [selected]="executeFn === textColumnFormatter"
           (apply)="boxes.focus();textColumnFormatter($event)"
-          [ariaLabel]="'Text Column Formatter'"></app-button-with-counter>
+          ></app-button-with-counter>
       </a>
 
       <a replaceUrl [routerLink]="['/', 'text-manipulation', 'text-repeater']" (click)="executeFn = textRepeater">
         <app-button-with-counter class="sm-right-issue" [placeholder]="'Repetitions'" [text]="'Text Repeater'"
           [formInfo]="'Repetitions'" [selected]="executeFn === textRepeater"
-          (apply)="boxes.focus();textRepeater($event)" [ariaLabel]="'Text Repeater'"></app-button-with-counter>
+          (apply)="boxes.focus();textRepeater($event)"></app-button-with-counter>
       </a>
 
       <a replaceUrl [routerLink]="['/', 'text-manipulation', 'text-transposer']" (click)="executeFn = textTransposer">
@@ -47,8 +46,7 @@
       <a replaceUrl [routerLink]="['/', 'text-manipulation', 'text-replacer']" (click)="executeFn = textReplacer">
         <app-button-with-two-option class="right-issue" [placeholder1]="'Replace this'" [placeholder2]="'With this'"
           [text]="'Text Replacer'" [apply]="'Apply'" [selected]="executeFn === textReplacer"
-          (apply)="boxes.focus();textReplacer($event.first, $event.second)"
-          [ariaLabel]="'Text Replacer'"></app-button-with-two-option>
+          (apply)="boxes.focus();textReplacer($event.first, $event.second)"></app-button-with-two-option>
       </a>
 
     </div>

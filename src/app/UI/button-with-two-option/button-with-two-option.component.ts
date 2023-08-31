@@ -12,7 +12,6 @@ export class ButtonWithTwoOptionComponent {
   @Input('placeholder2') placeholder2!:string;
   @Input('text') text!:string;
   @Input('apply') apply!:string;
-  @Input('ariaLabel') ariaLabel!:string;
   
  @Input('selected') selected!:boolean;
   

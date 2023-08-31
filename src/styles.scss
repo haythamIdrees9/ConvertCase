@@ -20,7 +20,7 @@ body {
   .x-container {
 
     background: $theme-color;
-    color: #228855;
+    color: #144D30;
     box-sizing: border-box;
     padding-bottom: 2rem;
     padding: 3rem 1rem;
@@ -105,8 +105,8 @@ body {
   }
   .btn-theme {
     padding: 6px;
-    background: linear-gradient(to right, #228855, #228855);
-    color: #ffffff;
+    background: #144D30;
+    color: #F7F3FF;
     border: none;
     cursor: pointer;
     border-radius: 5px;
@@ -115,9 +115,9 @@ body {
     transition: all 0.35s,color 0.1s;
     &:hover,&.selected {
       background: #F7F3FF;
-      color: #228855;
-      border-color:  #286;
-      box-shadow: 0 0 10px #286;
+      color: #144D30;
+      border-color:  #144D30;
+      box-shadow: 0 0 10px #144D30;
     }
 
     &:active {
