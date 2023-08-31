@@ -6,44 +6,64 @@
 
 .boxes {
     width: 100%;
+    margin-bottom: 20px;
 
-    textarea {
+    .textarea {
         width: 100%;
-        height: 200px;
-        padding: 10px;
-        font-size: 1rem;
-        border: 1px solid #005522;
-        background: white;
-        color: black;
-        resize: none;
-        outline: none;
-        margin-bottom: 20px;
-        border-radius: 8px;
-        box-sizing: border-box;
-        &:first-child {
-            margin-bottom: 1rem;
+        height: 220px;
+    margin-bottom: 20px;
+        .word-counter {
+            border-radius: 8px 8px 0 0;
+            border: 1px solid #005522;
+            border-bottom: 0;
+            padding: 0.25rem 0.5rem;
+            height: 32px;
+            box-sizing: border-box;
+            line-height: 1.5;
         }
 
-        &:read-only {
-            background-color: #dcdcdc;
-            border-color: #dcdcdc;
-            color: #000000;
-            cursor: default;
+        textarea {
+            width: 100%;
+            height: 200px;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #005522;
+            background: white;
+            color: black;
+            resize: none;
+            outline: none;
+            border-radius: 0 0 8px 8px;
+            box-sizing: border-box;
+
+            &:first-child {
+                margin-bottom: 1rem;
+            }
+
+            &:read-only {
+                background-color: #dcdcdc;
+                border-color: #dcdcdc;
+                color: #000000;
+                cursor: default;
+            }
         }
+
     }
 
-    @include mobileFirst('xsm'){
+    @include mobileFirst('sm') {
         flex-direction: row;
         justify-content: space-between;
-        textarea{
+
+        .textarea {
             width: calc(50% - 0.5rem);
-            &:first-child{
+
+            &:first-child {
                 margin: 0 0 1rem 0;
             }
         }
     }
-    @include mobileFirst('mlg'){
-        textarea{
+
+    @include mobileFirst('mlg') {
+        .textarea {
             font-size: 1.25rem;
         }
     }

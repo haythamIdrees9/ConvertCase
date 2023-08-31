@@ -1,7 +1,15 @@
 <div class="boxes f-col a-between">
-    <textarea type="number" #input_area [(ngModel)]="userText" (keyup)="onInputChange()"  placeholder="Enter text here..."
+    <div class="textarea">
+        <div class="word-counter">{{userInputInfo}}</div>
+        <textarea type="number" #input_area [(ngModel)]="userText" (ngModelChange)="onInputChange()"  placeholder="Enter text here..."
         aria-label="Input Text" aria-describedby="conversionInstructions"></textarea>
+    </div>
 
-    <textarea [(ngModel)]="result"  readonly  placeholder="Converted result will appear here..."  aria-label="result Text"
+    <div class="textarea">
+        <div class="word-counter">{{outPutInputInfo}}</div>
+        <textarea [(ngModel)]="result"  readonly  placeholder="Converted result will appear here..."  aria-label="result Text"
         aria-describedby="conversionInstructions"></textarea>
+    </div>
+
+
 </div>
