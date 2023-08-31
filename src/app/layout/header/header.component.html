@@ -1,15 +1,21 @@
 <header class="header  f-row a-center j-between">
-    <button class="btn-resting c-pointer" (click)="toggleMenuState($event)" aria-label="Toggle Menu">
-        <img class="icon menu-icon" src="assets/images/menu.svg" width="24" height="24" alt="menu" />
-    </button>
+    <div class="f-row a-center">
+        <button class="btn-resting c-pointer" (click)="toggleMenuState($event)" aria-label="Toggle Menu">
+            <img class="icon menu-icon" src="assets/images/menu.svg" width="24" height="24" alt="menu" />
+        </button>
+        <a class="f-row a-center logo-container c-pointer" [routerLink]="['']">
+            <span class="cls-1">Convert</span><span class="cls-2">Case</span>
+        </a>
+    </div>
     <a href="https://www.buymeacoffee.com/haythamidrt" class="support-me" target="_blank">
         <img src="assets/images/support-me.png" alt="Buy Me A Coffee" >
     </a>
+
     <div class="menu" [class.menu-opened]="isMenuOpened" >
         <div class="content" (click)="$event.stopPropagation()">
-            <div class="logo f-row a-center">
-                <button class="btn-resting c-pointer" (click)="toggleMenuState($event)">
-                    <img width="20" height="20" src="assets/images/back.svg" alt="">
+            <div class="back-container f-row a-center">
+                <button class="btn-resting c-pointer" (click)="toggleMenuState($event)" aria-label="Close Menu">
+                    <img width="20" height="20" src="assets/images/back.svg"  alt="close Menu">
                 </button>
             </div>
             <nav>

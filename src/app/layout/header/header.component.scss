@@ -2,6 +2,18 @@
 @import "../../../styles/mixins";
 $bg-color: #228855;
 
+.logo-container{
+    width: max-content;
+    margin-left: 0.5rem;
+    .cls-1{margin-top:0.25rem;font-size:25px;color:white;margin-right: 0.25rem;}
+    .cls-1,.cls-2{font-family:AquireRegular, Aquire;}
+    .cls-2{font-size:40px;color:#ffea3e;}
+    display: none;
+    @include mobileFirst('sm'){
+        display: flex;
+    }
+}
+
 .header {
     background-color: $bg-color;
     height: 60px;
@@ -41,7 +53,7 @@ $bg-color: #228855;
         height: 100vh;
         transition: left 0.5s;
 
-        .logo {
+        .back-container {
             background-color: $bg-color;
             padding: 0.5rem 1rem;
             color: white;
@@ -54,6 +66,7 @@ $bg-color: #228855;
                 filter: invert(100%);
             }
         }
+
 
         .content {
             position: absolute;
