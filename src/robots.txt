@@ -1,2 +1,24 @@
-User-agent: *
+# Allow trusted browser bots
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: Mozilla/5.0 (compatible; Firefoxbot/1.0; +http://www.mozilla.org/firefox)
+User-agent: Applebot
+User-agent: Twitterbot
+User-agent: LinkedInbot
+User-agent: Pinterest
+User-agent: Slackbot
+User-agent: WhatsApp
+User-agent: Discordbot
+User-agent: BingPreview
+User-agent: DuckDuckGo-Favicons-Bot
+User-agent: Facebot
+User-agent: Yeti/1.0 (NHN Corp.; http://help.naver.com/robots)
+User-agent: YandexBot
+User-agent: Bingbot/2.0; +http://www.bing.com/bingbot.htm
+User-agent: Wotbox
+User-agent: Sogou web spider/4.0(+http://www.sogou.com/docs/help/webmasters.htm#07)
 Allow: /
+
+# Disallow all other bots
+User-agent: *
+Disallow: /
