@@ -1,12 +1,12 @@
 <div class="boxes f-col a-between">
     <div class="textarea">
-        <div class="word-counter">{{userInputInfo}}</div>
+        <div class="word-counter f-row a-center j-center">{{userInputInfo}}</div>
         <textarea type="number" #input_area [(ngModel)]="userText" (ngModelChange)="onInputChange()"  placeholder="Enter text here..."
         aria-label="Input Text" aria-describedby="conversionInstructions"></textarea>
     </div>
 
     <div class="textarea">
-        <div class="word-counter">{{outPutInputInfo}}</div>
+        <div class="word-counter f-row a-center j-center">{{outPutInputInfo}}</div>
         <textarea [(ngModel)]="result"  readonly  placeholder="Converted result will appear here..."  aria-label="result Text"
         aria-describedby="conversionInstructions"></textarea>
     </div>

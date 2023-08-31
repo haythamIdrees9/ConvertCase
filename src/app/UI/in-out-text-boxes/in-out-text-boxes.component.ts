@@ -48,13 +48,13 @@ export class InOutTextBoxesComponent implements OnInit {
 
   clear() {
     this.userText = '';
-    this.userInputInfo = '';
+    this.userInputInfo = this.defaultInfo;
+    sessionStorage.setItem(this.storageKey, this.userText);
   }
 
 
   countWordsLinesCharacters(str: string) {
-    str = str?.trim();
-    if(str?.length === 0){
+    if(str?.trim().length === 0){
       return this.defaultInfo;
     }
     const words = str.split(" ");
