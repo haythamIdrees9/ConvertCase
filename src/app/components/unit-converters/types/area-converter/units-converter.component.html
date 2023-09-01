@@ -1,21 +1,4 @@
-<a class="back-link f-row a-center" [routerLink]="['../../']"><img src="assets/images/arrow.svg" width="18" height="18" alt=""> Common Converters</a>
-<div class="unit-container">
-    <h1>Area Converters</h1>
-    <div class="container">
-        <div class="user-input-cotnainer">
-            <app-in-out-text-inputs [userText]="originalText" #boxes [type]="'number'" [placeholder]="'Enter number here...'" [result]="text"
-            [storageKey]="storageKey" (onChangeEmitter)="setOriginalText($event)"></app-in-out-text-inputs>
-            <div class="selects-container f-row j-between">
-                <div class="select-container">
-                    <nav-links [selected]="linkUnitType[0]"  [items]="units" [suffix]="'-to-' + linkUnitType[1]"> </nav-links>
-                </div>
-                <div class="select-container">
-                    <nav-links [selected]="linkUnitType[1]"  [items]="units" [prefix]="linkUnitType[0]+'-to-'"> </nav-links>
-                </div>
-            </div>
-        </div>
-
-      <app-result-actions-btn (onClear)="clearTextArea();boxes.clear()" [text]="text"></app-result-actions-btn>
-    </div>
-    <app-poppular-links [popular]="popularUnits"  [popularTitle]="'Popular Area unit conversions'" ></app-poppular-links>
-</div>
+<app-generic-units-converter [popularUnits]="popularUnits" [units]="units" (updateResult)="updateResult($event)"
+     [linkUnitType]="linkUnitType" [storageKey]="'areaUnitsConvert'"
+    [result]="result" [popularTitle]="'Popular Area units conversions'" [title]="'Area Converters'">
+</app-generic-units-converter>

@@ -1,30 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { UnitsService } from './units.service';
 import { ActivatedRoute } from '@angular/router';
 import Decimal from 'decimal.js';
+import { UnitsService } from './units.service';
 
 @Component({
   selector: 'app-pressure-converter',
   templateUrl: './units-converter.component.html',
-  styleUrls: ['../../main-converters.scss'],
 })
 export class UnitConverterComponent implements OnInit {
-  storageKey = "pressureUnitsConvert";
-  originalText: string = '1';
-  text: string = '';
-  inputValue: number = 0;
+  userInput: string = '1';
+  result: string = '';
   units: readonly { key: string, label: string, conversionRate: number }[] = [];
   popularUnits: readonly { route: string, reverseRoute: string, labelRoute: string, labelReverseRoute: string, }[] = [];
-  switchLink = ''
   conversionRate!: number;
-  linkUnitType:string [] = ['pascal','bar'];
+  linkUnitType: string[] = ['pascal', 'bar'];
   constructor(private unitsService: UnitsService, private route: ActivatedRoute) {
   }
 
- 
-  updateResult() {
-    const inputDecimal = new Decimal(Number(this.originalText));
-    this.text = `${inputDecimal.times(this.conversionRate)}`;
+
+  updateResult(userInput: string = this.userInput) {
+    this.userInput = userInput;
+    const inputDecimal = new Decimal(Number(userInput));
+    this.result = `${inputDecimal.times(this.conversionRate)}`;
   }
 
   ngOnInit() {
@@ -35,24 +32,14 @@ export class UnitConverterComponent implements OnInit {
     this.updateResult();
   }
 
-  private handleParamsChange(){
+  private handleParamsChange() {
     this.route.params.subscribe((params) => {
-      if(!params['units-type']){
+      if (!params['units-type']) {
         return;
       }
       this.linkUnitType = (params['units-type'] as string).split('-to-');
-      this.switchLink = `${this.linkUnitType[1]}-${this.linkUnitType[0]}`
       this.conversionRate = this.unitsService.getConversionRate(this.linkUnitType[0], this.linkUnitType[1]);
       this.updateResult();
     })
-  }
-
-  setOriginalText(text: string) {
-    this.originalText = text
-    this.updateResult();
-  }
-  clearTextArea() {
-    this.originalText = '1';
-    this.updateResult();
   }
 }

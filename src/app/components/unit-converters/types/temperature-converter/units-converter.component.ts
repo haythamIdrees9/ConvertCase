@@ -5,24 +5,22 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-temperature-converter',
   templateUrl: './units-converter.component.html',
-  styleUrls: ['../../main-converters.scss'],
 })
 export class UnitConverterComponent implements OnInit {
-  storageKey = "temperatureUnitsConvert";
-  originalText: string = '1';
-  text: string = '';
+  userInput: string = '1';
+  result: string = '';
   inputValue: number = 0;
   units: readonly { key: string; label: string; convertToCelsius: (key: any) => any;convertFromCelsius:(key: any) => any }[] = [];
   popularUnits: readonly { route: string, reverseRoute: string, labelRoute: string, labelReverseRoute: string, }[] = [];
-  switchLink = ''
   linkUnitType:string [] = ['cubickilometer','cubicmeter'];
   currentUnits:readonly { key: string; label: string; convertToCelsius: (key: any) => any;convertFromCelsius:(key: any) => any }[]  = []
   constructor(private unitsService: UnitsService, private route: ActivatedRoute) {
   }
 
-  updateResult() {
-    const celsiusValue = this.currentUnits[0].convertToCelsius(Number(this.originalText));
-    this.text = this.currentUnits[1].convertFromCelsius(celsiusValue);
+  updateResult(userInput: string = this.userInput) {
+    this.userInput = userInput;
+    const celsiusValue = this.currentUnits[0].convertToCelsius(Number(userInput));
+    this.result = this.currentUnits[1].convertFromCelsius(celsiusValue);
   }
 
   ngOnInit() {
@@ -39,18 +37,8 @@ export class UnitConverterComponent implements OnInit {
         return;
       }
       this.linkUnitType = (params['units-type'] as string).split('-to-');
-      this.switchLink = `${this.linkUnitType[1]}-${this.linkUnitType[0]}`
       this.currentUnits = this.unitsService.getConversionRate(this.linkUnitType[0], this.linkUnitType[1]);
       this.updateResult();
     })
-  }
-
-  setOriginalText(text: string) {
-    this.originalText = text
-    this.updateResult();
-  }
-  clearTextArea() {
-    this.originalText = '1';
-    this.updateResult();
   }
 }
