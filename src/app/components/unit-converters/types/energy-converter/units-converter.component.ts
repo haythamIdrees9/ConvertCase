@@ -39,7 +39,6 @@ export class UnitConverterComponent implements OnInit {
       }
       this.linkUnitType = (params['units-type'] as string).split('-to-');
       this.conversionRate = this.unitsService.getConversionRate(this.linkUnitType[0], this.linkUnitType[1]);
-      console.log(this.linkUnitType,'this.conversionRate',this.conversionRate);
       this.updateResult();
     })
   }

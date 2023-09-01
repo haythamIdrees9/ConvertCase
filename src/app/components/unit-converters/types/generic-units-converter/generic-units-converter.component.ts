@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-generic-units-converter[popularUnits][units][updateResult][storageKey][popularTitle][title][linkUnitType]',
   templateUrl: './generic-units-converter.component.html',
-  styleUrls: ['../../main-converters.scss'],
+  styleUrls: ['./generic-units-converter.component.scss'],
 })
 export class GenericUnitsConverterComponent implements OnInit {
   userInput: string = '1';
@@ -40,8 +40,6 @@ export class GenericUnitsConverterComponent implements OnInit {
   setUserInput(text: string) {
     this.userInput = text
     this.updateResult.emit(this.userInput);
-    console.log('this.userInput', this.userInput);
-
   }
   clearTextArea() {
     this.userInput = '1';

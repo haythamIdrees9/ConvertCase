@@ -95,8 +95,6 @@ export class UnitsService {
   calculateConversionRate(conversionRate1:number,conversionRate2:number){
     const rate1 = new Decimal(conversionRate1);
     const rate2 = new Decimal(conversionRate2);
-    console.log(rate1.toNumber(),rate2.toNumber());
-    
     return rate2.div(rate1).toNumber()
   }
 
