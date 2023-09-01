@@ -10,7 +10,7 @@
     }
     .d-container {
       position: absolute;
-      bottom: 100%;
+      bottom: calc(100% + 0.25rem);
       cursor: default;
 
         .label{
@@ -25,7 +25,7 @@
       background-color: rgba(34,136,85, 0.9);
       transition: opacity 0.3s;
       z-index: 3;
-
+      box-shadow: 0 0 19px #142;
       input {
         width: 124px;
         padding: 8px;

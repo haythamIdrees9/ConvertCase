@@ -1,19 +1,15 @@
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8746065127850305"
-crossorigin="anonymous"></script>
-<!-- text convert -->
-<ins class="adsbygoogle"
-style="display:block"
-data-ad-client="ca-pub-8746065127850305"
-data-ad-slot="1432195349"
-data-ad-format="auto"
-data-full-width-responsive="true"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
 <div class="boxes f-col a-between">
-    <textarea type="number" #input_area [(ngModel)]="userText" (keyup)="onInputChange()"  placeholder="Enter text here..."
+    <div class="textarea">
+        <div class="word-counter f-row a-center j-center">{{userInputInfo}}</div>
+        <textarea type="number" #input_area [(ngModel)]="userText" (ngModelChange)="onInputChange()"  placeholder="Enter text here..."
         aria-label="Input Text" aria-describedby="conversionInstructions"></textarea>
+    </div>
 
-    <textarea [(ngModel)]="result"  readonly  placeholder="Converted result will appear here..."  aria-label="result Text"
+    <div class="textarea">
+        <div class="word-counter f-row a-center j-center">{{outPutInputInfo}}</div>
+        <textarea [(ngModel)]="result"  readonly  placeholder="Converted result will appear here..."  aria-label="result Text"
         aria-describedby="conversionInstructions"></textarea>
+    </div>
+
+
 </div>

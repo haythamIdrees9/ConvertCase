@@ -1,34 +1,180 @@
+
 <div class="x-container">
-    <h1>Text Conversion</h1>
-    <div class="container">
-      <label for="inputText" style="display: none;">Enter text here:</label>
-      <app-in-out-text-boxes #boxes [result]="text" [storageKey]="storageKey" (onChangeEmitter)="setOriginalText($event)"></app-in-out-text-boxes>
-      <div class="buttons" role="group" aria-labelledby="conversionInstructions">
-        <a  replaceUrl [routerLink]="['/','text-case-tools', 'convert-to-uppercase']" >
-          <button class="btn-theme" [class.selected]="executeFn === convertToUppercase" (click)="boxes.focus();onSelect(convertToUppercase)">UPPER CASE</button>
-        </a>
-        <a  replaceUrl [routerLink]="['/','text-case-tools', 'convert-to-lowercase']" >
-          <button class="btn-theme" [class.selected]="executeFn === convertToLowercase" (click)="boxes.focus();onSelect(convertToLowercase)">lower case</button>
-        </a>
-        <a  replaceUrl [routerLink]="['/','text-case-tools', 'convert-to-title-case']" >
-          <button class="btn-theme" [class.selected]="executeFn === convertToTitleCase" (click)="boxes.focus();onSelect(convertToTitleCase)">Title Case</button>
-        </a>
-        <a  replaceUrl [routerLink]="['/','text-case-tools', 'convert-to-capitalized-case']" >
-          <button class="btn-theme" [class.selected]="executeFn === convertToCapitalizedCase" (click)="boxes.focus();onSelect(convertToCapitalizedCase)">Capitalized Case</button>
-        </a>
-        <a  replaceUrl [routerLink]="['/','text-case-tools', 'convert-to-camel-case']" >
-          <button class="btn-theme" [class.selected]="executeFn === convertToCamelCase" (click)="boxes.focus();onSelect(convertToCamelCase)">camelCase</button>
-        </a>
-        <a  replaceUrl [routerLink]="['/','text-case-tools', 'convert-text-to-kebab-case']" >
-          <button class="btn-theme" [class.selected]="executeFn === textToKebabCase" (click)="boxes.focus();onSelect(textToKebabCase)">kebab-case</button>
-        </a>
-        <a  replaceUrl [routerLink]="['/','text-case-tools', 'convert-to-snake-case']" >
-          <button class="btn-theme" [class.selected]="executeFn === convertToSnakeCase" (click)="boxes.focus();onSelect(convertToSnakeCase)">snake_case</button>
-        </a>
-        <a  replaceUrl [routerLink]="['/','text-case-tools', 'convert-to-inverse-case']" >
-          <button class="btn-theme" [class.selected]="executeFn === convertToInverseCase" (click)="boxes.focus();onSelect(convertToInverseCase)">InVeRsE CaSe</button>
-        </a>
-      </div>
-      <app-result-actions-btn (onClear)="clearTextArea();boxes.clear()" [text]="text"></app-result-actions-btn>
+  <h1>Text Conversion</h1>
+  <div class="container">
+    <app-in-out-text-boxes #boxes [result]="text" [storageKey]="storageKey"
+      (onChangeEmitter)="setOriginalText($event)"></app-in-out-text-boxes>
+    <div class="buttons" role="group" aria-labelledby="conversionInstructions">
+      <a replaceUrl [routerLink]="['/', 'text-case-tools', 'convert-to-uppercase']">
+        <button class="btn-theme" [class.selected]="executeFn === convertToUppercase"
+          (click)="boxes.focus();onSelect(convertToUppercase)" aria-label="UPPER CASE">UPPER CASE</button>
+      </a>
+      <a replaceUrl [routerLink]="['/', 'text-case-tools', 'convert-to-lowercase']">
+        <button class="btn-theme" [class.selected]="executeFn === convertToLowercase"
+          (click)="boxes.focus();onSelect(convertToLowercase)" aria-label="lower case">lower case</button>
+      </a>
+      <a replaceUrl [routerLink]="['/', 'text-case-tools', 'convert-to-title-case']">
+        <button class="btn-theme" [class.selected]="executeFn === convertToTitleCase"
+          (click)="boxes.focus();onSelect(convertToTitleCase)" aria-label="Title Case">Title Case</button>
+      </a>
+      <a replaceUrl [routerLink]="['/', 'text-case-tools', 'convert-to-capitalized-case']">
+        <button class="btn-theme" [class.selected]="executeFn === convertToCapitalizedCase"
+          (click)="boxes.focus();onSelect(convertToCapitalizedCase)"
+          aria-label="Capitalized Case">Capitalized Case</button>
+      </a>
+      <a replaceUrl [routerLink]="['/', 'text-case-tools', 'convert-to-camel-case']">
+        <button class="btn-theme" [class.selected]="executeFn === convertToCamelCase"
+          (click)="boxes.focus();onSelect(convertToCamelCase)" aria-label="camelCase">camelCase</button>
+      </a>
+      <a replaceUrl [routerLink]="['/', 'text-case-tools', 'convert-text-to-kebab-case']">
+        <button class="btn-theme" [class.selected]="executeFn === textToKebabCase"
+          (click)="boxes.focus();onSelect(textToKebabCase)" aria-label="kebab-case">kebab-case</button>
+      </a>
+      <a replaceUrl [routerLink]="['/', 'text-case-tools', 'convert-to-snake-case']">
+        <button class="btn-theme" [class.selected]="executeFn === convertToSnakeCase"
+          (click)="boxes.focus();onSelect(convertToSnakeCase)" aria-label="snake_case">snake_case</button>
+      </a>
+      <a replaceUrl [routerLink]="['/', 'text-case-tools', 'convert-to-inverse-case']">
+        <button class="btn-theme" [class.selected]="executeFn === convertToInverseCase"
+          (click)="boxes.focus();onSelect(convertToInverseCase)" aria-label="InVeRsE CaSe">InVeRsE CaSe</button>
+      </a>
     </div>
+    <app-result-actions-btn (onClear)="clearTextArea();boxes.clear()" [text]="text"></app-result-actions-btn>
   </div>
+</div>
+
+<app-conent-card [showAdd]="true">
+  <h2>Explore Text Conversion Tools</h2>
+
+  <p>Unleash the power of text transformation with our diverse Text Conversion tools. Whether you're striving to tweak text aesthetics, enhance readability, or align with coding conventions, our range of tools is at your disposal:</p>
+  
+  <ul>
+    <li>
+      <strong>Convert to Uppercase</strong>: Transform your text into a commanding display of capital letters. Ideal for headers and emphasis.
+    </li>
+    <li>
+      <strong>Convert to Lowercase</strong>: Ease the tone with lowercase letters, perfect for a friendly and approachable vibe.
+    </li>
+    <li>
+      <strong>Convert to Title Case</strong>: Elevate your text's professionalism by capitalizing the initial letter of each word.
+    </li>
+    <li>
+      <strong>Convert to Capitalized Case</strong>: Highlight the start of each word, lending a refined touch to your text.
+    </li>
+    <li>
+      <strong>Convert to Camel Case</strong>: Forge variable-friendly text by merging words and capitalizing each combined word's initial letter.
+    </li>
+    <li>
+      <strong>Convert to Kebab Case</strong>: Craft web-friendly URLs by separating words with hyphens, promoting SEO and readability.
+    </li>
+    <li>
+      <strong>Convert to Snake Case</strong>: Adhere to programming conventions with words connected by underscores, enhancing code clarity.
+    </li>
+    <li>
+      <strong>Convert to Inverse Case</strong>: Create a visually striking effect by flipping the case of each letter in your text.
+    </li>
+  </ul>
+  
+  <p>Stay tuned as we delve into each Text Conversion method, providing insights into their mechanics, real-world applications, and guidance on effectively using these tools to optimize your text for various contexts.</p>
+  
+</app-conent-card>
+
+<app-conent-card>
+  <h3>Convert to Uppercase</h3>
+
+  <p>Elevate your text's impact by transforming it into bold uppercase letters. This method is perfect for making
+    important messages, headings, or titles stand out. With just a few clicks, you can easily switch your text to
+    uppercase, giving it a commanding and attention-grabbing appearance.</p>
+
+  <p>Whether you're looking to add emphasis, create visual contrast, or simply prefer the aesthetic of uppercase
+    letters, the Convert to Uppercase tool is here to assist you. Say goodbye to manual retyping and let this tool
+    swiftly handle the conversion for you.</p>
+</app-conent-card>
+
+<app-conent-card >
+  <h3>Convert to Lowercase</h3>
+
+  <p>Transition your text to lowercase for a more relaxed and casual feel. By using the Convert to Lowercase tool, you
+    can effortlessly transform your text into lowercase letters, creating a softer and more approachable tone.</p>
+
+  <p>This method is ideal for situations where you want to convey a sense of informality, friendliness, or simplicity.
+    Whether you're working on paragraphs of text or individual words, the Convert to Lowercase tool streamlines the
+    process and ensures consistent formatting throughout your content.</p>
+</app-conent-card>
+
+<app-conent-card [showAdd]="true">
+  <h3>Convert to Title Case</h3>
+
+  <p>Add a touch of professionalism to your text by capitalizing the first letter of each word using the Convert to
+    Title Case tool. This method is perfect for creating well-structured headings, subheadings, or titles that adhere to
+    standard capitalization rules.</p>
+
+  <p>With the Convert to Title Case tool, you no longer need to manually adjust the capitalization of each word. Whether
+    you're writing articles, presentations, or any other type of content, this tool ensures that your text appears
+    polished and consistent.</p>
+
+  <p>Elevate your content's readability and make a positive impression with text that follows proper title case
+    formatting.</p>
+
+</app-conent-card>
+<app-conent-card>
+
+  <h3>Convert to Capitalized Case</h3>
+
+  <p>Make every word's first letter stand out with the Convert to Capitalized Case tool. This method allows you to
+    transform your text so that the first letter of each word is capitalized, while the rest of the letters remain in
+    lowercase.</p>
+
+  <p>Capitalized Case is commonly used for headings, subheadings, and titles. It provides a balanced and visually
+    appealing style that enhances the overall presentation of your content.</p>
+
+  <p>With the Convert to Capitalized Case tool, you can achieve consistent and professional formatting without the need
+    for manual adjustments. Whether you're crafting blog posts, reports, or other written materials, this tool
+    streamlines the process and ensures a polished appearance.</p>
+</app-conent-card>
+
+<app-conent-card >
+
+  <h3>Convert to Camel Case</h3>
+
+  <p>Create variable-friendly text by using the Convert to Camel Case tool. This method allows you to combine words and
+    capitalize the first letter of each combined word, while removing spaces or separators.</p>
+
+  <p>Camel Case is commonly used in programming and coding to name variables, functions, and identifiers. By following
+    this naming convention, your code becomes more readable and concise.</p>
+
+  <p>With the Convert to Camel Case tool, you can quickly transform text into a format that's optimal for coding
+    purposes. Say goodbye to manual formatting and enjoy the efficiency of automatically generating Camel Case text.</p>
+</app-conent-card>
+<app-conent-card>
+
+
+  <h3>Convert to Kebab Case</h3>
+
+  <p>Generate web-friendly URLs and identifiers by using the Convert to Kebab Case tool. This method allows you to
+    transform your text by replacing spaces or separators with hyphens, resulting in a format commonly used in URLs,
+    filenames, and CSS classes.</p>
+
+  <p>Kebab Case is ideal for creating user-friendly and search engine optimized URLs. It helps improve the readability
+    of URLs and ensures compatibility across various web platforms.</p>
+
+  <p>With the Convert to Kebab Case tool, you can seamlessly prepare text for online use without worrying about
+    formatting issues. Enhance the usability and accessibility of your web content by adopting consistent and
+    user-friendly URLs.</p>
+</app-conent-card>
+
+<app-conent-card >
+
+  <h3>Convert to Snake Case</h3>
+
+  <p>Follow programming conventions and improve code readability by using the Convert to Snake Case tool. This method
+    allows you to transform your text by replacing spaces or separators with underscores, resulting in a format commonly
+    used in variable names, function names, and file names in programming.</p>
+
+  <p>Snake Case is widely used in various programming languages to name variables and identifiers. It helps separate
+    words clearly and ensures that code remains organized and consistent.</p>
+
+  <p>With the Convert to Snake Case tool, you can easily adopt a naming convention that aligns with programming best
+    practices. Simplify your coding process and enhance the clarity of your code by utilizing this efficient
+    transformation method.</p>
+</app-conent-card>

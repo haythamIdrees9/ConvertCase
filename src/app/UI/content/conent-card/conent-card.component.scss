@@ -1,0 +1,10 @@
+@import '../../../../styles/responsive';
+.x-container{
+    padding-top: 0;
+    .a-container{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top:0;
+    }
+}

@@ -2,14 +2,15 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import {encode as punycodeEncode, decode as punycodeDecode} from "punycode"
 import { MetaService } from '../services/meta.service';
+import { SeoService } from '../services/seo.service';
 
 @Component({
-  selector: 'app-url-encode-decode',
-  templateUrl: './url-encode-decode.component.html',
-  styleUrls: ['./url-encode-decode.component.scss'],
+  selector: 'app-encode-decode',
+  templateUrl: './encode-decode.component.html',
+  styleUrls: ['./encode-decode.component.scss'],
 
 })
-export class EncodeDecodeUrlComponent {
+export class EncodeDecodeComponent {
 
   text: string = '';
   toasterMessage: string = '';
@@ -64,12 +65,10 @@ export class EncodeDecodeUrlComponent {
   }
 
   
-  constructor(private route:ActivatedRoute,private metaService:MetaService, private router:Router) { }
+  constructor(private route:ActivatedRoute,private metaService:MetaService, private router:Router,private seoService:SeoService) { }
 
   ngOnInit(): void {
-    this.metaService.setTitle('Encode Decode Tools: Convert Text to Secure Formats and Back');
-    this.metaService.setMeta("description",'Navigate through a collection of encode-decode tools designed to transform text into secure formats and decode it back to its original state. Encode text for safe transmission, storage, and compatibility, and then decode it effortlessly. Explore a range of encoding and decoding utilities for versatile text manipulation.')
-    
+    this.handleSeo();
     const defaultAction = 'url-encode'; 
     let action = this.route.snapshot.params['action'];
     if(!action || !this.buttonMappings[action]){
@@ -86,6 +85,13 @@ export class EncodeDecodeUrlComponent {
     if(action && this.buttonMappings[action]){
       this.executeFn = this.buttonMappings[action]; 
     } 
+    this.seoService.createLinkForCanonicalURL('encode-decode')
+  }
+
+  private handleSeo(){
+    this.metaService.setTitle('Encode Decode Tools: Convert Text to Secure Formats and Back');
+    this.metaService.setMeta("description",'Navigate through a collection of encode-decode tools designed to transform text into secure formats and decode it back to its original state. Encode text for safe transmission, storage, and compatibility, and then decode it effortlessly. Explore a range of encoding and decoding utilities for versatile text manipulation.')
+    this.metaService.setMeta("keywords","encoding, decoding, URL manipulation, character encoding, character decoding, data transformation, encryption, decryption, security, privacy, URL encoding, URL decoding, HTML encoding, HTML decoding, ROT13 cipher, ROT47 cipher, Punycode encoding, Punycode decoding, UTF-8 encoding, UTF-8 decoding, UTF-16 encoding, UTF-16 decoding, Base64 encoding, Base64 decoding, Morse code encoding, Morse code decoding, BCD encoding, BCD decoding")
   }
 
   setOriginalText(text: string) {

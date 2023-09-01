@@ -2,6 +2,7 @@ import { Component,  OnInit } from '@angular/core';
 import { minorWords } from '../../utils/words';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MetaService } from '../services/meta.service';
+import { SeoService } from '../services/seo.service';
 
 @Component({
   selector: 'app-text-converter',
@@ -34,12 +35,13 @@ export class TextConverterComponent implements OnInit {
     "convert-to-inverse-case": "Convert text to inverse case using the Inverse Case Conversion tool. Reverse the case of each character for a unique and eye-catching effect."
   }
   
-  constructor(private route:ActivatedRoute,private metaService:MetaService, private router:Router) { }
+  constructor(private route:
+    ActivatedRoute,private metaService:MetaService,
+     private router:Router,private seoService:SeoService) { }
 
   ngOnInit(): void {
-    this.metaService.setTitle('Text Converter: Transform Text with Encoding, Decoding, and More');
-    this.metaService.setMeta("description",`Discover versatile text conversion tools for encoding, decoding, and transformation. Convert text to URL-safe formats, HTML entities, Unicode encodings, and more. Decode and restore text to its original form. Empower your content with efficient text conversion utilities for various encoding needs.`);
-    const defaultAction = 'convert-to-uppercase'
+    this.handleSeo()
+      const defaultAction = 'convert-to-uppercase'
     let action = this.route.snapshot.params['action'];
     if(!action || !this.buttonMappings[action]){
       action = defaultAction
@@ -55,7 +57,14 @@ export class TextConverterComponent implements OnInit {
     
     if(action && this.buttonMappings[action]){
       this.executeFn = this.buttonMappings[action];
-    }    
+    }  
+    this.seoService.createLinkForCanonicalURL('text-case-tools')
+  
+  }
+  private handleSeo(){
+    this.metaService.setTitle('Text Conversion: Uppercase, Lowercase, Title and More');
+    this.metaService.setMeta("description",`Text case converter - A set of functions that can be used to convert text to different cases, such as uppercase, lowercase, title case, and camel case. Perfect for formatting text for different purposes, such as headings, titles, and code.`);
+    this.metaService.setMeta("keywords","uppercase conversion, lowercase conversion, title case conversion, capitalized case conversion, camel case conversion, kebab case conversion, snake case conversion, inverse case conversion")
   }
 
   onSelect(executeFn:() => void){

@@ -12,6 +12,7 @@ export class ButtonWithTwoOptionComponent {
   @Input('placeholder2') placeholder2!:string;
   @Input('text') text!:string;
   @Input('apply') apply!:string;
+  
  @Input('selected') selected!:boolean;
   
   show:boolean = false;
