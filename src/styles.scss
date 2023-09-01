@@ -113,13 +113,20 @@ body {
       border-color:  #144D30;
       box-shadow: 0 0 10px #144D30;
     }
-    @media (hover: hover) {
-      &:hover{
-        box-shadow: 0 0 10px #144D30;
+    :not(:disabled){
+
+      @media (hover: hover) {
+        &:hover{
+          box-shadow: 0 0 10px #144D30;
+        }
+      }
+      &:active {
+        transform: scale(0.95);
       }
     }
-    &:active {
-      transform: scale(0.95);
+    &:disabled{
+      background-color: #618f77;
+      cursor: default;
     }
   }
 

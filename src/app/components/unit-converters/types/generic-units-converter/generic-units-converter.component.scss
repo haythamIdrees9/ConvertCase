@@ -38,6 +38,34 @@
             width: calc(100% - 0.5rem);
         }
     }
+    .units-box{
+        width: 100%;
+        box-sizing: border-box;
+        box-shadow: 0 0 2px 0px #144D30;
+        background-color: #EEEEEE;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        margin-top: 2rem;
+        h2{
+            font-size: 1.25rem;
+            margin-top: 0;
+            margin-bottom: 2rem;
+        }
+        .info-conent{
+            padding: 0 1rem;
+            .btn-theme{
+                padding: 0 1rem;
+                align-self: flex-end;
+                margin-top: 1rem;
+            }
+            .dropdown{
+                flex-direction: column;
+                app-search-dropdown:first-child{
+                    margin-bottom: 0.5rem;
+                }
+            }
+        }
+    }
 
     
     @include mobileFirst('sm'){
@@ -45,6 +73,13 @@
             flex-direction: row;
             .select-container{
                 width: calc(50% - 0.5rem);
+            }
+        }
+        .units-box .info-conent .dropdown {
+            flex-direction: row;
+            app-search-dropdown{
+                width: 250px;
+                margin: 0;
             }
         }
     }

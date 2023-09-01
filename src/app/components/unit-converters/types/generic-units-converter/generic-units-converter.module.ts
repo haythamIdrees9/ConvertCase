@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { PoppularLinksComponent } from '../../poppular-links/poppular-links.component';
 import { NavLinksComponent } from 'src/app/UI/nav-links/nav-links.component';
 import { GenericUnitsConverterComponent } from './generic-units-converter.component';
+import { SearchDropdownComponent } from 'src/app/UI/search-dropdown/search-dropdown.component';
 
 @NgModule({
   declarations: [GenericUnitsConverterComponent],
@@ -18,7 +19,8 @@ import { GenericUnitsConverterComponent } from './generic-units-converter.compon
     ResultActionsBtnComponent,
     PoppularLinksComponent,
     NavLinksComponent,
-    RouterModule],
+    RouterModule,
+    SearchDropdownComponent],
   providers: [],
   exports:[GenericUnitsConverterComponent]
 
