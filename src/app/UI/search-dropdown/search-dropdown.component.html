@@ -1,11 +1,11 @@
-<div class="search-dropdown" (click)="$event.stopPropagation()">
+<div class="search-dropdown" #container>
     <label for="search-input">{{label}}</label>
     <input
       type="text"
       id="search-input"
       class="search-input"
       [(ngModel)]="searchQuery"
-      (click)="isFilterShown = true"
+      (click)="openDropdown()"
       (input)="filterOptions(searchQuery)"
       [placeholder]="placeholder"
       [attr.aria-labelledby]="inputAriaLabelledBy"
@@ -14,6 +14,7 @@
       <li
         *ngFor="let option of filteredOptions; let i = index"
         role="option"
+        [class.selected]="selected === option.key"
         [attr.aria-posinset]="i + 1"
         [attr.aria-setsize]="filteredOptions.length"
         (click)="onSelectOption(option)"

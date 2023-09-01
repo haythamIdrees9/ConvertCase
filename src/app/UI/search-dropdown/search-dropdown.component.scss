@@ -40,10 +40,15 @@
             padding: 10px;
             cursor: pointer;
             transition: background-color 0.3s;
-
             &:hover {
                 background-color: #f0f0f0;
             }
+            &.selected{
+                background-color: #144D30 !important;
+                color: white;
+                cursor: default;
+            }
+ 
         }
     }
 
