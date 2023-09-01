@@ -26,7 +26,7 @@
         <button class="btn-theme" [class.selected]="executeFn === convertToCamelCase"
           (click)="boxes.focus();onSelect(convertToCamelCase)" aria-label="camelCase">camelCase</button>
       </a>
-      <a replaceUrl [routerLink]="['/', 'text-case-tools', 'convert-text-to-kebab-case']">
+      <a replaceUrl [routerLink]="['/', 'text-case-tools', 'convert-to-kebab-case']">
         <button class="btn-theme" [class.selected]="executeFn === textToKebabCase"
           (click)="boxes.focus();onSelect(textToKebabCase)" aria-label="kebab-case">kebab-case</button>
       </a>
