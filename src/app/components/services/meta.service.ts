@@ -17,6 +17,15 @@ export class MetaService {
     this.meta.updateTag({name,content})
   }
 
+  setKeywords(keywords:string){
+    this.meta.updateTag({name:'keywords',content:keywords})
+  }
+
+  setDescription(description:string){
+    this.meta.updateTag({name:'description',content:description})
+
+  }
+
   private convertToTitleCase(originalText:string) {
     return originalText.replace(/(^|\n).+?($|\n)/g, (match) => {
       return match.replace(/\b\w+/g, (word) => {

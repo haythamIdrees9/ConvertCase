@@ -5,7 +5,7 @@ import { DOCUMENT } from '@angular/common';
   providedIn: 'root'
 })
 export class SeoService { 
-   readonly domain = "http://convertcase.me/"
+  private readonly domain = "http://convertcase.me/"
   constructor(@Inject(DOCUMENT) private doc:Document) {}
   
   createLinkForCanonicalURL(link:string) {

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import Decimal from 'decimal.js';
 import { UnitsService } from './units.service';
 import { ActivatedRoute } from '@angular/router';
+import { MetaService } from 'src/app/components/services/meta.service';
+import { SeoService } from 'src/app/components/services/seo.service';
 
 @Component({
   selector: 'app-volume-converter',
@@ -14,8 +16,9 @@ export class UnitConverterComponent implements OnInit {
   popularUnits: readonly { route: string, reverseRoute: string, labelRoute: string, labelReverseRoute: string, }[] = [];
   conversionRate!: number;
   linkUnitType:string [] = ['cubickilometer','cubicmeter'];
-  constructor(private unitsService: UnitsService, private route: ActivatedRoute) {
-  }
+  constructor(private unitsService: UnitsService, private route: ActivatedRoute,
+    private metaService:MetaService, private seoService:SeoService) {
+ }
 
   updateResult(userInput: string = this.userInput) {
     this.userInput = userInput;
@@ -29,6 +32,7 @@ export class UnitConverterComponent implements OnInit {
     this.conversionRate = this.unitsService.calculateConversionRate(this.units[1].conversionRate, this.units[0].conversionRate)
     this.handleParamsChange();
     this.updateResult();
+    this.seoService.createLinkForCanonicalURL('unit-converters/volume')
   }
 
   private handleParamsChange(){
@@ -39,6 +43,13 @@ export class UnitConverterComponent implements OnInit {
       this.linkUnitType = (params['units-type'] as string).split('-to-');
       this.conversionRate = this.unitsService.getConversionRate(this.linkUnitType[0], this.linkUnitType[1]);
       this.updateResult();
+      this.updateSeoData();
     })
+  }
+
+  updateSeoData(){
+    this.metaService.setTitle(`Convert ${this.linkUnitType[0]} to ${this.linkUnitType[1]}`);
+    this.metaService.setDescription(`Effortlessly convert volumes from ${this.linkUnitType[0]} to ${this.linkUnitType[1]} with precision. Get quick and accurate results using our user-friendly volume converter.`)
+    this.metaService.setKeywords("volume converter, liter, milliliter, cubic meter, cubic inch, cubic foot, gallon, fluid ounce, unit conversion, volume measurement, volume conversion tool, convert liters, milliliters, cubic meters, cubic inches, gallons, fluid ounces, volume units, volume calculator")
   }
 }
