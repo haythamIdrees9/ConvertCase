@@ -90,7 +90,9 @@ popularUnits = Object.freeze([
 ]);
 
 
-  constructor() {    
+  constructor() {  
+    let value = (11 * 5);
+    console.log(this.units.length,'units',this.units.map(item => {return {key:item.key,conversionRate:item.conversionRate}}).slice(value,value + 5));  
   }
 
 

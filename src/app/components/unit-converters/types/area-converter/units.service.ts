@@ -28,15 +28,10 @@ export class UnitsService {
     { key: "cuerda-varas", label: "Cuerda (Varas)", conversionRate: 7084.5 },
     { key: "cuerda", label: "Cuerda", conversionRate: 3937.04 },
     { key: "manzana", label: "Manzana", conversionRate: 1000 },
-    { key: "quaresma", label: "Quaresma", conversionRate: 1076.39 },
-    { key: "cawney", label: "Cawney", conversionRate: 1210.19 },
     { key: "arpent-acre", label: "Arpent Acre", conversionRate: 181.822 },
-    { key: "ngarn", label: "Ngarn", conversionRate: 400 },
-    { key: "sotok", label: "Sotok", conversionRate: 1.42 },
     { key: "stremma", label: "Stremma", conversionRate: 1000 },
     { key: "djerib", label: "Djerib", conversionRate: 2800 },
-    { key: "skerries", label: "Skerries", conversionRate: 800 },
-    { key: "vergees", label: "Vergees", conversionRate: 800 }
+    { key: "vergees", label: "Vergees", conversionRate: 1638.80963 }
   ]
   );
 
