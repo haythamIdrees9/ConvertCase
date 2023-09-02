@@ -21,7 +21,7 @@
         <nav class="list-container">
             <ul>
                 <li *ngFor="let page of pages">
-                    <a (click)="hideLinksModal()" [routerLink]="['','unit-converters',page.path]"> {{page.label}}</a>
+                    <a (click)="hideLinksModal()" [routerLink]="['','unit-converters',page.path]" [routerLinkActive]="['active']"> {{page.label}}</a>
                 </li>
             </ul>
         </nav>
