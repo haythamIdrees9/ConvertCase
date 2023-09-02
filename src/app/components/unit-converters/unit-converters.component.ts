@@ -1,11 +1,17 @@
-import { Component, HostListener } from '@angular/core';
+import { AfterViewInit, Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-unit-converters',
   templateUrl: './unit-converters.component.html',
   styleUrls: ['./unit-converters.component.scss']
 })
-export class UnitConvertersComponent {
+export class UnitConvertersComponent implements AfterViewInit {
+  ngAfterViewInit(): void {
+    window.scrollTo(0,0)
+    setTimeout(() => {
+      window.scrollTo(0,0)
+    }, 1);
+  }
   pages = [{ path: 'length', label: 'Length' }, { path: 'weight-and-mass', label: 'Weight and Mass' }, { path: 'volume', label: 'Volume' },
   { path: 'temperature', label: 'Temperature' },
   { path: 'area', label: 'Area' },
@@ -23,7 +29,6 @@ export class UnitConvertersComponent {
     }
   }
 
-  @HostListener('document:click')
   hideLinksModal() {
     this.isLinksModalVisible = false;
     const bodyElement = document.getElementById('body');
