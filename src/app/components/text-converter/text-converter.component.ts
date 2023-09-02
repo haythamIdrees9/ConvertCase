@@ -20,7 +20,7 @@ export class TextConverterComponent implements OnInit {
     'convert-to-title-case': this.convertToTitleCase,
     'convert-to-capitalized-case': this.convertToCapitalizedCase,
     'convert-to-camel-case': this.convertToCamelCase,
-    'convert-text-to-kebab-case': this.textToKebabCase,
+    'convert-to-kebab-case': this.textToKebabCase,
     'convert-to-snake-case': this.convertToSnakeCase,
     'convert-to-inverse-case': this.convertToInverseCase,
   };
@@ -30,7 +30,7 @@ export class TextConverterComponent implements OnInit {
     "convert-to-title-case": "Convert text to title case using the Title Case Conversion tool. Capitalize the first letter of each word for a polished and professional look.",
     "convert-to-capitalized-case": "Convert text to capitalized case using the Capitalized Case Conversion tool. Capitalize the first letter of the text for a stylish and refined presentation.",
     "convert-to-camel-case": "Convert text to camel case using the Camel Case Conversion tool. Transform text into a format where words are joined and each word after the first starts with a capital letter.",
-    "convert-text-to-kebab-case": "Convert text to kebab case using the Kebab Case Conversion tool. Join words with hyphens for URLs and identifiers with improved readability.",
+    "convert-to-kebab-case": "Convert text to kebab case using the Kebab Case Conversion tool. Join words with hyphens for URLs and identifiers with improved readability.",
     "convert-to-snake-case": "Convert text to snake case using the Snake Case Conversion tool. Join words with underscores for variable names and identifiers in programming.",
     "convert-to-inverse-case": "Convert text to inverse case using the Inverse Case Conversion tool. Reverse the case of each character for a unique and eye-catching effect."
   }
