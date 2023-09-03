@@ -18,7 +18,7 @@ export class NavLinksComponent implements OnInit{
   @ViewChildren('items') set itemsVal(itemsList: QueryList<ElementRef>){
     this.itemsList = itemsList;
       if(this.selectedIndex !== -1  && this.selectedIndex < itemsList?.toArray().length){
-        itemsList?.toArray()[this.selectedIndex].nativeElement?.scrollIntoView({  block: 'center' });
+          itemsList?.toArray()[this.selectedIndex].nativeElement?.scrollIntoView({  block: 'center' });
       }
   }
   itemsList!: QueryList<ElementRef>
@@ -28,7 +28,7 @@ export class NavLinksComponent implements OnInit{
     this.selected = selected;
     this.selectedIndex = this.items.findIndex(item => this.selected && this.selected === item.key)
     if(this.selectedIndex !== -1  && this.selectedIndex < this.itemsList?.toArray().length){
-      this.itemsList.toArray()[this.selectedIndex].nativeElement?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        this.itemsList.toArray()[this.selectedIndex].nativeElement?.scrollIntoView({ block: 'center' });
     }
   }
   selected!:string;

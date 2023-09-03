@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UnitPages } from '../unit-converters.component';
 
 @Component({
   selector: 'app-main',
@@ -7,11 +8,6 @@ import { Component } from '@angular/core';
 })
 export class MainComponent {
 
-  pages = [ {path:'length',label:'Length'},{path:'weight-and-mass',label:'Weight and Mass'},{path:'volume',label:'Volume'},
-  {path:'temperature',label:'Temperature'},
-  {path:'area',label:'Area'},
-  {path:'pressure',label:'Pressure'},
-  {path:'energy',label:'energy'},
-]
+  pages = UnitPages;
 
 }

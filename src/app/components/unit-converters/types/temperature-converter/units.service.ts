@@ -46,8 +46,7 @@ popularUnits = Object.freeze([
 ]);
 
   constructor() {    
-    let value = (2 * 5);
-    console.log(this.units.length,'units',this.units.map(item => {return {key:item.key,convertToCelsius:item.convertToCelsius.toString()}}).slice(value,value + 5));  
+
   }
 
 

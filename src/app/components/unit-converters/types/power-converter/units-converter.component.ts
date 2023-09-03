@@ -6,7 +6,7 @@ import { MetaService } from 'src/app/components/services/meta.service';
 import { SeoService } from 'src/app/components/services/seo.service';
 
 @Component({
-  selector: 'app-volume-converter',
+  selector: 'app-power-converter',
   templateUrl: './units-converter.component.html',
 })
 export class UnitConverterComponent implements OnInit {
@@ -15,7 +15,7 @@ export class UnitConverterComponent implements OnInit {
   units: readonly { key: string, label: string, conversionRate: number }[] = [];
   popularUnits: readonly { route: string, reverseRoute: string, labelRoute: string, labelReverseRoute: string, }[] = [];
   conversionRate!: number;
-  linkUnitType:string [] = ['cubickilometer','cubicmeter'];
+  linkUnitType:string [] = ['kilowatt','megawatt'];
   constructor(private unitsService: UnitsService, private route: ActivatedRoute,
     private metaService:MetaService, private seoService:SeoService) {
  }
@@ -49,7 +49,7 @@ export class UnitConverterComponent implements OnInit {
 
   updateSeoData(){
     this.metaService.setTitle(`Convert ${this.linkUnitType[0]} to ${this.linkUnitType[1]}`);
-    this.metaService.setDescription(`Effortlessly convert volumes from ${this.linkUnitType[0]} to ${this.linkUnitType[1]} with precision. Get quick and accurate results using our user-friendly volume converter`)
-    this.metaService.setKeywords("volume converter, liter, milliliter, cubic meter, cubic inch, cubic foot, gallon, fluid ounce, unit conversion, volume measurement, volume conversion tool, convert liters, milliliters, cubic meters, cubic inches, gallons, fluid ounces, volume units, volume calculator")
+    this.metaService.setDescription(`Convert power units from ${this.linkUnitType[0]} to ${this.linkUnitType[1]} effortlessly. Get quick, precise results with our user-friendly power converter`)
+    this.metaService.setKeywords("power converter, watt, kilowatt, megawatt, gigawatt, horsepower, unit conversion, convert watt to kilowatt, megawatt to gigawatt, horsepower to kilowatt, power unit conversion, power measurement, power conversion tool, electrical power, mechanical power")
   }
 }
