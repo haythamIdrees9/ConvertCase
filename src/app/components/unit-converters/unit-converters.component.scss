@@ -43,6 +43,7 @@ $theme-color: #144D30;
                 &.active{
                     background-color: #144D30;
                     color: white;
+                    border-color: #144D30;
                 }
             }
         }
@@ -64,8 +65,8 @@ $theme-color: #144D30;
 
 
         .conainer-title {
-            background-color: $theme-color;
-            color: white;
+            background-color: #EEEEEE;
+            color: $theme-color;
             padding: 0.5rem;
             margin: 0;
         }
