@@ -29,7 +29,8 @@ import { CommonModule } from '@angular/common';
           {path: 'force', loadChildren: () => import('./types/force-converter/force-converter.module').then(m => m.ForceConverterModule)},
           {path: 'time', loadChildren: () => import('./types/time-converter/time-converter.module').then(m => m.TimeConverterModule)},
           {path: 'speed', loadChildren: () => import('./types/speed-converter/speed-converter.module').then(m => m.SpeedConverterModule)},
-          
+          {path: 'angle', loadChildren: () => import('./types/angle-converter/angle-converter.module').then(m => m.AngleConverterModule)},
+          {path: 'fuel-consumption', loadChildren: () => import('./types/fuel-consumption-converter/fuel-consumption-converter.module').then(m => m.FuelConsumptionConverterModule)},
         ],
           
         }
