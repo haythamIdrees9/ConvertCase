@@ -8,11 +8,11 @@
                 (onChangeEmitter)="setUserInput($event)"></app-in-out-text-inputs>
             <div class="selects-container f-row j-between">
                 <div class="select-container">
-                    <nav-links [selected]="linkUnitType[0]" [items]="units" [suffix]="'-to-' + linkUnitType[1]">
+                    <nav-links [componentId]="'nav-1'" [selected]="linkUnitType[0]" [items]="units" [suffix]="'-to-' + linkUnitType[1]">
                     </nav-links>
                 </div>
                 <div class="select-container">
-                    <nav-links [selected]="linkUnitType[1]" [items]="units" [prefix]="linkUnitType[0]+'-to-'">
+                    <nav-links [componentId]="'nav-2'" [selected]="linkUnitType[1]" [items]="units" [prefix]="linkUnitType[0]+'-to-'">
                     </nav-links>
                 </div>
             </div>
@@ -24,9 +24,9 @@
         <h2>Locate the Units of {{unitType}} for Conversion.</h2>
         <div class="info-conent f-col">
             <div class="dropdown f-row j-between">
-                <app-search-dropdown [selected]="locatOption1" [searchQuery]="linkUnitType[0]" (selectedOption)="locatOption1 = $event.key" [options]="units" [placeholder]="'Unit Name'" [filterFn]="filterFn" [inputAriaLabelledBy]="'Locate Unit'" 
+                <app-search-dropdown [componentId]="'input-1'" [selected]="locatOption1" [searchQuery]="linkUnitType[0]" (selectedOption)="locatOption1 = $event.key" [options]="units" [placeholder]="'Unit Name'" [filterFn]="filterFn" [inputAriaLabelledBy]="'Locate Unit'" 
                 [listAriaLabelledBy]="'Units List'" [label]="'From Unit:'" ></app-search-dropdown>
-                <app-search-dropdown [selected]="locatOption2" [searchQuery]="linkUnitType[1]" (selectedOption)="locatOption2 = $event.key"  [options]="units" [placeholder]="'Unit Name'" [filterFn]="filterFn" [inputAriaLabelledBy]="'Locate Unit'" 
+                <app-search-dropdown  [componentId]="'input-2'" [selected]="locatOption2" [searchQuery]="linkUnitType[1]" (selectedOption)="locatOption2 = $event.key"  [options]="units" [placeholder]="'Unit Name'" [filterFn]="filterFn" [inputAriaLabelledBy]="'Locate Unit'" 
                 [listAriaLabelledBy]="'Units List'" [label]="'To Unit:'"></app-search-dropdown>
             </div>
             <button class="btn-theme" aria-label="Apply" [disabled]="!locatOption1 || !locatOption2" (click)="applyUnits()">Apply</button>

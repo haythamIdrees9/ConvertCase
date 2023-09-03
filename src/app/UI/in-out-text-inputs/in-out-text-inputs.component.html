@@ -12,7 +12,7 @@
         <input id="input_1" [type]="type" type="number" #input_area [(ngModel)]="userText" (keyup)="onInputChange()"
             [placeholder]="placeholder" aria-label="Input Text" aria-describedby="conversionInstructions">
     </div>
-    <a class="btn-resting c-pointer" [routerLink]="['../',switchLink]">
+    <a class="btn-resting c-pointer" [routerLink]="['../',switchLink]" aria-label="Switch units">
         <img class="switch" src="assets/images/switch.svg" height="16" width="20" alt="">
     </a>
     <div class="input-container f-col">

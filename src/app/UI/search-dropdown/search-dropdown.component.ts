@@ -3,7 +3,7 @@ import { Component, Input, Output, EventEmitter, OnInit, HostListener, ViewChild
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-search-dropdown[options][placeholder][filterFn][inputAriaLabelledBy][listAriaLabelledBy][label]',
+  selector: 'app-search-dropdown[options][placeholder][filterFn][inputAriaLabelledBy][listAriaLabelledBy][label][componentId]',
   templateUrl: './search-dropdown.component.html',
   styleUrls: ['./search-dropdown.component.scss'],
   standalone:true,
@@ -19,6 +19,7 @@ export class SearchDropdownComponent implements OnInit {
   @Input() listAriaLabelledBy: string = '';
   @Input() filterFn!: (query: string,option:any) => any ;
   @Input() searchQuery:string = "";
+  @Input() componentId:string = "";
   @Output() selectedOption = new EventEmitter();
   filteredOptions: readonly any [] = [];
   isFilterShown:boolean = false;

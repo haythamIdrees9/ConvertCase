@@ -1,8 +1,8 @@
 <div class="search-dropdown" #container>
-    <label for="search-input">{{label}}</label>
+    <label [for]="'search-input-'+componentId">{{label}}</label>
     <input
       type="text"
-      id="search-input"
+      [id]="'search-input-'+componentId"
       class="search-input"
       [(ngModel)]="searchQuery"
       (click)="openDropdown()"

@@ -3,7 +3,7 @@ import { Component, ElementRef, EventEmitter, Input, OnInit, Output, QueryList, 
 import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'nav-links',
+  selector: 'nav-links [componentId]',
   templateUrl: './nav-links.component.html',
   styleUrls: ['./nav-links.component.scss'],
   standalone:true,
@@ -32,8 +32,10 @@ export class NavLinksComponent implements OnInit{
     }
   }
   selected!:string;
-  @Input('prefix') prefix:string = ''
-  @Input('suffix') suffix:string = ''
+  @Input('prefix') prefix:string = '';
+  @Input('suffix') suffix:string = '';
+  @Input('componentId') componentId:string = '';
+  
   @Output('onSelect') onSelect = new EventEmitter();
   selectedIndex = 0
   ngOnInit(): void {
