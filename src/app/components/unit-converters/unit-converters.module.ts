@@ -27,6 +27,7 @@ import { CommonModule } from '@angular/common';
           {path: 'energy', loadChildren: () => import('./types/energy-converter/energy-converter.module').then(m => m.EnergyConverterModule)},
           {path: 'power', loadChildren: () => import('./types/power-converter/power-converter.module').then(m => m.PowerConverterModule)},
           {path: 'force', loadChildren: () => import('./types/force-converter/force-converter.module').then(m => m.ForceConverterModule)},
+          {path: 'time', loadChildren: () => import('./types/time-converter/time-converter.module').then(m => m.TimeConverterModule)},
         ],
           
         }

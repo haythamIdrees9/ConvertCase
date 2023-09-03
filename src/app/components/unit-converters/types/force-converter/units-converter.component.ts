@@ -32,7 +32,7 @@ export class UnitConverterComponent implements OnInit {
     this.conversionRate = this.unitsService.calculateConversionRate(this.units[1].conversionRate, this.units[0].conversionRate)
     this.handleParamsChange();
     this.updateResult();
-    this.seoService.createLinkForCanonicalURL('unit-converters/volume')
+    this.seoService.createLinkForCanonicalURL('unit-converters/force')
   }
 
   private handleParamsChange(){

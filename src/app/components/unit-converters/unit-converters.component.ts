@@ -8,6 +8,7 @@ export    const  UnitPages = [{ path: 'length', label: 'Length' }, { path: 'weig
 { path: 'energy', label: 'Energy' },
 { path: 'power', label: 'Power' },
 { path: 'force', label: 'Force' },
+{ path: 'time', label: 'Time' },
 ];
 
 @Component({
