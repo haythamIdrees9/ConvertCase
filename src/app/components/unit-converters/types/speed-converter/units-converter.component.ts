@@ -6,7 +6,7 @@ import { MetaService } from 'src/app/components/services/meta.service';
 import { SeoService } from 'src/app/components/services/seo.service';
 
 @Component({
-  selector: 'app-time-converter',
+  selector: 'app-speed-converter',
   templateUrl: './units-converter.component.html',
 })
 export class UnitConverterComponent implements OnInit {
@@ -15,7 +15,7 @@ export class UnitConverterComponent implements OnInit {
   units: readonly { key: string, label: string, conversionRate: number }[] = [];
   popularUnits: readonly { route: string, reverseRoute: string, labelRoute: string, labelReverseRoute: string, }[] = [];
   conversionRate!: number;
-  linkUnitType:string [] = ['second','millisecond'];
+  linkUnitType:string [] = ['meter-per-second','kilometer-per-hour'];
   constructor(private unitsService: UnitsService, private route: ActivatedRoute,
     private metaService:MetaService, private seoService:SeoService) {
  }
@@ -32,7 +32,7 @@ export class UnitConverterComponent implements OnInit {
     this.conversionRate = this.unitsService.calculateConversionRate(this.units[1].conversionRate, this.units[0].conversionRate)
     this.handleParamsChange();
     this.updateResult();
-    this.seoService.createLinkForCanonicalURL('unit-converters/time')
+    this.seoService.createLinkForCanonicalURL('unit-converters/speed')
   }
 
   private handleParamsChange(){
@@ -49,7 +49,7 @@ export class UnitConverterComponent implements OnInit {
 
   updateSeoData(){
     this.metaService.setTitle(`Convert ${this.linkUnitType[0]} to ${this.linkUnitType[1]}`);
-    this.metaService.setDescription(`Swiftly convert time units between ${this.linkUnitType[0]} and ${this.linkUnitType[1]}. Get accurate results instantly with our user-friendly time converter`)
-    this.metaService.setKeywords("time converter, second, minute, hour, day, week, month, year, unit conversion, convert seconds to minutes, hours to days, weeks to months, time unit conversion, time measurement, time conversion tool, seconds, minutes, hours, days, weeks, months, years")
+    this.metaService.setDescription(`Convert speeds from ${this.linkUnitType[0]} to ${this.linkUnitType[1]} effortlessly. Get quick and precise results with our user-friendly speed converter`)
+    this.metaService.setKeywords("speed converter, meters per second, kilometers per hour, miles per hour, knots, unit conversion, convert meters per second to kilometers per hour, miles per hour to knots, speed unit conversion, speed measurement, speed conversion tool, m/s, km/h, mph, knots")
   }
 }
