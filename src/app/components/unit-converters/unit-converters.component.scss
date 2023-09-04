@@ -27,19 +27,19 @@ $theme-color: #144D30;
         list-style-type: none;
         padding: 0;
         margin: 0;
-
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         li {
             line-height: 1.5;
             height: max-content;
             a{
                 width: 100%;
-                padding: 0.25rem 1rem;
+                padding: 0.25rem;
                 display: inline-block;
                 box-sizing: border-box;
                 transition: all 0.25s;
                 background-color: transparent;
-                border-top: 1px solid #ccc;
-                border-bottom: 1px solid #ccc;
+                border: 1px solid #ccc;
                 &.active{
                     background-color: #144D30;
                     color: white;
@@ -73,7 +73,7 @@ $theme-color: #144D30;
 
         a {
             color: $theme-color;
-            font-size: 1.25rem;
+            font-size: 1rem;
             text-decoration: none;
         }
 
