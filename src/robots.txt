@@ -21,4 +21,4 @@ Allow: /
 
 # Disallow all other bots
 User-agent: *
-Disallow: /
+Allow: /
