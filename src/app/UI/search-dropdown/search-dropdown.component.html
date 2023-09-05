@@ -10,7 +10,7 @@
       [placeholder]="placeholder"
       [attr.aria-labelledby]="inputAriaLabelledBy"
     />
-    <ul class="options-list custom-hover" [class.shown]="isFilterShown" role="listbox" [attr.aria-label]="listAriaLabelledBy">
+    <ul class="options-list custom-hover" tabindex="0" [class.shown]="isFilterShown" role="listbox" [attr.aria-label]="listAriaLabelledBy">
       <li
         *ngFor="let option of filteredOptions; let i = index"
         role="option"
