@@ -12,6 +12,10 @@ import { CommonModule } from '@angular/common';
 export class ResultActionsBtnComponent {
   @Output('onClear') onClear = new EventEmitter()
   @Input('text') text!:string;
+  @Input('downloadData') downloadData!:string;
+  
+  @Input('clear') clear:boolean = true;
+  
   toasterMessage: string = '';
 
 
@@ -30,7 +34,7 @@ export class ResultActionsBtnComponent {
   }
 
   downloadText() {
-    const blob = new Blob([this.text], { type: 'text/plain' });
+    const blob = new Blob([this.downloadData || this.text], { type: 'text/plain' });
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;

@@ -24,7 +24,8 @@
             </div>
         </div>
 
-        <app-result-actions-btn (onClear)="clearTextArea();boxes.clear()" [text]="result"></app-result-actions-btn>
+        <app-result-actions-btn [clear]="false" 
+        [downloadData]="'Result: '+userInput +' '+ linkUnitLabels[0]+' = ' +result + ' '+linkUnitLabels[1]" (onClear)="clearTextArea();boxes.clear()" [text]="result"></app-result-actions-btn>
     </div>
     <div class="units-box">
         <h2>Locate the Units of {{unitType}} for Conversion.</h2>

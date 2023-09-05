@@ -37,8 +37,6 @@ export class GenericUnitsConverterComponent implements OnInit {
   }
 
   applyUnits(){
-    console.log('`${this.locatOption1}-to-${this.locatOption2}`',`${this.locatOption1}-to-${this.locatOption2}`);
-    
     this.router.navigate(['./',`${this.locatOption1}-to-${this.locatOption2}`],{relativeTo:this.route.parent})
   }
 
