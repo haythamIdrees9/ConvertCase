@@ -4,6 +4,7 @@ import Decimal from 'decimal.js';
 import { UnitsService } from './units.service';
 import { MetaService } from 'src/app/components/services/meta.service';
 import { SeoService } from 'src/app/components/services/seo.service';
+import { UnitsInfoService } from './units-description.service';
 
 @Component({
   selector: 'app-pressure-converter',
@@ -16,7 +17,8 @@ export class UnitConverterComponent implements OnInit {
   popularUnits: readonly { route: string, reverseRoute: string, labelRoute: string, labelReverseRoute: string, }[] = [];
   conversionRate!: number;
   linkUnitType: string[] = ['pascal', 'bar'];
-  constructor(private unitsService: UnitsService, private route: ActivatedRoute,
+  unitsDescription:string[]=[];
+constructor(private unitsService: UnitsService,private unitsInfoService:UnitsInfoService, private route: ActivatedRoute,
     private metaService:MetaService, private seoService:SeoService) {
  }
 
@@ -33,7 +35,6 @@ export class UnitConverterComponent implements OnInit {
     this.conversionRate = this.unitsService.calculateConversionRate(this.units[1].conversionRate, this.units[0].conversionRate)
     this.handleParamsChange();
     this.updateResult();
-    this.seoService.createLinkForCanonicalURL('unit-converters/pressure')
   }
 
   private handleParamsChange() {
@@ -42,6 +43,11 @@ export class UnitConverterComponent implements OnInit {
         return;
       }
       this.linkUnitType = (params['units-type'] as string).split('-to-');
+      if(this.linkUnitType.length > 1 && this.linkUnitType[0] === this.linkUnitType[1]){
+        this.unitsDescription = [this.unitsInfoService.getDescription(this.linkUnitType[0])]; 
+      } else {
+        this.unitsDescription = [this.unitsInfoService.getDescription(this.linkUnitType[0]),this.unitsInfoService.getDescription(this.linkUnitType[1])]; 
+      }
       this.conversionRate = this.unitsService.getConversionRate(this.linkUnitType[0], this.linkUnitType[1]);
       this.updateResult();
       this.updateSeoData();

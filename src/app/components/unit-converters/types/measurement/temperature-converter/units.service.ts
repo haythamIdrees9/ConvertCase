@@ -15,8 +15,8 @@ export class UnitsService {
     {key: "delisle",label: "Delisle",convertToCelsius: (delisle) => new Decimal(100).minus(delisle).times(2).div(3),convertFromCelsius: (celsius) => new Decimal(100).minus(celsius).times(3).div(2),},
     {key: "newton",label: "Newton",convertToCelsius: (newton) => new Decimal(newton).times(100).div(33),convertFromCelsius: (celsius) => new Decimal(celsius).times(33).div(100),},
     {key: "centigrade",label: "Centigrade",convertToCelsius: (centigrade) => new Decimal(centigrade),convertFromCelsius: (celsius) => new Decimal(celsius),},
-    {key: "gas_mark",label: "Gas Mark",convertToCelsius: (gasMark) => new Decimal(gasMark).minus(1).times(25).plus(150),convertFromCelsius: (celsius) => new Decimal(celsius).minus(150).div(25).plus(1),},
-    {key: "planck_temperature",label: "Planck Temperature",convertToCelsius: (planck) => new Decimal(planck).times('1.41680833e+32'),convertFromCelsius: (celsius) => new Decimal(celsius).div('1.41680833e+32'),},
+    {key: "gas-mark",label: "Gas Mark",convertToCelsius: (gasMark) => new Decimal(gasMark).minus(1).times(25).plus(150),convertFromCelsius: (celsius) => new Decimal(celsius).minus(150).div(25).plus(1),},
+    {key: "planck-temperature",label: "Planck Temperature",convertToCelsius: (planck) => new Decimal(planck).times('1.41680833e+32'),convertFromCelsius: (celsius) => new Decimal(celsius).div('1.41680833e+32'),},
   ]
   
 );

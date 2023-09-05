@@ -3,6 +3,7 @@ import { UnitsService } from './units.service';
 import { ActivatedRoute } from '@angular/router';
 import { MetaService } from 'src/app/components/services/meta.service';
 import { SeoService } from 'src/app/components/services/seo.service';
+import { UnitsInfoService } from './units-description.service';
 
 @Component({
   selector: 'app-temperature-converter',
@@ -14,9 +15,10 @@ export class UnitConverterComponent implements OnInit {
   inputValue: number = 0;
   units: readonly { key: string; label: string; convertToCelsius: (key: any) => any;convertFromCelsius:(key: any) => any }[] = [];
   popularUnits: readonly { route: string, reverseRoute: string, labelRoute: string, labelReverseRoute: string, }[] = [];
-  linkUnitType:string [] = ['cubickilometer','cubicmeter'];
+  linkUnitType:string [] = ['',''];
   currentUnits:readonly { key: string; label: string; convertToCelsius: (key: any) => any;convertFromCelsius:(key: any) => any }[]  = []
-  constructor(private unitsService: UnitsService, private route: ActivatedRoute,
+  unitsDescription:string[]=[];
+constructor(private unitsService: UnitsService,private unitsInfoService:UnitsInfoService, private route: ActivatedRoute,
     private metaService:MetaService, private seoService:SeoService) {
  }
 
@@ -32,7 +34,6 @@ export class UnitConverterComponent implements OnInit {
     this.currentUnits = [this.units[0], this.units[1]];
     this.handleParamsChange();
     this.updateResult();
-    this.seoService.createLinkForCanonicalURL('unit-converters/temperature')
   }
 
   private handleParamsChange(){
@@ -41,6 +42,11 @@ export class UnitConverterComponent implements OnInit {
         return;
       }
       this.linkUnitType = (params['units-type'] as string).split('-to-');
+      if(this.linkUnitType.length > 1 && this.linkUnitType[0] === this.linkUnitType[1]){
+        this.unitsDescription = [this.unitsInfoService.getDescription(this.linkUnitType[0])]; 
+      } else {
+        this.unitsDescription = [this.unitsInfoService.getDescription(this.linkUnitType[0]),this.unitsInfoService.getDescription(this.linkUnitType[1])]; 
+      }
       this.currentUnits = this.unitsService.getConversionRate(this.linkUnitType[0], this.linkUnitType[1]);
       this.updateResult();
       this.updateSeoData();

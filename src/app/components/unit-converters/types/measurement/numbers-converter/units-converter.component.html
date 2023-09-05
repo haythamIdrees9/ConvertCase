@@ -20,49 +20,11 @@
      </section>
      <br>
      <br>
-     
-     <section id="binary" aria-label="Binary Description">
-          <h3>Binary</h3>
-      
-          <p>Binary is a numerical base system that employs only two digits, 0 and 1, to represent numbers. This base-2 system is the foundation of digital computing, serving as the language of computers and electronic devices. In binary, each digit represents a power of 2, making it a fundamental system for encoding and processing information in computing.</p>
-      
-          <p>Conversion: <strong>1 Binary (base 2) = 1 Decimal (base 10)</strong></p>
-      
-          <p>Binary plays a pivotal role in computer science, enabling the representation of data, instructions, and storage at the core of modern technology.</p>
-      </section>
-      <br>
-      
-      <section id="octal" aria-label="Octal Description">
-          <h3>Octal</h3>
-      
-          <p>Octal is a numerical base system that utilizes eight digits, 0 to 7, for numerical representation. Although less common than binary and decimal, octal is essential in various computing applications, particularly in Unix-like operating systems. It offers a compact way to express binary values, as each octal digit corresponds to three binary digits.</p>
-      
-          <p>Conversion: <strong>1 Octal (base 8) = 1 Decimal (base 10)</strong></p>
-      
-          <p>Octal's significance is particularly evident in file permissions, where it simplifies the management of access rights for files and directories.</p>
-      </section>
-      <br>
-      
-      <section id="decimal" aria-label="Decimal Description">
-          <h3>Decimal</h3>
-      
-          <p>Decimal, or base 10, is the numerical base system that is most familiar to people worldwide. It employs ten digits: 0 to 9, for representing numbers. Decimal is the standard for everyday arithmetic and mathematics, making it a fundamental system for human understanding and communication of numerical quantities.</p>
-      
-          <p>Conversion: <strong>1 Decimal (base 10) = 1 Decimal (base 10)</strong></p>
-      
-          <p>Decimal is the cornerstone of mathematics, finance, and general numerical operations, forming the basis for calculations in various fields of study and commerce.</p>
-      </section>
-      <br>
-      
-      <section id="hexadecimal" aria-label="Hexadecimal Description">
-          <h3>Hexadecimal</h3>
-      
-          <p>Hexadecimal, often referred to as hex, is a numerical base system that employs sixteen digits: 0 to 9 and A to F (or a to f). It is widely used in computer programming and digital systems design, as it offers a convenient way to represent binary data in a more compact and human-readable form.</p>
-      
-          <p>Conversion: <strong>1 Hexadecimal (base 16) = 1 Decimal (base 10)</strong></p>
-      
-          <p>Hexadecimal is integral to low-level programming, data encoding, and addressing in computer systems, providing a bridge between binary and human-readable formats.</p>
-      </section>
+     <ng-container *ngFor="let unitDescription of unitsDescription">
+        <div [innerHTML]="unitDescription"></div>
+        <br>
+   </ng-container>  
+    
       
 </app-generic-units-converter>
 

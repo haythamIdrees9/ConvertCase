@@ -1,146 +1,37 @@
 <app-generic-units-converter [popularUnits]="popularUnits" [units]="units" (updateResult)="updateResult($event)"
-     [linkUnitType]="linkUnitType" 
-    [result]="result" [unitType]="'Temperature'">
+    [linkUnitType]="linkUnitType" [result]="result" [unitType]="'Temperature'">
 
     <section id="temperature-converter" aria-label="Temperature Converter Description">
         <h2>Temperature Converter</h2>
-        
-        <p>The Temperature Converter is a valuable tool that enables you to convert measurements of temperature from one unit to another. It is essential for various applications, including science, cooking, engineering, and weather-related calculations.</p>
-        
+
+        <p>The Temperature Converter is a valuable tool that enables you to convert measurements of temperature from one
+            unit to another. It is essential for various applications, including science, cooking, engineering, and
+            weather-related calculations.</p>
+
         <p>Using the Temperature Converter is straightforward. Follow these steps:</p>
-        
+
         <ol>
             <li>Enter the value you want to convert in the input field.</li>
             <li>Select the unit you are converting from in the "From" dropdown list.</li>
             <li>Select the unit you want to convert to in the "To" dropdown list.</li>
             <li>The converted value will be displayed in the result field.</li>
         </ol>
-        
-        <p>For example, if you need to convert Celsius (°C) to Fahrenheit (°F), enter the Celsius value, select "Celsius" as the "From" unit, and "Fahrenheit" as the "To" unit. Click "Convert," and you will see the equivalent temperature in Fahrenheit.</p>
-        
-        <p>The Temperature Converter supports a comprehensive range of temperature units, making it a valuable tool for professionals, chefs, students, and anyone who needs to perform accurate temperature conversions for their specific needs.</p>
-    </section>
 
-    
+        <p>For example, if you need to convert Celsius (°C) to Fahrenheit (°F), enter the Celsius value, select
+            "Celsius" as the "From" unit, and "Fahrenheit" as the "To" unit. Click "Convert," and you will see the
+            equivalent temperature in Fahrenheit.</p>
 
-    <section id="celsius-unit" aria-label="Celsius Temperature Unit Description">
-        <h3>Celsius Temperature Unit</h3>
-        
-        <p>The Celsius temperature unit (celsius), also known as the degree Celsius (°C), is a widely used unit for measuring temperature in the metric system. It is based on the Celsius scale, where 0°C is the freezing point of water, and 100°C is the boiling point of water under standard atmospheric pressure.</p>
-     
-        <p>Conversion to Celsius: <strong>1 Celsius (celsius) = 1 Celsius (celsius)</strong></p>
-     
-        <p>The Celsius scale is commonly used in everyday life for weather forecasts, cooking, and scientific applications. In the conversion function, the value remains unchanged, as it's already in Celsius.</p>
+        <p>The Temperature Converter supports a comprehensive range of temperature units, making it a valuable tool for
+            professionals, chefs, students, and anyone who needs to perform accurate temperature conversions for their
+            specific needs.</p>
     </section>
-<br>
-    
-    <section id="fahrenheit-unit" aria-label="Fahrenheit Temperature Unit Description">
-        <h3>Fahrenheit Temperature Unit</h3>
-        
-        <p>The Fahrenheit temperature unit (fahrenheit), also known as the degree Fahrenheit (°F), is a temperature scale commonly used in the United States and a few other countries. In the Fahrenheit scale, 32°F is the freezing point of water, and 212°F is the boiling point of water under standard atmospheric pressure.</p>
-     
-        <p>Conversion to Celsius: <strong>Celsius (°C) = (Fahrenheit (°F) - 32) × 5/9</strong></p>
-     
-        <p>Fahrenheit is primarily used in the United States for weather reporting, cooking, and some engineering applications. The conversion function subtracts 32 from the Fahrenheit value, then multiplies by 5/9 to obtain the equivalent Celsius temperature.</p>
-    </section>
-<br>
-    
-    <section id="kelvin-unit" aria-label="Kelvin Temperature Unit Description">
-        <h3>Kelvin Temperature Unit</h3>
-        
-        <p>The Kelvin temperature unit (kelvin), symbolized as K, is the base unit of temperature in the International System of Units (SI). It is an absolute temperature scale where 0 K, known as absolute zero, represents the lowest possible temperature, at which all molecular motion ceases.</p>
-     
-        <p>Conversion to Celsius: <strong>Celsius (°C) = Kelvin (K) - 273.15</strong></p>
-     
-        <p>Kelvin is commonly used in scientific and engineering applications, especially in fields such as physics, chemistry, and thermodynamics. The conversion function subtracts 273.15 from the Kelvin value to obtain the equivalent Celsius temperature.</p>
-    </section>
-<br>
-    
-    <section id="rankine-unit" aria-label="Rankine Temperature Unit Description">
-        <h3>Rankine Temperature Unit</h3>
-        
-        <p>The Rankine temperature unit (rankine), symbolized as R, is an absolute temperature scale that is primarily used in engineering applications, particularly in the United States. It is similar to the Kelvin scale but uses a different zero point. Absolute zero on the Rankine scale is 0 R.</p>
-     
-        <p>Conversion to Celsius: <strong>Celsius (°C) = (Rankine (°R) - 491.67) × 5/9</strong></p>
-     
-        <p>Rankine is often used in thermodynamics, engineering, and some aerospace applications, particularly in the United States. The conversion function first subtracts 491.67 from the Rankine value and then multiplies by 5/9 to obtain the equivalent Celsius temperature.</p>
-    </section>
-<br>
-    
-    <section id="reaumur-unit" aria-label="Réaumur Temperature Unit Description">
-        <h3>Réaumur Temperature Unit</h3>
-        
-        <p>The Réaumur temperature unit (reaumur), symbolized as °Re or °Ré, is a historical temperature scale that was once commonly used in Europe. It divides the temperature range between the freezing and boiling points of water into 80 equal parts, with 0°Ré as the freezing point and 80°Ré as the boiling point of water under standard atmospheric pressure.</p>
-     
-        <p>Conversion to Celsius: <strong>Celsius (°C) = Réaumur (°Ré) × 5/4</strong></p>
-     
-        <p>While the Réaumur scale is no longer in widespread use, it has historical significance in the development of temperature measurement. The conversion function multiplies the Réaumur value by 5/4 to obtain the equivalent Celsius temperature.</p>
-    </section>
-<br>
-    <section id="romer-unit" aria-label="Romer Temperature Unit Description">
-        <h3>Romer Temperature Unit</h3>
-        
-        <p>The Romer temperature unit (romer), symbolized as °Rø, is a historical temperature scale developed by Danish astronomer Ole Rømer in the 18th century. The Romer scale divides the temperature range between the freezing and boiling points of water into 60 equal parts, with 0°Rø as the freezing point and 60°Rø as the boiling point of water under standard atmospheric pressure.</p>
-     
-        <p>Conversion to Celsius: <strong>Celsius (°C) = (Romer (°Rø) - 7.5) × 40/21</strong></p>
-     
-        <p>The Romer scale is no longer in common use but has historical significance in the history of temperature measurement. The conversion function subtracts 7.5 from the Romer value, then multiplies by 40/21 to obtain the equivalent Celsius temperature.</p>
-    </section>
-<br>
-    
-    <section id="delisle-unit" aria-label="Delisle Temperature Unit Description">
-        <h3>Delisle Temperature Unit</h3>
-        
-        <p>The Delisle temperature unit (delisle), also known as the degree Delisle (°De), is a historical temperature scale developed by French astronomer Joseph-Nicolas Delisle in the 18th century. In the Delisle scale, 0°De is the boiling point of water, and 150°De is the freezing point of water under standard atmospheric pressure.</p>
-     
-        <p>Conversion to Celsius: <strong>Celsius (°C) = 100 - (Delisle (°De) × 2/3)</strong></p>
-     
-        <p>Like other historical scales, the Delisle scale is no longer widely used. The conversion function calculates the equivalent Celsius temperature by subtracting the Delisle value from 100 and then multiplying by 2/3.</p>
-    </section>
-<br>
-    
-    <section id="newton-unit" aria-label="Newton Temperature Unit Description">
-        <h3>Newton Temperature Unit</h3>
-        
-        <p>The Newton temperature unit (newton), symbolized as °N, is a temperature scale developed by English scientist Isaac Newton. It divides the temperature range between the freezing and boiling points of water into 33 equal parts, with 0°N as the freezing point and 33°N as the boiling point of water under standard atmospheric pressure.</p>
-     
-        <p>Conversion to Celsius: <strong>Celsius (°C) = (Newton (°N) × 100/33)</strong></p>
-     
-        <p>The Newton scale is less common than the Celsius and Fahrenheit scales. The conversion function calculates the equivalent Celsius temperature by multiplying the Newton value by 100/33.</p>
-    </section>
-<br>
-    
-    <section id="centigrade-unit" aria-label="Centigrade Temperature Unit Description">
-        <h3>Centigrade Temperature Unit</h3>
-        
-        <p>The Centigrade temperature unit (centigrade), also known as the degree Centigrade (°C), is an alternative name for the Celsius scale. It is a widely used unit for measuring temperature in the metric system, where 0°C is the freezing point of water, and 100°C is the boiling point of water under standard atmospheric pressure.</p>
-     
-        <p>Conversion to Celsius: <strong>Celsius (°C) = Centigrade (°C)</strong></p>
-     
-        <p>The Centigrade scale is essentially identical to the Celsius scale, and the conversion function reflects this by leaving the value unchanged.</p>
-    </section>
-<br>
-    
-    <section id="gas-mark-unit" aria-label="Gas Mark Temperature Unit Description">
-        <h3>Gas Mark Temperature Unit</h3>
-        
-        <p>The Gas Mark temperature unit (gas_mark) is a temperature scale used in cooking, particularly in the United Kingdom and some other countries. It is primarily used to indicate oven temperatures for baking and roasting. Gas Mark values typically range from 1 to 9 or higher.</p>
-     
-        <p>Conversion to Celsius: <strong>Celsius (°C) = (Gas Mark - 1) × 25 + 150</strong></p>
-     
-        <p>The Gas Mark scale helps cooks set the right oven temperature for various recipes. The conversion function subtracts 1 from the Gas Mark value, multiplies by 25, and then adds 150 to obtain the equivalent Celsius temperature.</p>
-    </section>
-<br>
-    
-    <section id="planck-temperature-unit" aria-label="Planck Temperature Unit Description">
-        <h3>Planck Temperature Unit</h3>
-        
-        <p>The Planck Temperature unit (planck) is a fundamental unit of temperature in the context of Planck units, a set of natural units used in theoretical physics. It is defined in relation to other fundamental constants of the universe, specifically Planck's constant, the speed of light, and the Boltzmann constant.</p>
-     
-        <p>Conversion to Celsius: <strong>Celsius (°C) = Planck Temperature (planck) × 1.41680833e+32</strong></p>
-     
-        <p>The Planck Temperature is an extremely high temperature and is used in theoretical physics, particularly in the study of quantum gravity and cosmology. The conversion function multiplies the Planck Temperature value by 1.41680833e+32 to obtain the equivalent Celsius temperature.</p>
-    </section>
-<br>
-    
+    <br>
+    <br>
+
+    <ng-container *ngFor="let unitDescription of unitsDescription">
+        <div [innerHTML]="unitDescription"></div>
+        <br>
+    </ng-container>
+
+
 </app-generic-units-converter>

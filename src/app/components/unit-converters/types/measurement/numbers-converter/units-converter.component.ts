@@ -3,6 +3,7 @@ import { UnitsService } from './units.service';
 import { ActivatedRoute } from '@angular/router';
 import { MetaService } from 'src/app/components/services/meta.service';
 import { SeoService } from 'src/app/components/services/seo.service';
+import { UnitsInfoService } from './units-description.service';
 
 @Component({
   selector: 'app-numbers-converter',
@@ -17,7 +18,8 @@ export class UnitConverterComponent implements OnInit {
   linkUnitType:string [] = ['decimal','binary'];
   linkUnitBase:number [] = [10,2];
   errorMessage:string = '';
-  constructor(private unitsService: UnitsService, private route: ActivatedRoute,
+  unitsDescription:string[]=[];
+constructor(private unitsService: UnitsService,private unitsInfoService:UnitsInfoService, private route: ActivatedRoute,
      private metaService:MetaService, private seoService:SeoService) {
   }
 
@@ -38,7 +40,6 @@ export class UnitConverterComponent implements OnInit {
     this.units = this.unitsService.units;
     this.handleParamsChange();
     this.updateResult();
-    this.seoService.createLinkForCanonicalURL('unit-converters/numbers')
   }
 
   private handleParamsChange(){
@@ -47,6 +48,11 @@ export class UnitConverterComponent implements OnInit {
         return;
       }
       this.linkUnitType = (params['units-type'] as string).split('-to-');
+      if(this.linkUnitType.length > 1 && this.linkUnitType[0] === this.linkUnitType[1]){
+        this.unitsDescription = [this.unitsInfoService.getDescription(this.linkUnitType[0])]; 
+      } else {
+        this.unitsDescription = [this.unitsInfoService.getDescription(this.linkUnitType[0]),this.unitsInfoService.getDescription(this.linkUnitType[1])]; 
+      }
       this.linkUnitBase = [this.unitsService.getBase(this.linkUnitType[0]),this.unitsService.getBase(this.linkUnitType[1])]
       this.updateSeoData();
       this.updateResult();
