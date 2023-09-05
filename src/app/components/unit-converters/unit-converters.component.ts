@@ -2,23 +2,22 @@ import { AfterViewInit, Component, HostListener } from '@angular/core';
 
 
 export    const  UnitPages = [
+  { path: 'temperature', label: 'Temperature' },
 { path: 'length', label: 'Length' }, 
 { path: 'weight-and-mass', label: 'Weight and Mass' },
 { path: 'volume', label: 'Volume' },
-{ path: 'temperature', label: 'Temperature' },
-{ path: 'area', label: 'Area' },
-{ path: 'pressure', label: 'Pressure' },
-{ path: 'energy', label: 'Energy' },
-{ path: 'power', label: 'Power' },
-{ path: 'force', label: 'Force' },
 { path: 'time', label: 'Time' },
 { path: 'speed', label: 'Speed' },
-{ path: 'angle', label: 'Angle' },
+{ path: 'area', label: 'Area' },
+{ path: 'power', label: 'Power' },
+{ path: 'pressure', label: 'Pressure' },
+{ path: 'energy', label: 'Energy' },
+{ path: 'force', label: 'Force' },
+{ path: 'data-storage', label: 'Data Storage' },
 { path: 'fuel-consumption', label: 'Fuel Consumption' },
+{ path: 'angle', label: 'Angle' },
 { path: 'numbers', label: 'Numbers' },
 { path: 'velocity', label: 'Velocity' },
-{ path: 'data-storage', label: 'Data Storage' },
-
 ];
 
 @Component({
