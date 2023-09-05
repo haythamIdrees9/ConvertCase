@@ -1,0 +1,68 @@
+<app-generic-units-converter [errorMessage]="errorMessage" [popularUnits]="popularUnits" [units]="units" (updateResult)="updateResult($event)"
+     [linkUnitType]="linkUnitType" [result]="result" [unitType]="'Numbers'">
+     <section id="numbers-converter" aria-label="Numbers Converter Description">
+          <h2>Numbers Converter</h2>
+     
+          <p>The Numbers Converter is a versatile tool that allows you to convert numbers between different numerical systems, such as decimal, binary, octal, and hexadecimal. It's an invaluable resource for programmers, mathematicians, and anyone working with numerical data in various formats.</p>
+     
+          <p>Using the Numbers Converter is straightforward. Follow these steps to accurately convert numbers:</p>
+     
+          <ol>
+              <li>Enter the value you want to convert in the input field. This value represents the number you wish to convert.</li>
+              <li>Select the numerical system you are converting from in the "From" dropdown list. This specifies the initial numerical base of the input value.</li>
+              <li>Select the numerical system you want to convert to in the "To" dropdown list. This designates the desired numerical base for the conversion, such as converting from binary to hexadecimal.</li>
+              <li>The converted value will be displayed in the result field, providing you with an accurate numerical system conversion result.</li>
+          </ol>
+     
+          <p>For example, if you need to convert a binary number (e.g., 101010) to its hexadecimal representation, enter the binary value, select "Binary" as the "From" system, and "Hexadecimal" as the "To" system. Click "Convert," and you will see the equivalent hexadecimal representation.</p>
+     
+          <p>The Numbers Converter supports a wide range of numerical systems, including decimal, binary, octal, hexadecimal, and custom bases, making it an indispensable tool for programmers, students, and enthusiasts who work with different numerical systems for their tasks and projects.</p>
+     </section>
+     <br>
+     <br>
+     
+     <section id="binary" aria-label="Binary Description">
+          <h3>Binary</h3>
+      
+          <p>Binary is a numerical base system that employs only two digits, 0 and 1, to represent numbers. This base-2 system is the foundation of digital computing, serving as the language of computers and electronic devices. In binary, each digit represents a power of 2, making it a fundamental system for encoding and processing information in computing.</p>
+      
+          <p>Conversion: <strong>1 Binary (base 2) = 1 Decimal (base 10)</strong></p>
+      
+          <p>Binary plays a pivotal role in computer science, enabling the representation of data, instructions, and storage at the core of modern technology.</p>
+      </section>
+      <br>
+      
+      <section id="octal" aria-label="Octal Description">
+          <h3>Octal</h3>
+      
+          <p>Octal is a numerical base system that utilizes eight digits, 0 to 7, for numerical representation. Although less common than binary and decimal, octal is essential in various computing applications, particularly in Unix-like operating systems. It offers a compact way to express binary values, as each octal digit corresponds to three binary digits.</p>
+      
+          <p>Conversion: <strong>1 Octal (base 8) = 1 Decimal (base 10)</strong></p>
+      
+          <p>Octal's significance is particularly evident in file permissions, where it simplifies the management of access rights for files and directories.</p>
+      </section>
+      <br>
+      
+      <section id="decimal" aria-label="Decimal Description">
+          <h3>Decimal</h3>
+      
+          <p>Decimal, or base 10, is the numerical base system that is most familiar to people worldwide. It employs ten digits: 0 to 9, for representing numbers. Decimal is the standard for everyday arithmetic and mathematics, making it a fundamental system for human understanding and communication of numerical quantities.</p>
+      
+          <p>Conversion: <strong>1 Decimal (base 10) = 1 Decimal (base 10)</strong></p>
+      
+          <p>Decimal is the cornerstone of mathematics, finance, and general numerical operations, forming the basis for calculations in various fields of study and commerce.</p>
+      </section>
+      <br>
+      
+      <section id="hexadecimal" aria-label="Hexadecimal Description">
+          <h3>Hexadecimal</h3>
+      
+          <p>Hexadecimal, often referred to as hex, is a numerical base system that employs sixteen digits: 0 to 9 and A to F (or a to f). It is widely used in computer programming and digital systems design, as it offers a convenient way to represent binary data in a more compact and human-readable form.</p>
+      
+          <p>Conversion: <strong>1 Hexadecimal (base 16) = 1 Decimal (base 10)</strong></p>
+      
+          <p>Hexadecimal is integral to low-level programming, data encoding, and addressing in computer systems, providing a bridge between binary and human-readable formats.</p>
+      </section>
+      
+</app-generic-units-converter>
+

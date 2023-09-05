@@ -14,6 +14,7 @@ export class GenericUnitsConverterComponent implements OnInit {
   storageKey: string = "";
   @Input('result') result = "";
   @Input('unitType') unitType = "";
+  @Input('errorMessage') errorMessage = "";
   @Input('linkUnitType') linkUnitType: string[] = [];
   @Output('updateResult') updateResult = new EventEmitter<string>();
 

@@ -3,6 +3,7 @@
     <h1>{{unitType}} Converters</h1>
     <div class="container">
         <div class="user-input-cotnainer">
+            <div class="error">{{errorMessage}} </div> 
             <app-in-out-text-inputs [userText]="userInput" #boxes [type]="'number'"
                 [placeholder]="'Enter number here...'" [result]="result" [storageKey]="storageKey"
                 (onChangeEmitter)="setUserInput($event)"></app-in-out-text-inputs>
