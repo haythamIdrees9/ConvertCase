@@ -50,7 +50,6 @@ $theme-color: #144D30;
             }
         }
     }
-
     .links-conainer {
         width: 300px;
         border-radius: 0.25rem;
@@ -64,8 +63,11 @@ $theme-color: #144D30;
         z-index: 1001;
         opacity: 0;
         box-shadow: 0 0 10px #144D30;
-
-
+        padding: 1rem;
+        .links{
+                border: 2px solid $theme-color;
+                border-radius: 0.25rem;
+        }
         .conainer-title {
             background-color: #EEEEEE;
             color: $theme-color;
@@ -122,6 +124,11 @@ $theme-color: #144D30;
             transform: unset;
             box-shadow: unset;
             z-index: unset;
+            padding: 0;
+            .links{
+                border: none;
+                border-radius: unset;
+        }
         }
 
         .shor-converters {

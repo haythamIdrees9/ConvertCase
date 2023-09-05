@@ -1,7 +1,8 @@
 <div class="x-container f-row">
     <div class="router-container">
         <router-outlet></router-outlet>
-        <button class="shor-converters btn-resting c-pointer" (click)="showLinksModal();$event.stopPropagation()"><img  class="green-icon" width="32" height="32" src="assets/images/modal.svg" alt=""></button>
+        <button class="shor-converters btn-resting c-pointer" (click)="showLinksModal();$event.stopPropagation()"><img
+                class="green-icon" width="32" height="32" src="assets/images/modal.svg" alt=""></button>
     </div>
     <!-- <div class="links-conainer">
         <h2 class="conainer-title">All Converters</h2>
@@ -16,15 +17,18 @@
             <img src="assets/images/cancel.svg" width="36" height="36" alt="close modal">
         </button>
     </div>
-    <div class="links-conainer" [class.show-modal]="isLinksModalVisible" (click)="$event.stopPropagation()">
-        <h2 class="conainer-title">Common Converters</h2>
-        <nav class="list-container">
-            <ul>
-                <li *ngFor="let page of pages">
-                    <a (click)="hideLinksModal()" [routerLink]="['','unit-converters',page.path]" [routerLinkActive]="['active']"> {{page.label}}</a>
-                </li>
-            </ul>
-        </nav>
+    <div class="links-conainer" [class.show-modal]="isLinksModalVisible">
+        <div class="links"  (click)="$event.stopPropagation()">
+            <h2 class="conainer-title">Common Converters</h2>
+            <nav class="list-container">
+                <ul>
+                    <li *ngFor="let page of pages">
+                        <a (click)="hideLinksModal()" [routerLink]="['','unit-converters',page.path]"
+                            [routerLinkActive]="['active']"> {{page.label}}</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
     </div>
 
 </div>
