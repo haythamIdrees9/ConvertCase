@@ -20,6 +20,7 @@ export class GenericUnitsConverterComponent implements OnInit {
 
   locatOption1:string='';
   locatOption2:string='';
+  linkUnitLabels:string [] = [];
   constructor(private route: ActivatedRoute,private router:Router) {
   }
 
@@ -30,6 +31,7 @@ export class GenericUnitsConverterComponent implements OnInit {
 
   ngOnInit() {
     [this.locatOption1,this.locatOption2] = this.linkUnitType;
+    this.linkUnitLabels = [this.units.find(item => this.linkUnitType[0] === item.key)?.label,this.units.find(item => this.linkUnitType[1] === item.key)?.label]
     this.storageKey = `${this.convertToSnakeCase(this.unitType)}_storing`
     this.handleParamsChange();
   }
@@ -50,6 +52,7 @@ export class GenericUnitsConverterComponent implements OnInit {
         return;
       }
       this.linkUnitType = (params['units-type'] as string).split('-to-');
+      this.linkUnitLabels = [this.units.find(item => this.linkUnitType[0] === item.key)?.label,this.units.find(item => this.linkUnitType[1] === item.key)?.label]
       this.switchLink = `${this.linkUnitType[1]}-${this.linkUnitType[0]}`
     })
   }

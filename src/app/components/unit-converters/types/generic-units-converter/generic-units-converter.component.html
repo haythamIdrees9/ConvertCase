@@ -1,9 +1,14 @@
 <!-- <a class="back-link f-row a-center" [routerLink]="['../../']"><img src="assets/images/arrow.svg" width="18" height="18" alt=""> Common Converters</a> -->
 <div class="unit-container">
     <h1>{{unitType}} Converters</h1>
+    <div class="message">
+        <span class="error" *ngIf="errorMessage">
+            {{errorMessage}} 
+        </span>
+        <span class="result" *ngIf="!errorMessage && result"><span class="label">Result:</span> {{userInput}} {{linkUnitLabels[0]}} = {{result}} {{linkUnitLabels[1]}}</span>
+    </div> 
     <div class="container">
         <div class="user-input-cotnainer">
-            <div class="error">{{errorMessage}} </div> 
             <app-in-out-text-inputs [userText]="userInput" #boxes [type]="'number'"
                 [placeholder]="'Enter number here...'" [result]="result" [storageKey]="storageKey"
                 (onChangeEmitter)="setUserInput($event)"></app-in-out-text-inputs>

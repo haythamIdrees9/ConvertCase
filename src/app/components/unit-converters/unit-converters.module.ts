@@ -30,6 +30,7 @@ import { CommonModule } from '@angular/common';
           {path: 'energy', loadChildren: () => import('./types/engineering/energy-converter/energy-converter.module').then(m => m.EnergyConverterModule)},
           {path: 'power', loadChildren: () => import('./types/engineering/power-converter/power-converter.module').then(m => m.PowerConverterModule)},
           {path: 'force', loadChildren: () => import('./types/engineering/force-converter/force-converter.module').then(m => m.ForceConverterModule)},
+          {path: 'velocity', loadChildren: () => import('./types/engineering/velocity-converter/velocity-converter.module').then(m => m.VelocityConverterModule)},
           {path: 'time', loadChildren: () => import('./types/time-speed/time-converter/time-converter.module').then(m => m.TimeConverterModule)},
           {path: 'speed', loadChildren: () => import('./types/time-speed/speed-converter/speed-converter.module').then(m => m.SpeedConverterModule)},
           {path: 'angle', loadChildren: () => import('./types/radiology/angle-converter/angle-converter.module').then(m => m.AngleConverterModule)},

@@ -16,6 +16,7 @@ export    const  UnitPages = [
 { path: 'angle', label: 'Angle' },
 { path: 'fuel-consumption', label: 'Fuel Consumption' },
 { path: 'numbers', label: 'Numbers' },
+{ path: 'velocity', label: 'Velocity' },
 { path: 'data-storage', label: 'Data Storage' },
 
 ];
