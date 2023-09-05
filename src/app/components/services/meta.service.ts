@@ -13,8 +13,13 @@ export class MetaService {
     this.title.setTitle(this.convertToTitleCase(title.replace(/-/g,' ')))
   }
 
-  setMeta(name:string,content:string){
-    this.meta.updateTag({name,content})
+  setKeywords(keywords:string){
+    this.meta.updateTag({name:'keywords',content:keywords})
+  }
+
+  setDescription(description:string){
+    this.meta.updateTag({name:'description',content:description})
+
   }
 
   private convertToTitleCase(originalText:string) {

@@ -49,13 +49,13 @@ export class TextManipulationComponent {
     let action = this.route.snapshot.params['action'];
     if(!action || !this.buttonMappings[action]){
       action = defaultAction
-      this.router.navigate(['./',defaultAction],{relativeTo:this.route.parent})
+      this.router.navigate(['./',defaultAction],{relativeTo:this.route.parent,replaceUrl:true})
     }
     this.route.params.subscribe(params =>{
       const action = params['action'] || 'text-reverser';
       if(action){
         this.metaService.setTitle(action);
-        this.metaService.setMeta("description",this.metaContent[action])
+        this.metaService.setDescription(this.metaContent[action])
       }
     })
     if(action && this.buttonMappings[action]){
@@ -66,8 +66,8 @@ export class TextManipulationComponent {
 
   private handleSeo(){
     this.metaService.setTitle('Text Manipulation Tools: Convert, Reverse, Randomize, and More');
-    this.metaService.setMeta("description",`Explore a range of powerful text manipulation tools. Convert text between cases, reverse content, randomize characters, sort text, and apply creative transformations. Enhance your content with easy-to-use text manipulation utilities for a variety of purposes.`);
-    this.metaService.setMeta("keywords","reverse text, randomize text, sort text, rotate text, arrange text in columns, repeat text, transpose text, replace text")
+    this.metaService.setDescription(`Explore a range of powerful text manipulation tools. Convert text between cases, reverse content, randomize characters, sort text, and apply creative transformations. Enhance your content with easy-to-use text manipulation utilities for a variety of purposes.`);
+    this.metaService.setKeywords("reverse text, randomize text, sort text, rotate text, arrange text in columns, repeat text, transpose text, replace text")
   }
 
   onSelect(executeFn:() => void){

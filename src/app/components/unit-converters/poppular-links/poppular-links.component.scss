@@ -8,6 +8,9 @@ ul{
     padding: 0;
     list-style-type: none;
     line-height: 1.5;
+    li{
+        margin-bottom: 0.5rem;
+    }
     &:first-child{
         margin-right: 2rem;
     }
@@ -15,36 +18,5 @@ ul{
         font-size: 1rem;
         text-decoration: none;
         color: #144D30;
-    }
-}
-
-.pair-with-base{
-    .convert-label{
-        color: black;
-        font-weight: bold;
-        font-size: 1rem;
-    }
-    ul{
-        background-color: #f8f7fc;
-        padding: 0.5rem;
-        border: 1px solid #144D30;
-        border-radius: 0.25rem;
-        box-shadow: 0 0 16px -7px #144D30;
-        margin: 0;
-        li {
-            &:not(:first-child){
-                margin-top: 1rem;
-            }
-            .f-row :first-child{
-                margin-right: 1rem;
-            }
-        }
-        
-    }
-}
-
-@include mobileFirst('sm') {
-    .pair-with-base .convert-label , ul a {
-                font-size: 1.25rem;
     }
 }

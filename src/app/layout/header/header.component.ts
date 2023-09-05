@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit{
     {path:'/text-case-tools/convert-to-uppercase',label:'Text Convert Case'},
     {path:'/encode-decode/url-encode',label:'Encoding and Decoding'},
     {path:'/text-manipulation/text-reverser',label:'Text Manipulation'},
-    // {path:'/unit-converters',label:'Unit Converters'},
+    {path:'/unit-converters',label:'Unit Converters'},
 
     // {path:'/temperature-converters',label:'Temperature Converstion'},
     // {path:'/distance-converters',label:'Distance Converters'},

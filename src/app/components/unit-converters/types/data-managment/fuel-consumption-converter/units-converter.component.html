@@ -1,0 +1,257 @@
+<app-generic-units-converter [popularUnits]="popularUnits" [units]="units" (updateResult)="updateResult($event)"
+     [linkUnitType]="linkUnitType" [result]="result" [unitType]="'Fuel Consumption'">
+     <section id="fuel-consumption-converter" aria-label="Fuel Consumption Converter Description">
+        <h2>Fuel Consumption Converter</h2>
+   
+        <p>The Fuel Consumption Converter is a versatile tool that allows you to convert fuel consumption measurements from one unit to another. It's an essential resource for various applications, including automotive, transportation, and energy efficiency assessments.</p>
+   
+        <p>Using the Fuel Consumption Converter is straightforward. Follow these steps to accurately convert fuel consumption values:</p>
+   
+        <ol>
+            <li>Enter the value you want to convert in the input field. This value represents the fuel consumption rate you wish to convert.</li>
+            <li>Select the unit you are converting from in the "From" dropdown list. This specifies the initial unit of fuel consumption measurement.</li>
+            <li>Select the unit you want to convert to in the "To" dropdown list. This designates the desired unit for the conversion, such as miles per gallon (MPG) to liters per 100 kilometers (L/100km).</li>
+            <li>The converted value will be displayed in the result field, providing you with an accurate fuel consumption conversion result.</li>
+        </ol>
+   
+        <p>For example, if you need to convert miles per gallon (MPG) to kilometers per liter (km/L), enter the MPG value, select "Miles per Gallon" as the "From" unit, and "Kilometer per Liter" as the "To" unit. Click "Convert," and you will see the equivalent fuel consumption rate in km/L.</p>
+   
+        <p>The Fuel Consumption Converter supports a wide range of units, including MPG, L/100km, kilometers per gallon (km/G), and more, making it an indispensable tool for drivers, automotive engineers, environmentalists, and anyone who needs precise fuel consumption conversions for their tasks and projects.</p>
+   </section>
+   <br>
+   <br>
+   
+ 
+     <section id="meter-per-liter" aria-label="Meter per Liter Fuel Efficiency Unit Description">
+        <h3>Meter per Liter</h3>
+        
+        <p>Meter per liter (m/L) is a unit of fuel efficiency that represents the distance traveled in meters on one liter of fuel. It is a standard metric unit used in many countries to measure the fuel efficiency of vehicles.</p>
+     
+        <p>Conversion: <strong>1 Meter per Liter (m/L) = 1 Meter per Liter (m/L)</strong></p>
+     
+        <p>Meters per liter is a common unit for measuring fuel efficiency in countries using the metric system.</p>
+    </section>
+    <br>
+    
+    <section id="kilometer-per-liter" aria-label="Kilometer per Liter Fuel Efficiency Unit Description">
+        <h3>Kilometer per Liter</h3>
+        
+        <p>Kilometer per liter (km/L) is a unit of fuel efficiency that represents the distance traveled in kilometers on one liter of fuel. It is widely used for measuring fuel efficiency in countries using the metric system.</p>
+     
+        <p>Conversion: <strong>1 Kilometer per Liter (km/L) = 0.001 Meter per Liter (m/L)</strong></p>
+     
+        <p>Kilometers per liter provide a larger scale for expressing fuel efficiency, commonly used in Europe and other metric countries.</p>
+    </section>
+    <br>
+    
+    <section id="mile-per-gallon-us" aria-label="Mile per Gallon (US) Fuel Efficiency Unit Description">
+        <h3>Mile per Gallon (US)</h3>
+        
+        <p>Mile per gallon (US) is a unit of fuel efficiency used primarily in the United States. It represents the distance traveled in miles on one gallon (U.S.) of fuel. This unit is commonly used for measuring fuel efficiency in the U.S.</p>
+     
+        <p>Conversion: <strong>1 Mile per Gallon (US) = 0.000160358 Meter per Liter (m/L)</strong></p>
+     
+        <p>Miles per gallon (US) provide a convenient way to express fuel efficiency for American consumers.</p>
+    </section>
+    <br>
+    
+    <section id="mile-per-gallon-uk" aria-label="Mile per Gallon (UK) Fuel Efficiency Unit Description">
+        <h3>Mile per Gallon (UK)</h3>
+        
+        <p>Mile per gallon (UK) is a unit of fuel efficiency used in the United Kingdom and some other countries. It represents the distance traveled in miles on one gallon (UK) of fuel.</p>
+     
+        <p>Conversion: <strong>1 Mile per Gallon (UK) = 0.000117845 Meter per Liter (m/L)</strong></p>
+     
+        <p>Miles per gallon (UK) provide a different measurement for fuel efficiency compared to the U.S. gallon, and it's used in regions following the imperial system.</p>
+    </section>
+    <br>
+    
+    <section id="liter-per-100-kilometers" aria-label="Liter per 100 Kilometers Fuel Efficiency Unit Description">
+        <h3>Liter per 100 Kilometers</h3>
+        
+        <p>Liter per 100 kilometers (L/100km) is a unit of fuel efficiency used in some European countries and other regions. It represents the volume of fuel consumed in liters per 100 kilometers traveled.</p>
+     
+        <p>Conversion: <strong>1 Liter per 100 Kilometers (L/100km) = 0.01 Meter per Liter (m/L)</strong></p>
+     
+        <p>Liters per 100 kilometers provide a direct measure of fuel consumption in metric countries, allowing consumers to understand fuel efficiency easily.</p>
+    </section>
+    <br>
+    
+    <section id="kilometer-per-gallon-us" aria-label="Kilometer per Gallon (US) Fuel Efficiency Unit Description">
+        <h3>Kilometer per Gallon (US)</h3>
+        
+        <p>Kilometer per gallon (US) is a unit of fuel efficiency used primarily in the United States. It represents the distance traveled in kilometers on one gallon (U.S.) of fuel. This unit is commonly used for measuring fuel efficiency in the U.S.</p>
+     
+        <p>Conversion: <strong>1 Kilometer per Gallon (US) = 0.000160934 Meter per Liter (m/L)</strong></p>
+     
+        <p>Kilometers per gallon (US) provide a convenient way to express fuel efficiency for American consumers.</p>
+    </section>
+    <br>
+    
+    <section id="kilometer-per-gallon-uk" aria-label="Kilometer per Gallon (UK) Fuel Efficiency Unit Description">
+        <h3>Kilometer per Gallon (UK)</h3>
+        
+        <p>Kilometer per gallon (UK) is a unit of fuel efficiency used in the United Kingdom and some other countries. It represents the distance traveled in kilometers on one gallon (UK) of fuel.</p>
+     
+        <p>Conversion: <strong>1 Kilometer per Gallon (UK) = 0.000134481 Meter per Liter (m/L)</strong></p>
+     
+        <p>Kilometers per gallon (UK) provide a different measurement for fuel efficiency compared to the U.S. gallon, and it's used in regions following the imperial system.</p>
+    </section>
+    <br>
+    
+    <section id="meter-per-gallon-us" aria-label="Meter per Gallon (US) Fuel Efficiency Unit Description">
+        <h3>Meter per Gallon (US)</h3>
+        
+        <p>Meter per gallon (US) is a unit of fuel efficiency that represents the distance traveled in meters on one gallon (U.S.) of fuel. It is a standard metric unit used in many countries to measure the fuel efficiency of vehicles.</p>
+     
+        <p>Conversion: <strong>1 Meter per Gallon (US) = 1.61e-7 Meter per Liter (m/L)</strong></p>
+     
+        <p>Meters per gallon (US) provide a precise metric measurement for fuel efficiency.</p>
+    </section>
+    <br>
+    
+    <section id="meter-per-gallon-uk" aria-label="Meter per Gallon (UK) Fuel Efficiency Unit Description">
+        <h3>Meter per Gallon (UK)</h3>
+        
+        <p>Meter per gallon (UK) is a unit of fuel efficiency used in the United Kingdom and some other countries. It represents the distance traveled in meters on one gallon (UK) of fuel.</p>
+     
+        <p>Conversion: <strong>1 Meter per Gallon (UK) = 1.34e-7 Meter per Liter (m/L)</strong></p>
+     
+        <p>Meters per gallon (UK) provide a different metric measurement for fuel efficiency compared to the U.S. gallon.</p>
+    </section>
+    <br>
+    
+    <section id="nautical-mile-per-liter" aria-label="Nautical Mile per Liter Fuel Efficiency Unit Description">
+        <h3>Nautical Mile per Liter</h3>
+        
+        <p>Nautical mile per liter is a unit of fuel efficiency that represents the distance traveled in nautical miles on one liter of fuel.</p>
+     
+        <p>Conversion: <strong>1 Nautical Mile per Liter = 0.000539956 Meter per Liter (m/L)</strong></p>
+     
+        <p>Nautical miles per liter is a unit used in maritime and navigation contexts.</p>
+    </section>
+
+    <br>
+    <section id="nautical-mile-per-gallon-us" aria-label="Nautical Mile per Gallon (US) Fuel Efficiency Unit Description">
+        <h3>Nautical Mile per Gallon (US)</h3>
+        
+        <p>Nautical mile per gallon (US) is a unit of fuel efficiency used in maritime and navigation contexts. It represents the distance traveled in nautical miles on one gallon (U.S.) of fuel.</p>
+     
+        <p>Conversion: <strong>1 Nautical Mile per Gallon (US) = 9.16e-7 Meter per Liter (m/L)</strong></p>
+     
+        <p>Nautical miles per gallon (US) is a specialized unit for measuring fuel efficiency in marine applications.</p>
+    </section>
+    <br>
+    
+    <section id="nautical-mile-per-gallon-uk" aria-label="Nautical Mile per Gallon (UK) Fuel Efficiency Unit Description">
+        <h3>Nautical Mile per Gallon (UK)</h3>
+        
+        <p>Nautical mile per gallon (UK) is another unit of fuel efficiency used in maritime and navigation contexts, primarily in the United Kingdom and similar regions. It represents the distance traveled in nautical miles on one gallon (UK) of fuel.</p>
+     
+        <p>Conversion: <strong>1 Nautical Mile per Gallon (UK) = 7.62e-7 Meter per Liter (m/L)</strong></p>
+     
+        <p>Nautical miles per gallon (UK) provides a different measurement for fuel efficiency compared to the U.S. gallon and is used in regions following the imperial system.</p>
+    </section>
+    <br>
+    
+    <section id="kilometer-per-cubic-meter" aria-label="Kilometer per Cubic Meter Fuel Efficiency Unit Description">
+        <h3>Kilometer per Cubic Meter</h3>
+        
+        <p>Kilometer per cubic meter is a unit of fuel efficiency that measures the distance traveled in kilometers on one cubic meter of fuel. It's commonly used for specific applications requiring fuel efficiency measurements at a volume level.</p>
+     
+        <p>Conversion: <strong>1 Kilometer per Cubic Meter = 0.001 Meter per Liter (m/L)</strong></p>
+     
+        <p>Kilometers per cubic meter is used when dealing with fuel efficiency at a volumetric scale.</p>
+    </section>
+    <br>
+    
+    <section id="mile-per-cubic-yard" aria-label="Mile per Cubic Yard Fuel Efficiency Unit Description">
+        <h3>Mile per Cubic Yard</h3>
+        
+        <p>Mile per cubic yard is a unique unit of fuel efficiency representing the distance traveled in miles on one cubic yard of fuel. This unit is not commonly used but provides an alternative measurement for fuel efficiency.</p>
+     
+        <p>Conversion: <strong>1 Mile per Cubic Yard = 1.30795 Meter per Liter (m/L)</strong></p>
+     
+        <p>Miles per cubic yard is an uncommon unit for fuel efficiency calculations.</p>
+    </section>
+    <br>
+    
+    <section id="meter-per-cubic-foot" aria-label="Meter per Cubic Foot Fuel Efficiency Unit Description">
+        <h3>Meter per Cubic Foot</h3>
+        
+        <p>Meter per cubic foot is a unit of fuel efficiency that measures the distance traveled in meters on one cubic foot of fuel. It provides a metric measurement for fuel efficiency at a volumetric scale.</p>
+     
+        <p>Conversion: <strong>1 Meter per Cubic Foot = 0.0283168 Meter per Liter (m/L)</strong></p>
+     
+        <p>Meters per cubic foot is a metric unit for fuel efficiency calculations.</p>
+    </section>
+<br>    
+
+<section id="mile-per-liter" aria-label="Mile per Liter Fuel Efficiency Unit Description">
+    <h3>Mile per Liter</h3>
+    
+    <p>Mile per liter is a unit of fuel efficiency that represents the distance traveled in miles on one liter of fuel. It's commonly used in countries that measure fuel efficiency in miles and liters.</p>
+ 
+    <p>Conversion: <strong>1 Mile per Liter (mi/L) = 0.000621371 Meter per Liter (m/L)</strong></p>
+ 
+    <p>Miles per liter is a standard unit for fuel efficiency, especially in regions where the metric system is not commonly used for this purpose.</p>
+</section>
+<br>
+
+<section id="kilometer-per-cubic-foot" aria-label="Kilometer per Cubic Foot Fuel Efficiency Unit Description">
+    <h3>Kilometer per Cubic Foot</h3>
+    
+    <p>Kilometer per cubic foot is a unit of fuel efficiency that measures the distance traveled in kilometers on one cubic foot of fuel. It provides a metric measurement for fuel efficiency at a volumetric scale.</p>
+ 
+    <p>Conversion: <strong>1 Kilometer per Cubic Foot (km/ft³) = 0.0283168 Meter per Liter (m/L)</strong></p>
+ 
+    <p>Kilometers per cubic foot is a metric unit for fuel efficiency calculations, primarily for volumetric fuel measurements.</p>
+</section>
+<br>
+
+<section id="mile-per-cubic-meter" aria-label="Mile per Cubic Meter Fuel Efficiency Unit Description">
+    <h3>Mile per Cubic Meter</h3>
+    
+    <p>Mile per cubic meter is a unit of fuel efficiency representing the distance traveled in miles on one cubic meter of fuel. It's used for measuring fuel efficiency at a volumetric level in the metric system.</p>
+ 
+    <p>Conversion: <strong>1 Mile per Cubic Meter (mi/m³) = 6.21e-7 Meter per Liter (m/L)</strong></p>
+ 
+    <p>Miles per cubic meter is a metric unit for fuel efficiency calculations, focusing on fuel volume in the metric system.</p>
+</section>
+<br>
+
+<section id="mile-per-cubic-inch" aria-label="Mile per Cubic Inch Fuel Efficiency Unit Description">
+    <h3>Mile per Cubic Inch</h3>
+    
+    <p>Mile per cubic inch is a unit of fuel efficiency that represents the distance traveled in miles on one cubic inch of fuel. It's a specialized unit used for precise measurements of fuel efficiency at very small volumes.</p>
+ 
+    <p>Conversion: <strong>1 Mile per Cubic Inch (mi/in³) = 2.54e-8 Meter per Liter (m/L)</strong></p>
+ 
+    <p>Miles per cubic inch is a tiny unit for fuel efficiency calculations, primarily in specialized fields.</p>
+</section>
+<br>
+
+<section id="meter-per-cubic-inch" aria-label="Meter per Cubic Inch Fuel Efficiency Unit Description">
+    <h3>Meter per Cubic Inch</h3>
+    
+    <p>Meter per cubic inch is a unit of fuel efficiency that measures the distance traveled in meters on one cubic inch of fuel. It's used for precise measurements of fuel efficiency at small volumes in the metric system.</p>
+ 
+    <p>Conversion: <strong>1 Meter per Cubic Inch (m/in³) = 0.0000610236 Meter per Liter (m/L)</strong></p>
+ 
+    <p>Meters per cubic inch is a metric unit for fuel efficiency calculations, especially in technical applications requiring small volume measurements.</p>
+</section>
+<br>
+
+<section id="mile-per-cubic-centimeter" aria-label="Mile per Cubic Centimeter Fuel Efficiency Unit Description">
+    <h3>Mile per Cubic Centimeter</h3>
+    
+    <p>Mile per cubic centimeter is a unit of fuel efficiency that represents the distance traveled in miles on one cubic centimeter of fuel. It's a very specialized unit used for extremely precise measurements of fuel efficiency at minuscule volumes.</p>
+ 
+    <p>Conversion: <strong>1 Mile per Cubic Centimeter (mi/cm³) = 6.21e-7 Meter per Liter (m/L)</strong></p>
+ 
+    <p>Miles per cubic centimeter is an exceptionally small unit for fuel efficiency calculations, typically employed in highly specialized applications requiring ultra-precise volume measurements.</p>
+</section>
+
+
+
+</app-generic-units-converter>

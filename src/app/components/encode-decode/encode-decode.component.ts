@@ -73,13 +73,13 @@ export class EncodeDecodeComponent {
     let action = this.route.snapshot.params['action'];
     if(!action || !this.buttonMappings[action]){
       action = defaultAction
-      this.router.navigate(['./',defaultAction],{relativeTo:this.route.parent})
+      this.router.navigate(['./',defaultAction],{relativeTo:this.route.parent,replaceUrl:true})
     }
     this.route.params.subscribe(params =>{
       const action = params['action'] || defaultAction;
       if(action){
         this.metaService.setTitle(action);
-        this.metaService.setMeta("description",this.metaContent[action]);
+        this.metaService.setDescription(this.metaContent[action]);
       }
     })
     if(action && this.buttonMappings[action]){
@@ -90,8 +90,8 @@ export class EncodeDecodeComponent {
 
   private handleSeo(){
     this.metaService.setTitle('Encode Decode Tools: Convert Text to Secure Formats and Back');
-    this.metaService.setMeta("description",'Navigate through a collection of encode-decode tools designed to transform text into secure formats and decode it back to its original state. Encode text for safe transmission, storage, and compatibility, and then decode it effortlessly. Explore a range of encoding and decoding utilities for versatile text manipulation.')
-    this.metaService.setMeta("keywords","encoding, decoding, URL manipulation, character encoding, character decoding, data transformation, encryption, decryption, security, privacy, URL encoding, URL decoding, HTML encoding, HTML decoding, ROT13 cipher, ROT47 cipher, Punycode encoding, Punycode decoding, UTF-8 encoding, UTF-8 decoding, UTF-16 encoding, UTF-16 decoding, Base64 encoding, Base64 decoding, Morse code encoding, Morse code decoding, BCD encoding, BCD decoding")
+    this.metaService.setDescription('Navigate through a collection of encode-decode tools designed to transform text into secure formats and decode it back to its original state. Encode text for safe transmission, storage, and compatibility, and then decode it effortlessly. Explore a range of encoding and decoding utilities for versatile text manipulation.')
+    this.metaService.setKeywords("encoding, decoding, URL manipulation, character encoding, character decoding, data transformation, encryption, decryption, security, privacy, URL encoding, URL decoding, HTML encoding, HTML decoding, ROT13 cipher, ROT47 cipher, Punycode encoding, Punycode decoding, UTF-8 encoding, UTF-8 decoding, UTF-16 encoding, UTF-16 decoding, Base64 encoding, Base64 decoding, Morse code encoding, Morse code decoding, BCD encoding, BCD decoding")
   }
 
   setOriginalText(text: string) {

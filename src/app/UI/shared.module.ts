@@ -6,6 +6,8 @@ import { ContentModule } from './content/conent.module';
 
 @NgModule({
   declarations: [
+  
+    
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,26 @@
+<div class="search-dropdown" #container>
+    <label [for]="'search-input-'+componentId">{{label}}</label>
+    <input
+      type="text"
+      [id]="'search-input-'+componentId"
+      class="search-input"
+      [(ngModel)]="searchQuery"
+      (click)="openDropdown()"
+      (input)="filterOptions(searchQuery)"
+      [placeholder]="placeholder"
+      [attr.aria-labelledby]="inputAriaLabelledBy"
+    />
+    <ul class="options-list custom-hover" tabindex="0" [class.shown]="isFilterShown" role="listbox" [attr.aria-label]="listAriaLabelledBy">
+      <li
+        *ngFor="let option of filteredOptions; let i = index"
+        role="option"
+        [class.selected]="selected === option.key"
+        [attr.aria-posinset]="i + 1"
+        [attr.aria-setsize]="filteredOptions.length"
+        (click)="onSelectOption(option)"
+      >
+        {{ option.label }}
+      </li>
+    </ul>
+  </div>
+  
