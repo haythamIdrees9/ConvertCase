@@ -68,9 +68,7 @@ export class UnitsService {
   }
 
 
-  getUnits(key: string) {
-    return this.units.find(unit => unit.key === key);
-  }
+
 
   getConversionRate(fromUnit: string, toUnit: string) {
     const fromUnitData = this.units.find(unit => unit.key === fromUnit);

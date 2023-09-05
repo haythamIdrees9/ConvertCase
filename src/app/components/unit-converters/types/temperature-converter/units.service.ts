@@ -50,9 +50,7 @@ popularUnits = Object.freeze([
   }
 
 
-  getUnits(key:string){
-    return this.units.find(unit => unit.key === key);
-  }
+  
 
   getConversionRate(fromUnitKey:string, toUnitKey:string) {
     const fromUnit = this.units.find(unit => unit.key === fromUnitKey);

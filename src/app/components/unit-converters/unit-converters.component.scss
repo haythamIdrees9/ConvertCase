@@ -6,8 +6,10 @@ $theme-color: #144D30;
     flex-direction: row !important;
     justify-content: center;
     align-items: flex-start;
-    padding-top: 1rem;
-
+    @include mobileFirst("xxl") {
+        padding: 2rem max(1rem, 50vw - 496px);
+        padding-top: 1rem;
+    }
     .router-container {
         position: relative;
     }

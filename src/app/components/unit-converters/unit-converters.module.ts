@@ -32,6 +32,8 @@ import { CommonModule } from '@angular/common';
           {path: 'angle', loadChildren: () => import('./types/angle-converter/angle-converter.module').then(m => m.AngleConverterModule)},
           {path: 'fuel-consumption', loadChildren: () => import('./types/fuel-consumption-converter/fuel-consumption-converter.module').then(m => m.FuelConsumptionConverterModule)},
           {path: 'numbers', loadChildren: () => import('./types/numbers-converter/numbers-converter.module').then(m => m.NumbersConverterModule)},
+          {path: 'data-storage', loadChildren: () => import('./types/data-storage-converter/data-storage-converter.module').then(m => m.dataStorageConverterModule)},
+          
         ],
           
         }

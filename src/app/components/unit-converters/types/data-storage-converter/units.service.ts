@@ -1,0 +1,81 @@
+import { Injectable } from '@angular/core';
+import Decimal from 'decimal.js';
+
+@Injectable()
+export class UnitsService {
+
+  units: readonly { key: string; label: string; conversionRate: number }[] = Object.freeze([
+    { "key": "bit", "label": "Bit [b]", "conversionRate": 1 },
+    { "key": "nibble", "label": "Nibble", "conversionRate": 4 },
+    { "key": "byte", "label": "Byte [B]", "conversionRate": 8 },
+    { "key": "character", "label": "Character", "conversionRate": 8 },
+    { "key": "word", "label": "Word", "conversionRate": 16 },
+    { "key": "MAPM-word", "label": "MAPM-Word", "conversionRate": 32 },
+    { "key": "quadruple-word", "label": "Quadruple Word", "conversionRate": 64 },
+    { "key": "block", "label": "Block", "conversionRate": 512 },
+    { "key": "kilobit", "label": "Kilobit [kb]", "conversionRate": 1000 },
+    { "key": "kilobyte", "label": "Kilobyte [kB]", "conversionRate": 8000 },
+    { "key": "kilobyte-10", "label": "Kilobyte (10^3 bytes)", "conversionRate": 8000 },
+    { "key": "megabit", "label": "Megabit [Mb]", "conversionRate": 1000000 },
+    { "key": "megabyte", "label": "Megabyte [MB]", "conversionRate": 8000000 },
+    { "key": "megabyte-10", "label": "Megabyte (10^6 bytes)", "conversionRate": 8000000 },
+    { "key": "gigabit", "label": "Gigabit [Gb]", "conversionRate": 1000000000 },
+    { "key": "gigabyte", "label": "Gigabyte [GB]", "conversionRate": 8000000000 },
+    { "key": "gigabyte-10", "label": "Gigabyte (10^9 bytes)", "conversionRate": 8000000000 },
+    { "key": "terabit", "label": "Terabit [Tb]", "conversionRate": 1000000000000 },
+    { "key": "terabyte", "label": "Terabyte [TB]", "conversionRate": 8000000000000 },
+    { "key": "terabyte-10", "label": "Terabyte (10^12 bytes)", "conversionRate": 8000000000000 },
+    { "key": "petabit", "label": "Petabit [Pb]", "conversionRate": 1000000000000000 },
+    { "key": "petabyte", "label": "Petabyte [PB]", "conversionRate": 8000000000000000 }    
+  ]
+  );
+
+  popularUnits = Object.freeze([
+    { "route": "bit-to-byte", "reverseRoute": "byte-to-bit", "labelRoute": "Bit to Byte", "labelReverseRoute": "Byte to Bit" },
+    { "route": "bit-to-kilobit", "reverseRoute": "kilobit-to-bit", "labelRoute": "Bit to Kilobit", "labelReverseRoute": "Kilobit to Bit" },
+    { "route": "bit-to-kilobyte", "reverseRoute": "kilobyte-to-bit", "labelRoute": "Bit to Kilobyte", "labelReverseRoute": "Kilobyte to Bit" },
+    { "route": "byte-to-kilobyte", "reverseRoute": "kilobyte-to-byte", "labelRoute": "Byte to Kilobyte", "labelReverseRoute": "Kilobyte to Byte" },
+    { "route": "byte-to-megabyte", "reverseRoute": "megabyte-to-byte", "labelRoute": "Byte to Megabyte", "labelReverseRoute": "Megabyte to Byte" },
+    { "route": "kilobit-to-kilobyte", "reverseRoute": "kilobyte-to-kilobit", "labelRoute": "Kilobit to Kilobyte", "labelReverseRoute": "Kilobyte to Kilobit" },
+    { "route": "kilobyte-to-megabyte", "reverseRoute": "megabyte-to-kilobyte", "labelRoute": "Kilobyte to Megabyte", "labelReverseRoute": "Megabyte to Kilobyte" },
+    { "route": "kilobyte-10-to-megabyte", "reverseRoute": "megabyte-to-kilobyte-10", "labelRoute": "Kilobyte (10^3 bytes) to Megabyte", "labelReverseRoute": "Megabyte to Kilobyte (10^3 bytes)" },
+    { "route": "megabit-to-megabyte", "reverseRoute": "megabyte-to-megabit", "labelRoute": "Megabit to Megabyte", "labelReverseRoute": "Megabyte to Megabit" },
+    { "route": "megabyte-to-gigabyte", "reverseRoute": "gigabyte-to-megabyte", "labelRoute": "Megabyte to Gigabyte", "labelReverseRoute": "Gigabyte to Megabyte" },
+    { "route": "megabyte-10-to-gigabyte", "reverseRoute": "gigabyte-to-megabyte-10", "labelRoute": "Megabyte (10^6 bytes) to Gigabyte", "labelReverseRoute": "Gigabyte to Megabyte (10^6 bytes)" },
+    { "route": "gigabit-to-gigabyte", "reverseRoute": "gigabyte-to-gigabit", "labelRoute": "Gigabit to Gigabyte", "labelReverseRoute": "Gigabyte to Gigabit" },
+    { "route": "gigabyte-to-terabyte", "reverseRoute": "terabyte-to-gigabyte", "labelRoute": "Gigabyte to Terabyte", "labelReverseRoute": "Terabyte to Gigabyte" },
+    { "route": "gigabyte-10-to-terabyte", "reverseRoute": "terabyte-to-gigabyte-10", "labelRoute": "Gigabyte (10^9 bytes) to Terabyte", "labelReverseRoute": "Terabyte to Gigabyte (10^9 bytes)" },
+    { "route": "terabit-to-terabyte", "reverseRoute": "terabyte-to-terabit", "labelRoute": "Terabit to Terabyte", "labelReverseRoute": "Terabyte to Terabit" },
+    { "route": "terabyte-to-petabyte", "reverseRoute": "petabyte-to-terabyte", "labelRoute": "Terabyte to Petabyte", "labelReverseRoute": "Petabyte to Terabyte" },
+    { "route": "terabyte-10-to-petabyte", "reverseRoute": "petabyte-to-terabyte-10", "labelRoute": "Terabyte (10^12 bytes) to Petabyte", "labelReverseRoute": "Petabyte to Terabyte (10^12 bytes)" },
+    { "route": "petabit-to-petabyte", "reverseRoute": "petabyte-to-petabit", "labelRoute": "Petabit to Petabyte", "labelReverseRoute": "Petabyte to Petabit" },
+    { "route": "petabyte-to-exabyte", "reverseRoute": "exabyte-to-petabyte", "labelRoute": "Petabyte to Exabyte", "labelReverseRoute": "Exabyte to Petabyte" }
+  ]);    
+
+  constructor() {    
+  }
+
+
+  isValidNumber(userInput:string) {
+    const parsedValue = parseFloat(userInput);
+    return !isNaN(parsedValue) && isFinite(parsedValue); 
+  }
+
+  getConversionRate(fromUnit:string, toUnit:string) {
+    const fromUnitData = this.units.find(unit => unit.key === fromUnit);
+    const toUnitData = this.units.find(unit => unit.key === toUnit);
+
+    if (!fromUnitData || !toUnitData) {
+      throw new Error("Invalid units provided.");
+    }
+    return this.calculateConversionRate(toUnitData.conversionRate,fromUnitData.conversionRate)
+  }
+
+  calculateConversionRate(conversionRate1:number,conversionRate2:number){
+    const rate1 = new Decimal(conversionRate1);
+    const rate2 = new Decimal(conversionRate2);
+    return rate2.div(rate1).toNumber()
+  }
+
+
+}
