@@ -69,7 +69,7 @@ this.linkUnitLabels = [this.units.find(item => this.linkUnitType[0] === item.key
   }
 
   updateSeoData() {
-    this.metaService.setTitle(`Convert ${this.linkUnitType[0]} to ${this.linkUnitType[1]}`);
+    this.metaService.setTitle(`${this.linkUnitType[0]} to ${this.linkUnitType[1]} online converter`);
     this.metaService.setDescription(`Effortlessly convert data storage units like ${this.linkUnitType[0]} to ${this.linkUnitType[1]}. Get quick and accurate results with our user-friendly data storage converter`)
     this.metaService.setKeywords("data storage converter, byte, kilobyte, megabyte, gigabyte, terabyte, petabyte, unit conversion, convert bytes to kilobytes, megabytes to gigabytes, data storage unit conversion, data storage measurement, storage conversion tool, byte to gigabyte conversion")
   }

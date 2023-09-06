@@ -57,7 +57,7 @@ this.linkUnitLabels = [this.units.find(item => this.linkUnitType[0] === item.key
   }
 
   updateSeoData(){
-    this.metaService.setTitle(`Convert ${this.linkUnitType[0]} to ${this.linkUnitType[1]}`);
+    this.metaService.setTitle(`${this.linkUnitType[0]} to ${this.linkUnitType[1]} online converter`);
     this.metaService.setDescription(`Simplify area conversions between ${this.linkUnitType[0]} and ${this.linkUnitType[1]}. Quick and precise results with our user-friendly area converter`)
     this.metaService.setKeywords("area conversion, square meter, square kilometer, hectare, acre, square mile, square centimeter, square millimeter, square yard, square foot, square inch, are, dunam, feddan, rai, section, township, circular mil, square decimeter, homestead, bovate")
   }

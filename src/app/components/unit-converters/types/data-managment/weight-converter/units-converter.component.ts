@@ -56,7 +56,7 @@ this.linkUnitLabels = [this.units.find(item => this.linkUnitType[0] === item.key
   }
 
   updateSeoData(){
-    this.metaService.setTitle(`Convert ${this.linkUnitType[0]} to ${this.linkUnitType[1]}`);
+    this.metaService.setTitle(`${this.linkUnitType[0]} to ${this.linkUnitType[1]} online converter`);
     this.metaService.setDescription(`Convert weights seamlessly from ${this.linkUnitType[0]} to ${this.linkUnitType[1]}. Get precise results instantly with our user-friendly weight converter`)
     this.metaService.setKeywords("weight converter, gram, kilogram, milligram, ounce, pound, tonne, unit conversion, convert grams to ounces, kilograms to pounds, milligrams to ounces, weight unit conversion, weight measurement, gram to kilogram conversion, milligram to ounce conversion, weight conversion tool")
   }

@@ -56,7 +56,7 @@ this.linkUnitLabels = [this.units.find(item => this.linkUnitType[0] === item.key
   }
 
   updateSeoData(){
-    this.metaService.setTitle(`Convert ${this.linkUnitType[0]} to ${this.linkUnitType[1]}`);
+    this.metaService.setTitle(`${this.linkUnitType[0]} to ${this.linkUnitType[1]} online converter`);
     this.metaService.setDescription(`Convert speeds from ${this.linkUnitType[0]} to ${this.linkUnitType[1]} effortlessly. Get quick and precise results with our user-friendly speed converter`)
     this.metaService.setKeywords("speed converter, meters per second, kilometers per hour, miles per hour, knots, unit conversion, convert meters per second to kilometers per hour, miles per hour to knots, speed unit conversion, speed measurement, speed conversion tool, m/s, km/h, mph, knots")
   }

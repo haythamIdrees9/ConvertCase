@@ -56,7 +56,7 @@ this.linkUnitLabels = [this.units.find(item => this.linkUnitType[0] === item.key
   }
 
   updateSeoData(){
-    this.metaService.setTitle(`Convert ${this.linkUnitType[0]} to ${this.linkUnitType[1]}`);
+    this.metaService.setTitle(`${this.linkUnitType[0]} to ${this.linkUnitType[1]} online converter`);
     this.metaService.setDescription(`Effortlessly convert angles from ${this.linkUnitType[0]} to ${this.linkUnitType[1]} with precision. Get quick and accurate results using our user-friendly angle converter`)
     this.metaService.setKeywords("angle converter, degree, radian, gradian, unit conversion, convert degrees to radians, degrees to gradians, angle unit conversion, angle measurement, angle conversion tool, degrees, radians, gradians")
   }

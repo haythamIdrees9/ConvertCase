@@ -56,7 +56,7 @@ this.linkUnitLabels = [this.units.find(item => this.linkUnitType[0] === item.key
   }
 
   updateSeoData(){
-    this.metaService.setTitle(`Convert ${this.linkUnitType[0]} to ${this.linkUnitType[1]}`);
+    this.metaService.setTitle(`${this.linkUnitType[0]} to ${this.linkUnitType[1]} online converter`);
     this.metaService.setDescription(`Effortlessly convert volumes from ${this.linkUnitType[0]} to ${this.linkUnitType[1]} with precision. Get quick and accurate results using our user-friendly volume converter`)
     this.metaService.setKeywords("volume converter, liter, milliliter, cubic meter, cubic inch, cubic foot, gallon, fluid ounce, unit conversion, volume measurement, volume conversion tool, convert liters, milliliters, cubic meters, cubic inches, gallons, fluid ounces, volume units, volume calculator")
   }

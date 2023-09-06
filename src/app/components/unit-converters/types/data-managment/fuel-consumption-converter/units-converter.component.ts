@@ -56,7 +56,7 @@ this.linkUnitLabels = [this.units.find(item => this.linkUnitType[0] === item.key
   }
 
   updateSeoData(){
-    this.metaService.setTitle(`Convert ${this.linkUnitType[0]} to ${this.linkUnitType[1]}`);
+    this.metaService.setTitle(`${this.linkUnitType[0]} to ${this.linkUnitType[1]} online converter`);
     this.metaService.setDescription(`Easily convert fuel consumption between ${this.linkUnitType[0]} and ${this.linkUnitType[1]}. Get fast, accurate results with our user-friendly fuel consumption converter`)
     this.metaService.setKeywords("fuel consumption converter, miles per gallon (MPG), kilometers per liter (KPL), liters per 100 kilometers (L/100KM), unit conversion, convert MPG to KPL, L/100KM to MPG, fuel consumption unit conversion, fuel consumption measurement, fuel consumption conversion tool, fuel efficiency");
   }

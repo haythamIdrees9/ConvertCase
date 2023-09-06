@@ -57,7 +57,7 @@ this.linkUnitLabels = [this.units.find(item => this.linkUnitType[0] === item.key
   }
 
   updateSeoData(){
-    this.metaService.setTitle(`Convert ${this.linkUnitType[0]} to ${this.linkUnitType[1]}`);
+    this.metaService.setTitle(`${this.linkUnitType[0]} to ${this.linkUnitType[1]} online converter`);
     this.metaService.setDescription(`Effortlessly convert energy units like ${this.linkUnitType[0]} to ${this.linkUnitType[1]}. Get quick and accurate results with our energy converter!`)
     this.metaService.setKeywords("energy converter, watt, kilowatt, megawatt, joule, kilojoule, BTU, calorie, electronvolt, erg, therm, power conversion, energy unit conversion, watt to kilowatt, megawatt to gigawatt, joule to BTU, calorie to kilojoule, electronvolt to erg, foot-pound to joule, energy efficiency")
   }

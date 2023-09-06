@@ -70,7 +70,7 @@ constructor(private unitsService: UnitsService,private unitsInfoService:UnitsInf
   }
 
   updateSeoData(){
-    this.metaService.setTitle(`Convert ${this.linkUnitType[0]} to ${this.linkUnitType[1]}`);
+    this.metaService.setTitle(`${this.linkUnitType[0]} to ${this.linkUnitType[1]} online converter`);
     this.metaService.setDescription(`Convert numbers effortlessly between ${this.linkUnitType[0]} and ${this.linkUnitType[1]}. Get quick and precise results with our user-friendly numbers converter.`)
     this.metaService.setKeywords("numbers converters, numeral systems, binary, decimal, hexadecimal, octal, unit conversion, convert binary to decimal, hexadecimal to octal, numeral system conversion, number system conversion, number base conversion, numeral system calculator")
   }

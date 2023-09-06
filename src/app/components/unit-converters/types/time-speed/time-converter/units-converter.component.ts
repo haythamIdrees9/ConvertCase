@@ -56,7 +56,7 @@ this.linkUnitLabels = [this.units.find(item => this.linkUnitType[0] === item.key
   }
 
   updateSeoData(){
-    this.metaService.setTitle(`Convert ${this.linkUnitType[0]} to ${this.linkUnitType[1]}`);
+    this.metaService.setTitle(`${this.linkUnitType[0]} to ${this.linkUnitType[1]} online converter`);
     this.metaService.setDescription(`Swiftly convert time units between ${this.linkUnitType[0]} and ${this.linkUnitType[1]}. Get accurate results instantly with our user-friendly time converter`)
     this.metaService.setKeywords("time converter, second, minute, hour, day, week, month, year, unit conversion, convert seconds to minutes, hours to days, weeks to months, time unit conversion, time measurement, time conversion tool, seconds, minutes, hours, days, weeks, months, years")
   }

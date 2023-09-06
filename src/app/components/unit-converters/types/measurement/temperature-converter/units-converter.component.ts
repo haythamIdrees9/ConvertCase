@@ -69,7 +69,7 @@ this.linkUnitLabels = [this.units.find(item => this.linkUnitType[0] === item.key
 
 
   updateSeoData(){
-    this.metaService.setTitle(`Convert ${this.linkUnitType[0]} to ${this.linkUnitType[1]}`);
+    this.metaService.setTitle(`${this.linkUnitType[0]} to ${this.linkUnitType[1]} online converter`);
     this.metaService.setDescription(`Convert temperatures between ${this.linkUnitType[0]} and ${this.linkUnitType[1]} effortlessly. Get quick and accurate results with our user-friendly temperature converter`)
     this.metaService.setKeywords("temperature converter, Celsius, Fahrenheit, Kelvin, Rankine, unit conversion, temperature measurement, conversion tool, temperature scales, calculator, temperature conversion formulas, online temperature converter, temperature units, conversion chart, temperature conversions")
   }

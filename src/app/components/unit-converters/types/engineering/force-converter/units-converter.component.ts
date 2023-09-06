@@ -56,7 +56,7 @@ this.linkUnitLabels = [this.units.find(item => this.linkUnitType[0] === item.key
   }
 
   updateSeoData(){
-    this.metaService.setTitle(`Convert ${this.linkUnitType[0]} to ${this.linkUnitType[1]}`);
+    this.metaService.setTitle(`${this.linkUnitType[0]} to ${this.linkUnitType[1]} online converter`);
     this.metaService.setDescription(`Effortlessly convert force units from ${this.linkUnitType[0]} to ${this.linkUnitType[1]}. Get quick, precise results with our user-friendly force converter`)
     this.metaService.setKeywords("force converter, Newton, kilonewton, dyne, pound-force, unit conversion, convert Newton to kilonewton, dyne to pound-force, force unit conversion, force measurement, force conversion tool, Newtons, dynes, pound-forces")
   }

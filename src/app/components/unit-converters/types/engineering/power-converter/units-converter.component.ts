@@ -56,7 +56,7 @@ export class UnitConverterComponent implements OnInit {
   }
 
   updateSeoData() {
-    this.metaService.setTitle(`Convert ${this.linkUnitType[0]} to ${this.linkUnitType[1]}`);
+    this.metaService.setTitle(`${this.linkUnitType[0]} to ${this.linkUnitType[1]} online converter`);
     this.metaService.setDescription(`Convert power units from ${this.linkUnitType[0]} to ${this.linkUnitType[1]} effortlessly. Get quick, precise results with our user-friendly power converter`)
     this.metaService.setKeywords("power converter, watt, kilowatt, megawatt, gigawatt, horsepower, unit conversion, convert watt to kilowatt, megawatt to gigawatt, horsepower to kilowatt, power unit conversion, power measurement, power conversion tool, electrical power, mechanical power")
   }

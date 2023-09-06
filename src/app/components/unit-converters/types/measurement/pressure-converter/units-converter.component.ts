@@ -57,7 +57,7 @@ this.linkUnitLabels = [this.units.find(item => this.linkUnitType[0] === item.key
   }
 
   updateSeoData(){
-    this.metaService.setTitle(`Convert ${this.linkUnitType[0]} to ${this.linkUnitType[1]}`);
+    this.metaService.setTitle(`${this.linkUnitType[0]} to ${this.linkUnitType[1]} online converter`);
     this.metaService.setDescription(`Effortlessly convert pressure units like ${this.linkUnitType[0]} to ${this.linkUnitType[1]}. Get quick and precise results with our user-friendly pressure converter`)
     this.metaService.setKeywords("pressure converter, Pascal, kilopascal, bar, atmosphere, psi, Torr, millibar, unit conversion, convert Pascal to psi, kilopascal to bar, atmosphere to Torr, pressure unit conversion, pressure measurement, pressure conversion tool, Pascal to kilopascal, bar to psi, Torr to millibar")
   }

@@ -56,7 +56,7 @@ this.linkUnitLabels = [this.units.find(item => this.linkUnitType[0] === item.key
   }
 
   updateSeoData(){
-    this.metaService.setTitle(`Convert ${this.linkUnitType[0]} to ${this.linkUnitType[1]}`);
+    this.metaService.setTitle(`${this.linkUnitType[0]} to ${this.linkUnitType[1]} online converter`);
     this.metaService.setDescription(`Convert velocities seamlessly between ${this.linkUnitType[0]} and ${this.linkUnitType[1]}. Quick and precise results with our user-friendly velocity converters`)
     this.metaService.setKeywords("velocity converters, meters per second, kilometers per hour, miles per hour, feet per second, unit conversion, convert meters per second to kilometers per hour, miles per hour to feet per second, velocity unit conversion, velocity measurement, velocity conversion tool, m/s, km/h, mph, fps")
   }

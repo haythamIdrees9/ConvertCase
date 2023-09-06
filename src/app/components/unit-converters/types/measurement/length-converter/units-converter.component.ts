@@ -57,7 +57,7 @@ this.linkUnitLabels = [this.units.find(item => this.linkUnitType[0] === item.key
   }
 
   updateSeoData(){
-    this.metaService.setTitle(`Convert ${this.linkUnitType[0]} to ${this.linkUnitType[1]}`);
+    this.metaService.setTitle(`${this.linkUnitType[0]} to ${this.linkUnitType[1]} online converter`);
     this.metaService.setDescription(`Switch effortlessly between ${this.linkUnitType[0]} and ${this.linkUnitType[1]} with precision using our length converter. Fast, accurate, and user-friendly`)
     this.metaService.setKeywords("length converter, meter, kilometer, mile, yard, foot, inch, centimeter, millimeter, unit conversion, distance converter, convert meters to feet, kilometers to miles, centimeters to inches, millimeters to yards, length measurement, metric to imperial conversion")
   }
