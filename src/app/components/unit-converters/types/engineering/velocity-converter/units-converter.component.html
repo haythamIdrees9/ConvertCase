@@ -1,4 +1,4 @@
-<app-generic-units-converter [popularUnits]="popularUnits" [units]="units" (updateResult)="updateResult($event)"
+<app-generic-units-converter [conversionRate]="conversionRate"[popularUnits]="popularUnits" [units]="units" (updateResult)="updateResult($event)"
      [linkUnitType]="linkUnitType" [result]="result" [unitType]="'Velocity'">
 
      <section id="velocity-converter" aria-label="Velocity Converter Description">
@@ -15,7 +15,7 @@
             <li>The converted value will be displayed in the result field, providing you with an accurate velocity conversion result.</li>
         </ol>
    
-        <p>For example, if you need to convert a velocity from kilometers per hour (km/h) to feet per second (ft/s), enter the velocity in km/h, select "Kilometer per Hour" as the "From" unit, and "Foot per Second" as the "To" unit. Click "Convert," and you will see the equivalent velocity in feet per second.</p>
+        <p>For example, if you need to convert a velocity from <strong>{{linkUnitLabels[0]}} to {{linkUnitLabels[1]}}</strong>, enter the velocity in <strong>{{linkUnitLabels[0]}}</strong>. select <strong>"{{linkUnitLabels[0]}}"</strong> as the "From" unit, and <strong>"{{linkUnitLabels[1]}}"</strong> as the "To" unit.  and you will see the equivalent velocity in <strong>{{linkUnitLabels[1]}}</strong>.</p>
    
         <p>The Velocity Converter supports a wide range of velocity units, including meters per second, kilometers per hour, miles per hour, feet per second, and more, making it an indispensable tool for scientists, engineers, athletes, and enthusiasts who need precise velocity conversions for their tasks and projects.</p>
    </section>

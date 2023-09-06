@@ -1,4 +1,4 @@
-<app-generic-units-converter [errorMessage]="errorMessage" [popularUnits]="popularUnits" [units]="units" (updateResult)="updateResult($event)"
+<app-generic-units-converter [tableValues]="tableValues"  [errorMessage]="errorMessage" [popularUnits]="popularUnits" [units]="units" (updateResult)="updateResult($event)"
      [linkUnitType]="linkUnitType" [result]="result" [unitType]="'Numbers'">
      <section id="numbers-converter" aria-label="Numbers Converter Description">
           <h2>Numbers Converter</h2>
@@ -14,7 +14,7 @@
               <li>The converted value will be displayed in the result field, providing you with an accurate numerical system conversion result.</li>
           </ol>
      
-          <p>For example, if you need to convert a binary number (e.g., 101010) to its hexadecimal representation, enter the binary value, select "Binary" as the "From" system, and "Hexadecimal" as the "To" system. Click "Convert," and you will see the equivalent hexadecimal representation.</p>
+          <p>For example, if you need to convert a <strong>{{linkUnitLabels[0]}} to its {{linkUnitLabels[1]}}</strong>, enter the <strong>{{linkUnitLabels[0]}}</strong> value, select <strong>"{{linkUnitLabels[0]}}"</strong> as the "From" system, and <strong>"{{linkUnitLabels[1]}}"</strong> as the "To" system.  and you will see the equivalent <strong>{{linkUnitLabels[1]}}</strong> representation.</p>
      
           <p>The Numbers Converter supports a wide range of numerical systems, including decimal, binary, octal, hexadecimal, and custom bases, making it an indispensable tool for programmers, students, and enthusiasts who work with different numerical systems for their tasks and projects.</p>
      </section>

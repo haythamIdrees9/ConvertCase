@@ -1,4 +1,4 @@
-<app-generic-units-converter [popularUnits]="popularUnits" [units]="units" (updateResult)="updateResult($event)"
+<app-generic-units-converter [tableValues]="tableValues" [popularUnits]="popularUnits" [units]="units" (updateResult)="updateResult($event)"
     [linkUnitType]="linkUnitType" [result]="result" [unitType]="'Temperature'">
 
     <section id="temperature-converter" aria-label="Temperature Converter Description">
@@ -17,9 +17,9 @@
             <li>The converted value will be displayed in the result field.</li>
         </ol>
 
-        <p>For example, if you need to convert Celsius (°C) to Fahrenheit (°F), enter the Celsius value, select
-            "Celsius" as the "From" unit, and "Fahrenheit" as the "To" unit. Click "Convert," and you will see the
-            equivalent temperature in Fahrenheit.</p>
+        <p>For example, if you need to convert <strong>{{linkUnitLabels[0]}} to {{linkUnitLabels[1]}}</strong>, enter the <strong> {{linkUnitLabels[0]}}</strong> value, select
+            <strong>"{{linkUnitLabels[0]}}"</strong> as the "From" unit, and <strong>"{{linkUnitLabels[1]}}"</strong> as the "To" unit.  and you will see the
+            equivalent temperature in <strong>{{linkUnitLabels[1]}}</strong>.</p>
 
         <p>The Temperature Converter supports a comprehensive range of temperature units, making it a valuable tool for
             professionals, chefs, students, and anyone who needs to perform accurate temperature conversions for their

@@ -1,5 +1,5 @@
 
-<app-generic-units-converter [popularUnits]="popularUnits" [units]="units" (updateResult)="updateResult($event)"
+<app-generic-units-converter [conversionRate]="conversionRate"[popularUnits]="popularUnits" [units]="units" (updateResult)="updateResult($event)"
      [linkUnitType]="linkUnitType" [result]="result" [unitType]="'Energy'">
 
 
@@ -17,7 +17,7 @@
               <li>The converted value will be displayed in the result field.</li>
           </ol>
           
-          <p>For instance, if you need to convert joules to kilocalories, enter the value in joules, select "Joule" as the "From" unit, and "Kilocalorie" as the "To" unit. Click "Convert," and you will see the equivalent energy in kilocalories.</p>
+          <p>For instance, if you need to convert <strong>{{linkUnitLabels[0]}} to {{linkUnitLabels[1]}}</strong>, enter the value in <strong>{{linkUnitLabels[0]}}</strong>. select <strong>"{{linkUnitLabels[0]}}"</strong> as the "From" unit, and <strong>"{{linkUnitLabels[1]}}"</strong> as the "To" unit.  and you will see the equivalent energy in <strong>{{linkUnitLabels[1]}}</strong>.</p>
           
           <p>The Energy Converter supports a comprehensive range of energy units, making it an essential tool for professionals, researchers, and students who require precise energy conversions for their projects and calculations.</p>
       </section>

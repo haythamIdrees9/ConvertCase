@@ -18,6 +18,7 @@ export class UnitConverterComponent implements OnInit {
   conversionRate!: number;
   linkUnitType: string[] = ['cubickilometer', 'cubicmeter'];
   unitsDescription:string[]=[];
+linkUnitLabels :any[] = [];
 constructor(private unitsService: UnitsService,private unitsInfoService:UnitsInfoService, private route: ActivatedRoute,
     private metaService:MetaService, private seoService:SeoService) {
  }
@@ -49,6 +50,7 @@ constructor(private unitsService: UnitsService,private unitsInfoService:UnitsInf
         this.unitsDescription = [this.unitsInfoService.getDescription(this.linkUnitType[0]),this.unitsInfoService.getDescription(this.linkUnitType[1])]; 
       }
       this.conversionRate = this.unitsService.getConversionRate(this.linkUnitType[0], this.linkUnitType[1]);
+this.linkUnitLabels = [this.units.find(item => this.linkUnitType[0] === item.key)?.label, this.units.find(item => this.linkUnitType[1] === item.key)?.label]
       this.updateSeoData();
       this.updateResult();
     });

@@ -1,4 +1,4 @@
-<app-generic-units-converter [errorMessage]="errorMessage" [popularUnits]="popularUnits" [units]="units"
+<app-generic-units-converter [conversionRate]="conversionRate" [errorMessage]="errorMessage"  [popularUnits]="popularUnits" [units]="units"
      (updateResult)="updateResult($event)" [linkUnitType]="linkUnitType" [result]="result" [unitType]="'Data Storage'">
      <section id="data-storage-converter" aria-label="Data Storage Converter Description">
           <h2>Data Storage Converter</h2>
@@ -21,9 +21,9 @@
                     storage conversion result.</li>
           </ol>
 
-          <p>For example, if you need to convert a file size from gigabytes (GB) to terabytes (TB), enter the size in
-               gigabytes, select "Gigabyte" as the "From" unit, and "Terabyte" as the "To" unit. Click "Convert," and
-               you will see the equivalent size in terabytes.</p>
+          <p>For example, if you need to convert a value from <strong>{{linkUnitLabels[0]}} to {{linkUnitLabels[1]}}</strong>, enter the value in
+               <strong>{{linkUnitLabels[0]}}</strong>, select <strong>"{{linkUnitLabels[0]}}"</strong> as the "From" unit, and <strong>"{{linkUnitLabels[1]}}"</strong> as the "To" unit.  and
+               you will see the equivalent value in <strong>{{linkUnitLabels[1]}}</strong>.</p>
 
           <p>The Data Storage Converter supports a wide range of data storage units, including bytes, kilobytes,
                megabytes, gigabytes, terabytes, and more, making it an indispensable tool for managing digital data and
@@ -35,5 +35,7 @@
           <div [innerHTML]="unitDescription"></div>
           <br>
      </ng-container>
+
+
 
 </app-generic-units-converter>

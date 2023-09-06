@@ -1,4 +1,4 @@
-<app-generic-units-converter [popularUnits]="popularUnits" [units]="units" (updateResult)="updateResult($event)"
+<app-generic-units-converter [conversionRate]="conversionRate"[popularUnits]="popularUnits" [units]="units" (updateResult)="updateResult($event)"
      [linkUnitType]="linkUnitType" [result]="result" [unitType]="'Power'">
 
      <section id="energy-converter" aria-label="Energy Converter Description">
@@ -15,7 +15,7 @@
               <li>The converted value will be displayed in the result field.</li>
           </ol>
           
-          <p>For example, if you need to convert megawatts (MW) to gigawatts (GW), enter the value in megawatts, select "Megawatt" as the "From" unit, and "Gigawatt" as the "To" unit. Click "Convert," and you will see the equivalent energy in gigawatts.</p>
+          <p>For example, if you need to convert <strong>{{linkUnitLabels[0]}} to {{linkUnitLabels[1]}}</strong>, enter the value in <strong>{{linkUnitLabels[0]}}</strong>. select <strong>"{{linkUnitLabels[0]}}"</strong> as the "From" unit, and <strong>"{{linkUnitLabels[1]}}"</strong> as the "To" unit.  and you will see the equivalent energy in <strong>{{linkUnitLabels[1]}}</strong>.</p>
           
           <p>The Energy Converter supports a wide range of energy units, including kilowatts (kW), megawatts (MW), gigawatts (GW), terawatts (TW), and watts (W), making it an invaluable tool for scientists, engineers, students, and professionals working with energy-related calculations.</p>
       </section>

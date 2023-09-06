@@ -1,4 +1,4 @@
-<app-generic-units-converter [popularUnits]="popularUnits" [units]="units" (updateResult)="updateResult($event)"
+<app-generic-units-converter [conversionRate]="conversionRate" [popularUnits]="popularUnits" [units]="units" (updateResult)="updateResult($event)"
      [linkUnitType]="linkUnitType" [result]="result" [unitType]="'Fuel Consumption'">
      <section id="fuel-consumption-converter" aria-label="Fuel Consumption Converter Description">
         <h2>Fuel Consumption Converter</h2>
@@ -14,7 +14,7 @@
             <li>The converted value will be displayed in the result field, providing you with an accurate fuel consumption conversion result.</li>
         </ol>
    
-        <p>For example, if you need to convert miles per gallon (MPG) to kilometers per liter (km/L), enter the MPG value, select "Miles per Gallon" as the "From" unit, and "Kilometer per Liter" as the "To" unit. Click "Convert," and you will see the equivalent fuel consumption rate in km/L.</p>
+        <p>For example, if you need to convert <strong>{{linkUnitLabels[0]}} to {{linkUnitLabels[1]}}</strong>, enter the <strong>{{linkUnitLabels[0]}}</strong> value, select <strong>"{{linkUnitLabels[0]}}"</strong> as the "From" unit, and <strong>"{{linkUnitLabels[1]}}"</strong> as the "To" unit.  and you will see the equivalent fuel consumption rate in <strong>{{linkUnitLabels[1]}}</strong>.</p>
    
         <p>The Fuel Consumption Converter supports a wide range of units, including MPG, L/100km, kilometers per gallon (km/G), and more, making it an indispensable tool for drivers, automotive engineers, environmentalists, and anyone who needs precise fuel consumption conversions for their tasks and projects.</p>
    </section>

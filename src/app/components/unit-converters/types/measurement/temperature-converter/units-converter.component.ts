@@ -18,6 +18,9 @@ export class UnitConverterComponent implements OnInit {
   linkUnitType:string [] = ['',''];
   currentUnits:readonly { key: string; label: string; convertToCelsius: (key: any) => any;convertFromCelsius:(key: any) => any }[]  = []
   unitsDescription:string[]=[];
+linkUnitLabels :any[] = [];
+  compareValues  = [0.01,0.1,1,2,3,4,5,6,7,8,9,10,20,50,100,1000];
+  tableValues:{input:string,result:string}[] = [];
 constructor(private unitsService: UnitsService,private unitsInfoService:UnitsInfoService, private route: ActivatedRoute,
     private metaService:MetaService, private seoService:SeoService) {
  }
@@ -26,6 +29,15 @@ constructor(private unitsService: UnitsService,private unitsInfoService:UnitsInf
     this.userInput = userInput;
     const celsiusValue = this.currentUnits[0].convertToCelsius(Number(userInput));
     this.result = this.currentUnits[1].convertFromCelsius(celsiusValue);
+  }
+
+  getResult(userInput:number){
+    const celsiusValue = this.currentUnits[0].convertToCelsius(Number(userInput));
+    const res = this.currentUnits[1].convertFromCelsius(celsiusValue)
+    if(Math.abs(res) > 1){
+      return `${parseFloat(`${res.toFixed(2)}`)}`
+    }
+    return `${res}`;
   }
 
   ngOnInit() {
@@ -48,6 +60,8 @@ constructor(private unitsService: UnitsService,private unitsInfoService:UnitsInf
         this.unitsDescription = [this.unitsInfoService.getDescription(this.linkUnitType[0]),this.unitsInfoService.getDescription(this.linkUnitType[1])]; 
       }
       this.currentUnits = this.unitsService.getConversionRate(this.linkUnitType[0], this.linkUnitType[1]);
+this.linkUnitLabels = [this.units.find(item => this.linkUnitType[0] === item.key)?.label, this.units.find(item => this.linkUnitType[1] === item.key)?.label]
+      this.tableValues = this.compareValues.map((input:number) => ({input:`${input}`,result:this.getResult(input)}))
       this.updateResult();
       this.updateSeoData();
     })

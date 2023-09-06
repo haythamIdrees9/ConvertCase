@@ -1,4 +1,4 @@
-<app-generic-units-converter [popularUnits]="popularUnits" [units]="units" (updateResult)="updateResult($event)"
+<app-generic-units-converter [conversionRate]="conversionRate"[popularUnits]="popularUnits" [units]="units" (updateResult)="updateResult($event)"
      [linkUnitType]="linkUnitType" 
     [result]="result" [unitType]="'Pressure'">
 
@@ -16,7 +16,7 @@
             <li>The converted value will be displayed in the result field.</li>
         </ol>
         
-        <p>For example, if you need to convert pascals (Pa) to kilopascals (kPa), enter the value in pascals, select "Pascal" as the "From" unit, and "Kilopascal" as the "To" unit. Click "Convert," and you will see the equivalent pressure in kilopascals.</p>
+        <p>For example, if you need to convert <strong>{{linkUnitLabels[0]}} to {{linkUnitLabels[1]}}</strong>, enter the value in <strong>{{linkUnitLabels[0]}}</strong>, select <strong>"{{linkUnitLabels[0]}}"</strong> as the "From" unit, and <strong>"{{linkUnitLabels[1]}}"</strong> as the "To" unit.  and you will see the equivalent pressure in <strong>{{linkUnitLabels[1]}}</strong>.</p>
         
         <p>The Pressure Converter supports a wide range of pressure units, making it a vital tool for professionals, engineers, scientists, and students who require precise pressure conversions for their work or studies.</p>
     </section>

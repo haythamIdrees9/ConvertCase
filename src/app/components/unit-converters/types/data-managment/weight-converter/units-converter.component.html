@@ -1,4 +1,4 @@
-<app-generic-units-converter [popularUnits]="popularUnits" [units]="units" (updateResult)="updateResult($event)"
+<app-generic-units-converter [conversionRate]="conversionRate"[popularUnits]="popularUnits" [units]="units" (updateResult)="updateResult($event)"
      [linkUnitType]="linkUnitType" 
     [result]="result" [unitType]="'Weight and Mass'">
 
@@ -16,7 +16,7 @@
             <li>The converted value will be displayed in the result field.</li>
         </ol>
         
-        <p>For example, if you need to convert kilograms (kg) to pounds (lb), enter the value in kilograms, select "Kilogram" as the "From" unit, and "Pound" as the "To" unit. Click "Convert," and you will see the equivalent weight in pounds.</p>
+        <p>For example, if you need to convert <strong>{{linkUnitLabels[0]}} to {{linkUnitLabels[1]}}</strong>, enter the value in <strong>{{linkUnitLabels[0]}}</strong>, select <strong>"{{linkUnitLabels[0]}}"</strong> as the "From" unit, and <strong>"{{linkUnitLabels[1]}}"</strong> as the "To" unit.  and you will see the equivalent weight in <strong>{{linkUnitLabels[1]}}</strong>.</p>
         
         <p>The Weight Converter supports a comprehensive range of weight units, making it an essential tool for cooks, scientists, students, and anyone who needs to perform accurate weight conversions for their specific needs.</p>
     </section>

@@ -1,4 +1,4 @@
-<app-generic-units-converter [popularUnits]="popularUnits" [units]="units" (updateResult)="updateResult($event)"
+<app-generic-units-converter [conversionRate]="conversionRate"[popularUnits]="popularUnits" [units]="units" (updateResult)="updateResult($event)"
      [linkUnitType]="linkUnitType" [result]="result" [unitType]="'Speed'">
   
      <section id="speed-converter" aria-label="Speed Converter Description">
@@ -15,7 +15,7 @@
             <li>The converted value will be displayed in the result field, providing you with an accurate speed conversion result.</li>
         </ol>
    
-        <p>For example, if you need to convert kilometers per hour (km/h) to meters per second (m/s), enter the value in km/h, select "Kilometer per Hour" as the "From" unit, and "Meter per Second" as the "To" unit. Click "Convert," and you will see the equivalent speed in meters per second.</p>
+        <p>For example, if you need to convert <strong>{{linkUnitLabels[0]}} to {{linkUnitLabels[1]}}</strong>, enter the value in <strong>{{linkUnitLabels[0]}}</strong>. select <strong>"{{linkUnitLabels[0]}}"</strong> as the "From" unit, and <strong>"{{linkUnitLabels[1]}}"</strong> as the "To" unit.  and you will see the equivalent speed in meters per <strong>{{linkUnitLabels[1]}}</strong>.</p>
    
         <p>The Speed Converter supports a wide range of speed units, including common ones like miles per hour (mph), knots (kt), and feet per second (ft/s), making it an indispensable tool for professionals, athletes, students, and anyone requiring precise speed conversions for their tasks and projects.</p>
    </section>

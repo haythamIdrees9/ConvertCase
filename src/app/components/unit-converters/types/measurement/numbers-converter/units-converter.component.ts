@@ -19,6 +19,9 @@ export class UnitConverterComponent implements OnInit {
   linkUnitBase:number [] = [10,2];
   errorMessage:string = '';
   unitsDescription:string[]=[];
+linkUnitLabels :any[] = [];
+  compareValues  = [1,2,3,4,5,6,7,8,9,10,20,50,100,1000];
+  tableValues:{input:string,result:string}[] = [];
 constructor(private unitsService: UnitsService,private unitsInfoService:UnitsInfoService, private route: ActivatedRoute,
      private metaService:MetaService, private seoService:SeoService) {
   }
@@ -33,6 +36,11 @@ constructor(private unitsService: UnitsService,private unitsInfoService:UnitsInf
       this.result = "";
       this.errorMessage = "Please provide a valid base number!";
     }
+  }
+
+  getResult(userInput:number){
+    let num = this.unitsService.convertBaseNumber(`${userInput}`,10,this.linkUnitBase[0]);    
+    return this.unitsService.convertBaseNumber(num,this.linkUnitBase[0],this.linkUnitBase[1]);
   }
 
   ngOnInit() {
@@ -54,6 +62,8 @@ constructor(private unitsService: UnitsService,private unitsInfoService:UnitsInf
         this.unitsDescription = [this.unitsInfoService.getDescription(this.linkUnitType[0]),this.unitsInfoService.getDescription(this.linkUnitType[1])]; 
       }
       this.linkUnitBase = [this.unitsService.getBase(this.linkUnitType[0]),this.unitsService.getBase(this.linkUnitType[1])]
+      this.linkUnitLabels = [this.units.find(item => this.linkUnitType[0] === item.key)?.label, this.units.find(item => this.linkUnitType[1] === item.key)?.label]
+      this.tableValues = this.compareValues.map((input:number) => ({input:this.unitsService.convertBaseNumber(`${input}`,10,this.linkUnitBase[0]),result:this.getResult(input)}))
       this.updateSeoData();
       this.updateResult();
     })

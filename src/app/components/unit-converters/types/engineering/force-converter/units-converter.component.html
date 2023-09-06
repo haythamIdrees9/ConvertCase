@@ -1,4 +1,4 @@
-<app-generic-units-converter [popularUnits]="popularUnits" [units]="units" (updateResult)="updateResult($event)"
+<app-generic-units-converter [conversionRate]="conversionRate"[popularUnits]="popularUnits" [units]="units" (updateResult)="updateResult($event)"
      [linkUnitType]="linkUnitType" [result]="result" [unitType]="'Force'">
      <section id="force-converter" aria-label="Force Converter Description">
         <h2>Force Converter</h2>
@@ -14,7 +14,7 @@
             <li>The converted value will be displayed in the result field.</li>
         </ol>
    
-        <p>For instance, if you need to convert Newtons to Pounds of force, enter the value in Newtons, select "Newton" as the "From" unit, and "Pound" as the "To" unit. Click "Convert," and you will see the equivalent force in pounds.</p>
+        <p>For instance, if you need to convert <strong>{{linkUnitLabels[0]}}  to  {{linkUnitLabels[1]}}</strong>, enter the value in <strong>{{linkUnitLabels[0]}}</strong>. select <strong>"{{linkUnitLabels[0]}}"</strong> as the "From" unit, and <strong>"{{linkUnitLabels[1]}}"</strong> as the "To" unit.  and you will see the equivalent force in <strong>{{linkUnitLabels[1]}}</strong>.</p>
    
         <p>The Force Converter supports a wide range of force units, including Newtons, Pounds, Dynes, and more, making it an indispensable tool for professionals, students, and anyone needing precise force conversions for their projects.</p>
    </section>

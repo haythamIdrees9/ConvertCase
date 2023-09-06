@@ -1,4 +1,4 @@
-<app-generic-units-converter [popularUnits]="popularUnits" [units]="units" (updateResult)="updateResult($event)"
+<app-generic-units-converter [conversionRate]="conversionRate"[popularUnits]="popularUnits" [units]="units" (updateResult)="updateResult($event)"
      [linkUnitType]="linkUnitType" [result]="result" [unitType]="'Angle'">
      <section id="angle-converter" aria-label="Angle Converter Description">
           <h2>Angle Converter</h2>
@@ -14,7 +14,7 @@
               <li>The converted value will be displayed in the result field, providing you with an accurate angle conversion result.</li>
           </ol>
      
-          <p>For example, if you need to convert degrees (°) to radians (rad), enter the value in degrees, select "Degree" as the "From" unit, and "Radian" as the "To" unit. Click "Convert," and you will see the equivalent angle measurement in radians.</p>
+          <p>For example, if you need to convert <strong>{{linkUnitLabels[0]}} to {{linkUnitLabels[1]}}</strong>, enter the value in <strong>{{linkUnitLabels[0]}}</strong>. select <strong>"{{linkUnitLabels[0]}}"</strong> as the "From" unit, and <strong>"{{linkUnitLabels[1]}}"</strong> as the "To" unit.  and you will see the equivalent angle measurement in <strong>{{linkUnitLabels[1]}}</strong>.</p>
      
           <p>The Angle Converter supports a wide range of angle units, including degrees, radians, minutes of arc, and seconds of arc, making it an indispensable tool for professionals, students, and enthusiasts who require precise angle conversions for their tasks and projects.</p>
      </section>
