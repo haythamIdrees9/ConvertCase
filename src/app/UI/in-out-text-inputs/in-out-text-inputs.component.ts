@@ -9,7 +9,9 @@ import { ActivatedRoute } from '@angular/router';
 export class InOutTextInputComponent implements OnInit {
   @ViewChild('input_area') set inputRef(inputArea:ElementRef){
     this.inputArea = inputArea;
-    this.inputArea?.nativeElement?.focus()
+    if(!this.isMobile()){
+      this.inputArea?.nativeElement?.focus()
+    }
   }
   inputArea!:ElementRef;
   @Input('result') result:string = '';
@@ -47,6 +49,21 @@ export class InOutTextInputComponent implements OnInit {
 
   clear(){
     this.userText = '';
+  }
+
+  isMobile() {
+    const toMatch = [
+        /Android/i,
+        /webOS/i,
+        /iPhone/i,
+        /iPad/i,
+        /iPod/i,
+        /BlackBerry/i,
+        /Windows Phone/i
+    ];
+    
+    return toMatch.some((toMatchItem) =>  navigator.userAgent.match(toMatchItem));
+  
   }
 
 }

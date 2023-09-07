@@ -3,45 +3,104 @@
     <h1>{{unitType}} Converters</h1>
     <div class="message">
         <span class="error" *ngIf="errorMessage">
-            {{errorMessage}} 
+            {{errorMessage}}
         </span>
-        <span class="result" *ngIf="!errorMessage && result"><span class="label">Result:</span> {{userInput}} {{linkUnitLabels[0]}} = {{result}} {{linkUnitLabels[1]}}</span>
-    </div> 
+        <span class="result" *ngIf="!errorMessage && result"><span class="label">Result:</span> {{userInput}}
+            {{linkUnitLabels[0]}} = {{result}} {{linkUnitLabels[1]}}</span>
+    </div>
     <div class="container">
         <div class="user-input-cotnainer">
-            <app-in-out-text-inputs [userText]="userInput" #boxes [type]="'number'"
+            <app-in-out-text-inputs [userText]="userInput" #boxes [switchLink]="switchLink" [type]="'number'"
                 [placeholder]="'Enter number here...'" [result]="result" [storageKey]="storageKey"
                 (onChangeEmitter)="setUserInput($event)"></app-in-out-text-inputs>
             <div class="selects-container f-row j-between">
                 <div class="select-container">
-                    <nav-links [componentId]="'nav-1'" [selected]="linkUnitType[0]" [items]="units" [suffix]="'-to-' + linkUnitType[1]">
+                    <nav-links [componentId]="'nav-1'" [selected]="linkUnitType[0]" [items]="units"
+                        [suffix]="'-to-' + linkUnitType[1]">
                     </nav-links>
                 </div>
                 <div class="select-container">
-                    <nav-links [componentId]="'nav-2'" [selected]="linkUnitType[1]" [items]="units" [prefix]="linkUnitType[0]+'-to-'">
+                    <nav-links [componentId]="'nav-2'" [selected]="linkUnitType[1]" [items]="units"
+                        [prefix]="linkUnitType[0]+'-to-'">
                     </nav-links>
                 </div>
             </div>
         </div>
 
-        <app-result-actions-btn [clear]="false" 
-        [downloadData]="'Result: '+userInput +' '+ linkUnitLabels[0]+' = ' +result + ' '+linkUnitLabels[1]"
-         (onClear)="clearTextArea();" [text]="result"></app-result-actions-btn>
+        <app-result-actions-btn [clear]="false"
+            [downloadData]="'Result: '+userInput +' '+ linkUnitLabels[0]+' = ' +result + ' '+linkUnitLabels[1]"
+            (onClear)="clearTextArea();" [text]="result"></app-result-actions-btn>
     </div>
     <div class="units-box">
         <h2>Locate the Units of {{unitType}} for Conversion.</h2>
         <div class="info-conent f-col">
             <div class="dropdown f-row j-between">
-                <app-search-dropdown [componentId]="'input-1'" [selected]="locatOption1" [searchQuery]="linkUnitType[0]" (selectedOption)="locatOption1 = $event.key" [options]="units" [placeholder]="'Unit Name'" [filterFn]="filterFn" [inputAriaLabelledBy]="'Locate Unit'" 
-                [listAriaLabelledBy]="'Units List'" [label]="'From Unit:'" ></app-search-dropdown>
-                <app-search-dropdown  [componentId]="'input-2'" [selected]="locatOption2" [searchQuery]="linkUnitType[1]" (selectedOption)="locatOption2 = $event.key"  [options]="units" [placeholder]="'Unit Name'" [filterFn]="filterFn" [inputAriaLabelledBy]="'Locate Unit'" 
-                [listAriaLabelledBy]="'Units List'" [label]="'To Unit:'"></app-search-dropdown>
+                <app-search-dropdown [componentId]="'input-1'" [selected]="locatOption1" [searchQuery]="linkUnitType[0]"
+                    (selectedOption)="locatOption1 = $event.key" [options]="units" [placeholder]="'Unit Name'"
+                    [filterFn]="filterFn" [inputAriaLabelledBy]="'Locate Unit'" [listAriaLabelledBy]="'Units List'"
+                    [label]="'From Unit:'"></app-search-dropdown>
+                <app-search-dropdown [componentId]="'input-2'" [selected]="locatOption2" [searchQuery]="linkUnitType[1]"
+                    (selectedOption)="locatOption2 = $event.key" [options]="units" [placeholder]="'Unit Name'"
+                    [filterFn]="filterFn" [inputAriaLabelledBy]="'Locate Unit'" [listAriaLabelledBy]="'Units List'"
+                    [label]="'To Unit:'"></app-search-dropdown>
             </div>
-            <button class="btn-theme" aria-label="Apply" [disabled]="!locatOption1 || !locatOption2" (click)="applyUnits()">Apply</button>
+            <button class="btn-theme" aria-label="Apply" [disabled]="!locatOption1 || !locatOption2"
+                (click)="applyUnits()">Apply</button>
         </div>
     </div>
 
     <app-poppular-links [popular]="popularUnits" [popularTitle]="'Popular '+unitType +' Units conversions'"></app-poppular-links>
     <ng-content ></ng-content>
-</div>
 
+    <h2 class="explantion">Explantion of Conversion from <strong>{{linkUnitLabels[0]}} to {{linkUnitLabels[1]}}</strong>.</h2>
+    <ng-container *ngIf="linkUnitLabels && linkUnitLabels.length > 1">
+        <div class="table-container">
+            <h3>Conversion Table</h3>
+            <p id="unit-description">
+                Unit Name column displays the names of various units used for conversions from {{linkUnitLabels[0]}} to
+                <strong>{{linkUnitLabels[1]}}</strong>.
+            </p>
+
+            <p id="conversion-description">
+                Conversion column provides the conversion ratios for each unit, indicating how many
+                {{linkUnitLabels[1]}} are equivalent to the provided {{linkUnitLabels[0]}} number.
+            </p>
+
+            <table>
+                <caption>List of Converting Units from Byte to Bit</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Unit Name</th>
+                        <th scope="col">Conversion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let unit of tableValues">
+                        <td aira-described="unit-description">{{ unit.input }} {{linkUnitLabels[0]}}</td>
+                        <td aria-describedby="conversion-description">{{ unit.result }} {{linkUnitLabels[1]}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <ng-container *ngIf="conversionExamples && conversionValues">
+
+            <h3>How to Convert <strong>{{linkUnitLabels[0]}} to {{linkUnitLabels[1]}}</strong></h3>
+            <p>1 {{linkUnitLabels[0]}} = {{conversionExamples.fromOne}} {{linkUnitLabels[1]}}</p>
+            <p>1 {{linkUnitLabels[1]}} = {{conversionExamples.toOne}} {{linkUnitLabels[0]}}</p>
+            <h4>Examples of <strong>{{linkUnitLabels[0]}} to {{linkUnitLabels[1]}}</strong> Conversion:</h4>
+            <ul>
+                <li *ngFor="let item of conversionValues|keyvalue">
+                    <p><strong>convert {{item.key}} <strong>{{linkUnitLabels[0]}} to {{linkUnitLabels[1]}}</strong>: </strong> <br>
+                        <span class="mt-4px"> {{item.key}} {{linkUnitLabels[0]}} = {{item.key}} {{formula.from}} =
+                            {{item.value}} {{linkUnitLabels[1]}}</span>
+                    </p>
+                </li>
+            </ul>
+
+        </ng-container>
+
+    </ng-container>
+
+
+
+</div>

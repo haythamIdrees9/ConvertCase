@@ -4,28 +4,28 @@
             <img class="icon menu-icon" src="assets/images/menu.svg" width="32" height="32" alt="menu" />
         </button>
         <a class="f-row a-center logo-container c-pointer" [routerLink]="['']">
-            <span class="cls-1">Convert</span><span class="cls-2">Case</span>
+            <span class="cls-1" style="margin-top: 0.25rem;font-size: 25px;color: white;margin-right: 0.25rem;font-family: AquireRegular, Aquire;">Convert</span><span class="cls-2" style="font-size: 40px;color: #ffea3e;font-family: AquireRegular, Aquire;">Case</span>
         </a>
     </div>
     <a href="https://www.buymeacoffee.com/haythamidrt" class="support-me" target="_blank">
-        <img src="assets/images/support-me.png" height="50" width="180" loading="lazy" alt="Buy Me A Coffee" >
+        <button class="btn-resting coffee f-row a-center j-center"><span class="coffee">☕</span>Buy me a coffee </button>
     </a>
 
     <div class="menu" [class.menu-opened]="isMenuOpened" >
-        <div class="content" (click)="$event.stopPropagation()">
-            <div class="back-container f-row a-center">
-                <button class="btn-resting c-pointer" (click)="toggleMenuState($event)" aria-label="Close Menu">
-                    <img width="20" height="20" src="assets/images/back.svg"  alt="close Menu">
-                </button>
-            </div>
+        <div class="content f-col j-between" (click)="$event.stopPropagation()">
             <nav>
                 <ul>
                     <li class="w-100p" *ngFor="let route of menuRouts; let index = index"
-                        [class.selected]="selectedRouteIndex === index">
-                        <a class="w-100p" [routerLink]="route.path" (click)="toggleMenuState($event)">{{ route.label }}</a>
+                        >
+                        <a class="w-100p f-row a-center" [routerLink]="route.path" [routerLinkActive]="'selected'" (click)="backToMainMode()">
+                            <img class="link-icon" [src]="route.icon" width="24" height="24" [alt]="route.label" />
+                            <span> {{ route.label }}</span></a>
                     </li>
                 </ul>
             </nav>
+            <div class="rights">
+            <span>© 2023-2023 Convert Case Tools Ltd. All Rights Reserved.</span>    
+            </div>
         </div>
     </div>
 </header>

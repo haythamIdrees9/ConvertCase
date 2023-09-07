@@ -14,13 +14,10 @@ export class HeaderComponent implements OnInit{
   isSearchOpened: boolean = false;
   isMenuOpened: boolean = false;
   menuRouts = [
-    {path:'/text-case-tools/convert-to-uppercase',label:'Text Convert Case'},
-    {path:'/encode-decode/url-encode',label:'Encoding and Decoding'},
-    {path:'/text-manipulation/text-reverser',label:'Text Manipulation'},
-    {path:'/unit-converters',label:'Unit Converters'},
-
-    // {path:'/temperature-converters',label:'Temperature Converstion'},
-    // {path:'/distance-converters',label:'Distance Converters'},
+    {path:'/text-case-tools',label:'Text Convert Case' ,icon:'assets/images/convert.svg'},
+    {path:'/encode-decode',label:'Encoding and Decoding',icon:'assets/images/decode.svg'},
+    {path:'/text-manipulation',label:'Text Manipulation',icon:'assets/images/replace.svg'},
+    {path:'/unit-converters',label:'Unit Converters',icon:'assets/images/unit.svg'},
   ]
 
   selectedRouteIndex = 1;

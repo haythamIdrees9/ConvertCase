@@ -4,6 +4,7 @@ import { UnitsService } from './units.service';
 import { ActivatedRoute } from '@angular/router';
 import { MetaService } from 'src/app/components/services/meta.service';
 import { SeoService } from 'src/app/components/services/seo.service';
+import { UnitsInfoService } from './units-description.service';
 
 @Component({
   selector: 'app-power-converter',
@@ -12,13 +13,17 @@ import { SeoService } from 'src/app/components/services/seo.service';
 export class UnitConverterComponent implements OnInit {
   userInput: string = '1';
   result: string = '';
-  units: readonly { key: string, label: string, conversionRate: number }[] = [];
+  units: readonly { key: string, label: string, conversionRate: number,abbreviation?:string }[] = [];
   popularUnits: readonly { route: string, reverseRoute: string, labelRoute: string, labelReverseRoute: string, }[] = [];
   conversionRate!: number;
-  linkUnitType:string [] = ['kilowatt','megawatt'];
-  constructor(private unitsService: UnitsService, private route: ActivatedRoute,
-    private metaService:MetaService, private seoService:SeoService) {
- }
+  linkUnitType: string[] = ['kilowatt', 'megawatt'];
+  unitsDescription: string[] = [];
+  linkUnitLabels: any[] = [];
+  unitsAbbreviation: any[] = ['',''];
+  
+  constructor(private unitsService: UnitsService, private unitsInfoService: UnitsInfoService, private route: ActivatedRoute,
+    private metaService: MetaService, private seoService: SeoService) {
+  }
 
   updateResult(userInput: string = this.userInput) {
     this.userInput = userInput;
@@ -32,24 +37,44 @@ export class UnitConverterComponent implements OnInit {
     this.conversionRate = this.unitsService.calculateConversionRate(this.units[1].conversionRate, this.units[0].conversionRate)
     this.handleParamsChange();
     this.updateResult();
-    this.seoService.createLinkForCanonicalURL('unit-converters/power')
   }
 
-  private handleParamsChange(){
+  private handleParamsChange() {
     this.route.params.subscribe((params) => {
-      if(!params['units-type']){
+      if (!params['units-type']) {
         return;
       }
       this.linkUnitType = (params['units-type'] as string).split('-to-');
+      if (this.linkUnitType.length > 1 && this.linkUnitType[0] === this.linkUnitType[1]) {
+        this.unitsDescription = [this.unitsInfoService.getDescription(this.linkUnitType[0])];
+      } else {
+        this.unitsDescription = [this.unitsInfoService.getDescription(this.linkUnitType[0]), this.unitsInfoService.getDescription(this.linkUnitType[1])];
+      }
       this.conversionRate = this.unitsService.getConversionRate(this.linkUnitType[0], this.linkUnitType[1]);
+            let unit1 = this.units.find(item => this.linkUnitType[0] === item.key)
+      let unit2 = this.units.find(item => this.linkUnitType[1] === item.key)
+      this.linkUnitLabels = [unit1?.label, unit2?.label]
+      this.unitsAbbreviation = [unit1?.abbreviation, unit2?.abbreviation]
       this.updateResult();
       this.updateSeoData();
     })
   }
 
-  updateSeoData(){
-    this.metaService.setTitle(`Convert ${this.linkUnitType[0]} to ${this.linkUnitType[1]}`);
+  updateSeoData() {
+    this.metaService.setTitle(`${this.linkUnitType[0]} to ${this.linkUnitType[1]} online converter`);
     this.metaService.setDescription(`Convert power units from ${this.linkUnitType[0]} to ${this.linkUnitType[1]} effortlessly. Get quick, precise results with our user-friendly power converter`)
-    this.metaService.setKeywords("power converter, watt, kilowatt, megawatt, gigawatt, horsepower, unit conversion, convert watt to kilowatt, megawatt to gigawatt, horsepower to kilowatt, power unit conversion, power measurement, power conversion tool, electrical power, mechanical power")
+    this.metaService.setKeywords(`${this.getUniqKeyword()}power converter, watt, kilowatt, megawatt, gigawatt, horsepower, unit conversion, convert watt to kilowatt, megawatt to gigawatt, horsepower to kilowatt, power unit conversion, power measurement, power conversion tool, electrical power, mechanical power`)
   }
+
+  private getUniqKeyword(){
+    let abbreviation = `${this.unitsAbbreviation[0]} to ${this.unitsAbbreviation[1]}`;
+    let full = `${this.clearKeyword(this.linkUnitLabels[0])} to ${this.clearKeyword(this.linkUnitLabels[1])}`
+    let revAbbreviation = `${this.unitsAbbreviation[1]} to ${this.unitsAbbreviation[0]}`;
+    let revFull = `${this.clearKeyword(this.linkUnitLabels[1])} to ${this.clearKeyword(this.linkUnitLabels[0])}`
+    return `${abbreviation}, ${full}, ${revAbbreviation}, ${revFull}, `
+  }
+
+clearKeyword(inputString:string) {
+  return inputString.replace(/\[.*?\]/g, '').replace(/\(.*?\)/g, '').replace(/\s+/g,' ').trim().toLowerCase();
+}
 }

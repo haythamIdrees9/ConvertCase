@@ -1,20 +1,22 @@
-import { Component,  OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { minorWords } from '../../utils/words';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MetaService } from '../services/meta.service';
-import { SeoService } from '../services/seo.service';
+import { InfoService } from './info.service';
 
 @Component({
   selector: 'app-text-converter',
   templateUrl: './text-converter.component.html',
   styleUrls: ['./text-converter.component.scss'],
+  providers:[InfoService]
 })
 export class TextConverterComponent implements OnInit {
   text: string = '';
   storageKey = 'convertedText'
   originalText = '';
-  executeFn = () => {};
-  readonly buttonMappings:{[key:string]:any}  = {
+  isRoot!:boolean;
+  executeFn = () => { };
+  readonly buttonMappings: { [key: string]: any } = {
     'convert-to-uppercase': this.convertToUppercase,
     'convert-to-lowercase': this.convertToLowercase,
     'convert-to-title-case': this.convertToTitleCase,
@@ -24,7 +26,7 @@ export class TextConverterComponent implements OnInit {
     'convert-to-snake-case': this.convertToSnakeCase,
     'convert-to-inverse-case': this.convertToInverseCase,
   };
-  readonly metaContent:{[key:string]:any} =  {
+  readonly metaContent: { [key: string]: any } = {
     "convert-to-uppercase": "Convert text to uppercase using the Uppercase Conversion tool. Transform all characters to uppercase for a consistent and bold appearance.",
     "convert-to-lowercase": "Convert text to lowercase using the Lowercase Conversion tool. Transform all characters to lowercase for a uniform and subdued style.",
     "convert-to-title-case": "Convert text to title case using the Title Case Conversion tool. Capitalize the first letter of each word for a polished and professional look.",
@@ -34,42 +36,66 @@ export class TextConverterComponent implements OnInit {
     "convert-to-snake-case": "Convert text to snake case using the Snake Case Conversion tool. Join words with underscores for variable names and identifiers in programming.",
     "convert-to-inverse-case": "Convert text to inverse case using the Inverse Case Conversion tool. Reverse the case of each character for a unique and eye-catching effect."
   }
-  
-  constructor(private route:
-    ActivatedRoute,private metaService:MetaService,
-     private router:Router,private seoService:SeoService) { }
+  readonly metaKeywords: { [key: string]: any } = {
+    'convert-to-uppercase': 'Convert to Uppercase, Uppercase Converter, Text Uppercase, Case Conversion, Uppercase Text, Online Uppercase, Convert Text to Uppercase, Uppercase Generator, Text Case Change, Capitalization Tool, Uppercase Online, Text Transformation, Case Formatting, Capital Letters',
+    'convert-to-lowercase': 'Convert to Lowercase, Lowercase Converter, Text Lowercase, Case Conversion, Lowercase Text, Online Lowercase, Convert Text to Lowercase, Lowercase Generator, Text Case Change, Lowercase Online, Text Transformation, Case Formatting, Small Letters',
+    'convert-to-title-case': 'Convert to Title Case, Title Case Converter, Text Title Case, Capitalization Tool, Title Case Text, Online Title Case, Convert Text to Title Case, Title Case Generator, Text Case Change, Proper Case, Title Formatting, Text Transformation, Capital Letters',
+    'convert-to-capitalized-case': 'Convert to Capitalized Case, Capitalized Case Converter, Text Capitalization, Title Case Generator, Proper Case Conversion, Text Formatting, Capital Letters, Title Casing, Text Transformation, Capitalization Tool, Online Text Capitalizer',
+    'convert-to-camel-case': 'Convert to Camel Case, CamelCase Converter, Text CamelCase, CamelCase Generator, Text Case Change, Camel Notation, Coding Convention, Programming Style, CamelCase Online, Text Transformation, Coding Standards',
+    'convert-to-kebab-case': 'Convert to Kebab Case, KebabCase Converter, Text KebabCase, KebabCase Generator, Text Case Change, Kebab Notation, Coding Convention, Programming Style, KebabCase Online, Text Transformation, Coding Standards',
+    'convert-to-snake-case': 'Convert to Snake Case, SnakeCase Converter, Text SnakeCase, SnakeCase Generator, Text Case Change, Snake Notation, Coding Convention, Programming Style, SnakeCase Online, Text Transformation, Coding Standards',
+    'convert-to-inverse-case': 'Convert to Inverse Case, Inverse Case Converter, Text Inverse Case, Inverse Case Generator, Text Case Change, Inverse Notation, Coding Convention, Programming Style, Inverse Case Online, Text Transformation, Coding Standards',
+
+  }
+  desccription:string = ''
+  defaultAction = 'convert-to-uppercase';
+  constructor(private route:ActivatedRoute, private metaService: MetaService, private infoService:InfoService) { }
 
   ngOnInit(): void {
     this.handleSeo()
-      const defaultAction = 'convert-to-uppercase'
+
     let action = this.route.snapshot.params['action'];
-    if(!action || !this.buttonMappings[action]){
-      action = defaultAction
-      this.router.navigate(['./',defaultAction],{relativeTo:this.route.parent,replaceUrl:true})
-    }
-    this.route.params.subscribe(params =>{
-      const action = params['action'] || defaultAction;
-      if(action){
-        this.metaService.setTitle(action);
-        this.metaService.setDescription(this.metaContent[action]);
-      }    
-    })
-    
-    if(action && this.buttonMappings[action]){
+    if (action && this.buttonMappings[action]) {
+      this.isRoot = false;
       this.executeFn = this.buttonMappings[action];
-    }  
-    this.seoService.createLinkForCanonicalURL('text-case-tools')
-  
+      this.desccription = this.infoService.getData(action);
+      this.setInnerDescription(action)
+    } else {
+      action = this.defaultAction;
+      this.executeFn = this.buttonMappings[action];
+      this.isRoot = true;
+    }
+
+    this.route.params.subscribe(params => {
+      const action = (params['action'] && this.metaContent[params['action']])?params['action']: this.defaultAction;      
+      this.isRoot = !params['action'];
+      if (action) {
+        this.metaService.setTitle(`${action} online`);
+        this.metaService.setDescription(this.metaContent[action]);
+        this.metaService.setKeywords(this.metaKeywords[action]);
+      }
+      this.setInnerDescription(action)
+    })
   }
-  private handleSeo(){
+
+  setInnerDescription(action:string){
+    if(action && this.infoService.getData(action)){
+      this.desccription = this.infoService.getData(action);
+    } else{
+      this.isRoot = true;
+      this.executeFn = this.buttonMappings[this.defaultAction];
+    }
+  }
+  
+  private handleSeo() {
     this.metaService.setTitle('Text Conversion: Uppercase, Lowercase, Title and More');
     this.metaService.setDescription(`Text case converter - A set of functions that can be used to convert text to different cases, such as uppercase, lowercase, title case, and camel case. Perfect for formatting text for different purposes, such as headings, titles, and code.`);
     this.metaService.setKeywords("uppercase conversion, lowercase conversion, title case conversion, capitalized case conversion, camel case conversion, kebab case conversion, snake case conversion, inverse case conversion")
   }
 
-  onSelect(executeFn:() => void){
+  onSelect(executeFn: () => void) {
     this.executeFn = executeFn;
-    this.executeFn(); 
+    this.executeFn();
   }
 
   setOriginalText(text: string) {
