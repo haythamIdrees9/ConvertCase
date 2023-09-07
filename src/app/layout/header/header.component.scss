@@ -40,11 +40,25 @@ $bg-color: #144D30;
     box-sizing: border-box;
     z-index: 1000;
     padding: 0 1rem;
-
-    .support-me,
-    .support-me img {
+    .support-me {
+        .coffee{
+            cursor: pointer;
+            background-color: #FFDD00;
+            padding: 0 0.75rem 0 0.5rem;
+            border-radius: 0.5rem;
+            height: 50px;
+            span{
+            font-size: 2rem;
+            padding: 0;
+        }
+        font-size: 18px;
+        font-weight: bold;
+    }
+    &,
+     img {
         height: 50px !important;
-        width: 180px !important;
+        width: 202px !important;
+    }
     }
 
     .arrow {
