@@ -4,51 +4,266 @@ import Decimal from 'decimal.js';
 @Injectable()
 export class UnitsService {
 
-  units: readonly { key: string; label: string; conversionRate: number }[] = Object.freeze([
-    { key: "newton", label: "Newton", conversionRate: 1 },
-    { key: "dyne", label: "Dyne", conversionRate: 0.00001 },
-    { key: "kilogram-force", label: "Kilogram-force", conversionRate: 9.80665 },
-    { key: "pound-force", label: "Pound-force", conversionRate: 4.44822 },
-    { key: "ounce-force", label: "Ounce-force", conversionRate: 0.2780139 },
-    { key: "gram-force", label: "Gram-force", conversionRate: 0.00980665 },
-    { key: "kilonewton", label: "Kilonewton", conversionRate: 1000 },
-    { key: "meganewton", label: "Meganewton", conversionRate: 1000000 },
-    { key: "giganewton", label: "Giganewton", conversionRate: 1000000000 },
-    { key: "teranewton", label: "Teranewton", conversionRate: 1000000000000 },
-    { key: "millinewton", label: "Millinewton", conversionRate: 0.001 },
-    { key: "micronewton", label: "Micronewton", conversionRate: 0.000001 },
-    { key: "nanonewton", label: "Nanonewton", conversionRate: 0.000000001 },
-    { key: "piconewton", label: "Piconewton", conversionRate: 0.000000000001 },
-    { key: "femtonewton", label: "Femtonewton", conversionRate: 0.000000000000001 },
-    { key: "meganewton-per-square-meter", label: "Meganewton per Square Meter", conversionRate: 1 },
-    { key: "dyne-per-square-centimeter", label: "Dyne per Square Centimeter", conversionRate: 0.1 },
-    { key: "kilogram-force-per-square-meter", label: "Kilogram-force per Square Meter", conversionRate: 9.80665 },
-    { key: "pound-force-per-square-inch", label: "Pound-force per Square Inch", conversionRate: 6894.76 },
-    { key: "kilopound-force", label: "Kilopound-force", conversionRate: 4448.22 },
-    { key: "kip", label: "Kip", conversionRate: 4448.22 },
-    { key: "ounce-force-inch", label: "Ounce-force Inch", conversionRate: 0.007251 },
-    { key: "poundal", label: "Poundal", conversionRate: 0.138255 },
-    { key: "pond", label: "Pond", conversionRate: 0.00980665 },
-    { key: "tonne-force", label: "Tonne-force", conversionRate: 9806.65 },
-    { key: "kilonewton-per-square-meter", label: "Kilonewton per Square Meter", conversionRate: 1000 },
-    { key: "meganewton-per-square-centimeter", label: "Meganewton per Square Centimeter", conversionRate: 10000000 },
-    { key: "kilopond-per-square-meter", label: "Kilopond per Square Meter", conversionRate: 98.0665 },
-    { key: "newton-per-meter", label: "Newton per Meter", conversionRate: 1 },
-    { key: "dyne-per-centimeter", label: "Dyne per Centimeter", conversionRate: 0.001 },
-    { key: "pound-force-per-foot", label: "Pound-force per Foot", conversionRate: 1.48816 },
-    { key: "poundal-per-foot", label: "Poundal per Foot", conversionRate: 0.0421401 },
-    { key: "gram-force-per-square-centimeter", label: "Gram-force per Square Centimeter", conversionRate: 98.0665 },
-    { key: "kilonewton-per-square-centimeter", label: "Kilonewton per Square Centimeter", conversionRate: 100000 },
-    { key: "millinewton-per-meter", label: "Millinewton per Meter", conversionRate: 0.001 },
-    { key: "micronewton-per-meter", label: "Micronewton per Meter", conversionRate: 0.000001 },
-    { key: "nanonewton-per-meter", label: "Nanonewton per Meter", conversionRate: 0.000000001 },
-    { key: "piconewton-per-meter", label: "Piconewton per Meter", conversionRate: 0.000000000001 },
-    { key: "femtonewton-per-meter", label: "Femtonewton per Meter", conversionRate: 0.000000000000001 },
-    { key: "millinewton-per-millimeter", label: "Millinewton per Millimeter", conversionRate: 1 },
-    { key: "poundal-per-inch", label: "Poundal per Inch", conversionRate: 0.345966 },
-    { key: "kilogram-force-meter", label: "Kilogram-force Meter", conversionRate: 9.80665 },
-    { key: "pound-force-foot", label: "Pound-force Foot", conversionRate: 0.0421401 }
-  ]);
+  units: readonly { key: string; label: string; conversionRate: number,abbreviation?:string}[] = Object.freeze([
+    {
+        "key": "newton",
+        "label": "Newton",
+        "conversionRate": 1,
+        "abbreviation": "N"
+    },
+    {
+        "key": "dyne",
+        "label": "Dyne",
+        "conversionRate": 0.00001,
+        "abbreviation": "dyn"
+    },
+    {
+        "key": "kilogram-force",
+        "label": "Kilogram-force",
+        "conversionRate": 9.80665,
+        "abbreviation": "kgf"
+    },
+    {
+        "key": "pound-force",
+        "label": "Pound-force",
+        "conversionRate": 4.44822,
+        "abbreviation": "lbf"
+    },
+    {
+        "key": "ounce-force",
+        "label": "Ounce-force",
+        "conversionRate": 0.2780139,
+        "abbreviation": "ozf"
+    },
+    {
+        "key": "gram-force",
+        "label": "Gram-force",
+        "conversionRate": 0.00980665,
+        "abbreviation": "gf"
+    },
+    {
+        "key": "kilonewton",
+        "label": "Kilonewton",
+        "conversionRate": 1000,
+        "abbreviation": "kN"
+    },
+    {
+        "key": "meganewton",
+        "label": "Meganewton",
+        "conversionRate": 1000000,
+        "abbreviation": "MN"
+    },
+    {
+        "key": "giganewton",
+        "label": "Giganewton",
+        "conversionRate": 1000000000,
+        "abbreviation": "GN"
+    },
+    {
+        "key": "teranewton",
+        "label": "Teranewton",
+        "conversionRate": 1000000000000,
+        "abbreviation": "TN"
+    },
+    {
+        "key": "millinewton",
+        "label": "Millinewton",
+        "conversionRate": 0.001,
+        "abbreviation": "mN"
+    },
+    {
+        "key": "micronewton",
+        "label": "Micronewton",
+        "conversionRate": 0.000001,
+        "abbreviation": "µN"
+    },
+    {
+        "key": "nanonewton",
+        "label": "Nanonewton",
+        "conversionRate": 1e-9,
+        "abbreviation": "nN"
+    },
+    {
+        "key": "piconewton",
+        "label": "Piconewton",
+        "conversionRate": 1e-12,
+        "abbreviation": "pN"
+    },
+    {
+        "key": "femtonewton",
+        "label": "Femtonewton",
+        "conversionRate": 1e-15,
+        "abbreviation": "fN"
+    },
+    {
+        "key": "meganewton-per-square-meter",
+        "label": "Meganewton per Square Meter",
+        "conversionRate": 1,
+        "abbreviation": "MN/m²"
+    },
+    {
+        "key": "dyne-per-square-centimeter",
+        "label": "Dyne per Square Centimeter",
+        "conversionRate": 0.1,
+        "abbreviation": "dyn/cm²"
+    },
+    {
+        "key": "kilogram-force-per-square-meter",
+        "label": "Kilogram-force per Square Meter",
+        "conversionRate": 9.80665,
+        "abbreviation": "kgf/m²"
+    },
+    {
+        "key": "pound-force-per-square-inch",
+        "label": "Pound-force per Square Inch",
+        "conversionRate": 6894.76,
+        "abbreviation": "lbf/in²"
+    },
+    {
+        "key": "kilopound-force",
+        "label": "Kilopound-force",
+        "conversionRate": 4448.22,
+        "abbreviation": "kip"
+    },
+    {
+        "key": "kip",
+        "label": "Kip",
+        "conversionRate": 4448.22,
+        "abbreviation": "kip"
+    },
+    {
+        "key": "ounce-force-inch",
+        "label": "Ounce-force Inch",
+        "conversionRate": 0.007251,
+        "abbreviation": "ozf·in"
+    },
+    {
+        "key": "poundal",
+        "label": "Poundal",
+        "conversionRate": 0.138255,
+        "abbreviation": "poundal"
+    },
+    {
+        "key": "pond",
+        "label": "Pond",
+        "conversionRate": 0.00980665,
+        "abbreviation": "pond"
+    },
+    {
+        "key": "tonne-force",
+        "label": "Tonne-force",
+        "conversionRate": 9806.65,
+        "abbreviation": "tonne-force"
+    },
+    {
+        "key": "kilonewton-per-square-meter",
+        "label": "Kilonewton per Square Meter",
+        "conversionRate": 1000,
+        "abbreviation": "kN/m²"
+    },
+    {
+        "key": "meganewton-per-square-centimeter",
+        "label": "Meganewton per Square Centimeter",
+        "conversionRate": 10000000,
+        "abbreviation": "MN/cm²"
+    },
+    {
+        "key": "kilopond-per-square-meter",
+        "label": "Kilopond per Square Meter",
+        "conversionRate": 98.0665,
+        "abbreviation": "kgf/m²"
+    },
+    {
+        "key": "newton-per-meter",
+        "label": "Newton per Meter",
+        "conversionRate": 1,
+        "abbreviation": "N/m"
+    },
+    {
+        "key": "dyne-per-centimeter",
+        "label": "Dyne per Centimeter",
+        "conversionRate": 0.001,
+        "abbreviation": "dyn/cm"
+    },
+    {
+        "key": "pound-force-per-foot",
+        "label": "Pound-force per Foot",
+        "conversionRate": 1.48816,
+        "abbreviation": "lbf/ft"
+    },
+    {
+        "key": "poundal-per-foot",
+        "label": "Poundal per Foot",
+        "conversionRate": 0.0421401,
+        "abbreviation": "poundal/ft"
+    },
+    {
+        "key": "gram-force-per-square-centimeter",
+        "label": "Gram-force per Square Centimeter",
+        "conversionRate": 98.0665,
+        "abbreviation": "gf/cm²"
+    },
+    {
+        "key": "kilonewton-per-square-centimeter",
+        "label": "Kilonewton per Square Centimeter",
+        "conversionRate": 100000,
+        "abbreviation": "kN/cm²"
+    },
+    {
+        "key": "millinewton-per-meter",
+        "label": "Millinewton per Meter",
+        "conversionRate": 0.001,
+        "abbreviation": "mN/m"
+    },
+    {
+        "key": "micronewton-per-meter",
+        "label": "Micronewton per Meter",
+        "conversionRate": 0.000001,
+        "abbreviation": "µN/m"
+    },
+    {
+        "key": "nanonewton-per-meter",
+        "label": "Nanonewton per Meter",
+        "conversionRate": 1e-9,
+        "abbreviation": "nN/m"
+    },
+    {
+        "key": "piconewton-per-meter",
+        "label": "Piconewton per Meter",
+        "conversionRate": 1e-12,
+        "abbreviation": "pN/m"
+    },
+    {
+        "key": "femtonewton-per-meter",
+        "label": "Femtonewton per Meter",
+        "conversionRate": 1e-15,
+        "abbreviation": "fN/m"
+    },
+    {
+        "key": "millinewton-per-millimeter",
+        "label": "Millinewton per Millimeter",
+        "conversionRate": 1,
+        "abbreviation": "mN/mm"
+    },
+    {
+        "key": "poundal-per-inch",
+        "label": "Poundal per Inch",
+        "conversionRate": 0.345966,
+        "abbreviation": "poundal/in"
+    },
+    {
+        "key": "kilogram-force-meter",
+        "label": "Kilogram-force Meter",
+        "conversionRate": 9.80665,
+        "abbreviation": "kgf·m"
+    },
+    {
+        "key": "pound-force-foot",
+        "label": "Pound-force Foot",
+        "conversionRate": 0.0421401,
+        "abbreviation": "lbf·ft"
+    }
+]);
 
   popularUnits = Object.freeze([
     {
@@ -171,7 +386,8 @@ export class UnitsService {
 
 
   constructor() {
-    // let value = (8 * 5);
+        // console.log('units',this.units.map(item => ({...item,abbreviation:this.test.find(i => i.key === item.key)?.label})));
+    // console.log('units',this.units.map(item => (item.key)));
       
   }
 

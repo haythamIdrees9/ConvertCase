@@ -16,8 +16,8 @@
             <nav>
                 <ul>
                     <li class="w-100p" *ngFor="let route of menuRouts; let index = index"
-                        [class.selected]="selectedRouteIndex === index">
-                        <a class="w-100p f-row a-center" [routerLink]="route.path" (click)="backToMainMode()">
+                        >
+                        <a class="w-100p f-row a-center" [routerLink]="route.path" [routerLinkActive]="'selected'" (click)="backToMainMode()">
                             <img class="link-icon" [src]="route.icon" width="24" height="24" [alt]="route.label" />
                             <span> {{ route.label }}</span></a>
                     </li>

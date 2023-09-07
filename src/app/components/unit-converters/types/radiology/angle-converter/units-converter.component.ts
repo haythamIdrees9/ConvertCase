@@ -49,7 +49,9 @@ constructor(private unitsService: UnitsService,private unitsInfoService:UnitsInf
         this.unitsDescription = [this.unitsInfoService.getDescription(this.linkUnitType[0]),this.unitsInfoService.getDescription(this.linkUnitType[1])]; 
       }
       this.conversionRate = this.unitsService.getConversionRate(this.linkUnitType[0], this.linkUnitType[1]);
-this.linkUnitLabels = [this.units.find(item => this.linkUnitType[0] === item.key)?.label, this.units.find(item => this.linkUnitType[1] === item.key)?.label]
+      let unit1 = this.units.find(item => this.linkUnitType[0] === item.key)
+      let unit2 = this.units.find(item => this.linkUnitType[1] === item.key)
+      this.linkUnitLabels = [unit1?.label, unit2?.label]
       this.updateResult();
       this.updateSeoData();
     })
@@ -58,6 +60,16 @@ this.linkUnitLabels = [this.units.find(item => this.linkUnitType[0] === item.key
   updateSeoData(){
     this.metaService.setTitle(`${this.linkUnitType[0]} to ${this.linkUnitType[1]} online converter`);
     this.metaService.setDescription(`Effortlessly convert angles from ${this.linkUnitType[0]} to ${this.linkUnitType[1]} with precision. Get quick and accurate results using our user-friendly angle converter`)
-    this.metaService.setKeywords("angle converter, degree, radian, gradian, unit conversion, convert degrees to radians, degrees to gradians, angle unit conversion, angle measurement, angle conversion tool, degrees, radians, gradians")
+    this.metaService.setKeywords(`${this.getUniqKeyword()}angle converter, degree, radian, gradian, unit conversion, convert degrees to radians, degrees to gradians, angle unit conversion, angle measurement, angle conversion tool, degrees, radians, gradians`)
   }
+
+  private getUniqKeyword(){
+    let full = `${this.clearKeyword(this.linkUnitLabels[0])} to ${this.clearKeyword(this.linkUnitLabels[1])}`
+    let revFull = `${this.clearKeyword(this.linkUnitLabels[1])} to ${this.clearKeyword(this.linkUnitLabels[0])}`
+    return `${full}, ${revFull}, `
+  }
+
+clearKeyword(inputString:string) {
+  return inputString.replace(/\[.*?\]/g, '').replace(/\(.*?\)/g, '').replace(/\s+/g,' ').trim().toLowerCase();
+}
 }

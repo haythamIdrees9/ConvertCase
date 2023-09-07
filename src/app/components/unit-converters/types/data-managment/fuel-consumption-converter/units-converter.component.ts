@@ -13,12 +13,14 @@ import { UnitsInfoService } from './units-description.service';
 export class UnitConverterComponent implements OnInit {
   userInput: string = '1';
   result: string = '';
-  units: readonly { key: string, label: string, conversionRate: number }[] = [];
+  units: readonly { key: string, label: string, conversionRate: number,abbreviation?:string }[] = [];
   popularUnits: readonly { route: string, reverseRoute: string, labelRoute: string, labelReverseRoute: string, }[] = [];
   conversionRate!: number;
   linkUnitType:string [] = ['meter-per-liter','kilometer-per-liter'];
   unitsDescription:string[]=[];
 linkUnitLabels :any[] = [];
+unitsAbbreviation :any[] = ['',''];
+
 constructor(private unitsService: UnitsService,private unitsInfoService:UnitsInfoService, private route: ActivatedRoute,
     private metaService:MetaService, private seoService:SeoService) {
  }
@@ -49,7 +51,10 @@ constructor(private unitsService: UnitsService,private unitsInfoService:UnitsInf
         this.unitsDescription = [this.unitsInfoService.getDescription(this.linkUnitType[0]),this.unitsInfoService.getDescription(this.linkUnitType[1])]; 
       }
       this.conversionRate = this.unitsService.getConversionRate(this.linkUnitType[0], this.linkUnitType[1]);
-this.linkUnitLabels = [this.units.find(item => this.linkUnitType[0] === item.key)?.label, this.units.find(item => this.linkUnitType[1] === item.key)?.label]
+let unit1 = this.units.find(item => this.linkUnitType[0] === item.key)
+let unit2 = this.units.find(item => this.linkUnitType[1] === item.key)
+this.linkUnitLabels = [unit1?.label, unit2?.label]
+this.unitsAbbreviation = [unit1?.abbreviation, unit2?.abbreviation]
       this.updateResult();
       this.updateSeoData();
     })
@@ -58,6 +63,18 @@ this.linkUnitLabels = [this.units.find(item => this.linkUnitType[0] === item.key
   updateSeoData(){
     this.metaService.setTitle(`${this.linkUnitType[0]} to ${this.linkUnitType[1]} online converter`);
     this.metaService.setDescription(`Easily convert fuel consumption between ${this.linkUnitType[0]} and ${this.linkUnitType[1]}. Get fast, accurate results with our user-friendly fuel consumption converter`)
-    this.metaService.setKeywords("fuel consumption converter, miles per gallon (MPG), kilometers per liter (KPL), liters per 100 kilometers (L/100KM), unit conversion, convert MPG to KPL, L/100KM to MPG, fuel consumption unit conversion, fuel consumption measurement, fuel consumption conversion tool, fuel efficiency");
+    this.metaService.setKeywords(`${this.getUniqKeyword()},fuel consumption converter, miles per gallon (MPG), kilometers per liter (KPL), liters per 100 kilometers (L/100KM), unit conversion, convert MPG to KPL, L/100KM to MPG, fuel consumption unit conversion, fuel consumption measurement, fuel consumption conversion tool, fuel efficiency`);
   }
+
+  private getUniqKeyword(){
+    let abbreviation = `${this.unitsAbbreviation[0]} to ${this.unitsAbbreviation[1]}`;
+    let full = `${this.clearKeyword(this.linkUnitLabels[0])} to ${this.clearKeyword(this.linkUnitLabels[1])}`
+    let revAbbreviation = `${this.unitsAbbreviation[1]} to ${this.unitsAbbreviation[0]}`;
+    let revFull = `${this.clearKeyword(this.linkUnitLabels[1])} to ${this.clearKeyword(this.linkUnitLabels[0])}`
+    return `${abbreviation}, ${full}, ${revAbbreviation}, ${revFull}`
+  }
+
+clearKeyword(inputString:string) {
+  return inputString.replace(/\[.*?\]/g, '').replace(/\s+/g,' ').trim().toLowerCase();
+}
 }

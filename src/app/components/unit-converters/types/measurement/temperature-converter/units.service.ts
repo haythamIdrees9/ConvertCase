@@ -1,24 +1,24 @@
 import { Injectable } from '@angular/core';
 import Decimal from 'decimal.js';
 
-type unit =  { key: string; label: string; convertToCelsius: (key: any) => any;convertFromCelsius:(key: any) => any }
+type unit =  { key: string; label: string;abbreviation:string; convertToCelsius: (key: any) => any;convertFromCelsius:(key: any) => any }
 @Injectable()
 export class UnitsService {
   
   units: readonly unit [] = Object.freeze([
-    {key: "celsius",label: "Celsius",convertToCelsius: (value) => new Decimal(value),convertFromCelsius: (celsius) => new Decimal(celsius),},
-    {key: "fahrenheit",label: "Fahrenheit",convertToCelsius: (fahrenheit) => new Decimal(fahrenheit).minus(32).times(5).div(9),convertFromCelsius: (celsius) => new Decimal(celsius).times(9).div(5).plus(32),},
-    {key: "kelvin",label: "Kelvin",convertToCelsius: (kelvin) => new Decimal(kelvin).minus(273.15),convertFromCelsius: (celsius) => new Decimal(celsius).plus(273.15),},
-    {key: "rankine",label: "Rankine",convertToCelsius: (rankine) => new Decimal(rankine).minus(491.67).times(5).div(9),convertFromCelsius: (celsius) => new Decimal(celsius).times(9).div(5).plus(491.67),},
-    {key: "reaumur",label: "Réaumur",convertToCelsius: (reaumur) => new Decimal(reaumur).times(5).div(4),convertFromCelsius: (celsius) => new Decimal(celsius).times(4).div(5),},
-    {key: "romer",label: "Rømer",convertToCelsius: (romer) => new Decimal(romer).minus(7.5).times(40).div(21),convertFromCelsius: (celsius) => new Decimal(celsius).times(21).div(40).plus(7.5),},
-    {key: "delisle",label: "Delisle",convertToCelsius: (delisle) => new Decimal(100).minus(delisle).times(2).div(3),convertFromCelsius: (celsius) => new Decimal(100).minus(celsius).times(3).div(2),},
-    {key: "newton",label: "Newton",convertToCelsius: (newton) => new Decimal(newton).times(100).div(33),convertFromCelsius: (celsius) => new Decimal(celsius).times(33).div(100),},
-    {key: "centigrade",label: "Centigrade",convertToCelsius: (centigrade) => new Decimal(centigrade),convertFromCelsius: (celsius) => new Decimal(celsius),},
-    {key: "gas-mark",label: "Gas Mark",convertToCelsius: (gasMark) => new Decimal(gasMark).minus(1).times(25).plus(150),convertFromCelsius: (celsius) => new Decimal(celsius).minus(150).div(25).plus(1),},
-    {key: "planck-temperature",label: "Planck Temperature",convertToCelsius: (planck) => new Decimal(planck).times('1.41680833e+32'),convertFromCelsius: (celsius) => new Decimal(celsius).div('1.41680833e+32'),},
+    {key: "celsius",abbreviation: "c" ,label: "Celsius",convertToCelsius: (value) => new Decimal(value),convertFromCelsius: (celsius) => new Decimal(celsius),},
+    {key: "fahrenheit",abbreviation:"f",label: "Fahrenheit",convertToCelsius: (fahrenheit) => new Decimal(fahrenheit).minus(32).times(5).div(9),convertFromCelsius: (celsius) => new Decimal(celsius).times(9).div(5).plus(32),},
+    {key: "kelvin",abbreviation:"k",label: "Kelvin",convertToCelsius: (kelvin) => new Decimal(kelvin).minus(273.15),convertFromCelsius: (celsius) => new Decimal(celsius).plus(273.15),},
+    {key: "rankine",abbreviation:"r",label: "Rankine",convertToCelsius: (rankine) => new Decimal(rankine).minus(491.67).times(5).div(9),convertFromCelsius: (celsius) => new Decimal(celsius).times(9).div(5).plus(491.67),},
+    {key: "reaumur",abbreviation:"re",label: "Réaumur",convertToCelsius: (reaumur) => new Decimal(reaumur).times(5).div(4),convertFromCelsius: (celsius) => new Decimal(celsius).times(4).div(5),},
+    {key: "romer",abbreviation:"ro",label: "Rømer",convertToCelsius: (romer) => new Decimal(romer).minus(7.5).times(40).div(21),convertFromCelsius: (celsius) => new Decimal(celsius).times(21).div(40).plus(7.5),},
+    {key: "delisle",abbreviation:"de",label: "Delisle",convertToCelsius: (delisle) => new Decimal(100).minus(delisle).times(2).div(3),convertFromCelsius: (celsius) => new Decimal(100).minus(celsius).times(3).div(2),},
+    {key: "newton",abbreviation:"n",label: "Newton",convertToCelsius: (newton) => new Decimal(newton).times(100).div(33),convertFromCelsius: (celsius) => new Decimal(celsius).times(33).div(100),},
+    {key: "centigrade",abbreviation:"c",label: "Centigrade",convertToCelsius: (centigrade) => new Decimal(centigrade),convertFromCelsius: (celsius) => new Decimal(celsius),},
+    {key: "gas-mark",abbreviation:"gas mark",label: "Gas Mark",convertToCelsius: (gasMark) => new Decimal(gasMark).minus(1).times(25).plus(150),convertFromCelsius: (celsius) => new Decimal(celsius).minus(150).div(25).plus(1),},
+    {key: "planck-temperature",abbreviation:"planck temperature",label: "Planck Temperature",convertToCelsius: (planck) => new Decimal(planck).times('1.41680833e+32'),convertFromCelsius: (celsius) => new Decimal(celsius).div('1.41680833e+32'),},
   ]
-  
+
 );
 
 popularUnits = Object.freeze([
@@ -44,9 +44,23 @@ popularUnits = Object.freeze([
     {route: 'kelvin-to-rankine',reverseRoute: 'rankine-to-kelvin',labelRoute: 'Kelvin to Rankine',labelReverseRoute: 'Rankine to Kelvin', },
   
 ]);
+test = [
+  { "key": "celsius", "abbreviation": "°C" },
+  { "key": "fahrenheit", "abbreviation": "°F" },
+  { "key": "kelvin", "abbreviation": "K" },
+  { "key": "rankine", "abbreviation": "°R" },
+  { "key": "reaumur", "abbreviation": "°Re" },
+  { "key": "romer", "abbreviation": "°Ro" },
+  { "key": "delisle", "abbreviation": "°De" },
+  { "key": "newton", "abbreviation": "°N" },
+  { "key": "centigrade", "abbreviation": "°C" },
+  { "key": "gas-mark", "abbreviation": "Gas Mark" },
+  { "key": "planck-temperature", "abbreviation": "Planck Temperature" }
+]
 
   constructor() {    
-
+       console.log('units',this.units.map(item => ({...item,abbreviation:this.test.find(i => i.key === item.key)?.abbreviation})));
+      //  console.log('units',this.units.map(item => (item.key)));   
   }
 
 

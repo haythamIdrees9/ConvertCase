@@ -4,65 +4,355 @@ import Decimal from 'decimal.js';
 @Injectable()
 export class UnitsService {
 
-  units: readonly { key: string; label: string; conversionRate: number }[] = Object.freeze([
-    { key: 'kilogram', label: 'kilogram [kg]', conversionRate: 1 },
-    { key: 'gram', label: 'gram [g]', conversionRate: 0.001 },
-    { key: 'milligram', label: 'milligram [mg]', conversionRate: 0.000001 },
-    { key: 'ton-metric', label: 'ton (metric) [t]', conversionRate: 1000 },
-    { key: 'pound', label: 'pound [lbs]', conversionRate: 0.453592 },
-    { key: 'ounce', label: 'ounce [oz]', conversionRate: 0.0283495 },
-    { key: 'carat', label: 'carat [car, ct]', conversionRate: 0.0002 },
-    { key: 'ton-us-short', label: 'ton (short) [ton (US)]', conversionRate: 907.185 },
-    { key: 'ton-uk-long', label: 'ton (long) [ton (UK)]', conversionRate: 1016.05 },
-    { key: 'dram', label: 'dram [dr]', conversionRate: 0.00177185 },
-    { key: 'atomic-mass-unit', label: 'Atomic mass unit [u]', conversionRate: 1.66053906660e-27 },
-    { key: 'short-ton-us', label: 'short ton (US) [ton (US)]', conversionRate: 907.185 },
-    { key: 'long-ton-uk', label: 'long ton (UK) [ton (UK)]', conversionRate: 1016.05 },
-    { key: 'exagram', label: 'exagram [Eg]', conversionRate: 1e18 },
-    { key: 'petagram', label: 'petagram [Pg]', conversionRate: 1e15 },
-    { key: 'teragram', label: 'teragram [Tg]', conversionRate: 1e12 },
-    { key: 'gigagram', label: 'gigagram [Gg]', conversionRate: 1e9 },
-    { key: 'megagram', label: 'megagram [Mg]', conversionRate: 1e6 },
-    { key: 'hectogram', label: 'hectogram [hg]', conversionRate: 100 },
-    { key: 'dekagram', label: 'dekagram [dag]', conversionRate: 10 },
-    { key: 'decigram', label: 'decigram [dg]', conversionRate: 0.1 },
-    { key: 'centigram', label: 'centigram [cg]', conversionRate: 0.01 },
-    { key: 'carrat', label: 'carrat [ct]', conversionRate: 0.0002 },
-    { key: 'microgram', label: 'microgram [µg]', conversionRate: 0.000001 },
-    { key: 'nanogram', label: 'nanogram [ng]', conversionRate: 1e-9 },
-    { key: 'picogram', label: 'picogram [pg]', conversionRate: 1e-12 },
-    { key: 'femtogram', label: 'femtogram [fg]', conversionRate: 1e-15 },
-    { key: 'attogram', label: 'attogram [ag]', conversionRate: 1e-18 },
-    { key: 'dalton', label: 'Dalton', conversionRate: 1.66053906660e-27 },
-    { key: 'kilopound', label: 'kilopound [kip]', conversionRate: 453.592 },
-    { key: 'slug', label: 'slug', conversionRate: 14.5939 },
-    { key: 'pound-force-square-second-per-foot', label: 'pound-force square second/foot', conversionRate: 47.8803 },
-    { key: 'pound-troy-or-apothecary', label: 'pound (troy or apothecary)', conversionRate: 0.373242 },
-    { key: 'poundal', label: 'poundal [pdl]', conversionRate: 0.138255 },
-    { key: 'ton-assay-us', label: 'ton (assay) (US)', conversionRate: 29.1667 },
-    { key: 'ton-assay-uk', label: 'ton (assay) (UK)', conversionRate: 32.6667 },
-    { key: 'kiloton-metric', label: 'kiloton (metric)', conversionRate: 1e6 },
-    { key: 'quintal-metric', label: 'quintal (metric)', conversionRate: 100 },
-    { key: 'hundredweight-us', label: 'hundred weight (US)', conversionRate: 45359.2 },
-    { key: 'hundredweight-uk', label: 'hundred weight (UK)', conversionRate: 50802.3 },
-    { key: 'quarter-us', label: 'quarter (US) [qr (US)]', conversionRate: 2268 },
-    { key: 'quarter-uk', label: 'quarter (UK) [qr (UK)]', conversionRate: 2540 },
-    { key: 'stone-us', label: 'stone (US)', conversionRate: 6350.29 },
-    { key: 'stone-uk', label: 'stone (UK)', conversionRate: 6350.29 },
-    { key: 'tonne', label: 'tonne [t]', conversionRate: 1000 },
-    { key: 'pennyweight', label: 'penny weight [pwt]', conversionRate: 0.00155517 },
-    { key: 'scruple-apothecary', label: 'scruple (apothecary) [s.ap]', conversionRate: 0.00388793 },
-    { key: 'grain', label: 'grain [gr]', conversionRate: 0.00006479891 },
-    { key: 'gamma', label: 'Gamma', conversionRate: 1e-9 },
-    { key: 'electron-mass-rest', label: 'Electron mass (rest)', conversionRate: 9.10938356e-31 },
-    { key: 'muon-mass', label: 'Muon mass', conversionRate: 1.883531627e-28 },
-    { key: 'proton-mass', label: 'Proton mass', conversionRate: 1.67262192369e-27 },
-    { key: 'neutron-mass', label: 'Neutron mass', conversionRate: 1.67492749804e-27 },
-    { key: 'deuteron-mass', label: 'Deuteron mass', conversionRate: 3.343583719e-27 },
-    { key: 'earths-mass', label: "Earth's mass", conversionRate: 5.97237e24 },
-    { key: 'moon-mass', label: "Moon's mass", conversionRate: 7.342e22 },
-    { key: 'mars-mass', label: "Mars's mass", conversionRate: 6.4171e23 },
-    { key: 'suns-mass', label: "Sun's mass", conversionRate: 1.9885e30 },
+  units: readonly { key: string; label: string; conversionRate: number,abbreviation?:string }[] = Object.freeze([
+    {
+        "key": "kilogram",
+        "label": "kilogram [kg]",
+        "conversionRate": 1,
+        "abbreviation": "kg"
+    },
+    {
+        "key": "gram",
+        "label": "gram [g]",
+        "conversionRate": 0.001,
+        "abbreviation": "g"
+    },
+    {
+        "key": "milligram",
+        "label": "milligram [mg]",
+        "conversionRate": 0.000001,
+        "abbreviation": "mg"
+    },
+    {
+        "key": "ton-metric",
+        "label": "ton (metric) [t]",
+        "conversionRate": 1000,
+        "abbreviation": "ton"
+    },
+    {
+        "key": "pound",
+        "label": "pound [lbs]",
+        "conversionRate": 0.453592,
+        "abbreviation": "lb"
+    },
+    {
+        "key": "ounce",
+        "label": "ounce [oz]",
+        "conversionRate": 0.0283495,
+        "abbreviation": "oz"
+    },
+    {
+        "key": "carat",
+        "label": "carat [car, ct]",
+        "conversionRate": 0.0002,
+        "abbreviation": "ct"
+    },
+    {
+        "key": "ton-us-short",
+        "label": "ton (short) [ton (US)]",
+        "conversionRate": 907.185,
+        "abbreviation": "ton (US)"
+    },
+    {
+        "key": "ton-uk-long",
+        "label": "ton (long) [ton (UK)]",
+        "conversionRate": 1016.05,
+        "abbreviation": "ton (UK)"
+    },
+    {
+        "key": "dram",
+        "label": "dram [dr]",
+        "conversionRate": 0.00177185,
+        "abbreviation": "dram"
+    },
+    {
+        "key": "atomic-mass-unit",
+        "label": "Atomic mass unit [u]",
+        "conversionRate": 1.6605390666e-27,
+        "abbreviation": "u"
+    },
+    {
+        "key": "short-ton-us",
+        "label": "short ton (US) [ton (US)]",
+        "conversionRate": 907.185,
+        "abbreviation": "short ton (US)"
+    },
+    {
+        "key": "long-ton-uk",
+        "label": "long ton (UK) [ton (UK)]",
+        "conversionRate": 1016.05,
+        "abbreviation": "long ton (UK)"
+    },
+    {
+        "key": "exagram",
+        "label": "exagram [Eg]",
+        "conversionRate": 1000000000000000000,
+        "abbreviation": "Eg"
+    },
+    {
+        "key": "petagram",
+        "label": "petagram [Pg]",
+        "conversionRate": 1000000000000000,
+        "abbreviation": "Pg"
+    },
+    {
+        "key": "teragram",
+        "label": "teragram [Tg]",
+        "conversionRate": 1000000000000,
+        "abbreviation": "Tg"
+    },
+    {
+        "key": "gigagram",
+        "label": "gigagram [Gg]",
+        "conversionRate": 1000000000,
+        "abbreviation": "Gg"
+    },
+    {
+        "key": "megagram",
+        "label": "megagram [Mg]",
+        "conversionRate": 1000000,
+        "abbreviation": "Mg"
+    },
+    {
+        "key": "hectogram",
+        "label": "hectogram [hg]",
+        "conversionRate": 100,
+        "abbreviation": "hg"
+    },
+    {
+        "key": "dekagram",
+        "label": "dekagram [dag]",
+        "conversionRate": 10,
+        "abbreviation": "dag"
+    },
+    {
+        "key": "decigram",
+        "label": "decigram [dg]",
+        "conversionRate": 0.1,
+        "abbreviation": "dg"
+    },
+    {
+        "key": "centigram",
+        "label": "centigram [cg]",
+        "conversionRate": 0.01,
+        "abbreviation": "cg"
+    },
+    {
+        "key": "carrat",
+        "label": "carrat [ct]",
+        "conversionRate": 0.0002,
+        "abbreviation": "ct"
+    },
+    {
+        "key": "microgram",
+        "label": "microgram [µg]",
+        "conversionRate": 0.000001,
+        "abbreviation": "µg"
+    },
+    {
+        "key": "nanogram",
+        "label": "nanogram [ng]",
+        "conversionRate": 1e-9,
+        "abbreviation": "ng"
+    },
+    {
+        "key": "picogram",
+        "label": "picogram [pg]",
+        "conversionRate": 1e-12,
+        "abbreviation": "pg"
+    },
+    {
+        "key": "femtogram",
+        "label": "femtogram [fg]",
+        "conversionRate": 1e-15,
+        "abbreviation": "fg"
+    },
+    {
+        "key": "attogram",
+        "label": "attogram [ag]",
+        "conversionRate": 1e-18,
+        "abbreviation": "ag"
+    },
+    {
+        "key": "dalton",
+        "label": "Dalton",
+        "conversionRate": 1.6605390666e-27,
+        "abbreviation": "Da"
+    },
+    {
+        "key": "kilopound",
+        "label": "kilopound [kip]",
+        "conversionRate": 453.592,
+        "abbreviation": "kips"
+    },
+    {
+        "key": "slug",
+        "label": "slug",
+        "conversionRate": 14.5939,
+        "abbreviation": "slug"
+    },
+    {
+        "key": "pound-force-square-second-per-foot",
+        "label": "pound-force square second/foot",
+        "conversionRate": 47.8803,
+        "abbreviation": "lb-ft/s²"
+    },
+    {
+        "key": "pound-troy-or-apothecary",
+        "label": "pound (troy or apothecary)",
+        "conversionRate": 0.373242,
+        "abbreviation": "lb (troy/apothecary)"
+    },
+    {
+        "key": "poundal",
+        "label": "poundal [pdl]",
+        "conversionRate": 0.138255,
+        "abbreviation": "pdl"
+    },
+    {
+        "key": "ton-assay-us",
+        "label": "ton (assay) (US)",
+        "conversionRate": 29.1667,
+        "abbreviation": "ton assay (US)"
+    },
+    {
+        "key": "ton-assay-uk",
+        "label": "ton (assay) (UK)",
+        "conversionRate": 32.6667,
+        "abbreviation": "ton assay (UK)"
+    },
+    {
+        "key": "kiloton-metric",
+        "label": "kiloton (metric)",
+        "conversionRate": 1000000,
+        "abbreviation": "kiloton"
+    },
+    {
+        "key": "quintal-metric",
+        "label": "quintal (metric)",
+        "conversionRate": 100,
+        "abbreviation": "quintal"
+    },
+    {
+        "key": "hundredweight-us",
+        "label": "hundred weight (US)",
+        "conversionRate": 45359.2,
+        "abbreviation": "hundredweight (US)"
+    },
+    {
+        "key": "hundredweight-uk",
+        "label": "hundred weight (UK)",
+        "conversionRate": 50802.3,
+        "abbreviation": "hundredweight (UK)"
+    },
+    {
+        "key": "quarter-us",
+        "label": "quarter (US) [qr (US)]",
+        "conversionRate": 2268,
+        "abbreviation": "quarter (US)"
+    },
+    {
+        "key": "quarter-uk",
+        "label": "quarter (UK) [qr (UK)]",
+        "conversionRate": 2540,
+        "abbreviation": "quarter (UK)"
+    },
+    {
+        "key": "stone-us",
+        "label": "stone (US)",
+        "conversionRate": 6350.29,
+        "abbreviation": "stone (US)"
+    },
+    {
+        "key": "stone-uk",
+        "label": "stone (UK)",
+        "conversionRate": 6350.29,
+        "abbreviation": "stone (UK)"
+    },
+    {
+        "key": "tonne",
+        "label": "tonne [t]",
+        "conversionRate": 1000,
+        "abbreviation": "t"
+    },
+    {
+        "key": "pennyweight",
+        "label": "penny weight [pwt]",
+        "conversionRate": 0.00155517,
+        "abbreviation": "dwt"
+    },
+    {
+        "key": "scruple-apothecary",
+        "label": "scruple (apothecary) [s.ap]",
+        "conversionRate": 0.00388793,
+        "abbreviation": "scruple (apothecary)"
+    },
+    {
+        "key": "grain",
+        "label": "grain [gr]",
+        "conversionRate": 0.00006479891,
+        "abbreviation": "gr"
+    },
+    {
+        "key": "gamma",
+        "label": "Gamma",
+        "conversionRate": 1e-9,
+        "abbreviation": "γ"
+    },
+    {
+        "key": "electron-mass-rest",
+        "label": "Electron mass (rest)",
+        "conversionRate": 9.10938356e-31,
+        "abbreviation": "mₑ"
+    },
+    {
+        "key": "muon-mass",
+        "label": "Muon mass",
+        "conversionRate": 1.883531627e-28,
+        "abbreviation": "mμ"
+    },
+    {
+        "key": "proton-mass",
+        "label": "Proton mass",
+        "conversionRate": 1.67262192369e-27,
+        "abbreviation": "mp"
+    },
+    {
+        "key": "neutron-mass",
+        "label": "Neutron mass",
+        "conversionRate": 1.67492749804e-27,
+        "abbreviation": "mn"
+    },
+    {
+        "key": "deuteron-mass",
+        "label": "Deuteron mass",
+        "conversionRate": 3.343583719e-27,
+        "abbreviation": "md"
+    },
+    {
+        "key": "earths-mass",
+        "label": "Earth's mass",
+        "conversionRate": 5.97237e+24,
+        "abbreviation": "earths mass"
+    },
+    {
+        "key": "moon-mass",
+        "label": "Moon's mass",
+        "conversionRate": 7.342e+22,
+        "abbreviation": "moon mass"
+    },
+    {
+        "key": "mars-mass",
+        "label": "Mars's mass",
+        "conversionRate": 6.4171e+23,
+        "abbreviation": "mMars"
+    },
+    {
+        "key": "suns-mass",
+        "label": "Sun's mass",
+        "conversionRate": 1.9885e+30,
+        "abbreviation": "suns mass"
+    }
 ]
 );
 
@@ -90,7 +380,10 @@ popularUnits = Object.freeze([
 ]);
 
 
+
   constructor() {  
+    // console.log('units',this.units.map(item => ({...item,abbreviation:this.test.find(i => i.key === item.key)?.label})));
+
   }
 
 

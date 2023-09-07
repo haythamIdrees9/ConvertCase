@@ -4,27 +4,127 @@ import Decimal from 'decimal.js';
 @Injectable()
 export class UnitsService {
 
-  units: readonly { key: string; label: string; conversionRate: number }[] = Object.freeze([
-  { "key": "meter-per-second", "label": "Meter per Second", "conversionRate": 1 },
-  { "key": "kilometer-per-hour", "label": "Kilometer per Hour", "conversionRate": 0.277778 },
-  { "key": "mile-per-hour", "label": "Mile per Hour", "conversionRate": 0.44704 },
-  { "key": "foot-per-second", "label": "Foot per Second", "conversionRate": 0.3048 },
-  { "key": "knot", "label": "Knot", "conversionRate": 0.514444 },
-  { "key": "mach", "label": "Mach", "conversionRate": 343.058 },
-  { "key": "light-per-second", "label": "Speed of Light (c)", "conversionRate": 299792458 },
-  { "key": "kilometer-per-second", "label": "Kilometer per Second", "conversionRate": 1000 },
-  { "key": "centimeter-per-second", "label": "Centimeter per Second", "conversionRate": 0.01 },
-  { "key": "millimeter-per-second", "label": "Millimeter per Second", "conversionRate": 0.001 },
-  { "key": "yard-per-second", "label": "Yard per Second", "conversionRate": 0.9144 },
-  { "key": "mile-per-second", "label": "Mile per Second", "conversionRate": 1609.34 },
-  { "key": "inch-per-second", "label": "Inch per Second", "conversionRate": 0.0254 },
-  { "key": "microinch-per-second", "label": "Microinch per Second", "conversionRate": 2.54e-08 },
-  { "key": "millimeter-per-hour", "label": "Millimeter per Hour", "conversionRate": 2.77778e-07 },
-  { "key": "centimeter-per-hour", "label": "Centimeter per Hour", "conversionRate": 2.77778e-06 },
-  { "key": "kilometer-per-millisecond", "label": "Kilometer per Millisecond", "conversionRate": 1000000 },
-  { "key": "meter-per-millisecond", "label": "Meter per Millisecond", "conversionRate": 1000 },
-  { "key": "foot-per-millisecond", "label": "Foot per Millisecond", "conversionRate": 0.3048 },
-  { "key": "inch-per-millisecond", "label": "Inch per Millisecond", "conversionRate": 0.0254 }
+  units: readonly { key: string; label: string; conversionRate: number,abbreviation?:string}[] = Object.freeze([
+    {
+        "key": "meter-per-second",
+        "label": "Meter per Second",
+        "conversionRate": 1,
+        "abbreviation": "m/s"
+    },
+    {
+        "key": "kilometer-per-hour",
+        "label": "Kilometer per Hour",
+        "conversionRate": 0.277778,
+        "abbreviation": "km/h"
+    },
+    {
+        "key": "mile-per-hour",
+        "label": "Mile per Hour",
+        "conversionRate": 0.44704,
+        "abbreviation": "mph"
+    },
+    {
+        "key": "foot-per-second",
+        "label": "Foot per Second",
+        "conversionRate": 0.3048,
+        "abbreviation": "ft/s"
+    },
+    {
+        "key": "knot",
+        "label": "Knot",
+        "conversionRate": 0.514444,
+        "abbreviation": "kn"
+    },
+    {
+        "key": "mach",
+        "label": "Mach",
+        "conversionRate": 343.058,
+        "abbreviation": "Ma"
+    },
+    {
+        "key": "light-per-second",
+        "label": "Speed of Light (c)",
+        "conversionRate": 299792458,
+        "abbreviation": "c"
+    },
+    {
+        "key": "kilometer-per-second",
+        "label": "Kilometer per Second",
+        "conversionRate": 1000,
+        "abbreviation": "km/s"
+    },
+    {
+        "key": "centimeter-per-second",
+        "label": "Centimeter per Second",
+        "conversionRate": 0.01,
+        "abbreviation": "cm/s"
+    },
+    {
+        "key": "millimeter-per-second",
+        "label": "Millimeter per Second",
+        "conversionRate": 0.001,
+        "abbreviation": "mm/s"
+    },
+    {
+        "key": "yard-per-second",
+        "label": "Yard per Second",
+        "conversionRate": 0.9144,
+        "abbreviation": "yd/s"
+    },
+    {
+        "key": "mile-per-second",
+        "label": "Mile per Second",
+        "conversionRate": 1609.34,
+        "abbreviation": "mi/s"
+    },
+    {
+        "key": "inch-per-second",
+        "label": "Inch per Second",
+        "conversionRate": 0.0254,
+        "abbreviation": "in/s"
+    },
+    {
+        "key": "microinch-per-second",
+        "label": "Microinch per Second",
+        "conversionRate": 2.54e-8,
+        "abbreviation": "µin/s"
+    },
+    {
+        "key": "millimeter-per-hour",
+        "label": "Millimeter per Hour",
+        "conversionRate": 2.77778e-7,
+        "abbreviation": "mm/hr"
+    },
+    {
+        "key": "centimeter-per-hour",
+        "label": "Centimeter per Hour",
+        "conversionRate": 0.00000277778,
+        "abbreviation": "cm/hr"
+    },
+    {
+        "key": "kilometer-per-millisecond",
+        "label": "Kilometer per Millisecond",
+        "conversionRate": 1000000,
+        "abbreviation": "km/ms"
+    },
+    {
+        "key": "meter-per-millisecond",
+        "label": "Meter per Millisecond",
+        "conversionRate": 1000,
+        "abbreviation": "m/ms"
+    },
+    {
+        "key": "foot-per-millisecond",
+        "label": "Foot per Millisecond",
+        "conversionRate": 0.3048,
+        "abbreviation": "ft/ms"
+    },
+    {
+        "key": "inch-per-millisecond",
+        "label": "Inch per Millisecond",
+        "conversionRate": 0.0254,
+        "abbreviation": "in/ms"
+    }
 ]);
 
   popularUnits = Object.freeze([
@@ -52,9 +152,9 @@ export class UnitsService {
   );
 
 
+
+
   constructor() {
-    // let value = (8 * 5);
-      
   }
 
 

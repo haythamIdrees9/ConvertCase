@@ -62,7 +62,9 @@ constructor(private unitsService: UnitsService,private unitsInfoService:UnitsInf
         this.unitsDescription = [this.unitsInfoService.getDescription(this.linkUnitType[0]),this.unitsInfoService.getDescription(this.linkUnitType[1])]; 
       }
       this.linkUnitBase = [this.unitsService.getBase(this.linkUnitType[0]),this.unitsService.getBase(this.linkUnitType[1])]
-      this.linkUnitLabels = [this.units.find(item => this.linkUnitType[0] === item.key)?.label, this.units.find(item => this.linkUnitType[1] === item.key)?.label]
+            let unit1 = this.units.find(item => this.linkUnitType[0] === item.key)
+      let unit2 = this.units.find(item => this.linkUnitType[1] === item.key)
+      this.linkUnitLabels = [unit1?.label, unit2?.label]
       this.tableValues = this.compareValues.map((input:number) => ({input:this.unitsService.convertBaseNumber(`${input}`,10,this.linkUnitBase[0]),result:this.getResult(input)}))
       this.updateSeoData();
       this.updateResult();
@@ -72,6 +74,16 @@ constructor(private unitsService: UnitsService,private unitsInfoService:UnitsInf
   updateSeoData(){
     this.metaService.setTitle(`${this.linkUnitType[0]} to ${this.linkUnitType[1]} online converter`);
     this.metaService.setDescription(`Convert numbers effortlessly between ${this.linkUnitType[0]} and ${this.linkUnitType[1]}. Get quick and precise results with our user-friendly numbers converter.`)
-    this.metaService.setKeywords("numbers converters, numeral systems, binary, decimal, hexadecimal, octal, unit conversion, convert binary to decimal, hexadecimal to octal, numeral system conversion, number system conversion, number base conversion, numeral system calculator")
+    this.metaService.setKeywords(`${this.getUniqKeyword()}numbers converters, numeral systems, binary, decimal, hexadecimal, octal, unit conversion, convert binary to decimal, hexadecimal to octal, numeral system conversion, number system conversion, number base conversion, numeral system calculator`)
   }
+
+  private getUniqKeyword(){
+    let full = `${this.clearKeyword(this.linkUnitLabels[0])} to ${this.clearKeyword(this.linkUnitLabels[1])}`
+    let revFull = `${this.clearKeyword(this.linkUnitLabels[1])} to ${this.clearKeyword(this.linkUnitLabels[0])}`
+    return `${full},${revFull}, `
+  }
+
+clearKeyword(inputString:string) {
+  return inputString.replace(/\[.*?\]/g, '').replace(/\(.*?\)/g, '').replace(/\s+/g,' ').trim().toLowerCase();
+}
 }

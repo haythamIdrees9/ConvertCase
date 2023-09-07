@@ -27,7 +27,7 @@ export class InOutTextBoxesComponent implements OnInit {
 
   ngOnInit(): void {
     const savedText = sessionStorage.getItem(this.storageKey);
-    if (savedText?.trim()) {
+    if (savedText?.trim().toLowerCase()) {
       setTimeout(() => {
         this.userText = savedText;
         this.onChangeEmitter.emit(this.userText);
@@ -54,7 +54,7 @@ export class InOutTextBoxesComponent implements OnInit {
 
 
   countWordsLinesCharacters(str: string) {
-    if(str?.trim().length === 0){
+    if(str?.trim().toLowerCase().length === 0){
       return this.defaultInfo;
     }
     const words = str.split(" ");

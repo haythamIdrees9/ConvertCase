@@ -13,12 +13,13 @@ import { UnitsInfoService } from './units-description.service';
 export class UnitConverterComponent implements OnInit {
   userInput: string = '1';
   result: string = '';
-  units: readonly { key: string, label: string, conversionRate: number }[] = [];
+  units: readonly { key: string, label: string, conversionRate: number,abbreviation?:string }[] = [];
   popularUnits: readonly { route: string, reverseRoute: string, labelRoute: string, labelReverseRoute: string, }[] = [];
   conversionRate!: number;
   linkUnitType:string [] = ['second','millisecond'];
   unitsDescription:string[]=[];
 linkUnitLabels :any[] = [];
+unitsAbbreviation :any[] = ['',''];
 constructor(private unitsService: UnitsService,private unitsInfoService:UnitsInfoService, private route: ActivatedRoute,
     private metaService:MetaService, private seoService:SeoService) {
  }
@@ -49,7 +50,10 @@ constructor(private unitsService: UnitsService,private unitsInfoService:UnitsInf
         this.unitsDescription = [this.unitsInfoService.getDescription(this.linkUnitType[0]),this.unitsInfoService.getDescription(this.linkUnitType[1])]; 
       }
       this.conversionRate = this.unitsService.getConversionRate(this.linkUnitType[0], this.linkUnitType[1]);
-this.linkUnitLabels = [this.units.find(item => this.linkUnitType[0] === item.key)?.label, this.units.find(item => this.linkUnitType[1] === item.key)?.label]
+      let unit1 = this.units.find(item => this.linkUnitType[0] === item.key)
+      let unit2 = this.units.find(item => this.linkUnitType[1] === item.key)
+      this.linkUnitLabels = [unit1?.label, unit2?.label]
+      this.unitsAbbreviation = [unit1?.abbreviation, unit2?.abbreviation]
       this.updateResult();
       this.updateSeoData();
     })
@@ -58,6 +62,18 @@ this.linkUnitLabels = [this.units.find(item => this.linkUnitType[0] === item.key
   updateSeoData(){
     this.metaService.setTitle(`${this.linkUnitType[0]} to ${this.linkUnitType[1]} online converter`);
     this.metaService.setDescription(`Swiftly convert time units between ${this.linkUnitType[0]} and ${this.linkUnitType[1]}. Get accurate results instantly with our user-friendly time converter`)
-    this.metaService.setKeywords("time converter, second, minute, hour, day, week, month, year, unit conversion, convert seconds to minutes, hours to days, weeks to months, time unit conversion, time measurement, time conversion tool, seconds, minutes, hours, days, weeks, months, years")
+    this.metaService.setKeywords(`${this.getUniqKeyword()}time converter, second, minute, hour, day, week, month, year, unit conversion, convert seconds to minutes, hours to days, weeks to months, time unit conversion, time measurement, time conversion tool, seconds, minutes, hours, days, weeks, months, years`)
   }
+
+  private getUniqKeyword(){
+    let abbreviation = `${this.unitsAbbreviation[0]} to ${this.unitsAbbreviation[1]}`;
+    let full = `${this.clearKeyword(this.linkUnitLabels[0])} to ${this.clearKeyword(this.linkUnitLabels[1])}`
+    let revAbbreviation = `${this.unitsAbbreviation[1]} to ${this.unitsAbbreviation[0]}`;
+    let revFull = `${this.clearKeyword(this.linkUnitLabels[1])} to ${this.clearKeyword(this.linkUnitLabels[0])}`
+    return `${abbreviation}, ${full}, ${revAbbreviation}, ${revFull}, `
+  }
+
+clearKeyword(inputString:string) {
+  return inputString.replace(/\[.*?\]/g, '').replace(/\(.*?\)/g, '').replace(/\s+/g,' ').trim().toLowerCase();
+}
 }

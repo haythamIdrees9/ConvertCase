@@ -4,7 +4,7 @@ import Decimal from 'decimal.js';
 @Injectable()
 export class UnitsService {
 
-  units: readonly { key: string; label: string; conversionRate: number }[] = Object.freeze([
+  units: readonly { key: string; label: string; conversionRate: number,abbreviation?:string}[] = Object.freeze([
     { key: "degree", label: "Degree", conversionRate: 1 },
     { key: "radian", label: "Radian", conversionRate: 57.2958 },
     { key: "arc-minute", label: "Arc Minute", conversionRate: 0.0166667 },
@@ -57,8 +57,8 @@ export class UnitsService {
 
 
   constructor() {
-    
-      
+            //  console.log('units',this.units.map(item => ({...item,abbreviation:this.test.find(i => i.key === item.key)?.label})));
+      //  console.log('units',this.units.map(item => (item.key)));   
   }
 
 
