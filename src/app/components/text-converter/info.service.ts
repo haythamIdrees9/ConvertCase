@@ -20,6 +20,4 @@ export class InfoService {
     getData(key: string) {
         return this.data[key];
     }
-
-
 }

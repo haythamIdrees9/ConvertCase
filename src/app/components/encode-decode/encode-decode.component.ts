@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import {encode as punycodeEncode, decode as punycodeDecode} from "punycode"
 import { MetaService } from '../services/meta.service';
 import { SeoService } from '../services/seo.service';
+import { InfoService } from './info.service';
 
 @Component({
   selector: 'app-encode-decode',
   templateUrl: './encode-decode.component.html',
   styleUrls: ['./encode-decode.component.scss'],
+  providers:[InfoService]
 
 })
 export class EncodeDecodeComponent {
@@ -17,6 +19,7 @@ export class EncodeDecodeComponent {
   originalText = '';
   executeFn = () => { };
   storageKey = 'urlEncodeDecode';
+  isRoot!:boolean;
   readonly morseCodeMap: {[key:string]:string}  = {
     'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.', 'G': '--.', 'H': '....', 'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..', 'M': '--', 'N': '-.', 'O': '---', 'P': '.--.', 'Q': '--.-', 'R': '.-.', 'S': '...', 'T': '-', 'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-', 'Y': '-.--', 'Z': '--..',
     '0': '-----', '1': '.----', '2': '..---', '3': '...--', '4': '....-', '5': '.....', '6': '-....', '7': '--...', '8': '---..', '9': '----.'
@@ -64,28 +67,53 @@ export class EncodeDecodeComponent {
     "bcd-decode": "Decode Binary-Coded Decimal (BCD) encoded numbers. Convert BCD digits back to their decimal form for numerical operations."
   }
 
-  
-  constructor(private route:ActivatedRoute,private metaService:MetaService, private router:Router,private seoService:SeoService) { }
+ desccription:string = "";
+ defaultAction = 'url-encode';
+  constructor(private route:ActivatedRoute,private metaService:MetaService, private infoService:InfoService,private seoService:SeoService) { }
 
   ngOnInit(): void {
-    this.handleSeo();
-    const defaultAction = 'url-encode'; 
+    this.handleSeo(); 
     let action = this.route.snapshot.params['action'];
-    if(!action || !this.buttonMappings[action]){
-      action = defaultAction
-      this.router.navigate(['./',defaultAction],{relativeTo:this.route.parent,replaceUrl:true})
+    if (!action || !this.buttonMappings[action]) {
+      action = this.defaultAction;
+      this.executeFn = this.buttonMappings[action];
+      this.isRoot = true;
+    } else {
+      this.isRoot = false;
+      this.executeFn = this.buttonMappings[action];
+      this.desccription = this.infoService.getData(action);
+      this.setDescription(action)
     }
+
     this.route.params.subscribe(params =>{
-      const action = params['action'] || defaultAction;
+      const action = (params['action'] && this.metaContent[params['action']])?params['action']: this.defaultAction;
       if(action){
-        this.metaService.setTitle(`${action} online`);
+        let clearedAction = action.replace('-encode','').replace('-decode',''); 
+        this.metaService.setTitle(`${clearedAction} Encoding/Decoding online`);
         this.metaService.setDescription(this.metaContent[action]);
       }
+      this.setDescription(action);
+      this.setCanonical();
     })
-    if(action && this.buttonMappings[action]){
-      this.executeFn = this.buttonMappings[action]; 
-    } 
-    this.seoService.createLinkForCanonicalURL('encode-decode')
+
+  }
+
+  setDescription(action:string){
+    if(action && this.infoService.getData(action)){
+      this.desccription = this.infoService.getData(action);
+    } else{
+      this.isRoot = true; 
+      this.executeFn = this.buttonMappings[this.defaultAction];
+    }
+  }
+
+  private setCanonical(){
+    let action = this.route.snapshot.params['action']
+    if(!action || ['rot13','rot47'].includes(action)){
+      return;
+    }
+    action = action.replace('-encode','').replace('-decode','');
+    this.seoService.createLinkForCanonicalURL(`${action}-encode`)
   }
 
   private handleSeo(){

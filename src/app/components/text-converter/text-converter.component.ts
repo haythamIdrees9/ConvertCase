@@ -37,14 +37,15 @@ export class TextConverterComponent implements OnInit {
     "convert-to-inverse-case": "Convert text to inverse case using the Inverse Case Conversion tool. Reverse the case of each character for a unique and eye-catching effect."
   }
   desccription:string = ''
+  defaultAction = 'convert-to-uppercase';
   constructor(private route:ActivatedRoute, private metaService: MetaService, private infoService:InfoService) { }
 
   ngOnInit(): void {
     this.handleSeo()
-    const defaultAction = 'convert-to-uppercase'
+
     let action = this.route.snapshot.params['action'];
     if (!action || !this.buttonMappings[action]) {
-      action = defaultAction;
+      action = this.defaultAction;
       this.executeFn = this.buttonMappings[action];
       this.isRoot = true;
     } else {
@@ -55,13 +56,15 @@ export class TextConverterComponent implements OnInit {
     }
 
     this.route.params.subscribe(params => {
-      const action = (params['action'] && this.metaContent[params['action']])?params['action']: defaultAction;
+      const action = (params['action'] && this.metaContent[params['action']])?params['action']: this.defaultAction;
+      console.log('ac--tion',action);
+      
       this.isRoot = !params['action'];
       if (action) {
         this.metaService.setTitle(`${action} online`);
         this.metaService.setDescription(this.metaContent[action]);
       }
-      this.setDescription(params['action'])
+      this.setDescription(action)
     })
   }
 
@@ -70,7 +73,7 @@ export class TextConverterComponent implements OnInit {
       this.desccription = this.infoService.getData(action);
     } else{
       this.isRoot = true;
-      this.executeFn = this.buttonMappings[action];
+      this.executeFn = this.buttonMappings[this.defaultAction];
     }
   }
   

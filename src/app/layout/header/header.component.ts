@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit{
   isMenuOpened: boolean = false;
   menuRouts = [
     {path:'/text-case-tools',label:'Text Convert Case'},
-    {path:'/encode-decode/url-encode',label:'Encoding and Decoding'},
+    {path:'/encode-decode',label:'Encoding and Decoding'},
     {path:'/text-manipulation/text-reverser',label:'Text Manipulation'},
     {path:'/unit-converters',label:'Unit Converters'},
 
