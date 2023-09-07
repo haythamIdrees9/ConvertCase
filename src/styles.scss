@@ -113,7 +113,7 @@ body {
       border-color:  #144D30;
       box-shadow: 0 0 10px #144D30;
     }
-    :not(:disabled){
+    &:not(:disabled){
 
       @media (hover: hover) {
         &:hover{

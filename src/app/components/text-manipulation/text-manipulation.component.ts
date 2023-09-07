@@ -54,7 +54,7 @@ export class TextManipulationComponent {
     this.route.params.subscribe(params =>{
       const action = params['action'] || 'text-reverser';
       if(action){
-        this.metaService.setTitle(action);
+        this.metaService.setTitle(`${action} online`);
         this.metaService.setDescription(this.metaContent[action])
       }
     })
