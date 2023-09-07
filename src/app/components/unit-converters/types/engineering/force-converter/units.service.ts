@@ -172,7 +172,7 @@ export class UnitsService {
 
   constructor() {
     // let value = (8 * 5);
-    // console.log(this.units.length,'uni1ts',this.units.map(item => {return {key:item.key,conversionRate:item.conversionRate.toString()}}).slice(value,value + 5));  
+      
   }
 
 

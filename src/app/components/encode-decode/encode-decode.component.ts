@@ -67,6 +67,19 @@ export class EncodeDecodeComponent {
     "bcd-decode": "Decode Binary-Coded Decimal (BCD) encoded numbers. Convert BCD digits back to their decimal form for numerical operations."
   }
 
+  readonly metaKeywords: { [key: string]: any } = {
+    url:'URL Encoding, URL Decoding, Percent Encoding, URL Escape Characters, URL Character Encoding, URL Component Encoding, URL Parameter Encoding, URL Encoding in JavaScript, HTML URL Encoding, URL Special Characters, Encoding Algorithms, URL Encoding Guide, URL Encoding Explained, URL Encoding Examples, URL Encoding Best Practices, URL Encoding Online Tool, URL Encode/Decode Functions, URL Encoding Cheat Sheet, How to Use URL Encoding, URL Encoding vs. URL Decoding',
+    html:'HTML Encoding, HTML Special Characters, Character Encoding, HTML Entity, HTML Escape Characters, HTML Character Entities, HTML Encoding in JavaScript, HTML Character Reference, HTML Encoding Online, HTML Encoding Examples, HTML Encoding Guide, How to Use HTML Encoding, HTML Encoding Cheat Sheet, Encoding HTML Entities, HTML Encoding vs. Decoding, HTML Escaping, HTML Special Character Codes, HTML Character Set, HTML Symbol Encoding',
+    rot13:'ROT13, ROT13 Cipher, ROT13 Encryption, ROT13 Decoder, Text Encryption, Text Decryption, ROT13 Algorithm, Caesar Cipher, Text Encoding, Data Security, Online ROT13 Encoder, ROT13 Examples, ROT13 Tool, ROT13 Converter, Text Transformation, Data Privacy, Data Encryption, ROT13 Online, Text Security',
+    rot47:'ROT47, ROT47 Cipher, ROT47 Encryption, ROT47 Decoder, Text Encryption, Text Decryption, ROT47 Algorithm, Text Encoding, Data Security, Online ROT47 Encoder, ROT47 Examples, ROT47 Tool, ROT47 Converter, Text Transformation, Data Privacy, Data Encryption, ROT47 Online, Text Security',
+    punycode: 'Punycode Encode, Punycode Encoding, Punycode Conversion, Internationalized Domain Names, IDN Encoding, Domain Name Conversion, Punycode Converter, Punycode Online, Encode IDN, Convert Domain Names, URL Encoding, Unicode to Punycode, Web Addresses Encoding, Web Development Tools, Domain Name Internationalization, Encode International Characters, IDN Support',
+    utf8: 'UTF-8 Encoding, UTF-8 Decoding, UTF-8 Converter, Unicode Transformation Format, UTF-8 Characters, Text Encoding, Text Decoding, Character Encoding, UTF-8 Encoding Tool, UTF-8 Online, UTF-8 Examples, UTF-8 Support, Text Conversion, Web Development, Data Encoding, Data Decoding, UTF-8 Encoding Algorithm',
+    utf16: 'UTF-16 Encoding, UTF-16 Decoding, UTF-16 Converter, Unicode Transformation Format 16, UTF-16 Characters, Text Encoding, Text Decoding, Character Encoding, UTF-16 Encoding Tool, UTF-16 Online, UTF-16 Examples, UTF-16 Support, Text Conversion, Web Development, Data Encoding, Data Decoding, UTF-16 Encoding Algorithm',
+    base64: 'Base64 Encoding, Base64 Decoding, Base64 Converter, Base64 Algorithm, Text Encoding, Text Decoding, Data Encoding, Data Decoding, Base64 Encoding Tool, Base64 Online, Base64 Examples, Base64 Support, Text Conversion, Web Development, Data Security, Data Privacy, Base64 Encoding Algorithm',
+    morse: 'Morse Code Encoding, Morse Code Decoding, Morse Code Converter, Morse Code Translator, Text Encoding, Text Decoding, Morse Code Alphabet, Morse Code Examples, Morse Code Translator Tool, Morse Code Online, Communication, Text Conversion, Communication System, Morse Code Messages, Morse Code Generator, Morse Code Symbols',
+    bcd: 'BCD Encoding, BCD Decoding, Binary-Coded Decimal, Binary-Coded Decimal Converter, BCD Code, Decimal Encoding, Decimal Decoding, Binary Code, BCD Arithmetic, Binary-Coded Decimal Calculator, Binary Representation, Data Conversion, Digital Data, BCD Format, BCD Converter, Decimal Binary Conversion',
+  }
+
   desccription: string = "";
   defaultAction = 'url-encode';
   constructor(private route: ActivatedRoute, private metaService: MetaService, private infoService: InfoService, private seoService: SeoService) { }
@@ -91,6 +104,7 @@ export class EncodeDecodeComponent {
         let clearedAction = action.replace('-encode', '').replace('-decode', '');
         this.metaService.setTitle(`${clearedAction} Encoding/Decoding online`);
         this.metaService.setDescription(this.metaContent[action]);
+        this.metaService.setKeywords(this.metaKeywords[clearedAction]);
       }
       this.setInnerDescription(action);
       this.setCanonical();
