@@ -74,6 +74,10 @@ $bg-color: #144D30;
         width: 0;
         height: calc(100vh - 60px);
         transition: left 0.5s;
+        .link-icon{
+            @include filter(invert(21%) sepia(80%) saturate(379%) hue-rotate(97deg) brightness(96%) contrast(95%));
+        }
+
 
         .back-container {
             background-color: $bg-color;
