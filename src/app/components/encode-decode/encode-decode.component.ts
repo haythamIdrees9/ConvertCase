@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {encode as punycodeEncode, decode as punycodeDecode} from "punycode"
+import { encode as punycodeEncode, decode as punycodeDecode } from "punycode"
 import { MetaService } from '../services/meta.service';
 import { SeoService } from '../services/seo.service';
 import { InfoService } from './info.service';
@@ -9,7 +9,7 @@ import { InfoService } from './info.service';
   selector: 'app-encode-decode',
   templateUrl: './encode-decode.component.html',
   styleUrls: ['./encode-decode.component.scss'],
-  providers:[InfoService]
+  providers: [InfoService]
 
 })
 export class EncodeDecodeComponent {
@@ -19,13 +19,13 @@ export class EncodeDecodeComponent {
   originalText = '';
   executeFn = () => { };
   storageKey = 'urlEncodeDecode';
-  isRoot!:boolean;
-  readonly morseCodeMap: {[key:string]:string}  = {
+  isRoot!: boolean;
+  readonly morseCodeMap: { [key: string]: string } = {
     'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.', 'G': '--.', 'H': '....', 'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..', 'M': '--', 'N': '-.', 'O': '---', 'P': '.--.', 'Q': '--.-', 'R': '.-.', 'S': '...', 'T': '-', 'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-', 'Y': '-.--', 'Z': '--..',
     '0': '-----', '1': '.----', '2': '..---', '3': '...--', '4': '....-', '5': '.....', '6': '-....', '7': '--...', '8': '---..', '9': '----.'
   };
 
-  readonly buttonMappings:{[key:string]:any} = {
+  readonly buttonMappings: { [key: string]: any } = {
     'url-encode': this.urlEncode,
     'url-decode': this.urlDecode,
     'html-encode': this.htmlEncode,
@@ -46,7 +46,7 @@ export class EncodeDecodeComponent {
     'bcd-decode': this.bcdDecode
   };
 
-  readonly metaContent:{[key:string]:any} =  {
+  readonly metaContent: { [key: string]: any } = {
     "url-encode": "Encode URLs with the URL Encode tool. Transform special characters into percent-encoded format for safe sharing and linking.",
     "url-decode": "Decode URLs with the URL Decode tool. Convert percent-encoded characters back to their original form for easy readability and understanding.",
     "html-encode": "Encode HTML entities using the HTML Encode tool. Convert special characters to their corresponding HTML entities for secure and valid web content.",
@@ -67,56 +67,56 @@ export class EncodeDecodeComponent {
     "bcd-decode": "Decode Binary-Coded Decimal (BCD) encoded numbers. Convert BCD digits back to their decimal form for numerical operations."
   }
 
- desccription:string = "";
- defaultAction = 'url-encode';
-  constructor(private route:ActivatedRoute,private metaService:MetaService, private infoService:InfoService,private seoService:SeoService) { }
+  desccription: string = "";
+  defaultAction = 'url-encode';
+  constructor(private route: ActivatedRoute, private metaService: MetaService, private infoService: InfoService, private seoService: SeoService) { }
 
   ngOnInit(): void {
-    this.handleSeo(); 
+    this.handleSeo();
     let action = this.route.snapshot.params['action'];
-    if (!action || !this.buttonMappings[action]) {
-      action = this.defaultAction;
-      this.executeFn = this.buttonMappings[action];
-      this.isRoot = true;
-    } else {
+    if (action && this.buttonMappings[action]) {
       this.isRoot = false;
       this.executeFn = this.buttonMappings[action];
       this.desccription = this.infoService.getData(action);
-      this.setDescription(action)
+      this.setInnerDescription(action)
+    } else {
+      action = this.defaultAction;
+      this.executeFn = this.buttonMappings[action];
+      this.isRoot = true;
     }
 
-    this.route.params.subscribe(params =>{
-      const action = (params['action'] && this.metaContent[params['action']])?params['action']: this.defaultAction;
-      if(action){
-        let clearedAction = action.replace('-encode','').replace('-decode',''); 
+    this.route.params.subscribe(params => {
+      const action = (params['action'] && this.metaContent[params['action']]) ? params['action'] : this.defaultAction;
+      if (action) {
+        let clearedAction = action.replace('-encode', '').replace('-decode', '');
         this.metaService.setTitle(`${clearedAction} Encoding/Decoding online`);
         this.metaService.setDescription(this.metaContent[action]);
       }
-      this.setDescription(action);
+      this.setInnerDescription(action);
       this.setCanonical();
     })
 
   }
 
-  setDescription(action:string){
-    if(action && this.infoService.getData(action)){
+  setInnerDescription(action: string) {
+    if (action && this.infoService.getData(action)) {
       this.desccription = this.infoService.getData(action);
-    } else{
-      this.isRoot = true; 
+    } else {
+      this.isRoot = true;
       this.executeFn = this.buttonMappings[this.defaultAction];
     }
   }
 
-  private setCanonical(){
+  private setCanonical() {
     let action = this.route.snapshot.params['action']
-    if(!action || ['rot13','rot47'].includes(action)){
+    if (!action || ['rot13', 'rot47'].includes(action)) {
       return;
     }
-    action = action.replace('-encode','').replace('-decode','');
+    action = action.replace('-encode', '').replace('-decode', '');
     this.seoService.createLinkForCanonicalURL(`${action}-encode`)
   }
 
-  private handleSeo(){
+  private handleSeo() {
     this.metaService.setTitle('Encode Decode Tools: Convert Text to Secure Formats and Back');
     this.metaService.setDescription('Navigate through a collection of encode-decode tools designed to transform text into secure formats and decode it back to its original state. Encode text for safe transmission, storage, and compatibility, and then decode it effortlessly. Explore a range of encoding and decoding utilities for versatile text manipulation.')
     this.metaService.setKeywords("encoding, decoding, URL manipulation, character encoding, character decoding, data transformation, encryption, decryption, security, privacy, URL encoding, URL decoding, HTML encoding, HTML decoding, ROT13 cipher, ROT47 cipher, Punycode encoding, Punycode decoding, UTF-8 encoding, UTF-8 decoding, UTF-16 encoding, UTF-16 decoding, Base64 encoding, Base64 decoding, Morse code encoding, Morse code decoding, BCD encoding, BCD decoding")
@@ -127,9 +127,9 @@ export class EncodeDecodeComponent {
     this.executeFn()
   }
 
-  onSelect(executeFn:() => void){
+  onSelect(executeFn: () => void) {
     this.executeFn = executeFn;
-    this.executeFn(); 
+    this.executeFn();
 
   }
 
@@ -139,13 +139,13 @@ export class EncodeDecodeComponent {
 
   urlDecode() {
     try {
-      this.text =  decodeURIComponent(this.originalText);
-    } catch (error:any) {
+      this.text = decodeURIComponent(this.originalText);
+    } catch (error: any) {
       console.error("Error decoding URL:", error?.message);
       this.toasterMessage = "Error decoding URL:", error?.message;
     }
   }
-  
+
   htmlEncode() {
     const element = document.createElement("div");
     element.textContent = this.originalText;
@@ -165,20 +165,20 @@ export class EncodeDecodeComponent {
   base64Decode() {
     try {
       this.text = atob(this.originalText);
-    } catch (error:any) {
+    } catch (error: any) {
       console.error("Error decoding Base64:", error.message);
     }
   }
 
   rot13() {
-    this.text = this.originalText.replace(/[a-zA-Z]/g, function(char) {
+    this.text = this.originalText.replace(/[a-zA-Z]/g, function (char) {
       const offset = char.toLowerCase() < "n" ? 13 : -13;
       return String.fromCharCode(char.charCodeAt(0) + offset);
     });
   }
 
   rot47() {
-    this.text = this.originalText.replace(/[!-~]/g, function(char) {
+    this.text = this.originalText.replace(/[!-~]/g, function (char) {
       return String.fromCharCode((char.charCodeAt(0) - 33 + 47) % 94 + 33);
     });
   }
@@ -190,13 +190,13 @@ export class EncodeDecodeComponent {
   punycodeDecode() {
     try {
       this.text = punycodeDecode(this.originalText);
-    } catch (error:any) {
+    } catch (error: any) {
       console.error("Error decoding punycode:", error.message);
       this.toasterMessage = 'Error: Invalid input'
 
-      setTimeout(()=>{
+      setTimeout(() => {
         this.toasterMessage = ''
-      },5000)
+      }, 5000)
     }
   }
 
@@ -215,13 +215,13 @@ export class EncodeDecodeComponent {
         encodedBytes.push(`\\x${(128 + (code & 63)).toString(16)}`);
       }
     }
-    this.text =  encodedBytes.join('');
+    this.text = encodedBytes.join('');
   };
-  
-  utf8Decode()  {
+
+  utf8Decode() {
     const byteTokens = this.originalText.split("\\x").filter(token => token !== "");
     const decodedChars = [];
-  
+
     for (let i = 0; i < byteTokens.length; i++) {
       const byteValue = parseInt(byteTokens[i], 16);
       if (byteValue < 128) {
@@ -235,11 +235,11 @@ export class EncodeDecodeComponent {
         decodedChars.push(String.fromCharCode(((byteValue & 15) << 12) | ((secondByteValue & 63) << 6) | (thirdByteValue & 63)));
       }
     }
-  
+
     this.text = decodedChars.join('');
   }
 
-  utf16Encode()  {
+  utf16Encode() {
     let encodedString = '';
     for (let i = 0; i < this.originalText.length; i++) {
       const codePoint = this.originalText.charCodeAt(i);
@@ -247,28 +247,28 @@ export class EncodeDecodeComponent {
     }
     this.text = encodedString;
   };
-  
+
 
   utf16Decode() {
     const codePoints = this.originalText.match(/\\u\{([0-9a-fA-F]+)\}/g);
     if (!codePoints) {
-      return; 
+      return;
     }
-  
+
     let decodedString = '';
     codePoints.forEach(codePoint => {
       const matched = codePoint.match(/[0-9a-fA-F]+/);
-      if(!matched){
+      if (!matched) {
         return;
       }
       const hexValue = matched[0];
       const intValue = parseInt(hexValue, 16);
       decodedString += String.fromCodePoint(intValue);
     });
-  
+
     this.text = decodedString;
   };
-  
+
   clearTextArea() {
     this.text = '';
     this.originalText = ''
@@ -277,29 +277,29 @@ export class EncodeDecodeComponent {
   morseCodeEncode() {
     this.text = this.originalText.toUpperCase()
       .split('')
-      .map((char:string) => this.morseCodeMap[char] || char)
+      .map((char: string) => this.morseCodeMap[char] || char)
       .join(' ');
   }
-  
-   morseCodeDecode() {
-    const reverseMap: {[key:string]:string} = {};
-    Object.keys(this.morseCodeMap).forEach((key:string) => {
+
+  morseCodeDecode() {
+    const reverseMap: { [key: string]: string } = {};
+    Object.keys(this.morseCodeMap).forEach((key: string) => {
       reverseMap[this.morseCodeMap[key]] = key;
     });
     this.text = this.originalText.split(' ')
       .map((code) => reverseMap[code] || code)
       .join('');
   }
-  
+
   bcdEncode() {
     this.text = this.originalText.split('')
       .map((digit) => ('0000' + parseInt(digit).toString(2)).slice(-4))
       .join('');
   }
-  
+
   bcdDecode() {
     const binaryDigits = this.originalText.match(/.{1,4}/g);
-    if(!binaryDigits){
+    if (!binaryDigits) {
       this.text = 'Enter valid value'
       return;
     }

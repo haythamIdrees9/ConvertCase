@@ -2,11 +2,13 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MetaService } from '../services/meta.service';
 import { SeoService } from '../services/seo.service';
+import { InfoService } from './info.service';
 
 @Component({
   selector: 'app-text-manipulation',
   templateUrl: './text-manipulation.component.html',
-  styleUrls: ['./text-manipulation.component.scss']
+  styleUrls: ['./text-manipulation.component.scss'],
+  providers:[InfoService]
 })
 export class TextManipulationComponent {
   text: string = '';
@@ -41,27 +43,45 @@ export class TextManipulationComponent {
     "text-replacer": "Replace specific characters or words in your text with the Text Replacer tool. Make substitutions to modify and refine your content."
   }
   
-  constructor(private route:ActivatedRoute, private metaService:MetaService, private router:Router, private seoService:SeoService) { }
+  defaultAction = 'text-reverser';
+  isRoot!:boolean;
+  desccription:string = ""
+  constructor(private route:ActivatedRoute, private metaService: MetaService, private infoService:InfoService) { }
 
   ngOnInit(): void {
     this.handleSeo()
-     const defaultAction = 'text-reverser'
     let action = this.route.snapshot.params['action'];
-    if(!action || !this.buttonMappings[action]){
-      action = defaultAction
-      this.router.navigate(['./',defaultAction],{relativeTo:this.route.parent,replaceUrl:true})
+    if (action && this.buttonMappings[action]) {
+      this.isRoot = false;
+      this.executeFn = this.buttonMappings[action];
+      this.desccription = this.infoService.getData(action);
+      this.setInnerDescription(action)
+    } else {
+      action = this.defaultAction;
+      this.executeFn = this.buttonMappings[action];
+      this.isRoot = true;
     }
+
     this.route.params.subscribe(params =>{
-      const action = params['action'] || 'text-reverser';
+      const action = (params['action'] && this.metaContent[params['action']]) ? params['action'] : this.defaultAction;
       if(action){
         this.metaService.setTitle(`${action} online`);
         this.metaService.setDescription(this.metaContent[action])
       }
+      this.setInnerDescription(action)
     })
-    if(action && this.buttonMappings[action]){
-      this.executeFn = this.buttonMappings[action]; 
-    }    
-    this.seoService.createLinkForCanonicalURL('text-manipulation')
+
+  }
+
+  setInnerDescription(action:string){
+    console.log('this.infoService.getData(action)',this.infoService.getData(action));
+    
+    if(action && this.infoService.getData(action)){
+      this.desccription = this.infoService.getData(action);
+    } else{
+      this.isRoot = true;
+      this.executeFn = this.buttonMappings[this.defaultAction];
+    }
   }
 
   private handleSeo(){

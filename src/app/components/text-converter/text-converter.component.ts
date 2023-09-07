@@ -44,31 +44,29 @@ export class TextConverterComponent implements OnInit {
     this.handleSeo()
 
     let action = this.route.snapshot.params['action'];
-    if (!action || !this.buttonMappings[action]) {
-      action = this.defaultAction;
-      this.executeFn = this.buttonMappings[action];
-      this.isRoot = true;
-    } else {
+    if (action && this.buttonMappings[action]) {
       this.isRoot = false;
       this.executeFn = this.buttonMappings[action];
       this.desccription = this.infoService.getData(action);
-      this.setDescription(action)
+      this.setInnerDescription(action)
+    } else {
+      action = this.defaultAction;
+      this.executeFn = this.buttonMappings[action];
+      this.isRoot = true;
     }
 
     this.route.params.subscribe(params => {
-      const action = (params['action'] && this.metaContent[params['action']])?params['action']: this.defaultAction;
-      console.log('ac--tion',action);
-      
+      const action = (params['action'] && this.metaContent[params['action']])?params['action']: this.defaultAction;      
       this.isRoot = !params['action'];
       if (action) {
         this.metaService.setTitle(`${action} online`);
         this.metaService.setDescription(this.metaContent[action]);
       }
-      this.setDescription(action)
+      this.setInnerDescription(action)
     })
   }
 
-  setDescription(action:string){
+  setInnerDescription(action:string){
     if(action && this.infoService.getData(action)){
       this.desccription = this.infoService.getData(action);
     } else{

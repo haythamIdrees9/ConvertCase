@@ -28,8 +28,7 @@
         (click)="executeFn = textColumnFormatter">
         <app-button-with-counter class="left-issue" [placeholder]="'Column Width'" [text]="'Text Column Formatter'"
           [formInfo]="'Text Column Formatter'" [selected]="executeFn === textColumnFormatter"
-          (apply)="boxes.focus();textColumnFormatter($event)"
-          ></app-button-with-counter>
+          (apply)="boxes.focus();textColumnFormatter($event)"></app-button-with-counter>
       </a>
 
       <a replaceUrl [routerLink]="['/', 'text-manipulation', 'text-repeater']" (click)="executeFn = textRepeater">
@@ -53,206 +52,229 @@
     <app-result-actions-btn (onClear)="clearTextArea();boxes.clear()" [text]="text"></app-result-actions-btn>
   </div>
 </div>
-<app-conent-card [showAdd]="true">
-  <h2>Text Manipulation Tools</h2>
-
-  <p>Embark on an exploration of our comprehensive suite of Text Manipulation tools, meticulously crafted to facilitate
-    an array of text transformation possibilities. Ranging from reversing and randomizing text to precise sorting,
-    dynamic rotation, and strategic column formatting, these tools are your key to molding and elevating your text
-    content.</p>
-
-  <p>Uncover the versatility of our Text Manipulation toolbox with the following tools:</p>
-
-  <ul>
-    <li>
-      <strong>Text Reverser</strong>: Reverse the sequence of characters within your text, transforming it into its
-      mirror image.
-    </li>
-    <li>
-      <strong>Text Randomization</strong>: Add an element of surprise by randomly shuffling the arrangement of
-      characters in your text.
-    </li>
-    <li>
-      <strong>Text Sorting</strong>: Bring order to your text with the ability to alphabetically or numerically sort its
-      characters.
-    </li>
-    <li>
-      <strong>Text Rotator</strong>: Playfully rotate the characters in your text in a specified direction, adding an
-      engaging twist.
-    </li>
-    <li>
-      <strong>Text Column Formatter</strong>: Achieve visual harmony by formatting your text into organized columns with
-      a chosen width.
-    </li>
-    <li>
-      <strong>Text Repeater</strong>: Multiply your text's impact by effortlessly replicating it a designated number of
-      times.
-    </li>
-    <li>
-      <strong>Text Transposer</strong>: Strategically transpose the rows and columns of your text for a fresh
-      perspective.
-    </li>
-    <li>
-      <strong>Text Replacer</strong>: Tailor your text to perfection by seamlessly replacing specific instances with
-      alternative content.
-    </li>
-  </ul>
-
-  <p>Stay tuned for meticulously curated guides that delve into the nuanced application of each Text Manipulation tool.
-    Brace yourself for illuminating examples that highlight the transformative potential of these tools in various text
-    manipulation scenarios.</p>
-
-</app-conent-card>
-
-<app-conent-card>
-
-  <h3>Text Reverser</h3>
-
-  <p>Elevate your text's impact with the <strong>Text Reverser</strong> tool. This versatile utility allows you to
-    reverse the order of characters in your text, creating captivating effects that can enhance your content.</p>
-
-  <p>Transform "Hello, World!" into "!dlroW ,olleH" with ease. The Text Reverser lets you effortlessly experiment with
-    text manipulation, adding a unique twist to your messages, headlines, or titles.</p>
-
-  <p>Whether you're aiming to create visual intrigue or simply want to try something different, the Text Reverser is
-    here to help. It's a valuable tool for generating engaging content that stands out from the crowd.</p>
-
-</app-conent-card>
-
-<app-conent-card>
-
-  <h3>Text Randomization</h3>
-
-  <p>Unleash creativity with the <strong>Text Randomization</strong> tool. This feature-rich utility enables you to
-    shuffle the arrangement of characters in your text, resulting in fresh and unpredictable outcomes.</p>
-
-  <p>Imagine transforming "Lorem Ipsum" into "sumI proLe m." The Text Randomization tool adds an element of surprise to
-    your text, making it ideal for generating unique content, artistic designs, or adding a playful touch to your
-    messages.</p>
-
-  <p>Whether you're looking to create attention-grabbing social media posts, intriguing captions, or innovative design
-    elements, the Text Randomization tool provides an exciting way to experiment with text and explore new creative
-    possibilities.</p>
-
-</app-conent-card>
-
-<app-conent-card>
-  <h3>Text Sorting</h3>
-
-  <p>Organize your text effortlessly with the <strong>Text Sorting</strong> tool. This versatile feature allows you to
-    arrange the characters in your text in either alphabetical or numerical order, making it easier to analyze and
-    present information.</p>
-
-  <p>Transform a jumbled sequence like "computer" into "cemoptru" or sort a list of ages into ascending or descending
-    order. The Text Sorting tool is perfect for tasks such as organizing data, creating structured lists, or preparing
-    content for presentation.</p>
-
-  <p>Whether you're working with text, numbers, or a combination of both, the Text Sorting tool ensures that your
-    content is neatly organized, enhancing readability and making your data more accessible to others.</p>
-
-</app-conent-card>
-
-<app-conent-card [showAdd]="true">
-  <h3>Text Rotator</h3>
-
-  <p>Rotate and transform your text in unique ways using the <strong>Text Rotator</strong> tool. With this feature, you
-    can change the orientation of characters within your text, giving it a fresh and distinctive appearance.</p>
-
-  <p>Whether you want to rotate your text 90 degrees to create vertical text or flip it horizontally for a mirror
-    effect, the Text Rotator tool provides a range of options for experimentation. This tool is particularly useful for
-    adding creative flair to your designs, banners, or social media posts.</p>
-
-  <p>Unlock the potential of text rotation to captivate your audience and give your content an innovative edge. Whether
-    you're designing graphics or simply want to stand out on digital platforms, the Text Rotator tool has got you
-    covered.</p>
-
-</app-conent-card>
-
-<app-conent-card>
-  <h3>Text Column Formatter</h3>
-
-  <p>Organize and align your text neatly into columns using the <strong>Text Column Formatter</strong> tool. This
-    feature allows you to adjust the width of columns, making your text content more visually appealing and easy to
-    read.</p>
-
-  <p>Whether you're creating a table, a list of items, or any content that requires a structured layout, the Text Column
-    Formatter tool can save you time and effort. Simply input your text and specify the desired column width, and the
-    tool will automatically format your text accordingly.</p>
-
-  <p>Enhance the presentation of your text-based content by utilizing the Text Column Formatter tool. Whether you're
-    designing documents, reports, or any form of structured information, this tool helps you achieve a professional and
-    organized look.</p>
-
-</app-conent-card>
-<app-conent-card>
-
-  <h3>Text Repeater</h3>
-
-  <p>The <strong>Text Repeater</strong> tool empowers you to duplicate your text multiple times with ease. Whether
-    you're creating repetitive content, generating test data, or experimenting with formatting, this tool streamlines
-    the process by allowing you to specify the number of repetitions.</p>
-
-  <p>Instead of manually copying and pasting the same text over and over, the Text Repeater tool automates this task.
-    Simply input your text and the desired number of repetitions, and the tool will generate the duplicated text for
-    you.</p>
-
-  <p>Use the Text Repeater tool to:</p>
-  <ul>
-    <li>Quickly generate placeholder text for design mockups.</li>
-    <li>Create sample data for testing and development purposes.</li>
-    <li>Experiment with formatting variations by repeating text segments.</li>
-    <li>Effortlessly produce patterns or sequences of text.</li>
-  </ul>
-
-  <p>Simplify your text duplication tasks and boost your productivity with the Text Repeater tool.</p>
-
-</app-conent-card>
-
-<app-conent-card [showAdd]="true">
+<ng-container *ngIf="isRoot">
 
 
-  <h3>Text Transposer</h3>
+  <app-conent-card [showAdd]="true">
+    <h2>Text Manipulation Tools</h2>
 
-  <p>The <strong>Text Transposer</strong> tool enables you to transpose rows and columns of text, making it especially
-    useful for reshaping data or rearranging content. This tool comes in handy when you need to pivot data or transform
-    the orientation of your text.</p>
+    <p>Embark on an exploration of our comprehensive suite of Text Manipulation tools, meticulously crafted to
+      facilitate
+      an array of text transformation possibilities. Ranging from reversing and randomizing text to precise sorting,
+      dynamic rotation, and strategic column formatting, these tools are your key to molding and elevating your text
+      content.</p>
 
-  <p>Instead of manually reorganizing your text, the Text Transposer automates this process. Input your text, and the
-    tool will transpose rows as columns and columns as rows, providing you with a new layout.</p>
+    <p>Uncover the versatility of our Text Manipulation toolbox with the following tools:</p>
 
-  <p>Use the Text Transposer tool to:</p>
-  <ul>
-    <li>Convert rows of data into columns and vice versa.</li>
-    <li>Restructure text-based tables for different presentations.</li>
-    <li>Adapt data from one format to another without retyping.</li>
-    <li>Effortlessly reshape text-based information for analysis or display.</li>
-  </ul>
+    <ul>
+      <li>
+        <strong>Text Reverser</strong>: Reverse the sequence of characters within your text, transforming it into its
+        mirror image.
+      </li>
+      <li>
+        <strong>Text Randomization</strong>: Add an element of surprise by randomly shuffling the arrangement of
+        characters in your text.
+      </li>
+      <li>
+        <strong>Text Sorting</strong>: Bring order to your text with the ability to alphabetically or numerically sort
+        its
+        characters.
+      </li>
+      <li>
+        <strong>Text Rotator</strong>: Playfully rotate the characters in your text in a specified direction, adding an
+        engaging twist.
+      </li>
+      <li>
+        <strong>Text Column Formatter</strong>: Achieve visual harmony by formatting your text into organized columns
+        with
+        a chosen width.
+      </li>
+      <li>
+        <strong>Text Repeater</strong>: Multiply your text's impact by effortlessly replicating it a designated number
+        of
+        times.
+      </li>
+      <li>
+        <strong>Text Transposer</strong>: Strategically transpose the rows and columns of your text for a fresh
+        perspective.
+      </li>
+      <li>
+        <strong>Text Replacer</strong>: Tailor your text to perfection by seamlessly replacing specific instances with
+        alternative content.
+      </li>
+    </ul>
 
-  <p>Simplify the process of transposing text and transform the organization of your data with the Text Transposer tool.
-  </p>
+    <p>Stay tuned for meticulously curated guides that delve into the nuanced application of each Text Manipulation
+      tool.
+      Brace yourself for illuminating examples that highlight the transformative potential of these tools in various
+      text
+      manipulation scenarios.</p>
 
-</app-conent-card>
+  </app-conent-card>
+
+  <app-conent-card>
+
+    <h3>Text Reverser</h3>
+
+    <p>Elevate your text's impact with the <strong>Text Reverser</strong> tool. This versatile utility allows you to
+      reverse the order of characters in your text, creating captivating effects that can enhance your content.</p>
+
+    <p>Transform "Hello, World!" into "!dlroW ,olleH" with ease. The Text Reverser lets you effortlessly experiment with
+      text manipulation, adding a unique twist to your messages, headlines, or titles.</p>
+
+    <p>Whether you're aiming to create visual intrigue or simply want to try something different, the Text Reverser is
+      here to help. It's a valuable tool for generating engaging content that stands out from the crowd.</p>
+
+  </app-conent-card>
+
+  <app-conent-card>
+
+    <h3>Text Randomization</h3>
+
+    <p>Unleash creativity with the <strong>Text Randomization</strong> tool. This feature-rich utility enables you to
+      shuffle the arrangement of characters in your text, resulting in fresh and unpredictable outcomes.</p>
+
+    <p>Imagine transforming "Lorem Ipsum" into "sumI proLe m." The Text Randomization tool adds an element of surprise
+      to
+      your text, making it ideal for generating unique content, artistic designs, or adding a playful touch to your
+      messages.</p>
+
+    <p>Whether you're looking to create attention-grabbing social media posts, intriguing captions, or innovative design
+      elements, the Text Randomization tool provides an exciting way to experiment with text and explore new creative
+      possibilities.</p>
+
+  </app-conent-card>
+
+  <app-conent-card>
+    <h3>Text Sorting</h3>
+
+    <p>Organize your text effortlessly with the <strong>Text Sorting</strong> tool. This versatile feature allows you to
+      arrange the characters in your text in either alphabetical or numerical order, making it easier to analyze and
+      present information.</p>
+
+    <p>Transform a jumbled sequence like "computer" into "cemoptru" or sort a list of ages into ascending or descending
+      order. The Text Sorting tool is perfect for tasks such as organizing data, creating structured lists, or preparing
+      content for presentation.</p>
+
+    <p>Whether you're working with text, numbers, or a combination of both, the Text Sorting tool ensures that your
+      content is neatly organized, enhancing readability and making your data more accessible to others.</p>
+
+  </app-conent-card>
+
+  <app-conent-card [showAdd]="true">
+    <h3>Text Rotator</h3>
+
+    <p>Rotate and transform your text in unique ways using the <strong>Text Rotator</strong> tool. With this feature,
+      you
+      can change the orientation of characters within your text, giving it a fresh and distinctive appearance.</p>
+
+    <p>Whether you want to rotate your text 90 degrees to create vertical text or flip it horizontally for a mirror
+      effect, the Text Rotator tool provides a range of options for experimentation. This tool is particularly useful
+      for
+      adding creative flair to your designs, banners, or social media posts.</p>
+
+    <p>Unlock the potential of text rotation to captivate your audience and give your content an innovative edge.
+      Whether
+      you're designing graphics or simply want to stand out on digital platforms, the Text Rotator tool has got you
+      covered.</p>
+
+  </app-conent-card>
+
+  <app-conent-card>
+    <h3>Text Column Formatter</h3>
+
+    <p>Organize and align your text neatly into columns using the <strong>Text Column Formatter</strong> tool. This
+      feature allows you to adjust the width of columns, making your text content more visually appealing and easy to
+      read.</p>
+
+    <p>Whether you're creating a table, a list of items, or any content that requires a structured layout, the Text
+      Column
+      Formatter tool can save you time and effort. Simply input your text and specify the desired column width, and the
+      tool will automatically format your text accordingly.</p>
+
+    <p>Enhance the presentation of your text-based content by utilizing the Text Column Formatter tool. Whether you're
+      designing documents, reports, or any form of structured information, this tool helps you achieve a professional
+      and
+      organized look.</p>
+
+  </app-conent-card>
+  <app-conent-card>
+
+    <h3>Text Repeater</h3>
+
+    <p>The <strong>Text Repeater</strong> tool empowers you to duplicate your text multiple times with ease. Whether
+      you're creating repetitive content, generating test data, or experimenting with formatting, this tool streamlines
+      the process by allowing you to specify the number of repetitions.</p>
+
+    <p>Instead of manually copying and pasting the same text over and over, the Text Repeater tool automates this task.
+      Simply input your text and the desired number of repetitions, and the tool will generate the duplicated text for
+      you.</p>
+
+    <p>Use the Text Repeater tool to:</p>
+    <ul>
+      <li>Quickly generate placeholder text for design mockups.</li>
+      <li>Create sample data for testing and development purposes.</li>
+      <li>Experiment with formatting variations by repeating text segments.</li>
+      <li>Effortlessly produce patterns or sequences of text.</li>
+    </ul>
+
+    <p>Simplify your text duplication tasks and boost your productivity with the Text Repeater tool.</p>
+
+  </app-conent-card>
+
+  <app-conent-card [showAdd]="true">
 
 
-<app-conent-card>
-  <h3>Text Replacer</h3>
+    <h3>Text Transposer</h3>
 
-  <p>The <strong>Text Replacer</strong> tool allows you to replace specific text within your content, making it a
-    valuable utility for quickly making changes and substitutions. Whether you're correcting errors, updating
-    information, or customizing text, this tool streamlines the process of text modification.</p>
+    <p>The <strong>Text Transposer</strong> tool enables you to transpose rows and columns of text, making it especially
+      useful for reshaping data or rearranging content. This tool comes in handy when you need to pivot data or
+      transform
+      the orientation of your text.</p>
 
-  <p>Instead of manually searching and replacing text throughout your content, the Text Replacer automates this task.
-    You can specify the target text you want to replace and the replacement text you want to use. The tool will then
-    scan your content and perform the replacements, saving you time and effort.</p>
+    <p>Instead of manually reorganizing your text, the Text Transposer automates this process. Input your text, and the
+      tool will transpose rows as columns and columns as rows, providing you with a new layout.</p>
 
-  <p>Use the Text Replacer tool to:</p>
-  <ul>
-    <li>Fix typographical errors and inconsistencies in your text.</li>
-    <li>Update outdated information across your content.</li>
-    <li>Customize template text for various purposes.</li>
-    <li>Efficiently replace recurring text patterns without manual intervention.</li>
-  </ul>
+    <p>Use the Text Transposer tool to:</p>
+    <ul>
+      <li>Convert rows of data into columns and vice versa.</li>
+      <li>Restructure text-based tables for different presentations.</li>
+      <li>Adapt data from one format to another without retyping.</li>
+      <li>Effortlessly reshape text-based information for analysis or display.</li>
+    </ul>
 
-  <p>Simplify the process of text replacement and ensure your content is accurate and up-to-date with the Text Replacer
-    tool.</p>
+    <p>Simplify the process of transposing text and transform the organization of your data with the Text Transposer
+      tool.
+    </p>
+
+  </app-conent-card>
+
+
+  <app-conent-card>
+    <h3>Text Replacer</h3>
+
+    <p>The <strong>Text Replacer</strong> tool allows you to replace specific text within your content, making it a
+      valuable utility for quickly making changes and substitutions. Whether you're correcting errors, updating
+      information, or customizing text, this tool streamlines the process of text modification.</p>
+
+    <p>Instead of manually searching and replacing text throughout your content, the Text Replacer automates this task.
+      You can specify the target text you want to replace and the replacement text you want to use. The tool will then
+      scan your content and perform the replacements, saving you time and effort.</p>
+
+    <p>Use the Text Replacer tool to:</p>
+    <ul>
+      <li>Fix typographical errors and inconsistencies in your text.</li>
+      <li>Update outdated information across your content.</li>
+      <li>Customize template text for various purposes.</li>
+      <li>Efficiently replace recurring text patterns without manual intervention.</li>
+    </ul>
+
+    <p>Simplify the process of text replacement and ensure your content is accurate and up-to-date with the Text
+      Replacer
+      tool.</p>
+  </app-conent-card>
+</ng-container>
+
+<app-conent-card *ngIf="!isRoot">
+  <div [innerHTML]="desccription"></div>
 </app-conent-card>
