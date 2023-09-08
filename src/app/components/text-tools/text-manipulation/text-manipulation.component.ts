@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { MetaService } from '../services/meta.service';
-import { SeoService } from '../services/seo.service';
+import { ActivatedRoute } from '@angular/router';
+import { MetaService } from '../../services/meta.service';
 import { InfoService } from './info.service';
 
 @Component({
   selector: 'app-text-manipulation',
   templateUrl: './text-manipulation.component.html',
-  styleUrls: ['./text-manipulation.component.scss'],
+  styleUrls: ['./text-manipulation.component.scss','../text-tools.scss'],
   providers: [InfoService]
 })
 export class TextManipulationComponent {

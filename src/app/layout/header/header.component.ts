@@ -14,9 +14,9 @@ export class HeaderComponent implements OnInit{
   isSearchOpened: boolean = false;
   isMenuOpened: boolean = false;
   menuRouts = [
-    {path:'/text-case-tools',label:'Text Convert Case' ,icon:'assets/images/convert.svg'},
-    {path:'/encode-decode',label:'Encoding and Decoding',icon:'assets/images/decode.svg'},
-    {path:'/text-manipulation',label:'Text Manipulation',icon:'assets/images/replace.svg'},
+    {path:'text-tools/text-case-converter',label:'Text Tools' ,icon:'assets/images/replace.svg'},
+    {path:'programming-tools/encode-decode',label:'Programming Tools',icon:'assets/images/decode.svg'},
+    // {path:'text-tools/text-manipulation',label:'Text Manipulation',icon:'assets/images/replace.svg'},
     {path:'/unit-converters',label:'Unit Converters',icon:'assets/images/unit.svg'},
   ]
 

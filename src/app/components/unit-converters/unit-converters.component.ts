@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, HostListener } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 
 
 export    const  UnitPages = [
@@ -34,22 +34,7 @@ export class UnitConvertersComponent implements AfterViewInit {
   }
   pages = UnitPages;
 
-  isLinksModalVisible: boolean = false;
 
-  showLinksModal() {
-    this.isLinksModalVisible = true;
-    const bodyElement = document.getElementById('body');
-    if (bodyElement) {
-      bodyElement.style.overflow = 'hidden'; 
-    }
-  }
 
-  hideLinksModal() {
-    this.isLinksModalVisible = false;
-    const bodyElement = document.getElementById('body');
-    if (bodyElement) {
-      bodyElement.style.overflow = 'hidden auto'; 
-    }
-  }
 
 }

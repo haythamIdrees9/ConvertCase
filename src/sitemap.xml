@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://convertcase.me/text-case-tools</loc>
+        <loc>https://convertcase.me/text-tools/text-case-converter</loc>
     </url>
     <url>
         <loc>https://convertcase.me/encode-decode</loc>
@@ -58,28 +58,28 @@
         <loc>https://convertcase.me/encode-decode/bcd-decode</loc>
     </url>
     <url>
-        <loc>https://convertcase.me/text-case-tools/convert-to-uppercase</loc>
+        <loc>https://convertcase.me/text-tools/text-case-converter/convert-to-uppercase</loc>
     </url>
     <url>
-        <loc>https://convertcase.me/text-case-tools/convert-to-lowercase</loc>
+        <loc>https://convertcase.me/text-tools/text-case-converter/convert-to-lowercase</loc>
     </url>
     <url>
-        <loc>https://convertcase.me/text-case-tools/convert-to-title-case</loc>
+        <loc>https://convertcase.me/text-tools/text-case-converter/convert-to-title-case</loc>
     </url>
     <url>
-        <loc>https://convertcase.me/text-case-tools/convert-to-capitalized-case</loc>
+        <loc>https://convertcase.me/text-tools/text-case-converter/convert-to-capitalized-case</loc>
     </url>
     <url>
-        <loc>https://convertcase.me/text-case-tools/convert-to-camel-case</loc>
+        <loc>https://convertcase.me/text-tools/text-case-converter/convert-to-camel-case</loc>
     </url>
     <url>
-        <loc>https://convertcase.me/text-case-tools/convert-to-kebab-case</loc>
+        <loc>https://convertcase.me/text-tools/text-case-converter/convert-to-kebab-case</loc>
     </url>
     <url>
-        <loc>https://convertcase.me/text-case-tools/convert-to-snake-case</loc>
+        <loc>https://convertcase.me/text-tools/text-case-converter/convert-to-snake-case</loc>
     </url>
     <url>
-        <loc>https://convertcase.me/text-case-tools/convert-to-inverse-case</loc>
+        <loc>https://convertcase.me/text-tools/text-case-converter/convert-to-inverse-case</loc>
     </url>
     <url>
         <loc>https://convertcase.me/text-manipulation/text-reverser</loc>

@@ -128,7 +128,7 @@ $bg-color: #144D30;
                         text-decoration: none;
                         color: black;
                         font-size: 1rem;
-                        &.selected{
+                        &.selected,&:hover{
                             background-color: rgb(231, 231, 231);
                         }
                         img{
@@ -168,24 +168,6 @@ $bg-color: #144D30;
                 opacity: 1 !important;
             }
         }
-        @include mobileFirst('mlg'){
-            .content:hover {
-                width: 300px;
-                left: 0;
-                span{
-                width: max-content;
-                display: unset !important;
-                opacity: 1 !important;
-                transition: all 0.55s 0.15s;
-            }
-            .rights{
-                width: max-content;
-                transition: all 0.55s 0.15s;
-                opacity: 1 !important;
-            }
-        }
-    }
-        @media screen and (hover:hover) {
             &.menu-opened .content {
                 width: 300px;
                 left: 0;
@@ -201,19 +183,27 @@ $bg-color: #144D30;
                 opacity: 1 !important;
             }
         } 
-    }
-
-    }
-
-    &.opened {
-        &::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            backdrop-filter: blur(1px);
+    
+        @media screen and (hover:hover) {
+            .content:hover {
+                width: 300px;
+                left: 0;
+                span{
+                width: max-content;
+                display: unset !important;
+                opacity: 1 !important;
+                transition: all 0.55s 0.15s;
+            }
+            .rights{
+                width: max-content;
+                transition: all 0.55s 0.15s;
+                opacity: 1 !important;
+            }
         }
+
     }
+
+    }
+
+
 }
