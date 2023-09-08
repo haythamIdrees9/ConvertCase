@@ -22,14 +22,14 @@
 
         .links-list {
             position: absolute;
-            top: 4rem;
+            top: 3rem;
 
             @include mobileFirst('xsm') {
-                top: 4.5rem;
+                top: 3.5rem;
             }
 
             @include mobileFirst('md') {
-                top: 6.5rem;
+                top: 120px;
             }
 
             right: 0;
@@ -83,7 +83,7 @@
 
         .links-list-container {
             position: unset;
-            margin-top: 156px;
+            margin-top: 181px;
             margin-left: 2rem;
             margin-bottom: 0;
             align-self: unset;

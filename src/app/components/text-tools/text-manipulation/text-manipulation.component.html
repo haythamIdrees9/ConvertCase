@@ -1,57 +1,85 @@
+<div class="parent">
 <div class="x-container">
+  <app-links-container>
+
   <h1>Text Manipulation</h1>
   <div class="container">
+    <div class="input-container"> 
+      <div class="f-row input-list" *ngIf="executeFn === textReplacer">
+        <label class="f-col">
+          Find text to replace:
+          <input type="text" placeholder="Search" [(ngModel)]="search" (ngModelChange)="textReplacer(search, replacement)">
+        </label>
+        <label class="f-col">
+          Replace With:
+          <input type="text" placeholder="Replace" [(ngModel)]="replacement" (ngModelChange)="textReplacer(search, replacement)">
+        </label>
+      </div>
+          <label class="f-col" *ngIf="executeFn === textRotator">Rotation Amount:
+            <input  type="number"  placeholder="Rotation Amount" [(ngModel)]="textRouterCount" (ngModelChange)="textRotator(textRouterCount)">
+          </label>
+        <label class="f-col" *ngIf="executeFn === textColumnFormatter">
+          Column Width:
+          <input  type="number"  placeholder="Column Width" [(ngModel)]="columnWidth"  (ngModelChange)="textColumnFormatter(columnWidth)">
+        </label>
+        <label class="f-col" *ngIf="executeFn === textRepeater">
+            Repeat Count:
+          <input  type="number"  placeholder="Repeat Count" [(ngModel)]="repetitions"  (ngModelChange)="textRepeater(repetitions)">
+        </label>
+    </div>
+
     <app-in-out-text-boxes #boxes [result]="text" [storageKey]="storageKey"
       (onChangeEmitter)="setOriginalText($event)"></app-in-out-text-boxes>
     <div class="buttons" role="group" aria-labelledby="conversionInstructions">
       <a replaceUrl [routerLink]="['/', 'text-tools','text-manipulation', 'text-reverser']">
         <button class="btn-theme" [class.selected]="executeFn === textReverser"
-          (click)="boxes.focus();onSelect(textReverser)" aria-label="Text Reverser">Text Reverser</button>
+          (click)="boxes.focus();onSelect(textReverser)" aria-label="Text Reverser">Reverse Text</button>
       </a>
       <a replaceUrl [routerLink]="['/', 'text-tools','text-manipulation', 'text-randomization']">
         <button class="btn-theme" [class.selected]="executeFn === textRandomization"
-          (click)="boxes.focus();onSelect(textRandomization)" aria-label="Text Randomization">Text
-          Randomization</button>
+          (click)="boxes.focus();onSelect(textRandomization)" aria-label="Text Randomization">
+          shuffle Text</button>
       </a>
       <a replaceUrl [routerLink]="['/', 'text-tools','text-manipulation', 'text-sorting']">
         <button class="btn-theme" [class.selected]="executeFn === textSorting"
-          (click)="boxes.focus();onSelect(textSorting)" aria-label="Sort">Sort</button>
-      </a>
-
-      <a replaceUrl [routerLink]="['/', 'text-tools','text-manipulation', 'text-rotator']" (click)="executeFn = textRotator">
-        <app-button-with-counter class="right-issue" [placeholder]="'Rotation Direction'" [text]="'Text Rotator'"
-          [formInfo]="'Rotation Amount'" [selected]="executeFn === textRotator"
-          (apply)="boxes.focus();textRotator($event)"></app-button-with-counter>
-      </a>
-
-      <a replaceUrl [routerLink]="['/', 'text-tools','text-manipulation', 'text-column-formatter']"
-        (click)="executeFn = textColumnFormatter">
-        <app-button-with-counter class="left-issue" [placeholder]="'Column Width'" [text]="'Text Column Formatter'"
-          [formInfo]="'Text Column Formatter'" [selected]="executeFn === textColumnFormatter"
-          (apply)="boxes.focus();textColumnFormatter($event)"></app-button-with-counter>
-      </a>
-
-      <a replaceUrl [routerLink]="['/', 'text-tools','text-manipulation', 'text-repeater']" (click)="executeFn = textRepeater">
-        <app-button-with-counter class="sm-right-issue" [placeholder]="'Repetitions'" [text]="'Text Repeater'"
-          [formInfo]="'Repetitions'" [selected]="executeFn === textRepeater"
-          (apply)="boxes.focus();textRepeater($event)"></app-button-with-counter>
+          (click)="boxes.focus();onSelect(textSorting)" aria-label="Sort">Sort Text</button>
       </a>
 
       <a replaceUrl [routerLink]="['/', 'text-tools','text-manipulation', 'text-transposer']" (click)="executeFn = textTransposer">
         <button class="btn-theme" [class.selected]="executeFn === textTransposer"
-          (click)="boxes.focus();onSelect(textTransposer)" aria-label="Text Transposer">Text Transposer</button>
+          (click)="boxes.focus();onSelect(textTransposer)" aria-label="Transpose Text">Transpose Text</button>
       </a>
 
+      <a replaceUrl [routerLink]="['/', 'text-tools','text-manipulation', 'text-rotator']" (click)="executeFn = textRotator">
+        <button class="btn-theme" [class.selected]="executeFn === textRotator"
+          (click)="boxes.focus();onSelect(textRotator)" aria-label="Rotator Text">Text Rotator</button>
+      </a>
+
+      <a replaceUrl [routerLink]="['/', 'text-tools','text-manipulation', 'text-column-formatter']"
+        (click)="executeFn = textColumnFormatter">
+        <button class="btn-theme" [class.selected]="executeFn === textColumnFormatter"
+        (click)="boxes.focus();onSelect(textColumnFormatter)" aria-label="Transpose Text">Columnize Text</button>
+      </a>
+
+      <a replaceUrl [routerLink]="['/', 'text-tools','text-manipulation', 'text-repeater']" (click)="executeFn = textRepeater">
+        <button class="btn-theme" [class.selected]="executeFn === textRepeater"
+        (click)="boxes.focus();onSelect(textRepeater)" aria-label="Repeat Text">Repeat Text</button>
+      </a>
+
+
       <a replaceUrl [routerLink]="['/', 'text-tools','text-manipulation', 'text-replacer']" (click)="executeFn = textReplacer">
-        <app-button-with-two-option class="right-issue" [placeholder1]="'Replace this'" [placeholder2]="'With this'"
-          [text]="'Text Replacer'" [apply]="'Apply'" [selected]="executeFn === textReplacer"
-          (apply)="boxes.focus();textReplacer($event.first, $event.second)"></app-button-with-two-option>
+
+        <button class="btn-theme" [class.selected]="executeFn === textReplacer"
+        (click)="boxes.focus();onSelect(textReplacer)" aria-label="Repeat Text">Repeat Text</button>
       </a>
 
     </div>
     <app-result-actions-btn (onClear)="clearTextArea();boxes.clear()" [text]="text"></app-result-actions-btn>
   </div>
+</app-links-container>
 </div>
+<div class="container info" >
+
 <ng-container *ngIf="isRoot">
 
 
@@ -278,3 +306,5 @@
 <app-conent-card *ngIf="!isRoot">
   <div [innerHTML]="desccription"></div>
 </app-conent-card>
+</div>
+</div>
