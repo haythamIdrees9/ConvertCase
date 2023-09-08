@@ -4,7 +4,7 @@
     <nav [id]="'nav-links-'+componentId" #dropdown class="nav-links custom-hover">
       <ul>
         <li #items class="f-row a-center j-ceneter" *ngFor="let item of items" [value]="item.key" [class.selected]="selected && selected === item.key">
-          <a [routerLink]="['../',prefix+item.key+suffix]">{{item.label}}</a>
+          <a replaceUrl [routerLink]="['../',prefix+item.key+suffix]">{{item.label}}</a>
         </li>
       </ul>
     </nav>

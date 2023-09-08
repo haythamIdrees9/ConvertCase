@@ -68,7 +68,7 @@ export class GenericUnitsConverterComponent implements OnInit {
 
 
   applyUnits(){
-    this.router.navigate(['./',`${this.locatOption1}-to-${this.locatOption2}`],{relativeTo:this.route.parent})
+    this.router.navigate(['./',`${this.locatOption1}-to-${this.locatOption2}`],{relativeTo:this.route.parent,replaceUrl:true})
   }
 
   convertToSnakeCase(test:string) {
