@@ -6,6 +6,15 @@
   padding-bottom: 4rem !important;
   min-height: min(calc(100vh - 12rem),800px);
   justify-content: space-evenly;
+  h1 {
+    font-size: 1.5rem;
+}
+
+@include mobileFirst('sm') {
+    h1 {
+        font-size: 2rem;
+    }
+  }
     @include mobileFirst('mlg') {
       .container .buttons {
           grid-template-columns: repeat(6, 1fr);
