@@ -1,5 +1,5 @@
 # Sitemap location for all bots
-Sitemap: http://convertcase.me/sitemap-kvpqacf.xml
+Sitemap: https://convertcase.me/sitemap-kvpqacf.xml
 
 # Allow trusted browser bots
 User-agent: Googlebot
