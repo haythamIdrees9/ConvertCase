@@ -14,10 +14,9 @@ export class HeaderComponent implements OnInit{
   isSearchOpened: boolean = false;
   isMenuOpened: boolean = false;
   menuRouts = [
-    {path:'text-tools/text-case-converter',label:'Text Tools' ,icon:'assets/images/replace.svg'},
-    {path:'programming-tools/encode-decode',label:'Programming Tools',icon:'assets/images/decode.svg'},
-    // {path:'text-tools/text-manipulation',label:'Text Manipulation',icon:'assets/images/replace.svg'},
-    {path:'/unit-converters',label:'Unit Converters',icon:'assets/images/unit.svg'},
+    {path:'text-tools/text-case-converter',label:'Text Tools' ,icon:'assets/images/replace.svg',alt:'list of text tools'},
+    {path:'programming-tools/encode-decode',label:'Programming Tools',icon:'assets/images/decode.svg',alt:'list of programming tools'},
+    {path:'/unit-converters',label:'Unit Converters',icon:'assets/images/unit.svg',alt:'list of units convert tools'},
   ]
 
   selectedRouteIndex = 1;
