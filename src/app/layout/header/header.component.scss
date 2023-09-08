@@ -5,9 +5,6 @@ $bg-color: #144D30;
 .logo-container {
     width: max-content;
     margin-left: 0.5rem;
-
-
-
     .cls-1,
     .cls-2 {
         
@@ -128,7 +125,11 @@ $bg-color: #144D30;
                         text-decoration: none;
                         color: black;
                         font-size: 1rem;
-                        &.selected,&:hover{
+                        @include activeHover{
+                            background-color: rgb(231, 231, 231);
+                        }
+
+                        &.selected{
                             background-color: rgb(231, 231, 231);
                         }
                         img{
@@ -184,7 +185,7 @@ $bg-color: #144D30;
             }
         } 
     
-        @media screen and (hover:hover) {
+        @media screen and (hover:hover) and (min-width:1200px) {
             .content:hover {
                 width: 300px;
                 left: 0;
@@ -194,6 +195,7 @@ $bg-color: #144D30;
                 opacity: 1 !important;
                 transition: all 0.55s 0.15s;
             }
+    
             .rights{
                 width: max-content;
                 transition: all 0.55s 0.15s;
