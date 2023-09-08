@@ -1,3 +1,6 @@
+# Sitemap location for all bots
+Sitemap: http://convertcase.me/sitemap-kvpqacf.xml
+
 # Allow trusted browser bots
 User-agent: Googlebot
 User-agent: Bingbot
@@ -21,4 +24,5 @@ Allow: /
 
 # Disallow all other bots
 User-agent: *
-Allow: /
+Disallow: /
+

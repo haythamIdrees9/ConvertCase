@@ -44,22 +44,10 @@ popularUnits = Object.freeze([
     {route: 'kelvin-to-rankine',reverseRoute: 'rankine-to-kelvin',labelRoute: 'Kelvin to Rankine',labelReverseRoute: 'Rankine to Kelvin', },
   
 ]);
-test = [
-  { "key": "celsius", "abbreviation": "°C" },
-  { "key": "fahrenheit", "abbreviation": "°F" },
-  { "key": "kelvin", "abbreviation": "K" },
-  { "key": "rankine", "abbreviation": "°R" },
-  { "key": "reaumur", "abbreviation": "°Re" },
-  { "key": "romer", "abbreviation": "°Ro" },
-  { "key": "delisle", "abbreviation": "°De" },
-  { "key": "newton", "abbreviation": "°N" },
-  { "key": "centigrade", "abbreviation": "°C" },
-  { "key": "gas-mark", "abbreviation": "Gas Mark" },
-  { "key": "planck-temperature", "abbreviation": "Planck Temperature" }
-]
+
 
   constructor() {    
-       console.log('units',this.units.map(item => ({...item,abbreviation:this.test.find(i => i.key === item.key)?.abbreviation})));
+      //  console.log('units',this.units.map(item => ({...item,abbreviation:this.test.find(i => i.key === item.key)?.abbreviation})));
       //  console.log('units',this.units.map(item => (item.key)));   
   }
 

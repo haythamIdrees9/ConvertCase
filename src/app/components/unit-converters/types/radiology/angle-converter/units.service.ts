@@ -56,9 +56,7 @@ export class UnitsService {
   );
 
 
-  constructor() {
-            //  console.log('units',this.units.map(item => ({...item,abbreviation:this.test.find(i => i.key === item.key)?.label})));
-      //  console.log('units',this.units.map(item => (item.key)));   
+  constructor() {  
   }
 
 
