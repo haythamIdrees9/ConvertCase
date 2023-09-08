@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { encode as punycodeEncode, decode as punycodeDecode } from "punycode"
-import { MetaService } from '../services/meta.service';
-import { SeoService } from '../services/seo.service';
+import { MetaService } from '../../services/meta.service';
+import { SeoService } from '../../services/seo.service';
 import { InfoService } from './info.service';
 
 @Component({

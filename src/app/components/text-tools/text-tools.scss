@@ -1,0 +1,14 @@
+@import '../../../styles/responsive';
+.text-tools-container {
+    padding-top: 2rem;
+    max-width: 100vw;
+    @include mobileFirst("lg") {
+        padding: 4rem max(1rem, 100px) 2rem max(1rem, 100px);
+        
+    }
+    
+    @include mobileFirst("xl") {
+        padding: 2rem max(1rem, 100px);
+      
+    }
+}

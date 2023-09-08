@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MetaService } from '../services/meta.service';
-import { SeoService } from '../services/seo.service';
+import { MetaService } from '../../services/meta.service';
+import { SeoService } from '../../services/seo.service';
 import { InfoService } from './info.service';
 
 @Component({

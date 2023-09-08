@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { minorWords } from '../../utils/words';
-import { ActivatedRoute, Router } from '@angular/router';
-import { MetaService } from '../services/meta.service';
+import { minorWords } from '../../../utils/words';
+import { ActivatedRoute } from '@angular/router';
+import { MetaService } from '../../services/meta.service';
 import { InfoService } from './info.service';
+
 
 @Component({
   selector: 'app-text-converter',
   templateUrl: './text-converter.component.html',
-  styleUrls: ['./text-converter.component.scss'],
+  styleUrls: ['./text-converter.component.scss','../text-tools.scss'],
   providers:[InfoService]
 })
 export class TextConverterComponent implements OnInit {
@@ -49,6 +50,7 @@ export class TextConverterComponent implements OnInit {
   }
   desccription:string = ''
   defaultAction = 'convert-to-uppercase';
+
   constructor(private route:ActivatedRoute, private metaService: MetaService, private infoService:InfoService) { }
 
   ngOnInit(): void {

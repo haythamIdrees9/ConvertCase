@@ -4,45 +4,45 @@
     <app-in-out-text-boxes #boxes [result]="text" [storageKey]="storageKey"
       (onChangeEmitter)="setOriginalText($event)"></app-in-out-text-boxes>
     <div class="buttons" role="group" aria-labelledby="conversionInstructions">
-      <a replaceUrl [routerLink]="['/', 'text-manipulation', 'text-reverser']">
+      <a replaceUrl [routerLink]="['/', 'text-tools','text-manipulation', 'text-reverser']">
         <button class="btn-theme" [class.selected]="executeFn === textReverser"
           (click)="boxes.focus();onSelect(textReverser)" aria-label="Text Reverser">Text Reverser</button>
       </a>
-      <a replaceUrl [routerLink]="['/', 'text-manipulation', 'text-randomization']">
+      <a replaceUrl [routerLink]="['/', 'text-tools','text-manipulation', 'text-randomization']">
         <button class="btn-theme" [class.selected]="executeFn === textRandomization"
           (click)="boxes.focus();onSelect(textRandomization)" aria-label="Text Randomization">Text
           Randomization</button>
       </a>
-      <a replaceUrl [routerLink]="['/', 'text-manipulation', 'text-sorting']">
+      <a replaceUrl [routerLink]="['/', 'text-tools','text-manipulation', 'text-sorting']">
         <button class="btn-theme" [class.selected]="executeFn === textSorting"
           (click)="boxes.focus();onSelect(textSorting)" aria-label="Sort">Sort</button>
       </a>
 
-      <a replaceUrl [routerLink]="['/', 'text-manipulation', 'text-rotator']" (click)="executeFn = textRotator">
+      <a replaceUrl [routerLink]="['/', 'text-tools','text-manipulation', 'text-rotator']" (click)="executeFn = textRotator">
         <app-button-with-counter class="right-issue" [placeholder]="'Rotation Direction'" [text]="'Text Rotator'"
           [formInfo]="'Rotation Amount'" [selected]="executeFn === textRotator"
           (apply)="boxes.focus();textRotator($event)"></app-button-with-counter>
       </a>
 
-      <a replaceUrl [routerLink]="['/', 'text-manipulation', 'text-column-formatter']"
+      <a replaceUrl [routerLink]="['/', 'text-tools','text-manipulation', 'text-column-formatter']"
         (click)="executeFn = textColumnFormatter">
         <app-button-with-counter class="left-issue" [placeholder]="'Column Width'" [text]="'Text Column Formatter'"
           [formInfo]="'Text Column Formatter'" [selected]="executeFn === textColumnFormatter"
           (apply)="boxes.focus();textColumnFormatter($event)"></app-button-with-counter>
       </a>
 
-      <a replaceUrl [routerLink]="['/', 'text-manipulation', 'text-repeater']" (click)="executeFn = textRepeater">
+      <a replaceUrl [routerLink]="['/', 'text-tools','text-manipulation', 'text-repeater']" (click)="executeFn = textRepeater">
         <app-button-with-counter class="sm-right-issue" [placeholder]="'Repetitions'" [text]="'Text Repeater'"
           [formInfo]="'Repetitions'" [selected]="executeFn === textRepeater"
           (apply)="boxes.focus();textRepeater($event)"></app-button-with-counter>
       </a>
 
-      <a replaceUrl [routerLink]="['/', 'text-manipulation', 'text-transposer']" (click)="executeFn = textTransposer">
+      <a replaceUrl [routerLink]="['/', 'text-tools','text-manipulation', 'text-transposer']" (click)="executeFn = textTransposer">
         <button class="btn-theme" [class.selected]="executeFn === textTransposer"
           (click)="boxes.focus();onSelect(textTransposer)" aria-label="Text Transposer">Text Transposer</button>
       </a>
 
-      <a replaceUrl [routerLink]="['/', 'text-manipulation', 'text-replacer']" (click)="executeFn = textReplacer">
+      <a replaceUrl [routerLink]="['/', 'text-tools','text-manipulation', 'text-replacer']" (click)="executeFn = textReplacer">
         <app-button-with-two-option class="right-issue" [placeholder1]="'Replace this'" [placeholder2]="'With this'"
           [text]="'Text Replacer'" [apply]="'Apply'" [selected]="executeFn === textReplacer"
           (apply)="boxes.focus();textReplacer($event.first, $event.second)"></app-button-with-two-option>

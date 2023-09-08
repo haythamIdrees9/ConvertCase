@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { sharedModule } from '../../UI/shared.module';
+import { sharedModule } from '../../../UI/shared.module';
 import { EncodeDecodeComponent } from './encode-decode.component';
-import { ResultActionsBtnComponent } from '../../UI/result-actions-btn/result-actions-btn.component';
+import { ResultActionsBtnComponent } from '../../../UI/result-actions-btn/result-actions-btn.component';
 
 @NgModule({
   declarations: [EncodeDecodeComponent],

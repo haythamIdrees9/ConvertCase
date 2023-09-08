@@ -6,6 +6,7 @@ import { UnitConvertersComponent } from './unit-converters.component';
 import { ExpandablePanalModule } from 'src/app/UI/expandable-panal/expandable-panal.module';
 import { MainComponent } from './main/main.component';
 import { CommonModule } from '@angular/common';
+import { LinksViewComponent } from 'src/app/UI/links-view/links-view.component';
 
 @NgModule({
   declarations: [UnitConvertersComponent, MainComponent],
@@ -14,10 +15,11 @@ import { CommonModule } from '@angular/common';
       ResultActionsBtnComponent,
       ExpandablePanalModule,
       CommonModule,
+      LinksViewComponent,
        RouterModule.forChild([
         { path: '', component: UnitConvertersComponent,children:[
           // {path:'',component:MainComponent},
-          {path:'',redirectTo:'length', pathMatch:'full'},
+          {path:'',redirectTo:'temperature', pathMatch:'full'},
           {path: 'length', loadChildren: () => import('./types/measurement/length-converter/length-converter.module').then(m => m.LengthConverterModule)},
           {path: 'temperature', loadChildren: () => import('./types/measurement/temperature-converter/temperature-converter.module').then(m => m.TemperatureConverterModule)},
           {path: 'area', loadChildren: () => import('./types/measurement/area-converter/area-converter.module').then(m => m.AreaConverterModule)},

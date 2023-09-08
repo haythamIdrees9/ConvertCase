@@ -1,5 +1,6 @@
 @import './styles/flex';
 @import "./styles/responsive";
+@import "./styles/mixins";
 $theme-color: #f7f3ff;
 
 body {
@@ -154,6 +155,10 @@ body,.custom-hover{
 
 .c-pointer {
   cursor: pointer;
+}
+
+.green-icon {
+  @include filter(invert(20%) sepia(9%) saturate(4409%) hue-rotate(101deg) brightness(95%) contrast(84%));
 }
 
 .btn-resting {

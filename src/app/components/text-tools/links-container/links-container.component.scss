@@ -1,0 +1,110 @@
+@import '../../../../styles/responsive';
+@import '../../../../styles/mixins';
+
+:host {
+    width: 100%;
+    max-width: 900px;
+
+    @include mobileFirst('lg') {
+        width: unset;
+    }
+
+    @include mobileFirst('xl') {
+        max-width: unset;
+    }
+}
+
+.links-container {
+    width: 100%;
+
+    .router-container {
+        position: relative;
+
+        .links-list {
+            position: absolute;
+            top: 4rem;
+
+            @include mobileFirst('xsm') {
+                top: 4.5rem;
+            }
+
+            @include mobileFirst('md') {
+                top: 6.5rem;
+            }
+
+            right: 0;
+            border: 1px solid #144D30;
+            padding: 0.25rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 1.5rem;
+            color: #144D30;
+            box-sizing: border-box;
+
+            img {
+                margin-left: 0.5rem;
+            }
+
+            @media screen and (hover:hover) {
+                &:hover {
+                    background-color: #144D30;
+                    color: #f7f3ff;
+
+                    img {
+                        @include filter(brightness(0) saturate(100%) invert(95%) sepia(10%) saturate(1365%) hue-rotate(187deg) brightness(104%) contrast(101%));
+                    }
+                }
+            }
+
+            &:active {
+                background-color: #144D30;
+                color: #f7f3ff;
+
+                img {
+                    @include filter(brightness(0) saturate(100%) invert(95%) sepia(10%) saturate(1365%) hue-rotate(187deg) brightness(104%) contrast(101%));
+                }
+            }
+        }
+
+        @include mobileFirst('xl') {
+            .links-list {
+                display: none;
+            }
+        }
+    }
+
+    .links-list-container {
+        align-self: flex-end;
+        margin-bottom: -6rem;
+        position: absolute;
+    }
+
+    @include mobileFirst('xl') {
+        flex-direction: row-reverse;
+
+        .links-list-container {
+            position: unset;
+            margin-top: 156px;
+            margin-left: 2rem;
+            margin-bottom: 0;
+            align-self: unset;
+        }
+    }
+
+    .content {
+        width: 100%;
+        max-width: 900px;
+    }
+
+    @include mobileFirst('lg') {
+        .content {
+            width: 900px;
+        }
+    }
+
+    @media screen and (min-width:1600px) {
+        .content {
+            width: 1120px;
+            max-width: 1120px;
+        }
+    }
+}
