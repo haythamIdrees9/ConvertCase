@@ -5,185 +5,36 @@ import Decimal from 'decimal.js';
 export class UnitsService {
 
   units: readonly { key: string; label: string; conversionRate: number,abbreviation?:string}[] = Object.freeze([
-    {
-        "key": "second",
-        "label": "Second",
-        "conversionRate": 1,
-        "abbreviation": "s"
-    },
-    {
-        "key": "millisecond",
-        "label": "Millisecond",
-        "conversionRate": 0.001,
-        "abbreviation": "ms"
-    },
-    {
-        "key": "microsecond",
-        "label": "Microsecond",
-        "conversionRate": 0.000001,
-        "abbreviation": "µs"
-    },
-    {
-        "key": "nanosecond",
-        "label": "Nanosecond",
-        "conversionRate": 1e-9,
-        "abbreviation": "ns"
-    },
-    {
-        "key": "picosecond",
-        "label": "Picosecond",
-        "conversionRate": 1e-12,
-        "abbreviation": "ps"
-    },
-    {
-        "key": "minute",
-        "label": "Minute",
-        "conversionRate": 60,
-        "abbreviation": "min"
-    },
-    {
-        "key": "hour",
-        "label": "Hour",
-        "conversionRate": 3600,
-        "abbreviation": "hr"
-    },
-    {
-        "key": "day",
-        "label": "Day",
-        "conversionRate": 86400,
-        "abbreviation": "d"
-    },
-    {
-        "key": "week",
-        "label": "Week",
-        "conversionRate": 604800,
-        "abbreviation": "wk"
-    },
-    {
-        "key": "month",
-        "label": "Month",
-        "conversionRate": 2628000,
-        "abbreviation": "mo"
-    },
-    {
-        "key": "year",
-        "label": "Year",
-        "conversionRate": 31536000,
-        "abbreviation": "yr"
-    },
-    {
-        "key": "decade",
-        "label": "Decade",
-        "conversionRate": 315360000,
-        "abbreviation": "dec"
-    },
-    {
-        "key": "century",
-        "label": "Century",
-        "conversionRate": 3153600000,
-        "abbreviation": "cent"
-    },
-    {
-        "key": "millennium",
-        "label": "Millennium",
-        "conversionRate": 31536000000,
-        "abbreviation": "millennium"
-    },
-    {
-        "key": "shake",
-        "label": "Shake",
-        "conversionRate": 1e-8,
-        "abbreviation": "shake"
-    },
-    {
-        "key": "fortnight",
-        "label": "Fortnight",
-        "conversionRate": 1209600,
-        "abbreviation": "fortnight"
-    },
-    {
-        "key": "svedberg",
-        "label": "Svedberg",
-        "conversionRate": 1e-13,
-        "abbreviation": "S"
-    },
-    {
-        "key": "femtosecond",
-        "label": "Femtosecond",
-        "conversionRate": 1e-15,
-        "abbreviation": "fs"
-    },
-    {
-        "key": "attosecond",
-        "label": "Attosecond",
-        "conversionRate": 1e-18,
-        "abbreviation": "as"
-    },
-    {
-        "key": "planck-time",
-        "label": "Planck Time",
-        "conversionRate": 5.39116e-44,
-        "abbreviation": "tP"
-    },
-    {
-        "key": "jiffy",
-        "label": "Jiffy",
-        "conversionRate": 0.01,
-        "abbreviation": "jiffy"
-    },
-    {
-        "key": "sidereal-second",
-        "label": "Sidereal Second",
-        "conversionRate": 0.99726957,
-        "abbreviation": "s-sid"
-    },
-    {
-        "key": "sidereal-minute",
-        "label": "Sidereal Minute",
-        "conversionRate": 59.836174,
-        "abbreviation": "min-sid"
-    },
-    {
-        "key": "sidereal-hour",
-        "label": "Sidereal Hour",
-        "conversionRate": 3590.17045,
-        "abbreviation": "hr-sid"
-    },
-    {
-        "key": "sidereal-day",
-        "label": "Sidereal Day",
-        "conversionRate": 86164.1004,
-        "abbreviation": "d-sid"
-    },
-    {
-        "key": "sidereal-week",
-        "label": "Sidereal Week",
-        "conversionRate": 604148.703,
-        "abbreviation": "wk-sid"
-    },
-    {
-        "key": "sidereal-month",
-        "label": "Sidereal Month",
-        "conversionRate": 2629744.29,
-        "abbreviation": "mo-sid"
-    },
-    {
-        "key": "sidereal-year",
-        "label": "Sidereal Year",
-        "conversionRate": 31558171.5,
-        "abbreviation": "yr-sid"
-    },
-    {
-        "key": "geological-era",
-        "label": "Geological Era",
-        "conversionRate": 315360000000,
-        "abbreviation": "era"
-    },
-    {
-        "key": "cosmic-year",
-        "label": "Cosmic Year",
-        "conversionRate": 1020000000000000,
-        "abbreviation": "cy"
+    {key: "second",label: "Second",conversionRate: 1,abbreviation: "s"},
+    {key: "millisecond",label: "Millisecond",conversionRate: 0.001,abbreviation: "ms"},
+    {key: "microsecond",label: "Microsecond",conversionRate: 0.000001,abbreviation: "µs"},
+    {key: "nanosecond",label: "Nanosecond",conversionRate: 1e-9,abbreviation: "ns"},
+    {key: "picosecond",label: "Picosecond",conversionRate: 1e-12,abbreviation: "ps"},
+    {key: "minute",label: "Minute",conversionRate: 60,abbreviation: "min"},
+    {key: "hour",label: "Hour",conversionRate: 3600,abbreviation: "hr"},
+    {key: "day",label: "Day",conversionRate: 86400,abbreviation: "d"},
+    {key: "week",label: "Week",conversionRate: 604800,abbreviation: "wk"},
+    {key: "month",label: "Month",conversionRate: 2628000,abbreviation: "mo"},
+    {key: "year",label: "Year",conversionRate: 31536000,abbreviation: "yr"},
+    {key: "decade",label: "Decade",conversionRate: 315360000,abbreviation: "dec"},
+    {key: "century",label: "Century",conversionRate: 3153600000,abbreviation: "cent"},
+    {key: "millennium",label: "Millennium",conversionRate: 31536000000,abbreviation: "millennium"},
+    {key: "shake",label: "Shake",conversionRate: 1e-8,abbreviation: "shake"},
+    {key: "fortnight",label: "Fortnight",conversionRate: 1209600,abbreviation: "fortnight"},
+    {key: "svedberg",label: "Svedberg",conversionRate: 1e-13,abbreviation: "S"},
+    {key: "femtosecond",label: "Femtosecond",conversionRate: 1e-15,abbreviation: "fs"},
+    {key: "attosecond",label: "Attosecond",conversionRate: 1e-18,abbreviation: "as"},
+    {key: "planck-time",label: "Planck Time",conversionRate: 5.39116e-44,abbreviation: "tP"},
+    {key: "jiffy",label: "Jiffy",conversionRate: 0.01,abbreviation: "jiffy"},
+    {key: "sidereal-second",label: "Sidereal Second",conversionRate: 0.99726957,abbreviation: "s-sid"},
+    {key: "sidereal-minute",label: "Sidereal Minute",conversionRate: 59.836174,abbreviation: "min-sid"},
+    {key: "sidereal-hour",label: "Sidereal Hour",conversionRate: 3590.17045,abbreviation: "hr-sid"},
+    {key: "sidereal-day",label: "Sidereal Day",conversionRate: 86164.1004,abbreviation: "d-sid"},
+    {key: "sidereal-week",label: "Sidereal Week",conversionRate: 604148.703,abbreviation: "wk-sid"},
+    {key: "sidereal-month",label: "Sidereal Month",conversionRate: 2629744.29,abbreviation: "mo-sid"},
+    {key: "sidereal-year",label: "Sidereal Year",conversionRate: 31558171.5,abbreviation: "yr-sid"},
+    {key: "geological-era",label: "Geological Era",conversionRate: 315360000000,abbreviation: "era"},
+    {key: "cosmic-year",label: "Cosmic Year",conversionRate: 1020000000000000,abbreviation: "cy"
     }
 ]
   );
@@ -213,9 +64,8 @@ export class UnitsService {
 
 
 
-  constructor() {
-            //  console.log('units',this.units.map(item => ({...item,abbreviation:this.test.find(i => i.key === item.key)?.abbreviation})));
-      //  console.log('units',this.units.map(item => (item.key)));  
+  constructor() {  
+    
   }
 
 

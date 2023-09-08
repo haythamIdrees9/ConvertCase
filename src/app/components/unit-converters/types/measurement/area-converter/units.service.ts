@@ -5,167 +5,33 @@ import Decimal from 'decimal.js';
 export class UnitsService {
 
   units: readonly { key: string; label: string; conversionRate: number,abbreviation?:string}[] = Object.freeze([
-    {
-        "key": "square-meter",
-        "label": "Square Meter",
-        "conversionRate": 1,
-        "abbreviation": "m²"
-    },
-    {
-        "key": "square-kilometer",
-        "label": "Square Kilometer",
-        "conversionRate": 1000000,
-        "abbreviation": "km²"
-    },
-    {
-        "key": "hectare",
-        "label": "Hectare",
-        "conversionRate": 10000,
-        "abbreviation": "ha"
-    },
-    {
-        "key": "acre",
-        "label": "Acre",
-        "conversionRate": 4046.86,
-        "abbreviation": "ac"
-    },
-    {
-        "key": "square-mile",
-        "label": "Square Mile",
-        "conversionRate": 2589990,
-        "abbreviation": "mi²"
-    },
-    {
-        "key": "square-centimeter",
-        "label": "Square Centimeter",
-        "conversionRate": 0.0001,
-        "abbreviation": "cm²"
-    },
-    {
-        "key": "square-millimeter",
-        "label": "Square Millimeter",
-        "conversionRate": 0.000001,
-        "abbreviation": "mm²"
-    },
-    {
-        "key": "square-yard",
-        "label": "Square Yard",
-        "conversionRate": 0.836127,
-        "abbreviation": "yd²"
-    },
-    {
-        "key": "square-foot",
-        "label": "Square Foot",
-        "conversionRate": 0.092903,
-        "abbreviation": "ft²"
-    },
-    {
-        "key": "square-inch",
-        "label": "Square Inch",
-        "conversionRate": 0.00064516,
-        "abbreviation": "in²"
-    },
-    {
-        "key": "are",
-        "label": "Are",
-        "conversionRate": 100,
-        "abbreviation": "a"
-    },
-    {
-        "key": "dunam",
-        "label": "Dunam",
-        "conversionRate": 1000,
-        "abbreviation": "dn"
-    },
-    {
-        "key": "feddan",
-        "label": "Feddan",
-        "conversionRate": 4200,
-        "abbreviation": "fdn"
-    },
-    {
-        "key": "rai",
-        "label": "Rai",
-        "conversionRate": 1600,
-        "abbreviation": "rai"
-    },
-    {
-        "key": "section",
-        "label": "Section",
-        "conversionRate": 2589988.11,
-        "abbreviation": "section"
-    },
-    {
-        "key": "township",
-        "label": "Township",
-        "conversionRate": 93239571.99,
-        "abbreviation": "township"
-    },
-    {
-        "key": "circular-mil",
-        "label": "Circular Mil",
-        "conversionRate": 5.067075e-10,
-        "abbreviation": "circ-mil"
-    },
-    {
-        "key": "square-decimeter",
-        "label": "Square Decimeter",
-        "conversionRate": 0.01,
-        "abbreviation": "dm²"
-    },
-    {
-        "key": "homestead",
-        "label": "Homestead",
-        "conversionRate": 647497.027584,
-        "abbreviation": "homestead"
-    },
-    {
-        "key": "bovate",
-        "label": "Bovate",
-        "conversionRate": 505.857,
-        "abbreviation": "bovate"
-    },
-    {
-        "key": "cuerda-varas",
-        "label": "Cuerda (Varas)",
-        "conversionRate": 7084.5,
-        "abbreviation": "cv"
-    },
-    {
-        "key": "cuerda",
-        "label": "Cuerda",
-        "conversionRate": 3937.04,
-        "abbreviation": "cuerda"
-    },
-    {
-        "key": "manzana",
-        "label": "Manzana",
-        "conversionRate": 1000,
-        "abbreviation": "manzana"
-    },
-    {
-        "key": "arpent-acre",
-        "label": "Arpent Acre",
-        "conversionRate": 181.822,
-        "abbreviation": "arp-ac"
-    },
-    {
-        "key": "stremma",
-        "label": "Stremma",
-        "conversionRate": 1000,
-        "abbreviation": "stremma"
-    },
-    {
-        "key": "djerib",
-        "label": "Djerib",
-        "conversionRate": 2800,
-        "abbreviation": "djerib"
-    },
-    {
-        "key": "vergees",
-        "label": "Vergees",
-        "conversionRate": 1638.80963,
-        "abbreviation": "vergees"
+    {key: "square-meter",label: "Square Meter",conversionRate: 1,abbreviation: "m²"},
+    {key: "square-kilometer",label: "Square Kilometer",conversionRate: 1000000,abbreviation: "km²"},
+    {key: "hectare",label: "Hectare",conversionRate: 10000,abbreviation: "ha"},
+    {key: "acre",label: "Acre",conversionRate: 4046.86,abbreviation: "ac"},
+    {key: "square-mile",label: "Square Mile",conversionRate: 2589990,abbreviation: "mi²"},
+    {key: "square-centimeter",label: "Square Centimeter",conversionRate: 0.0001,abbreviation: "cm²"},
+    {key: "square-millimeter",label: "Square Millimeter",conversionRate: 0.000001,abbreviation: "mm²"},
+    {key: "square-yard",label: "Square Yard",conversionRate: 0.836127,abbreviation: "yd²"},
+    {key: "square-foot",label: "Square Foot",conversionRate: 0.092903,abbreviation: "ft²"},
+    {key: "square-inch",label: "Square Inch",conversionRate: 0.00064516,abbreviation: "in²"},
+    {key: "are",label: "Are",conversionRate: 100,abbreviation: "a"},
+    {key: "dunam",label: "Dunam",conversionRate: 1000,abbreviation: "dn"},
+    {key: "feddan",label: "Feddan",conversionRate: 4200,abbreviation: "fdn"},
+    {key: "rai",label: "Rai",conversionRate: 1600,abbreviation: "rai"},
+    {key: "section",label: "Section",conversionRate: 2589988.11,abbreviation: "section"},
+    {key: "township",label: "Township",conversionRate: 93239571.99,abbreviation: "township"},
+    {key: "circular-mil",label: "Circular Mil",conversionRate: 5.067075e-10,abbreviation: "circ-mil"},
+    {key: "square-decimeter",label: "Square Decimeter",conversionRate: 0.01,abbreviation: "dm²"},
+    {key: "homestead",label: "Homestead",conversionRate: 647497.027584,abbreviation: "homestead"},
+    {key: "bovate",label: "Bovate",conversionRate: 505.857,abbreviation: "bovate"},
+    {key: "cuerda-varas",label: "Cuerda (Varas)",conversionRate: 7084.5,abbreviation: "cv"},
+    {key: "cuerda",label: "Cuerda",conversionRate: 3937.04,abbreviation: "cuerda"},
+    {key: "manzana",label: "Manzana",conversionRate: 1000,abbreviation: "manzana"},
+    {key: "arpent-acre",label: "Arpent Acre",conversionRate: 181.822,abbreviation: "arp-ac"},
+    {key: "stremma",label: "Stremma",conversionRate: 1000,abbreviation: "stremma"},
+    {key: "djerib",label: "Djerib",conversionRate: 2800,abbreviation: "djerib"},
+    {key: "vergees",label: "Vergees",conversionRate: 1638.80963,abbreviation: "vergees"
     }
 ]
   );
@@ -194,9 +60,8 @@ export class UnitsService {
 
 
 
-  constructor() {
-                  // console.log('units',this.units.map(item => ({...item,abbreviation:this.test.find(i => i.key === item.key)?.abbreviation})));
-                  // console.log('units',this.units.map(item => (item.key)));    
+  constructor() {   
+  
   }
 
 

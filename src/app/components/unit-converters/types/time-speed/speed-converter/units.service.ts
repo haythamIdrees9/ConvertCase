@@ -5,125 +5,26 @@ import Decimal from 'decimal.js';
 export class UnitsService {
 
   units: readonly { key: string; label: string; conversionRate: number,abbreviation?:string}[] = Object.freeze([
-    {
-        "key": "meter-per-second",
-        "label": "Meter per Second",
-        "conversionRate": 1,
-        "abbreviation": "m/s"
-    },
-    {
-        "key": "kilometer-per-hour",
-        "label": "Kilometer per Hour",
-        "conversionRate": 0.277778,
-        "abbreviation": "km/h"
-    },
-    {
-        "key": "mile-per-hour",
-        "label": "Mile per Hour",
-        "conversionRate": 0.44704,
-        "abbreviation": "mph"
-    },
-    {
-        "key": "foot-per-second",
-        "label": "Foot per Second",
-        "conversionRate": 0.3048,
-        "abbreviation": "ft/s"
-    },
-    {
-        "key": "knot",
-        "label": "Knot",
-        "conversionRate": 0.514444,
-        "abbreviation": "kn"
-    },
-    {
-        "key": "mach",
-        "label": "Mach",
-        "conversionRate": 343.2,
-        "abbreviation": "Mach"
-    },
-    {
-        "key": "speed-of-light",
-        "label": "Speed of Light (c)",
-        "conversionRate": 299792458,
-        "abbreviation": "c"
-    },
-    {
-        "key": "kilometer-per-second",
-        "label": "Kilometer per Second",
-        "conversionRate": 1000,
-        "abbreviation": "km/s"
-    },
-    {
-        "key": "mile-per-second",
-        "label": "Mile per Second",
-        "conversionRate": 1609.34,
-        "abbreviation": "mi/s"
-    },
-    {
-        "key": "yard-per-second",
-        "label": "Yard per Second",
-        "conversionRate": 0.9144,
-        "abbreviation": "yd/s"
-    },
-    {
-        "key": "inch-per-second",
-        "label": "Inch per Second",
-        "conversionRate": 0.0254,
-        "abbreviation": "in/s"
-    },
-    {
-        "key": "light-year-per-year",
-        "label": "Light-Year per Year",
-        "conversionRate": 9460730472580800,
-        "abbreviation": "ly/y"
-    },
-    {
-        "key": "parsec-per-year",
-        "label": "Parsec per Year",
-        "conversionRate": 30856775800000000,
-        "abbreviation": "pc/y"
-    },
-    {
-        "key": "furlong-per-fortnight",
-        "label": "Furlong per Fortnight",
-        "conversionRate": 0.00016630952381,
-        "abbreviation": "fur/fortnight"
-    },
-    {
-        "key": "cable-per-minute",
-        "label": "Cable per Minute",
-        "conversionRate": 185.2,
-        "abbreviation": "cable/min"
-    },
-    {
-        "key": "cable-per-second",
-        "label": "Cable per Second",
-        "conversionRate": 11112,
-        "abbreviation": "cable/s"
-    },
-    {
-        "key": "nautical-mile-per-day",
-        "label": "Nautical Mile per Day",
-        "conversionRate": 1.94384,
-        "abbreviation": "nmi/day"
-    },
-    {
-        "key": "nautical-mile-per-hour",
-        "label": "Nautical Mile per Hour",
-        "conversionRate": 0.514444,
-        "abbreviation": "nmi/h"
-    },
-    {
-        "key": "light-minute-per-year",
-        "label": "Light-Minute per Year",
-        "conversionRate": 17782746375212800000,
-        "abbreviation": "lm/y"
-    },
-    {
-        "key": "light-hour-per-year",
-        "label": "Light-Hour per Year",
-        "conversionRate": 1.066964782512768e+21,
-        "abbreviation": "lh/y"
+    {key: "meter-per-second",label: "Meter per Second",conversionRate: 1,abbreviation: "m/s"},
+    {key: "kilometer-per-hour",label: "Kilometer per Hour",conversionRate: 0.277778,abbreviation: "km/h"},
+    {key: "mile-per-hour",label: "Mile per Hour",conversionRate: 0.44704,abbreviation: "mph"},
+    {key: "foot-per-second",label: "Foot per Second",conversionRate: 0.3048,abbreviation: "ft/s"},
+    {key: "knot",label: "Knot",conversionRate: 0.514444,abbreviation: "kn"},
+    {key: "mach",label: "Mach",conversionRate: 343.2,abbreviation: "Mach"},
+    {key: "speed-of-light",label: "Speed of Light (c)",conversionRate: 299792458,abbreviation: "c"},
+    {key: "kilometer-per-second",label: "Kilometer per Second",conversionRate: 1000,abbreviation: "km/s"},
+    {key: "mile-per-second",label: "Mile per Second",conversionRate: 1609.34,abbreviation: "mi/s"},
+    {key: "yard-per-second",label: "Yard per Second",conversionRate: 0.9144,abbreviation: "yd/s"},
+    {key: "inch-per-second",label: "Inch per Second",conversionRate: 0.0254,abbreviation: "in/s"},
+    {key: "light-year-per-year",label: "Light-Year per Year",conversionRate: 9460730472580800,abbreviation: "ly/y"},
+    {key: "parsec-per-year",label: "Parsec per Year",conversionRate: 30856775800000000,abbreviation: "pc/y"},
+    {key: "furlong-per-fortnight",label: "Furlong per Fortnight",conversionRate: 0.00016630952381,abbreviation: "fur/fortnight"},
+    {key: "cable-per-minute",label: "Cable per Minute",conversionRate: 185.2,abbreviation: "cable/min"},
+    {key: "cable-per-second",label: "Cable per Second",conversionRate: 11112,abbreviation: "cable/s"},
+    {key: "nautical-mile-per-day",label: "Nautical Mile per Day",conversionRate: 1.94384,abbreviation: "nmi/day"},
+    {key: "nautical-mile-per-hour",label: "Nautical Mile per Hour",conversionRate: 0.514444,abbreviation: "nmi/h"},
+    {key: "light-minute-per-year",label: "Light-Minute per Year",conversionRate: 17782746375212800000,abbreviation: "lm/y"},
+    {key: "light-hour-per-year",label: "Light-Hour per Year",conversionRate: 1.066964782512768e+21,abbreviation: "lh/y"
     }
 ]
   
@@ -156,8 +57,6 @@ export class UnitsService {
 
 
   constructor() {
-          //  console.log('units',this.units.map(item => ({...item,abbreviation:this.test.find(i => i.key === item.key)?.abbreviation})));
-      //  console.log('units',this.units.map(item => (item.key)));   
       
   }
 

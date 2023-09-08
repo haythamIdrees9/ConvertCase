@@ -5,138 +5,28 @@ import Decimal from 'decimal.js';
 export class UnitsService {
 
   units: readonly { key: string; label: string; conversionRate: number,abbreviation:string}[] = Object.freeze([
-    {
-        "key": "bit",
-        "label": "Bit [b]",
-        "conversionRate": 1,
-        "abbreviation": "bit"
-    },
-    {
-        "key": "nibble",
-        "label": "Nibble",
-        "conversionRate": 4,
-        "abbreviation": "nibble"
-    },
-    {
-        "key": "byte",
-        "label": "Byte [B]",
-        "conversionRate": 8,
-        "abbreviation": "B"
-    },
-    {
-        "key": "character",
-        "label": "Character",
-        "conversionRate": 8,
-        "abbreviation": "char"
-    },
-    {
-        "key": "word",
-        "label": "Word",
-        "conversionRate": 16,
-        "abbreviation": "word"
-    },
-    {
-        "key": "MAPM-word",
-        "label": "MAPM-Word",
-        "conversionRate": 32,
-        "abbreviation": "MAPM-word"
-    },
-    {
-        "key": "quadruple-word",
-        "label": "Quadruple Word",
-        "conversionRate": 64,
-        "abbreviation": "quad-word"
-    },
-    {
-        "key": "block",
-        "label": "Block",
-        "conversionRate": 512,
-        "abbreviation": "block"
-    },
-    {
-        "key": "kilobit",
-        "label": "Kilobit [kb]",
-        "conversionRate": 1000,
-        "abbreviation": "Kb"
-    },
-    {
-        "key": "kilobyte",
-        "label": "Kilobyte [kB]",
-        "conversionRate": 8000,
-        "abbreviation": "KB"
-    },
-    {
-        "key": "kilobyte-10",
-        "label": "Kilobyte (10^3 bytes)",
-        "conversionRate": 8000,
-        "abbreviation": "KB-10"
-    },
-    {
-        "key": "megabit",
-        "label": "Megabit [Mb]",
-        "conversionRate": 1000000,
-        "abbreviation": "Mb"
-    },
-    {
-        "key": "megabyte",
-        "label": "Megabyte [MB]",
-        "conversionRate": 8000000,
-        "abbreviation": "MB"
-    },
-    {
-        "key": "megabyte-10",
-        "label": "Megabyte (10^6 bytes)",
-        "conversionRate": 8000000,
-        "abbreviation": "MB-10"
-    },
-    {
-        "key": "gigabit",
-        "label": "Gigabit [Gb]",
-        "conversionRate": 1000000000,
-        "abbreviation": "Gb"
-    },
-    {
-        "key": "gigabyte",
-        "label": "Gigabyte [GB]",
-        "conversionRate": 8000000000,
-        "abbreviation": "GB"
-    },
-    {
-        "key": "gigabyte-10",
-        "label": "Gigabyte (10^9 bytes)",
-        "conversionRate": 8000000000,
-        "abbreviation": "GB-10"
-    },
-    {
-        "key": "terabit",
-        "label": "Terabit [Tb]",
-        "conversionRate": 1000000000000,
-        "abbreviation": "Tb"
-    },
-    {
-        "key": "terabyte",
-        "label": "Terabyte [TB]",
-        "conversionRate": 8000000000000,
-        "abbreviation": "TB"
-    },
-    {
-        "key": "terabyte-10",
-        "label": "Terabyte (10^12 bytes)",
-        "conversionRate": 8000000000000,
-        "abbreviation": "TB-10"
-    },
-    {
-        "key": "petabit",
-        "label": "Petabit [Pb]",
-        "conversionRate": 1000000000000000,
-        "abbreviation": "Pb"
-    },
-    {
-        "key": "petabyte",
-        "label": "Petabyte [PB]",
-        "conversionRate": 8000000000000000,
-        "abbreviation": "PB"
-    }
+    {key: "bit",label: "Bit [b]",conversionRate: 1,abbreviation: "bit"},
+    {key: "nibble",label: "Nibble",conversionRate: 4,abbreviation: "nibble"},
+    {key: "byte",label: "Byte [B]",conversionRate: 8,abbreviation: "B"},
+    {key: "character",label: "Character",conversionRate: 8,abbreviation: "char"},
+    {key: "word",label: "Word",conversionRate: 16,abbreviation: "word"},
+    {key: "MAPM-word",label: "MAPM-Word",conversionRate: 32,abbreviation: "MAPM-word"},
+    {key: "quadruple-word",label: "Quadruple Word",conversionRate: 64,abbreviation: "quad-word"},
+    {key: "block",label: "Block",conversionRate: 512,abbreviation: "block"},
+    {key: "kilobit",label: "Kilobit [kb]",conversionRate: 1000,abbreviation: "Kb"},
+    {key: "kilobyte",label: "Kilobyte [kB]",conversionRate: 8000,abbreviation: "KB"},
+    {key: "kilobyte-10",label: "Kilobyte (10^3 bytes)",conversionRate: 8000,abbreviation: "KB-10"},
+    {key: "megabit",label: "Megabit [Mb]",conversionRate: 1000000,abbreviation: "Mb"},
+    {key: "megabyte",label: "Megabyte [MB]",conversionRate: 8000000,abbreviation: "MB"},
+    {key: "megabyte-10",label: "Megabyte (10^6 bytes)",conversionRate: 8000000,abbreviation: "MB-10"},
+    {key: "gigabit",label: "Gigabit [Gb]",conversionRate: 1000000000,abbreviation: "Gb"},
+    {key: "gigabyte",label: "Gigabyte [GB]",conversionRate: 8000000000,abbreviation: "GB"},
+    {key: "gigabyte-10",label: "Gigabyte (10^9 bytes)",conversionRate: 8000000000,abbreviation: "GB-10"},
+    {key: "terabit",label: "Terabit [Tb]",conversionRate: 1000000000000,abbreviation: "Tb"},
+    {key: "terabyte",label: "Terabyte [TB]",conversionRate: 8000000000000,abbreviation: "TB"},
+    {key: "terabyte-10",label: "Terabyte (10^12 bytes)",conversionRate: 8000000000000,abbreviation: "TB-10"},
+    {key: "petabit",label: "Petabit [Pb]",conversionRate: 1000000000000000,abbreviation: "Pb"},
+    {key: "petabyte",label: "Petabyte [PB]",conversionRate: 8000000000000000,abbreviation: "PB"}
 ]
   );
 
@@ -161,34 +51,11 @@ export class UnitsService {
     { "route": "petabit-to-petabyte", "reverseRoute": "petabyte-to-petabit", "labelRoute": "Petabit to Petabyte", "labelReverseRoute": "Petabyte to Petabit" },
     { "route": "petabyte-to-exabyte", "reverseRoute": "exabyte-to-petabyte", "labelRoute": "Petabyte to Exabyte", "labelReverseRoute": "Exabyte to Petabyte" }
   ]);    
-test = [
-  {"key": "bit", "abbreviation": "bit"},
-  {"key": "nibble", "abbreviation": "nibble"},
-  {"key": "byte", "abbreviation": "B"},
-  {"key": "character", "abbreviation": "char"},
-  {"key": "word", "abbreviation": "word"},
-  {"key": "MAPM-word", "abbreviation": "MAPM-word"},
-  {"key": "quadruple-word", "abbreviation": "quad-word"},
-  {"key": "block", "abbreviation": "block"},
-  {"key": "kilobit", "abbreviation": "Kb"},
-  {"key": "kilobyte", "abbreviation": "KB"},
-  {"key": "kilobyte-10", "abbreviation": "KB-10"},
-  {"key": "megabit", "abbreviation": "Mb"},
-  {"key": "megabyte", "abbreviation": "MB"},
-  {"key": "megabyte-10", "abbreviation": "MB-10"},
-  {"key": "gigabit", "abbreviation": "Gb"},
-  {"key": "gigabyte", "abbreviation": "GB"},
-  {"key": "gigabyte-10", "abbreviation": "GB-10"},
-  {"key": "terabit", "abbreviation": "Tb"},
-  {"key": "terabyte", "abbreviation": "TB"},
-  {"key": "terabyte-10", "abbreviation": "TB-10"},
-  {"key": "petabit", "abbreviation": "Pb"},
-  {"key": "petabyte", "abbreviation": "PB"}
-]
+
 
   constructor() {    
-             console.log('units',this.units.map(item => ({...item,abbreviation:this.test.find(i => i.key === item.key)?.abbreviation})));
-      //  console.log('units',this.units.map(item => (item.key)));  
+         
+
   }
 
 
