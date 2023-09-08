@@ -88,6 +88,7 @@ $theme-color: #144D30;
                 transition: all 0.25s;
                 background-color: transparent;
                 border: 1px solid #ccc;
+                text-align: center;
 
                 &.active {
                     background-color: #144D30;
@@ -98,50 +99,50 @@ $theme-color: #144D30;
         }
     }
 
-    &.lg{
+    &.lg {
         @include mobileFirst('lg') {
             .shadow {
-            display: none;
-        }
-
-        .links-conainer {
-            position: static !important;
-            opacity: 1;
-            transform: unset;
-            box-shadow: unset;
-            z-index: unset;
-            padding: 0;
-            
-            .links {
-                border: none;
-                border-radius: unset;
+                display: none;
             }
+
+            .links-conainer {
+                position: static !important;
+                opacity: 1;
+                transform: unset;
+                box-shadow: unset;
+                z-index: unset;
+                padding: 0;
+
+                .links {
+                    border: none;
+                    border-radius: unset;
+                }
+            }
+
         }
-
-    }
     }
 
-    &.xl{
+    &.xl {
         @include mobileFirst('xl') {
             .shadow {
-            display: none;
-        }
-
-        .links-conainer {
-            position: static !important;
-            opacity: 1;
-            transform: unset;
-            box-shadow: unset;
-            z-index: unset;
-            padding: 0;
-            
-            .links {
-                border: none;
-                border-radius: unset;
+                display: none;
             }
-        }
 
-    }
+            .links-conainer {
+                position: static !important;
+                opacity: 1;
+                transform: unset;
+                box-shadow: unset;
+                z-index: unset;
+                padding: 0;
+
+                .links {
+                    border: none;
+                    border-radius: unset;
+                }
+            }
+
+        }
     }
 
 
