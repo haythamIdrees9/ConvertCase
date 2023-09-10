@@ -5,9 +5,10 @@ $bg-color: #144D30;
 .logo-container {
     width: max-content;
     margin-left: 0.5rem;
+
     .cls-1,
     .cls-2 {
-        
+
         user-select: none;
     }
 
@@ -27,25 +28,33 @@ $bg-color: #144D30;
     box-sizing: border-box;
     z-index: 1000;
     padding: 0 1rem;
+
     .support-me {
-        .coffee{
+        button{
+            color: #7D4533;
+        }
+
+        .coffee {
             cursor: pointer;
             background-color: #FFDD00;
             padding: 0 0.75rem 0 0.5rem;
             border-radius: 0.5rem;
             height: 50px;
-            span{
-            font-size: 2rem;
-            padding: 0;
+
+            span {
+                font-size: 2rem;
+                padding: 0;
+            }
+
+            font-size: 18px;
+            font-weight: bold;
         }
-        font-size: 18px;
-        font-weight: bold;
-    }
-    &,
-     img {
-        height: 50px !important;
-        width: 202px !important;
-    }
+
+        &,
+        img {
+            height: 50px !important;
+            width: 202px !important;
+        }
     }
 
     .arrow {
@@ -71,7 +80,8 @@ $bg-color: #144D30;
         width: 0;
         height: calc(100vh - 60px);
         transition: left 0.5s;
-        .link-icon{
+
+        .link-icon {
             @include filter(invert(21%) sepia(80%) saturate(379%) hue-rotate(97deg) brightness(96%) contrast(95%));
         }
 
@@ -97,10 +107,12 @@ $bg-color: #144D30;
             top: 0;
             left: -60px;
             background-color: #f7f3ff;
-            @include mobileFirst('mlg'){
+
+            @include mobileFirst('mlg') {
                 left: 0;
                 box-shadow: 1px 0 6px 1px #848e89;
             }
+
             z-index: 10;
             width: 60px;
             max-width: calc(100vw - 3rem);
@@ -108,6 +120,7 @@ $bg-color: #144D30;
             transition: all 0.35s;
             box-sizing: border-box;
             padding-bottom: 1rem;
+
             ul {
                 padding: 0;
                 padding-top: 0.5rem;
@@ -125,14 +138,16 @@ $bg-color: #144D30;
                         text-decoration: none;
                         color: black;
                         font-size: 1rem;
-                        @include activeHover{
+
+                        @include activeHover {
                             background-color: rgb(231, 231, 231);
                         }
 
-                        &.selected{
+                        &.selected {
                             background-color: rgb(231, 231, 231);
                         }
-                        img{
+
+                        img {
                             margin-right: 0.75rem;
                         }
                     }
@@ -140,14 +155,14 @@ $bg-color: #144D30;
                 }
             }
 
-            span{
+            span {
                 width: 0;
                 overflow: hidden;
                 white-space: nowrap;
-                opacity: 0;
                 transition: all 0.55s;
             }
-            .rights{
+
+            .rights {
                 width: 0;
                 overflow: hidden;
                 padding: 0.5rem;
@@ -163,47 +178,47 @@ $bg-color: #144D30;
             left: 0;
             background-color: rgba(0, 0, 0, 0.2);
             cursor: pointer;
-            .content .rights{
-                width: max-content;
-                transition: all 0.55s 0.15s;
-                opacity: 1 !important;
-            }
-        }
-            &.menu-opened .content {
-                width: 300px;
-                left: 0;
-                span{
-                width: max-content;
-                display: unset !important;
-                opacity: 1 !important;
-                transition: all 0.55s 0.15s;
-            }
-            .rights{
-                width: max-content;
-                transition: all 0.55s 0.15s;
-                opacity: 1 !important;
-            }
-        } 
-    
-        @media screen and (hover:hover) and (min-width:1200px) {
-            .content:hover {
-                width: 300px;
-                left: 0;
-                span{
-                width: max-content;
-                display: unset !important;
-                opacity: 1 !important;
-                transition: all 0.55s 0.15s;
-            }
-    
-            .rights{
+
+            .content .rights {
                 width: max-content;
                 transition: all 0.55s 0.15s;
                 opacity: 1 !important;
             }
         }
 
-    }
+        &.menu-opened .content {
+            width: 300px;
+            left: 0;
+
+            span {
+                width: max-content;
+            }
+
+            .rights {
+                width: max-content;
+            }
+        }
+
+        @media screen and (hover:hover) and (min-width:1200px) {
+            .content:hover {
+                width: 300px;
+                left: 0;
+
+                span {
+                    width: max-content;
+                    display: unset !important;
+                    opacity: 1 !important;
+                    transition: all 0.55s 0.15s;
+                }
+
+                .rights {
+                    width: max-content;
+                    transition: all 0.55s 0.15s;
+                    opacity: 1 !important;
+                }
+            }
+
+        }
 
     }
 
