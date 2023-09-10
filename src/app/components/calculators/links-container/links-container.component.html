@@ -1,0 +1,14 @@
+<div class="links-container f-col j-between a-between">
+    <div class="router-container">
+        <button class="links-list f-row a-center btn-resting c-pointer" aria-label="Text Tools Pages"
+            (click)="links_view?.showLinksModal();$event.stopPropagation()">Tools Calculators<img class="green-icon" width="32"
+                height="32" src="assets/images/modal.svg" alt=""></button>
+    </div>
+    <div class="links-list-container">
+        <app-links-view [pages]="pages" [mobStart]="'xl'" [title]="'Tools calculators'" [ParentPath]="'calculators'" #links_view></app-links-view>
+    </div>
+    <div class="content">
+        <ng-content></ng-content>
+    </div>
+
+</div>

@@ -17,6 +17,9 @@ export class HeaderComponent implements OnInit{
     {path:'unit-converters',label:'Unit Converters',icon:'assets/images/unit.svg',alt:'list of units convert tools'},
     {path:'text-tools/text-case-converter',label:'Text Tools' ,icon:'assets/images/replace.svg',alt:'list of text tools'},
     {path:'programming-tools/encode-decode',label:'Programming Tools',icon:'assets/images/decode.svg',alt:'list of programming tools'},
+    {path:'calculators',label:'Health & More Calculators',icon:'assets/images/calculators.svg',alt:'list of Tools calculators', width:'18'},
+
+    
   ]
 
   selectedRouteIndex = 1;

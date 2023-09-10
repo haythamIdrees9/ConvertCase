@@ -6,7 +6,7 @@ import { InfoService } from './info.service';
 @Component({
   selector: 'app-text-manipulation',
   templateUrl: './text-manipulation.component.html',
-  styleUrls: ['./text-manipulation.component.scss','../text-tools.scss'],
+  styleUrls: ['./text-manipulation.component.scss','../../container.scss'],
   providers: [InfoService]
 })
 export class TextManipulationComponent {
