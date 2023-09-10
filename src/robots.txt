@@ -20,6 +20,7 @@ User-agent: YandexBot
 User-agent: Bingbot/2.0; +http://www.bing.com/bingbot.htm
 User-agent: Wotbox
 User-agent: Sogou web spider/4.0(+http://www.sogou.com/docs/help/webmasters.htm#07)
+User-agent: Mediapartners-Google
 Allow: /
 
 # Disallow all other bots
