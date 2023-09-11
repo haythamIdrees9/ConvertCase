@@ -41,9 +41,9 @@ export class BMIComponent implements OnInit {
   }
 
   private handleSeo() {
-    this.metaService.setTitle('Text Conversion: Uppercase, Lowercase, Title and More');
-    this.metaService.setDescription(`Text case converter - A set of functions that can be used to convert text to different cases, such as uppercase, lowercase, title case, and camel case. Perfect for formatting text for different purposes, such as headings, titles, and code.`);
-    this.metaService.setKeywords("uppercase conversion, lowercase conversion, title case conversion, capitalized case conversion, camel case conversion, kebab case conversion, snake case conversion, inverse case conversion")
+    this.metaService.setTitle('BMI Calculator: Check Your Body Mass Index');
+    this.metaService.setDescription(`Use our BMI calculator to quickly and accurately assess your Body Mass Index (BMI), a crucial indicator of your weight and overall health. Simply enter your height and weight, and our user-friendly tool will provide you with your BMI score and an interpretation of your weight status. Discover if you fall within the healthy range, and gain valuable insights into your weight management journey. Calculate your BMI today and take a step towards a healthier, happier you.`);
+    this.metaService.setKeywords("BMI calculator, Body Mass Index, BMI calculation, Calculate BMI, weight assessment, healthy weight, weight management, health calculator, BMI interpretation, BMI range, weight status, obesity risk, weight assessment tool, BMI chart, ideal weight, BMI categories, health and weight");
   }
 
   calculateBMI_US(){

@@ -30,7 +30,7 @@
             }
 
             @include mobileFirst('md') {
-                top: 120px;
+                top: 60px;
             }
 
             right: 0;
@@ -73,7 +73,7 @@
 
         .links-list-container {
             position: unset;
-            margin-top: 181px;
+            margin-top: 61px;
             margin-left: 2rem;
             margin-bottom: 0;
             align-self: unset;
@@ -83,6 +83,10 @@
     .content {
         width: 100%;
         max-width: 900px;
+        @include mobileFirst('xl'){
+            box-shadow: 4px 0px 3px -5px #848e89;
+            padding-right: 0.5rem;
+        }
     }
 
     @include mobileFirst('lg') {

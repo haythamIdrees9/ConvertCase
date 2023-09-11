@@ -7,7 +7,7 @@
     flex-direction: row !important;
     justify-content: center;
     align-items: flex-start;
-    @include mobileFirst("xxl") {
+    @include mobileFirst("xxxl") {
         padding: 2rem max(1rem, 50vw - 496px);
         padding-top: 1rem;
     }

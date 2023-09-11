@@ -35,7 +35,7 @@ body {
       padding: 2rem max(1rem, 50vw - 600px) 2rem max(1rem, 50vw - 540px);
     }
 
-    @include mobileFirst("xxl") {
+    @include mobileFirst("xxxl") {
       padding: 2rem max(1rem, 50vw - 690px);
     }
     h1 {

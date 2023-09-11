@@ -83,6 +83,7 @@
     .content {
         width: 100%;
         max-width: 900px;
+        padding-right: 0.5rem;
     }
 
     @include mobileFirst('lg') {

@@ -13,7 +13,7 @@
 
     <div class="menu" [class.menu-opened]="isMenuOpened" >
         <div class="content f-col j-between" (click)="$event.stopPropagation()">
-            <nav>
+            <nav  aria-label="Navigate to Main Pages">
                 <ul>
                     <li class="w-100p" *ngFor="let route of menuRouts; let index = index"
                         >
