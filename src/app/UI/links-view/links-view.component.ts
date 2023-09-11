@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, HostListener, Input } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -24,7 +24,8 @@ export class LinksViewComponent {
       bodyElement.style.overflow = 'hidden'; 
     }
   }
-
+  
+  @HostListener('document:click')
   hideLinksModal() {
     this.isLinksModalVisible = false;
     const bodyElement = document.getElementById('body');

@@ -1,7 +1,8 @@
 @import '../../styles/responsive';
+@import '/src/styles/variables';
 
 .parent{
-    background-color: #f7f3ff;
+    background-color: $theme-color;
 }
 .x-container {
     max-width: 100vw;
@@ -47,7 +48,7 @@
             width: 100%;
             padding: 8px;
             height: 42px;
-            border: 1px solid #144D30;
+            border: 1px solid $primary-color;
             border-radius: 5px;
             font-size: 16px;
             margin-right: 0.25rem;

@@ -1,7 +1,9 @@
 @import './styles/flex';
 @import "./styles/responsive";
 @import "./styles/mixins";
-$theme-color: #f7f3ff;
+@import './styles/variables.scss';
+
+
 
 body {
   margin: 0;
@@ -17,7 +19,7 @@ body {
 
   .x-container {
     background: $theme-color;
-    color: #144D30;
+    color: $primary-color;
     box-sizing: border-box;
     padding-bottom: 2rem;
     padding: 3rem 1rem;
@@ -100,7 +102,7 @@ body {
   }
   .btn-theme {
     padding: 6px;
-    background: #144D30;
+    background: $primary-color;
     color: #F7F3FF;
     border: none;
     cursor: pointer;
@@ -110,15 +112,15 @@ body {
     transition: all 0.35s,color 0.1s;
     &.selected {
       background: #F7F3FF;
-      color: #144D30;
-      border-color:  #144D30;
-      box-shadow: 0 0 10px #144D30;
+      color: $primary-color;
+      border-color:  $primary-color;
+      box-shadow: 0 0 10px $primary-color;
     }
     &:not(:disabled){
 
       @media (hover: hover) {
         &:hover{
-          box-shadow: 0 0 10px #144D30;
+          box-shadow: 0 0 10px $primary-color;
         }
       }
       &:active {
@@ -166,4 +168,8 @@ body,.custom-hover{
   border: none;
   padding: 0;
   margin: 0;
+}
+
+.w-100p{
+  width: 100%;
 }

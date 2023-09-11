@@ -3,13 +3,12 @@ import { NgModule } from '@angular/core';
 import { InOutTextBoxesModule } from './in-out-text-boxes/in-out-text-boxes.module';
 import { CustomToasterComponent } from './custom-toaster/custom-toaster.component';
 import { ContentModule } from './content/conent.module';
-import { InputComponent } from './input/input.component';
 
 @NgModule({
   declarations: [
   
   
-    InputComponent
+    
   ],
   imports: [
     CommonModule,

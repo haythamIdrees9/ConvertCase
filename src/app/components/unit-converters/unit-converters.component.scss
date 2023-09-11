@@ -1,6 +1,7 @@
 @import "../../../styles/responsive";
 @import "../../../styles/mixins";
-$theme-color: #144D30;
+@import '/src/styles/variables';
+
 
 .x-container {
     flex-direction: row !important;
@@ -22,18 +23,18 @@ $theme-color: #144D30;
         position: absolute;
         top: 65px;
         right: 0;
-        border: 1px solid #144D30;
+        border: 1px solid $primary-color;
         padding: 0.25rem 1rem;
         border-radius: 0.5rem;
         font-size: 1.5rem;
-        color: #144D30;
+        color: $primary-color;
         box-sizing: border-box;
         img{
             margin-left: 0.5rem;
         }
         @media screen and (hover:hover) {
             &:hover{
-                background-color: #144D30;
+                background-color: $primary-color;
                 color: #f7f3ff;
                 img{
                     @include filter(brightness(0) saturate(100%) invert(95%) sepia(10%) saturate(1365%) hue-rotate(187deg) brightness(104%) contrast(101%));
@@ -41,7 +42,7 @@ $theme-color: #144D30;
             }
         }
         &:active{
-            background-color: #144D30;
+            background-color: $primary-color;
             color: #f7f3ff;
             img{
                 @include filter(brightness(0) saturate(100%) invert(95%) sepia(10%) saturate(1365%) hue-rotate(187deg) brightness(104%) contrast(101%));
