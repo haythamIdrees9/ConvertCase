@@ -1,15 +1,85 @@
 <div class="parent">
   <div class="x-container">
-    <app-links-container>
+    <!-- <app-links-container> -->
 
-      <h1 #title>BMI Calcolator</h1>
-      <div class="container" #content>
-        <div class="input-container">
+    <h1 #title>BMI Calcolator</h1>
+    <div class="container" #content>
+      <div class="f-row j-between w-100p">
+        <div class="form-container">
+          <div class="options f-row">
+            <button class="btn-theme" [class.selected]="isUSType" (click)="setUnitType(true)">US units</button>
+            <button class="btn-theme" [class.selected]="!isUSType" (click)="setUnitType(false)">Metric units</button>
+          </div>
+          <form class="f-col" [formGroup]="bmiForm" (ngSubmit)="calculateBMI()" *ngIf="!isUSType">
+            <label class="f-col">
+              <div class="label">Height (in centimetre):</div>
+              <input type="number" [(ngModel)]="avgHeight" min="1" formControlName="height" placeholder="your Height..."
+                aria-label="Your Height value">
+            </label>
+            <label class="f-col">
+              <div class="label">Weight (in kilograms):</div>
+              <input type="number" [(ngModel)]="avgWeight" min="1" formControlName="weight" placeholder="your Weight..."
+                aria-label="Weight value value">
+            </label>
+            <button type="submit" class="submit-button" [disabled]="!bmiForm.valid">Calculate</button>
+          </form>
+
+          <form  class="f-col" [formGroup]="bmiForm" (ngSubmit)="calculateBMI_US()" *ngIf="isUSType">
+            <div class="us-height f-row">
+              <label class="f-col">
+                <div class="label">Feet:</div>
+                <input type="number" [(ngModel)]="avgHeightFeet" min="1" formControlName="heightFeet" placeholder="your Feet Height..."
+                aria-label="Your Height value">
+              </label>
+              <label class="f-col">
+                <div class="label">Inches:</div>
+                <input type="number" [(ngModel)]="avgHeightInch" min="0" formControlName="heightInch" placeholder="your Inches Height..."
+                aria-label="Your Height value">
+              </label>
+            </div>
+              <label class="f-col">
+              <div class="label">Weight (in Pounds):</div>
+              <input type="number" [(ngModel)]="avgWeightPound" min="1" formControlName="weightPound" placeholder="your Weight..."
+                aria-label="Weight value value">
+            </label>
+            <button type="submit" class="submit-button" [disabled]="!bmiForm.valid">Calculate</button>
+          </form>
+
         </div>
 
+        <div class="bmi-chart" *ngIf="bmiResult" #char>
+          <!-- BMI = {{bmiResult.bmi}}
+            {{bmiResult.category}} -->
+          <div class="part obese-class-3">40</div>
+          <div class="part obese-class-2">35</div>
+          <div class="part obese-class-1">30</div>
+          <div class="part overweight">25</div>
+          <div class="part normal">18.5</div>
+          <div class="part mild-thinness">17</div>
+          <div class="part moderate-thinness">16</div>
+
+          <div class="label underweight">underweight</div>
+          <div class="label normal">normal</div>
+          <div class="label overweight">overweight</div>
+          <div class="label obesity">obesity</div>
+          <div class="score f-col j-center a-center {{bmiResult.status}}"
+            [ngStyle]="{'left':'max(min(100% , '+(bmiResult.bmi - 11) / 0.34 +'%),0px)'}">
+            <span>
+              {{bmiResult.bmi}}
+            </span>
+            <img src="assets/images/arrow.svg" width="24" height="24" alt="your score indicator">
+          </div>
+          <!-- <div class="semi-donut margin">
+            
+            HTML5
+          </div> -->
+
+
+        </div>
 
       </div>
-    </app-links-container>
+    </div>
+    <!-- </app-links-container> -->
 
   </div>
   <div class="container info">
