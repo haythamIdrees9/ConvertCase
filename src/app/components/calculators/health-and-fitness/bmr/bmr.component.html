@@ -1,0 +1,366 @@
+<div class="parent">
+  <div class="x-container">
+    <app-links-container>
+      <h1>Basal Metabolic Rate (BMR) Calculator</h1>
+      <div class="container " #content>
+        <div class="bmr-container w-100p">
+          <div class="form-container">
+            <div class="options f-row">
+              <button class="btn-theme" aria-label="Switch to US units" [class.selected]="isUSType"
+                (click)="setUnitType(true)">US units</button>
+              <button class="btn-theme" aria-label="Switch to Metric units" [class.selected]="!isUSType"
+                (click)="setUnitType(false)">Metric units</button>
+            </div>
+            <form class="f-col" [formGroup]="bmrForm" (ngSubmit)="calculateBMR()" *ngIf="!isUSType">
+              <label style="display: none;">Gender:
+                <select  id="gender" [(ngModel)]="selectedGender" name="gender" formControlName="gender" class="form-control">
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+              </label>
+                <app-dropdown [options]="[{key:'male',label:'Male'},{key:'female',label:'Female'}]" 
+                    [selected]="selectedGender" [placeholder]="'Selected your Gender'" 
+                    [inputAriaLabelledBy]="'Select Your gender'" [listAriaLabelledBy]="'Gender list'"
+                    [label]="'Gender:'" [componentId]="'user-gender'" (selectedOption)="selectedGender = $event.key" ></app-dropdown>
+              <br>             
+               <label>Age (years):
+                <input type="number" id="age" [(ngModel)]="age" name="age" formControlName="age" class="form-control">
+              </label>
+              <label class="f-col">
+                <div class="label">Height (in centimetre):</div>
+                <input type="number" [(ngModel)]="avgHeight" min="1" formControlName="height"
+                  placeholder="your Height..." aria-label="Your Height value">
+              </label>
+              <label class="f-col">
+                <div class="label">Weight (in kilograms):</div>
+                <input type="number" [(ngModel)]="avgWeight" min="1" formControlName="weight"
+                  placeholder="your Weight..." aria-label="Weight value value">
+              </label>
+              <button type="submit" aria-label="Calcolate BMR" class="submit-button"
+                [disabled]="!bmrForm.valid">Calculate</button>
+            </form>
+
+            <form class="f-col" [formGroup]="bmrForm" (ngSubmit)="calculateBMR_US()" *ngIf="isUSType">
+              <label style="display: none;">Gender:
+                <select  id="gender" [(ngModel)]="selectedGender" name="gender" formControlName="gender" class="form-control">
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+              </label>
+                <app-dropdown [options]="[{key:'male',label:'Male'},{key:'female',label:'Female'}]" 
+                    [selected]="selectedGender" [placeholder]="'Selected your Gender'" 
+                    [inputAriaLabelledBy]="'Select Your gender'" [listAriaLabelledBy]="'Gender list'"
+                    [label]="'Gender:'" [componentId]="'user-gender'" (selectedOption)="selectedGender = selectedGender = $event.key" ></app-dropdown>
+              <br>              <label>Age (years):
+                <input type="number" id="age" [(ngModel)]="age" name="age" formControlName="age" class="form-control">
+              </label>
+              <div class="us-height f-row">
+                <label class="f-col">
+                  <div class="label">Feet:</div>
+                  <input type="number" [(ngModel)]="avgHeightFeet" min="1" formControlName="heightFeet"
+                    placeholder="your Feet Height..." aria-label="Your Height value">
+                </label>
+                <label class="f-col">
+                  <div class="label">Inches:</div>
+                  <input type="number" [(ngModel)]="avgHeightInch" min="0" formControlName="heightInch"
+                    placeholder="your Inches Height..." aria-label="Your Height value">
+                </label>
+              </div>
+              <label class="f-col">
+                <div class="label">Weight (in Pounds):</div>
+                <input type="number" [(ngModel)]="avgWeightPound" min="1" formControlName="weightPound"
+                  placeholder="your Weight..." aria-label="Weight value value">
+              </label>
+              <button type="submit" class="submit-button" aria-label="Calcolate BMR"
+                [disabled]="!bmrForm.valid">Calculate</button>
+            </form>
+
+          </div>
+          <div *ngIf="bmr" class="result">
+            <p>BMR = <strong class="res-bmr">{{ bmr }}</strong> Calories/day</p>
+            <p>Daily calorie needs based on activity level:</p>
+            <table>
+              <caption>Daily Calorie Needs Based on Activity Level</caption>
+
+
+              <tr>
+                <th>Activity Level</th>
+                <th>Calories</th>
+              </tr>
+              <tbody>
+
+              <tr>
+                <td>Sedentary: little or no exercise</td>
+                <td>{{ calculateCalories(1.2) }} Calories</td>
+              </tr>
+              <tr>
+                <td>Exercise 1-3 times/week</td>
+                <td>{{ calculateCalories(1.375) }} Calories</td>
+              </tr>
+              <tr>
+                <td>Exercise 4-5 times/week</td>
+                <td>{{ calculateCalories(1.55) }} Calories</td>
+              </tr>
+              <tr>
+                <td>intense exercise 3-4 times/week</td>
+                <td>{{ calculateCalories(1.725) }} Calories</td>
+              </tr>
+              <tr>
+                <td>Intense exercise 6-7 times/week</td>
+                <td>{{ calculateCalories(1.9) }} Calories</td>
+              </tr>
+            </tbody>
+
+            </table>
+            
+          </div>
+        </div>
+
+      </div>
+    </app-links-container>
+
+  </div>
+  <div class="container info">
+    <app-conent-card>
+      <section id="introduction-to-bmr" aria-label="Introduction to BMR">
+        <h2>Introduction to BMR</h2>
+        <p>
+          Basal Metabolic Rate (BMR) is a fundamental concept in the field of nutrition, fitness, and health. It represents the number of calories your body needs to perform basic functions at rest. These functions include maintaining your heartbeat, breathing, body temperature, and more.
+        </p>
+        <p>
+          Understanding your BMR is crucial because it forms the foundation for determining your daily calorie needs. Whether you're looking to lose weight, gain muscle, or maintain your current weight, knowing your BMR is the first step in tailoring your diet and fitness plan to your specific goals.
+        </p>
+        <p>
+          In this article, we'll delve into the science behind BMR, explain how it's calculated, and explore its significance in helping you make informed choices about your nutrition and fitness regimen.
+        </p>
+      </section>
+    </app-conent-card>
+    <app-conent-card>
+      <section id="science-behind-bmr" aria-label="The Science Behind BMR">
+        <h2>The Science Behind BMR</h2>
+        <p>
+          Basal Metabolic Rate (BMR) is not just a simple number; it's a concept deeply rooted in human physiology and metabolism. Understanding the science behind BMR can provide valuable insights into how our bodies work.
+        </p>
+        <p>
+          At its core, BMR represents the energy expenditure required to maintain essential bodily functions while at rest. These functions include maintaining a stable body temperature, circulating blood, and sustaining vital organs like the heart, lungs, and brain.
+        </p>
+        <p>
+          BMR is influenced by various factors, such as your body's composition, age, and gender. It's not a fixed number but rather a dynamic value that can change over time.
+        </p>
+        <p>
+          In this section, we'll explore the physiological mechanisms that underlie BMR, including the role of muscle mass, hormonal factors, and the importance of accurate measurement.
+        </p>
+      </section>
+    </app-conent-card>
+    <app-conent-card>
+      <section id="factors-affecting-bmr" aria-label="Factors Affecting BMR">
+        <h2>Factors Affecting BMR</h2>
+        <p>
+          Your Basal Metabolic Rate (BMR) isn't a fixed number; it can vary significantly between individuals. Several factors influence your BMR, and understanding these factors is key to comprehending your body's unique energy needs.
+        </p>
+        <p>
+          Some of the primary factors affecting BMR include age, gender, body composition, and genetics. Let's take a closer look at each of these factors:
+        </p>
+        <ul>
+          <li><strong>Age:</strong> As you get older, your BMR tends to decrease. This is partly due to a decrease in muscle mass and changes in hormonal levels.</li>
+          <li><strong>Gender:</strong> Gender plays a role, with men typically having a higher BMR than women. This difference is largely attributed to differences in muscle mass and body size.</li>
+          <li><strong>Body Composition:</strong> Your body's composition, specifically the ratio of muscle to fat, has a significant impact on BMR. Muscle tissue requires more energy at rest compared to fat tissue.</li>
+          <li><strong>Genetics:</strong> Genetics can influence your BMR to some extent. Some people may have a naturally higher or lower BMR based on their genetic predisposition.</li>
+        </ul>
+        <p>
+          These are just a few of the factors that come into play when determining your BMR. In this section, we'll delve deeper into each of these factors and explore their implications for your metabolism and overall health.
+        </p>
+      </section>
+    </app-conent-card>
+    <app-conent-card>
+      <section id="bmr-calculation" aria-label="BMR Calculation">
+        <h2>BMR Calculation</h2>
+        <p>
+          Calculating your Basal Metabolic Rate (BMR) is the first step in understanding your body's calorie needs. BMR is a measure of the energy your body requires to maintain basic functions at rest. There are various formulas to estimate BMR, but one of the commonly used equations is the Mifflin-St Jeor Equation:
+        </p>
+        <p>
+          For Males: BMR = 88.362 + (13.397 * weight in kg) + (4.799 * height in cm) - (5.677 * age in years)
+        </p>
+        <p>
+          For Females: BMR = 447.593 + (9.247 * weight in kg) + (3.098 * height in cm) - (4.330 * age in years)
+        </p>
+        <p>
+          You can calculate your BMR using one of these formulas based on your gender. Once you have your BMR, you can use it as a baseline to determine your daily calorie needs for various goals, including weight management and fitness.
+        </p>
+      </section>
+    </app-conent-card>
+    <app-conent-card>
+      <section id="why-bmr-matters" aria-label="Why BMR Matters">
+        <h2>Why BMR Matters</h2>
+        <p>
+          Your Basal Metabolic Rate (BMR) matters because it forms the foundation for understanding your body's energy requirements. Here are some key reasons why BMR is significant:
+        </p>
+        <ul>
+          <li><strong>Personalized Nutrition:</strong> Knowing your BMR allows you to tailor your diet to your specific calorie needs, whether you want to lose weight, gain muscle, or maintain your current weight.</li>
+          <li><strong>Weight Management:</strong> BMR helps you create a calorie deficit or surplus, essential for effective weight loss or muscle gain.</li>
+          <li><strong>Fitness Goals:</strong> Whether you're an athlete or simply want to stay active, BMR plays a vital role in determining your energy requirements for exercise and recovery.</li>
+          <li><strong>Health Monitoring:</strong> Understanding your BMR can provide insights into your overall health and metabolism, allowing for better health management.</li>
+        </ul>
+        <p>
+          By recognizing the importance of BMR, you can make informed decisions about your nutrition and fitness, leading to a healthier and more balanced lifestyle.
+        </p>
+      </section>
+    </app-conent-card>
+    <app-conent-card>
+      <section id="calculate-bmr" aria-label="How to Calculate BMR">
+        <h2>How to Calculate BMR</h2>
+        <p>
+          Calculating your Basal Metabolic Rate (BMR) is a straightforward process. You can use one of the widely accepted equations, such as the Mifflin-St Jeor Equation, to estimate your BMR. Here are the steps:
+        </p>
+        <ol>
+          <li>For Males: BMR = 88.362 + (13.397 * weight in kg) + (4.799 * height in cm) - (5.677 * age in years)</li>
+          <li>For Females: BMR = 447.593 + (9.247 * weight in kg) + (3.098 * height in cm) - (4.330 * age in years)</li>
+          <li>Measure your weight in kilograms, height in centimeters, and age in years.</li>
+          <li>Plug these values into the appropriate formula based on your gender.</li>
+          <li>The result is your BMR, representing the calories your body needs to maintain basic functions at rest.</li>
+        </ol>
+        <p>
+          Once you have calculated your BMR, you can use it as a starting point for planning your daily calorie intake based on your goals and activity level.
+        </p>
+      </section>
+    </app-conent-card>
+    <app-conent-card>
+      <section id="interpreting-bmr" aria-label="Interpreting BMR Results">
+        <h2>Interpreting BMR Results</h2>
+        <p>
+          Understanding the significance of your Basal Metabolic Rate (BMR) results is crucial in tailoring your nutrition and fitness plans. Here's how to interpret your BMR:
+        </p>
+        <ul>
+          <li><strong>Baseline Calories:</strong> BMR represents the calories your body needs at rest. It serves as a baseline for your daily calorie requirements.</li>
+          <li><strong>Caloric Adjustment:</strong> To determine your daily calorie needs, you'll need to adjust your BMR based on your activity level. Multiply your BMR by an activity factor, such as 1.2 for sedentary or 1.9 for very active.</li>
+          <li><strong>Weight Goals:</strong> If you want to lose weight, create a calorie deficit by consuming fewer calories than your estimated daily needs. To gain weight, create a surplus.</li>
+          <li><strong>Maintaining Weight:</strong> To maintain your current weight, aim for a calorie intake that matches your calculated daily needs.</li>
+        </ul>
+        <p>
+          Keep in mind that BMR is just one piece of the puzzle. Accurate tracking of your calorie intake, along with regular exercise, is essential for achieving your health and fitness goals.
+        </p>
+      </section>
+    </app-conent-card>
+    <app-conent-card>
+      <section id="adjusting-caloric-intake" aria-label="Adjusting Caloric Intake">
+        <h2>Adjusting Caloric Intake</h2>
+        <p>
+          Once you've calculated your Basal Metabolic Rate (BMR), the next step is to adjust your caloric intake based on your specific goals and activity level. Here's how to do it:
+        </p>
+        <ul>
+          <li><strong>Determine Activity Level:</strong> Assess your daily activity level, ranging from sedentary to very active. Use an activity factor like 1.2 for sedentary or 1.9 for very active.</li>
+          <li><strong>Calculate Daily Calorie Needs:</strong> Multiply your BMR by the activity factor to estimate your daily calorie needs.</li>
+          <li><strong>Weight Goals:</strong> To lose weight, create a calorie deficit by consuming fewer calories than your estimated daily needs. To gain weight, create a surplus.</li>
+          <li><strong>Maintaining Weight:</strong> To maintain your current weight, aim for a calorie intake that matches your calculated daily needs.</li>
+        </ul>
+        <p>
+          Adjusting your caloric intake based on your BMR and activity level is a crucial component of successful weight management and achieving fitness goals.
+        </p>
+      </section>
+    </app-conent-card>
+    <app-conent-card>
+      <section id="practical-applications" aria-label="Practical Applications">
+        <h2>Practical Applications</h2>
+        <p>
+          Understanding your Basal Metabolic Rate (BMR) has practical applications in various aspects of your life. Here are some real-life scenarios where knowing your BMR can be beneficial:
+        </p>
+        <ul>
+          <li><strong>Weight Management:</strong> BMR serves as a foundation for creating calorie-deficit or calorie-surplus diets, helping you achieve your weight goals.</li>
+          <li><strong>Fitness Planning:</strong> Tailor your workout and nutrition plans to match your calorie needs, optimizing your fitness progress.</li>
+          <li><strong>Health Monitoring:</strong> BMR can provide insights into your metabolic health and help identify potential issues like thyroid disorders.</li>
+          <li><strong>Energy Levels:</strong> Adjusting your daily caloric intake based on BMR can enhance your energy levels, aiding in overall well-being.</li>
+        </ul>
+        <p>
+          By applying the knowledge of your BMR in practical situations, you can make informed choices that promote a healthier and more balanced lifestyle.
+        </p>
+      </section>
+    </app-conent-card>
+    <app-conent-card>
+      <section id="bmr-and-fitness" aria-label="BMR and Fitness">
+        <h2>BMR and Fitness</h2>
+        <p>
+          Basal Metabolic Rate (BMR) plays a significant role in your fitness journey. Understanding how BMR relates to fitness can help you set realistic goals and plan your workouts and nutrition effectively.
+        </p>
+        <p>
+          Here are some key aspects of BMR in the context of fitness:
+        </p>
+        <ul>
+          <li><strong>Caloric Needs:</strong> BMR serves as the foundation for calculating your daily caloric needs. It helps determine how many calories you should consume to support your activity level and fitness goals.</li>
+          <li><strong>Weight Management:</strong> Adjusting your calorie intake based on BMR can aid in weight loss, muscle gain, or weight maintenance, depending on your objectives.</li>
+          <li><strong>Exercise Planning:</strong> Knowing your BMR can guide your exercise routine. It helps you understand how many calories you burn during workouts and how to balance them with your diet.</li>
+          <li><strong>Fueling Workouts:</strong> BMR provides insight into how much energy your body requires for workouts. Proper nutrition aligned with your BMR can optimize your performance.</li>
+        </ul>
+        <p>
+          By integrating your BMR knowledge into your fitness strategy, you can achieve better results and work towards a healthier and more active lifestyle.
+        </p>
+      </section>
+    </app-conent-card>
+    <app-conent-card>
+      <section id="bmr-faqs" aria-label="Frequently Asked Questions (FAQs)">
+        <h2>Frequently Asked Questions (FAQs)</h2>
+        <p>
+          Here are some common questions about Basal Metabolic Rate (BMR) and their answers:
+        </p>
+        <dl>
+          <dt>Q: What is BMR, and why is it important?</dt>
+          <dd>A: BMR, or Basal Metabolic Rate, is the number of calories your body needs to maintain basic functions at rest. It's crucial for understanding your daily calorie needs and planning your nutrition and fitness.</dd>
+          <br>
+          <dt>Q: How can I calculate my BMR?</dt>
+          <dd>A: You can calculate your BMR using equations like the Mifflin-St Jeor Equation, which take into account factors like age, gender, weight, and height.</dd>
+          <br>
+          
+          <dt>Q: Does BMR change over time?</dt>
+          <dd>A: Yes, BMR can change with age, weight loss or gain, and changes in muscle mass. It's not a static value.</dd>
+          <br>
+          
+          <dt>Q: Can BMR help me lose weight?</dt>
+          <dd>A: Yes, BMR is a fundamental component of weight management. It helps you create a calorie deficit for weight loss.</dd>
+          <br>
+          
+          <dt>Q: Is BMR the same as metabolism?</dt>
+          <dd>A: BMR is part of your metabolism, which includes all the chemical processes in your body. BMR specifically refers to the calories burned at rest.</dd>
+        </dl>
+        <p>
+          These FAQs cover some of the most common inquiries about BMR. If you have more questions or need personalized guidance, consult with a healthcare or fitness professional.
+        </p>
+      </section>
+    </app-conent-card>
+    <app-conent-card>
+      <section id="conclusion" aria-label="Conclusion">
+        <h2>Conclusion</h2>
+        <p>
+          In conclusion, understanding your Basal Metabolic Rate (BMR) is a powerful tool for managing your health, fitness, and overall well-being. It provides essential insights into your body's energy requirements and forms the basis for informed decisions regarding your diet and exercise routines.
+        </p>
+        <p>
+          By calculating your BMR and applying the knowledge gained from this article, you can:
+        </p>
+        <ul>
+          <li>Set personalized nutrition goals to achieve weight loss, gain, or maintenance.</li>
+          <li>Optimize your fitness plan to align with your calorie needs and exercise goals.</li>
+          <li>Monitor your metabolic health and make adjustments as needed to support your lifestyle.</li>
+        </ul>
+        <p>
+          Remember that while BMR is a valuable tool, it's essential to consult with healthcare or fitness professionals for personalized guidance. Your journey to better health and fitness begins with understanding and harnessing the power of your BMR.
+        </p>
+      </section>
+    </app-conent-card>
+    <!-- <app-conent-card>
+      <section id="additional-resources" aria-label="Additional Resources">
+        <h2>Additional Resources</h2>
+        <p>
+          Explore further information and tools related to Basal Metabolic Rate (BMR):
+        </p>
+        <ul>
+          <li><a href="#">BMR Calculator:</a> Use an online BMR calculator to quickly estimate your Basal Metabolic Rate based on your age, gender, weight, and height.</li>
+          <li><a href="#">Fitness Guides:</a> Dive deeper into fitness and nutrition with comprehensive guides on weight management, exercise routines, and healthy eating.</li>
+          <li><a href="#">Healthy Recipes:</a> Discover a collection of nutritious and delicious recipes to support your balanced diet.</li>
+          <li><a href="#">Fitness Communities:</a> Join online fitness communities and forums to connect with like-minded individuals and share your fitness journey.</li>
+        </ul>
+        <p>
+          These resources can provide you with additional tools and knowledge to enhance your understanding of BMR and its role in achieving your health and fitness goals.
+        </p>
+      </section>
+    </app-conent-card> -->
+                                         
+  </div>
+</div>

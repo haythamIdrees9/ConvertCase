@@ -11,9 +11,16 @@ import { RouterModule } from '@angular/router';
 })
 export class LinksViewComponent {
 
-  @Input('pages') pages : { path: string, label: string }[] = [];
+  @Input('pages')  set pagesVal(pages : { path: string, label: string,pathPath?:string[] }[]){
+    this.pages = pages.map(page => {
+      page['pathPath'] = this.getPath(page.path)
+      return page
+    })
+    
+  }
+  pages : { path: string, label: string,pathPath?:string[] }[] = [];
   @Input('title') title : string = "";
-  @Input('ParentPath') ParentPath : string = "";
+  @Input('parentPath') parentPath : string[] = [""];
   @Input('mobStart') mobStart : string = "lg";
   
   isLinksModalVisible: boolean = false;
@@ -32,6 +39,10 @@ export class LinksViewComponent {
     if (bodyElement) {
       bodyElement.style.overflow = 'hidden auto'; 
     }
+  }
+
+  getPath(link:string){
+    return ['',...this.parentPath,link];
   }
 
 }

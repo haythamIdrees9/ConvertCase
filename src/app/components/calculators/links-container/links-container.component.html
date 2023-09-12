@@ -5,7 +5,7 @@
                 height="32" src="assets/images/modal.svg" alt=""></button>
     </div>
     <div class="links-list-container">
-        <app-links-view [pages]="pages" [mobStart]="'xl'" [title]="'Tools calculators'" [ParentPath]="'calculators'" #links_view></app-links-view>
+        <app-links-view [parentPath]="['calculators','health-and-fitness']" [pages]="pages" [mobStart]="'xl'" [title]="'Tools calculators'"  #links_view></app-links-view>
     </div>
     <div class="content">
         <ng-content></ng-content>

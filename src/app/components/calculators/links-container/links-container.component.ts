@@ -11,6 +11,8 @@ import { LinksViewComponent } from 'src/app/UI/links-view/links-view.component';
 export class LinksContainerComponent {
 
   pages = [ 
-    { path: 'health-and-fitness/bmi', label: 'Bmi Calcolator' }, 
+    { path: 'bmi', label: 'BMI Calcolator' }, 
+    { path: 'bmr', label: 'BMR Calcolator' }, 
+    
   ];
 }

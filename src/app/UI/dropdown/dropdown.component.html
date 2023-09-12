@@ -2,11 +2,11 @@
     <label [for]="'search-input-'+componentId">{{label}}</label>
     <input
       type="text"
-      [id]="'search-input-'+componentId"
+      [id]="'dropdown-'+componentId"
       class="search-input"
-      [(ngModel)]="searchQuery"
+      [(ngModel)]="selected"
       (click)="openDropdown()"
-      (input)="filterOptions(searchQuery)"
+      readonly
       [placeholder]="placeholder"
       [attr.aria-labelledby]="inputAriaLabelledBy"
     />

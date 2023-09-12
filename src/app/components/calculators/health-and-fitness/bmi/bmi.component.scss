@@ -11,7 +11,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  max-width: 1050px;
+  max-width: 950px;
 
   margin-top: 4rem;
 
@@ -125,6 +125,7 @@
     }
 
     label {
+      font-weight: bold;
       .label {
         margin-bottom: 0.25rem;
       }

@@ -11,8 +11,8 @@ import { InfoService } from './info.service';
   providers: [InfoService]
 })
 export class BMIComponent implements OnInit {
-  avgWeight = '50';
-  avgWeightPound = '110';
+  avgWeight = '65';
+  avgWeightPound = '143';
   avgHeightFeet = '5';
   avgHeightInch = '7';
   avgHeight = '170';
