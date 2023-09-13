@@ -1,5 +1,7 @@
 import { ElementRef } from "@angular/core";
 
+export const webMinWidth = 900;
+
 export function focusWeb(element:ElementRef){
     if(!isMobile()){
         element?.nativeElement?.focus()

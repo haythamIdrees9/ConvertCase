@@ -7,7 +7,7 @@ import { InfoService } from './info.service';
 @Component({
   selector: 'app-calorie-calculator',
   templateUrl: './calorie-calculator.component.html',
-  styleUrls: ['./calorie-calculator.component.scss', '../../../container.scss'],
+  styleUrls: ['./calorie-calculator.component.scss', '../../../container.scss','../health.component.scss'],
   providers: [InfoService]
 })
 export class CalorieCalculator implements OnInit {

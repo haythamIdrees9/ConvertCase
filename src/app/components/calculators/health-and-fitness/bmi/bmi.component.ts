@@ -7,7 +7,7 @@ import { InfoService } from './info.service';
 @Component({
   selector: 'app-bmi',
   templateUrl: './bmi.component.html',
-  styleUrls: ['./bmi.component.scss', '../../../container.scss'],
+  styleUrls: ['./bmi.component.scss', '../../../container.scss','../health.component.scss'],
   providers: [InfoService]
 })
 export class BMIComponent implements OnInit {
