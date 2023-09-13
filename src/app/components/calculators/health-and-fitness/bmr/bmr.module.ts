@@ -18,4 +18,4 @@ import { DropdownComponent } from 'src/app/UI/dropdown/dropdown.component';
     RouterModule.forChild([{ path: '', component: BMRComponent }])]
 
 })
-export class BMRConverterModule { }
+export class BMRModule { }

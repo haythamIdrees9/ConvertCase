@@ -7,8 +7,10 @@ import { RouterModule } from '@angular/router';
   imports: [
     FormsModule,
     RouterModule.forChild([
-      { path: 'bmi', loadChildren: () => import('./bmi/bmi.module').then(m => m.BmiConverterModule) },
-      { path: 'bmr', loadChildren: () => import('./bmr/bmr.module').then(m => m.BMRConverterModule) },
+      { path: 'bmi', loadChildren: () => import('./bmi/bmi.module').then(m => m.BMIModule) },
+      { path: 'bmr', loadChildren: () => import('./bmr/bmr.module').then(m => m.BMRModule) },
+      { path: 'calorie-calculator', loadChildren: () => import('./calorie-calculator/calorie-calculator.module').then(m => m.CalorieModule) },
+      
       
       {path:'**',redirectTo:'bmi'}
     ])

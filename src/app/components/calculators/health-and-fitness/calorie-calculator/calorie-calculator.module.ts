@@ -3,17 +3,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { sharedModule } from '../../../../UI/shared.module';
 import { LinksContainerComponent } from '../../links-container/links-container.component';
-import { BMIComponent } from './bmi.component';
 import { HighchartsChartModule } from 'highcharts-angular';
+import { DropdownComponent } from 'src/app/UI/dropdown/dropdown.component';
+import { CalorieCalculator } from './calorie-calculator.component';
 
 @NgModule({
-  declarations: [BMIComponent],
+  declarations: [CalorieCalculator],
   imports: [sharedModule,
     FormsModule,
     ReactiveFormsModule,
     LinksContainerComponent,
     HighchartsChartModule,
-    RouterModule.forChild([{ path: '', component: BMIComponent }])]
+    DropdownComponent,
+    RouterModule.forChild([{ path: '', component: CalorieCalculator }])]
 
 })
-export class BMIModule { }
+export class CalorieModule { }

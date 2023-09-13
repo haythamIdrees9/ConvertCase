@@ -6,7 +6,7 @@
   padding-top: 0;
 }
 
-.bmr-container {
+.cotent-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -15,7 +15,7 @@
 
   margin-top: 4rem;
 
-  .info-bmr {
+  .info-cotent {
     font-size: 16px;
 
     @include mobileFirst('sm') {
@@ -23,17 +23,8 @@
     }
   }
 
-  .result {
-    margin-top: 4rem;
-    min-height: 410px;
-
-    .score {
-      font-size: 2rem;
-    }
-
-    .bmr-chart {
-      display: none;
-    }
+  .results {
+    width: min(355px,90vw);
   }
 
   table {
@@ -67,6 +58,9 @@
 
     tbody td {
         height: 24px;
+        @include mobileFirst('xsm') {
+          min-width: 100px;
+        }
         border: 1px solid $primary-color;
         padding: 4px;
     }
@@ -83,10 +77,6 @@
   }
 
   @include mobileFirst('md') {
-    .result .bmr-chart {
-      display: unset;
-    }
-
     .score {
       font-size: 3rem;
     }
@@ -102,7 +92,7 @@
       border-radius: 0.5rem;
       padding: 2rem;
       box-sizing: border-box;
-      width: min(300px, 90vw);
+      width: min(345px, 90vw);
 
       animation: show-up-form 0.25s forwards;
 
@@ -144,19 +134,11 @@
       font-size: 16px;
       transition: all 0.25s;
       align-self: flex-end;
-      &:not(:disabled){
-        @include activeHover {
-          background-color: white;
-          color: $primary-color;
-        }
-      }
-      &:disabled{
-        background-color: #618f77;
-        border-color: transparent;
-        cursor: default;
-      }
 
-
+      @include activeHover {
+        background-color: white;
+        color: $primary-color;
+      }
     }
 
     .submrt-button {

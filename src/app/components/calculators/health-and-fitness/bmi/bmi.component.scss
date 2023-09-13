@@ -110,10 +110,18 @@
       transition: all 0.25s;
       align-self: flex-end;
 
-      @include activeHover {
-        background-color: white;
-        color: $primary-color;
+      &:not(:disabled){
+        @include activeHover {
+          background-color: white;
+          color: $primary-color;
+        }
       }
+      &:disabled{
+        background-color: #618f77;
+        border-color: transparent;
+        cursor: default;
+      }
+
     }
 
     .us-height label {

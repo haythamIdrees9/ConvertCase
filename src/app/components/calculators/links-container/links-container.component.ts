@@ -13,6 +13,8 @@ export class LinksContainerComponent {
   pages = [ 
     { path: 'bmi', label: 'BMI Calcolator' }, 
     { path: 'bmr', label: 'BMR Calcolator' }, 
+    { path: 'calorie-calculator', label: 'Calorie Calculator' }, 
+    
     
   ];
 }
