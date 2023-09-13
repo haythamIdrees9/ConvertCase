@@ -1,7 +1,7 @@
 <div class="parent">
   <div class="x-container">
     <app-links-container>
-      <h1>Calorie Calculator: Your Personalized Daily Calorie Needs</h1>
+      <h1>Calorie Needs Calculator</h1>
       <div class="container " #content>
         <div class="cotent-container w-100p">
           <div class="form-container">
@@ -11,7 +11,7 @@
               <button class="btn-theme" aria-label="Switch to Metric units" [class.selected]="!isUSType"
                 (click)="setUnitType(false)">Metric units</button>
             </div>
-            <form class="f-col" [formGroup]="calorieForm" (ngSubmit)="calculateCalories()" *ngIf="!isUSType">
+            <form class="f-col" [formGroup]="userForm" (ngSubmit)="calculateCalories()" *ngIf="!isUSType">
               <app-dropdown [options]="activity" [selected]="selectedActivity" [placeholder]="'your Activity Level...'"
               [inputAriaLabelledBy]="'Select Activity level'" [listAriaLabelledBy]="'Activity list'" [label]="'Activity:'"
               [componentId]="'user-activity'" (selectedOption)="selectedActivity = $event.key"></app-dropdown>
@@ -43,10 +43,10 @@
               </label>
 
               <button type="submit" aria-label="Calcolate calorie" class="submit-button"
-                [disabled]="!calorieForm.valid">Calculate</button>
+                [disabled]="!userForm.valid">Calculate</button>
             </form>
 
-            <form class="f-col" [formGroup]="calorieForm" (ngSubmit)="calculateCalories_US()" *ngIf="isUSType">
+            <form class="f-col" [formGroup]="userForm" (ngSubmit)="calculateCalories_US()" *ngIf="isUSType">
               <app-dropdown [options]="activity" [selected]="selectedActivity" [placeholder]="'your Activity Level...'"
               [inputAriaLabelledBy]="'Select Activity level'" [listAriaLabelledBy]="'Activity list'" [label]="'Activity:'"
               [componentId]="'user-activity'" (selectedOption)="selectedActivity = $event.key"></app-dropdown>
@@ -85,7 +85,7 @@
               </label>
 
               <button type="submit" class="submit-button" aria-label="Calcolate calorie needed per day"
-                [disabled]="!calorieForm.valid">Calculate</button>
+                [disabled]="!userForm.valid">Calculate</button>
             </form>
 
           </div>

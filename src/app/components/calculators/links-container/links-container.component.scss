@@ -23,7 +23,7 @@
 
         .links-list {
             position: absolute;
-            top: 3rem;
+            top: 3.5rem;
 
             @include mobileFirst('xsm') {
                 top: 3.5rem;

@@ -19,7 +19,7 @@ export class CalorieCalculator implements OnInit {
   avgHeightFeet = '5';
   avgHeightInch = '7';
   avgHeight = '170';
-  calorieForm!: FormGroup;
+  userForm!: FormGroup;
   isUSType = true;
 
   activity = [
@@ -52,7 +52,7 @@ export class CalorieCalculator implements OnInit {
   }
 
   buildForm() {
-    this.calorieForm = this.formBuilder.group({
+    this.userForm = this.formBuilder.group({
       gender: [this.selectedGender, [Validators.required]],
       age: [this.age, [Validators.required, Validators.min(1)]],
       height: [this.avgHeight, [Validators.required, Validators.min(1)]],
@@ -75,24 +75,24 @@ export class CalorieCalculator implements OnInit {
     const feetInMeters = Number(this.avgHeightFeet) * 30.48;
     const inchesInMeters = Number(this.avgHeightInch) * 2.54;
     this.avgHeight = `${parseFloat((feetInMeters + inchesInMeters).toFixed(2))}`;
-    this.calorieForm.get('height')?.setValue(this.avgHeight)
+    this.userForm.get('height')?.setValue(this.avgHeight)
   }
 
   poundsToKilograms() {
     this.avgWeight = `${parseFloat((Number(this.avgWeightPound) * 0.453592).toFixed(2))}`;
-    this.calorieForm.get('weight')?.setValue(this.avgWeight)
+    this.userForm.get('weight')?.setValue(this.avgWeight)
   }
 
   calculateCalories() {
     const MALE_CONSTANT = 5;
     const FEMALE_CONSTANT = 161;
 
-    const height = (this.calorieForm.get('height')?.value);
-    const weight = this.calorieForm.get('weight')?.value;
-    const age = this.calorieForm.get('age')?.value;
+    const height = (this.userForm.get('height')?.value);
+    const weight = this.userForm.get('weight')?.value;
+    const age = this.userForm.get('age')?.value;
 
-    const gender:string = this.calorieForm.get('gender')?.value || 'male';
-    const activityLevel:string  = this.calorieForm.get('activity')?.value;
+    const gender:string = this.userForm.get('gender')?.value || 'male';
+    const activityLevel:string  = this.userForm.get('activity')?.value;
 
     // Determine the gender constant based on the selected gender
     const genderConstant = ( gender === 'male') ? MALE_CONSTANT : FEMALE_CONSTANT;
