@@ -1,11 +1,23 @@
 
 @import '/src/styles/variables';
+@import '/src/styles/mixins';
 .search-dropdown {
     display: inline-block;
     position: relative;
     font-family: Arial, sans-serif;
     font-size: 16px;
     width: 100%;
+    .dropdown-icon{
+        position: absolute;
+        right: 0.5rem;
+        top: 46%;
+        cursor: pointer;
+        @include filter(invert(22%) sepia(55%) saturate(626%) hue-rotate(97deg) brightness(88%) contrast(88%)); // primary-color-filter
+        transition: transform 0.25s;
+        &.opened{
+            transform: rotateX(180deg);
+        }
+    }
     label{
         font-weight: bold;
     }
@@ -17,6 +29,8 @@
         font-size: 16px;
         box-sizing: border-box;
         height: 44px;
+        cursor: pointer;
+        outline: none;
     }
 
     .options-list {

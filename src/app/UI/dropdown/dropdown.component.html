@@ -4,19 +4,20 @@
       type="text"
       [id]="'dropdown-'+componentId"
       class="search-input"
-      [(ngModel)]="selected"
-      (click)="openDropdown()"
+      [value]="selected"
+      (click)="toggleDropdown()"
       readonly
       [placeholder]="placeholder"
       [attr.aria-labelledby]="inputAriaLabelledBy"
     />
+    <img class="dropdown-icon" (click)="toggleDropdown()" [class.opened]="isFilterShown" src="assets/images/arrow.svg" width="24" height="24" alt="drop down">
     <ul class="options-list custom-hover" tabindex="0" [class.shown]="isFilterShown" role="listbox" [attr.aria-label]="listAriaLabelledBy">
       <li
-        *ngFor="let option of filteredOptions; let i = index"
+        *ngFor="let option of options; let i = index"
         role="option"
-        [class.selected]="selected === option.key"
+        [class.selected]="selected == option.key"
         [attr.aria-posinset]="i + 1"
-        [attr.aria-setsize]="filteredOptions.length"
+        [attr.aria-setsize]="options.length"
         (click)="onSelectOption(option)"
       >
         {{ option.label }}

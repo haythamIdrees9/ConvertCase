@@ -1,20 +1,18 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { sharedModule } from '../../../../UI/shared.module';
 import { BMRComponent } from './bmr.component';
-import { HighchartsChartModule } from 'highcharts-angular';
+
 import { DropdownComponent } from 'src/app/UI/dropdown/dropdown.component';
-import { TabsViewComponent } from 'src/app/UI/tabs-view/tabs-view.component';
+import { ContentModule } from 'src/app/UI/content/conent.module';
 
 @NgModule({
   declarations: [BMRComponent],
-  imports: [sharedModule,
-    TabsViewComponent,
+  imports: [
     FormsModule,
-    ReactiveFormsModule,
-    HighchartsChartModule,
+    ReactiveFormsModule,    
     DropdownComponent,
+    ContentModule,
     RouterModule.forChild([{ path: '', component: BMRComponent }])]
 
 })

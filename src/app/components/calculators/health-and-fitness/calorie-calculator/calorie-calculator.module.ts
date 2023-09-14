@@ -1,19 +1,18 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { sharedModule } from '../../../../UI/shared.module';
-import { HighchartsChartModule } from 'highcharts-angular';
+
 import { DropdownComponent } from 'src/app/UI/dropdown/dropdown.component';
 import { CalorieCalculator } from './calorie-calculator.component';
-import { TabsViewComponent } from 'src/app/UI/tabs-view/tabs-view.component';
+import { ContentModule } from 'src/app/UI/content/conent.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [CalorieCalculator],
-  imports: [sharedModule,
+  imports: [CommonModule,
     FormsModule,
-    TabsViewComponent,
     ReactiveFormsModule,
-    HighchartsChartModule,
+    ContentModule,
     DropdownComponent,
     RouterModule.forChild([{ path: '', component: CalorieCalculator }])]
 

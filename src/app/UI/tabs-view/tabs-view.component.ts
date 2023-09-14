@@ -16,10 +16,12 @@ export class TabsViewComponent implements OnInit {
   @ViewChildren('title') set titleVal(titles: QueryList<ElementRef>) {
     if (titles) {
       let left = 0;
-      this.titlesRef = [];
-      titles.toArray().forEach(title => {
-        this.titlesRef.push({ width: title.nativeElement.clientWidth + 32, left: left });
-        left += title.nativeElement.clientWidth + 16;
+      setTimeout(()=>{
+        this.titlesRef = [];
+        titles.toArray().forEach(title => {
+          this.titlesRef.push({ width: title.nativeElement.clientWidth + 32, left: left });
+          left += title.nativeElement.clientWidth + 16;
+        })
       })
     }
   }

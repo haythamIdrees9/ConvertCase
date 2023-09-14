@@ -3,7 +3,7 @@
     <h1 #title>BMI Calcolator</h1>
     
     <div class="container " #content>
-      <div class="health-container w-100p">
+      <div class="calcolator-container w-100p">
           <div class="form-container">
             <div class="options f-row">
               <button class="btn-theme" aria-label="Switch to US units" [class.selected]="isUSType" (click)="setUnitType(true)">US units</button>
@@ -52,7 +52,7 @@
                 BMI = {{bmiResult.bmi}} kg/m2
               </span>
 
-              <section class="info-health w-100p">
+              <section class="info-calcolator w-100p">
                 <h2>Understanding Your BMI</h2>
                 <p><strong>Healthy BMI range:</strong> 18.5 kg/m² - 25 kg/m²</p>
                 <p><strong>Healthy weight for the height:</strong> 59.9 kgs - 81.0 kgs</p>

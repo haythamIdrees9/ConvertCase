@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { BMIComponent } from './bmi.component';
 
-import { CommonModule } from '@angular/common';
+import { DateSelectorComponent } from 'src/app/UI/date-selector/date-selector.component';
+import { AgeComponent } from './age.component';
 import { ContentModule } from 'src/app/UI/content/conent.module';
 
 @NgModule({
-  declarations: [BMIComponent],
+  declarations: [AgeComponent],
   imports: [
-    CommonModule,
+    DateSelectorComponent,
     FormsModule,
     ContentModule,
     ReactiveFormsModule,
-    RouterModule.forChild([{ path: '', component: BMIComponent }])]
+    RouterModule.forChild([{ path: '', component: AgeComponent }])]
 
 })
-export class BMIModule { }
+export class AgeModule { }

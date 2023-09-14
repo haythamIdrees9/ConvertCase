@@ -19,10 +19,8 @@ export class DropdownComponent implements OnInit {
   @Input() listAriaLabelledBy: string = '';
   @Input() componentId:string = "";
   @Output() selectedOption = new EventEmitter();
-  filteredOptions: readonly any [] = [];
   isFilterShown:boolean = false;
   ngOnInit(): void {
-    this.filteredOptions = this.options;
   }
 
   @HostListener('document:click',['$event'])
@@ -36,8 +34,8 @@ export class DropdownComponent implements OnInit {
     this.isFilterShown = false;
   }
 
-  openDropdown() {
-    this.isFilterShown = true;
+  toggleDropdown() {
+    this.isFilterShown = !this.isFilterShown;
   }
 
   onSelectOption(option:any) {

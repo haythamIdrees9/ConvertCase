@@ -1,8 +1,8 @@
 <div class="links-container f-col j-between a-between">
     <div class="links-web" *ngIf="isWebView; else mobileLinksView">
         <div class="active-item" [ngStyle]="{
-            'left':(hoverIndexMenu >= 0 && titlesRef.length > hoverIndexMenu)?titlesRef[hoverIndexMenu].left +'px':0,
-            'width':(hoverIndexMenu >= 0 && titlesRef.length > hoverIndexMenu)?titlesRef[hoverIndexMenu].width +'px':'150px'}"></div>
+            'left':(hoverIndexMenu >= 0 && titlesRef.length > hoverIndexMenu)?titlesRef[hoverIndexMenu].left +'px':'0px',
+            'width':(hoverIndexMenu >= 0 && titlesRef.length > hoverIndexMenu)?titlesRef[hoverIndexMenu].width +'px':'100px'}"></div>
         <nav class="f-row">
             <div class="parent" *ngFor="let page of pages; let index = index" [class.opened]="openedMenu === index" (mouseenter)="hoverIndexMenu = index;" (mouseleave)="hoverIndexMenu = selectedTypeIndex;">
                 <div class="title f-row a-center" #title   (click)="openedMenu = index; $event.stopPropagation()">

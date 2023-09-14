@@ -2,7 +2,7 @@
   <div class="x-container">
       <h1>BMR Calculator</h1>
       <div class="container " #content>
-        <div class="health-container w-100p">
+        <div class="calcolator-container w-100p">
           <div class="form-container">
             <div class="options f-row">
               <button class="btn-theme" aria-label="Switch to US units" [class.selected]="isUSType"
@@ -76,6 +76,7 @@
 
           </div>
           <div *ngIf="bmr" class="result">
+            <h2>Result</h2>
             <p>BMR = <strong class="res-bmr">{{ bmr }}</strong> Calories/day</p>
             <p>Daily calorie needs based on activity level:</p>
             <table>

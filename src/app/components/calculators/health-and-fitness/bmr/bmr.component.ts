@@ -1,15 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MetaService } from '../../../services/meta.service';
-import { InfoService } from './info.service';
-import { CALCOLATORS_PAGES } from '../calcolators-utils';
 
 
 @Component({
   selector: 'app-bmr',
   templateUrl: './bmr.component.html',
-  styleUrls: ['./bmr.component.scss', '../../../container.scss','../health.component.scss'],
-  providers: [InfoService]
+  styleUrls: ['./bmr.component.scss', '../../../container.scss','../../calculators.component.scss'],
+  providers: []
 })
 export class BMRComponent implements OnInit {
   selectedGender: string = 'female';
@@ -22,7 +20,6 @@ export class BMRComponent implements OnInit {
   avgHeight = '170';
   bmrForm!: FormGroup;
   isUSType = true;
-  pages = CALCOLATORS_PAGES;
   bmr!: number;
   constructor(private metaService:MetaService, private formBuilder: FormBuilder) {
 

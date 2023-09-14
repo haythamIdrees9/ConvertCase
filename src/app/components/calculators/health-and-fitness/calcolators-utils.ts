@@ -11,22 +11,11 @@ export const CALCOLATORS_PAGES = [
     },
     {
       title: 'Other Calculators',
-      path: '.',
+      path: 'others',
       iconSrc: 'assets/images/list.svg',
       items: [
-        { path: 'bmi', title: 'BMI Calcolator', iconSrc: 'assets/images/heart.svg' },
-        { path: 'bmr', title: 'BMR Calcolator', iconSrc: 'assets/images/heart.svg' },
-        { path: 'calorie-needed-calculator', title: 'Calorie Calculator', iconSrc: 'assets/images/heart.svg' },
-      ]
-    },
-    {
-      title: 'Other Calculators',
-      path: '.',
-      iconSrc: 'assets/images/list.svg',
-      items: [
-        { path: 'bmi', title: 'BMI Calcolator', iconSrc: 'assets/images/heart.svg' },
-        { path: 'bmr', title: 'BMR Calcolator', iconSrc: 'assets/images/heart.svg' },
-        { path: 'calorie-needed-calculator', title: 'Calorie Calculator', iconSrc: 'assets/images/heart.svg' },
+        { path: 'age-calculator', title: 'Age Calcolator', iconSrc: 'assets/images/heart.svg' },
       ]
     }
+
   ];

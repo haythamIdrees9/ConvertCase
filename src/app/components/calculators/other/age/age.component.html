@@ -1,0 +1,209 @@
+<div class="parent">
+  <div class="x-container">
+    <h1>BMR Calculator</h1>
+    <div class="container " #content>
+      <div class="calcolator-container w-100p">
+        <div class="form-container">
+          <div class="date-container mb-24px f-row a-center j-between">
+            <strong class="label">Date of Birth:</strong>
+            <app-date-selector [selectedYear]="startDate.getFullYear()" (onChangeEmitter)="onStartDateChange($event)" ></app-date-selector>
+          </div>
+          <div class="date-container f-row a-center j-between">
+            <strong class="label">Age at the Date of:</strong>
+            <app-date-selector (onChangeEmitter)="onEndDateChange($event)" ></app-date-selector>
+          </div>
+        </div>
+        <div id="result">
+          <h2>Age:</h2>
+          <p>{{ result.years }} years</p>
+          <p>{{ result.months }} months {{ result.days % 30 }} days</p>
+          <p>{{ result.weeks }} weeks {{ result.days % 7 }} days</p>
+          <p>{{ result.days }} days</p>
+          <p>{{ result.hours }} hours</p>
+          <p>{{ result.minutes }} minutes</p>
+          <p>{{ result.seconds }} seconds</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container info">
+    <app-conent-card>
+      <section id="introduction-to-age" aria-label="Introduction to Age">
+        <h2>Introduction to Age</h2>
+        <p>
+          Age is a fundamental aspect of human life, marking the passage of time and the stages of growth and development. It is a measure of the number of years a person has lived, and it plays a significant role in shaping individual experiences and societal dynamics.
+        </p>
+        <p>
+          From the moment we are born, age influences our physical, cognitive, and emotional development. It impacts our interactions with others, our roles in society, and our expectations for the future. Age is a multidimensional concept that encompasses biological, chronological, and psychological dimensions.
+        </p>
+        <p>
+          In this exploration of age, we will delve into the various types of age, factors that influence aging, and the profound effects it has on individuals and societies. Whether you're interested in the biology of aging, the psychology of age-related changes, or the cultural and societal dimensions of age, this journey into the concept of age will provide valuable insights.
+        </p>
+      </section>
+    </app-conent-card>
+    <app-conent-card>
+      <section id="types-of-age" aria-label="Types of Age">
+        <h2>Types of Age</h2>
+        <p>
+          Age is a multifaceted concept with different dimensions that provide unique insights into human development and experiences. Understanding these various types of age helps us appreciate the complexity of the aging process and its impact on individuals and societies.
+        </p>
+        <p>
+          - <strong>Biological Age:</strong> Biological age is a measure of how well the body functions in relation to a person's chronological age. It takes into account physical and physiological factors such as overall health, organ function, and cellular aging.
+        </p>
+        <p>
+          - <strong>Chronological Age:</strong> Chronological age is the simplest form of age measurement, representing the number of years a person has lived since birth. It serves as a baseline for many age-related calculations and determinations.
+        </p>
+        <p>
+          - <strong>Psychological Age:</strong> Psychological age refers to an individual's cognitive and emotional development in comparison to others of the same chronological age. It reflects one's mental and emotional maturity.
+        </p>
+        <p>
+          These different types of age provide valuable perspectives on the aging process. They contribute to our understanding of how age impacts physical health, cognitive abilities, emotional well-being, and overall life experiences.
+        </p>
+      </section>
+    </app-conent-card>
+    <app-conent-card>
+      <section id="factors-influencing-age" aria-label="Factors Influencing Age">
+        <h2>Factors Influencing Age</h2>
+        <p>
+          The concept of age is not solely determined by the passage of time. Several factors influence how individuals age and the variations in their aging experiences. Understanding these factors is essential for comprehending the complexities of the aging process and its effects on human life.
+        </p>
+        <p>
+          - <strong>Genetics:</strong> Genetics plays a significant role in determining aspects of age, including how long a person may live and their susceptibility to certain diseases. Genetic factors can influence the rate of aging and the likelihood of experiencing age-related conditions.
+        </p>
+        <p>
+          - <strong>Lifestyle Choices:</strong> Lifestyle choices such as diet, exercise, smoking, and alcohol consumption can profoundly impact the aging process. Healthy habits can promote graceful aging, while unhealthy choices may accelerate age-related changes.
+        </p>
+        <p>
+          - <strong>Environmental Factors:</strong> Environmental factors, including exposure to pollutants, toxins, and stressors, can influence the aging trajectory. Environmental conditions can affect the rate at which age-related changes occur.
+        </p>
+        <p>
+          These are just a few of the factors that contribute to the complex nature of age. By exploring the roles genetics, lifestyle, and the environment play in the aging process, we gain a deeper understanding of the dynamics of aging and its implications for individuals and society.
+        </p>
+      </section>
+    </app-conent-card>
+    <app-conent-card>
+      <section id="aging-process" aria-label="Aging Process">
+        <h2>Aging Process</h2>
+        <p>
+          The aging process is a natural and inevitable part of the human journey. It encompasses a wide range of physical, cognitive, and emotional changes that occur over time. Understanding how aging unfolds is essential for individuals to adapt and make informed decisions about their well-being as they grow older.
+        </p>
+        <p>
+          - <strong>Physical Changes:</strong> As people age, they may experience physical changes such as wrinkling of the skin, loss of muscle mass, reduced bone density, and changes in vision and hearing. These changes are a reflection of the body's natural aging process.
+        </p>
+        <p>
+          - <strong>Cognitive Changes:</strong> Cognitive abilities, including memory, attention, and problem-solving skills, can undergo alterations with age. While some cognitive functions may decline, others may remain stable or even improve.
+        </p>
+        <p>
+          - <strong>Emotional Changes:</strong> Emotional well-being and mental health can be influenced by age. Individuals may experience changes in mood, coping mechanisms, and resilience as they progress through different life stages.
+        </p>
+        <p>
+          The aging process is highly individualized, and the rate and extent of these changes can vary widely among individuals. By exploring the intricacies of the aging process, we gain insights into the unique challenges and opportunities that come with growing older.
+        </p>
+      </section>
+    </app-conent-card>
+    <app-conent-card>
+      <section id="healthy-aging" aria-label="Healthy Aging">
+        <h2>Healthy Aging</h2>
+        <p>
+          Healthy aging is a goal that many individuals aspire to achieve as they grow older. It involves making lifestyle choices and adopting habits that promote physical, mental, and emotional well-being in later stages of life. Understanding the principles of healthy aging empowers individuals to age gracefully and maintain their quality of life.
+        </p>
+        <p>
+          - <strong>Tips for Healthy Aging:</strong> Provide practical advice on how to promote healthy aging. Discuss the importance of a balanced diet, regular exercise, adequate sleep, and stress management in maintaining overall health.
+        </p>
+        <p>
+          - <strong>Preventing Age-Related Conditions:</strong> Explore strategies for preventing common age-related health conditions such as heart disease, diabetes, osteoporosis, and cognitive decline. Highlight the significance of regular check-ups and screenings.
+        </p>
+        <p>
+          By embracing healthy aging practices, individuals can enhance their longevity and enjoy a higher quality of life as they age. This section provides valuable insights into the steps that can be taken to age with vitality and resilience.
+        </p>
+      </section>
+    </app-conent-card>
+    <app-conent-card>
+      <section id="age-in-different-cultures" aria-label="Age in Different Cultures">
+        <h2>Age in Different Cultures</h2>
+        <p>
+          Age is a concept that is perceived and valued differently across various cultures and societies. Cultural perspectives on age influence how individuals are treated, the roles they assume, and the rituals and traditions associated with different life stages.
+        </p>
+        <p>
+          - <strong>Cultural Perceptions:</strong> Explore how age is perceived and valued in different cultures around the world. Discuss cultural attitudes towards youth, middle age, and old age.
+        </p>
+        <p>
+          - <strong>Traditions and Celebrations:</strong> Highlight cultural practices related to age, including coming-of-age ceremonies, rites of passage, and rituals associated with aging, such as milestone birthdays and elder appreciation.
+        </p>
+        <p>
+          Understanding the cultural dimensions of age provides insights into the diversity of human experiences and the ways in which age shapes identity and social roles. This section offers a glimpse into the rich tapestry of cultural perspectives on age.
+        </p>
+      </section>
+    </app-conent-card>
+    <app-conent-card>
+      <section id="age-and-society" aria-label="Age and Society">
+        <h2>Age and Society</h2>
+        <p>
+          Age plays a significant role in shaping societal structures, norms, and policies. It influences how individuals are perceived, the roles they occupy, and the opportunities and challenges they encounter in various stages of life. Examining the relationship between age and society provides insights into the dynamics of human communities.
+        </p>
+        <p>
+          - <strong>Ageism:</strong> Address the issue of ageism, which refers to discrimination or prejudice against people of a certain age group. Discuss how ageism can impact individuals' access to opportunities and their overall well-being.
+        </p>
+        <p>
+          - <strong>Age-Related Policies:</strong> Discuss how governments and societies handle age-related policies, including retirement, healthcare, and social services. Explore the implications of an aging population on policy development.
+        </p>
+        <p>
+          Age is a societal construct that intersects with various aspects of human life. Understanding its role in shaping societal attitudes and policies is essential for promoting inclusivity and equity across generations.
+        </p>
+      </section>
+    </app-conent-card>
+    <app-conent-card>
+      <section id="statistics-and-demographics" aria-label="Statistics and Demographics">
+        <h2>Statistics and Demographics</h2>
+        <p>
+          Age-related statistics and demographics offer valuable insights into the composition of populations and the dynamics of human societies. They provide data on the distribution of age groups, life expectancy, and the implications of an aging population for various sectors.
+        </p>
+        <p>
+          - <strong>Aging Population:</strong> Present statistics on the global aging population, including trends and projections. Discuss how an increasing proportion of older adults can impact healthcare, social services, and the economy.
+        </p>
+        <p>
+          - <strong>Life Expectancy:</strong> Explain how life expectancy has increased over time due to advances in healthcare and living conditions. Highlight the implications of longer life spans for individuals and societies.
+        </p>
+        <p>
+          Age-related statistics offer a comprehensive view of the demographic landscape. By examining population trends and age-related data, we gain a deeper understanding of the challenges and opportunities presented by shifting demographics.
+        </p>
+      </section>
+    </app-conent-card>
+    <app-conent-card>
+      <section id="theories-of-aging" aria-label="Theories of Aging">
+        <h2>Theories of Aging</h2>
+        <p>
+          Understanding the process of aging has led to the development of various theories that seek to explain why and how humans age. These theories encompass biological, psychological, and sociological perspectives, shedding light on the multifaceted nature of the aging process.
+        </p>
+        <p>
+          - <strong>Biological Theories:</strong> Briefly introduce biological theories of aging, such as the Hayflick limit, which suggests that cells have a finite capacity to divide, and the free radical theory, which posits that oxidative damage contributes to aging.
+        </p>
+        <p>
+          - <strong>Psychosocial Theories:</strong> Discuss psychosocial theories like Erikson's stages of development, which describe how individuals navigate various psychosocial challenges and crises across the lifespan.
+        </p>
+        <p>
+          Exploring these theories provides valuable insights into the complex and dynamic nature of the aging process. It invites us to consider the interplay between biological, psychological, and societal factors in shaping how we age.
+        </p>
+      </section>
+    </app-conent-card>
+    <app-conent-card>
+      <section id="conclusion-and-future-perspective" aria-label="Conclusion and Future Perspective">
+        <h2>Conclusion and Future Perspective</h2>
+        <p>
+          Age is a multifaceted concept that influences every aspect of human life. From biological changes to cultural perceptions, age shapes our experiences and identities. As our understanding of age continues to evolve, it opens up new possibilities and challenges for individuals and societies.
+        </p>
+        <p>
+          In this exploration of age, we've delved into its various dimensions, including the types of age, factors influencing aging, the aging process, and its impact on individuals and societies. We've also examined theories of aging and the role of age in shaping societies and policies.
+        </p>
+        <p>
+          Looking ahead, age remains a dynamic and ever-relevant topic. The challenges and opportunities presented by an aging population, the pursuit of healthy aging practices, and the fight against ageism are among the pressing issues we face in the future.
+        </p>
+        <p>
+          Whether you're interested in the science of aging, the cultural aspects of age, or the societal implications of demographic shifts, age is a subject that invites exploration and discovery. As we continue to unravel the mysteries of age, we gain deeper insights into the rich tapestry of human life.
+        </p>
+      </section>
+    </app-conent-card>
+                                
+        
+  </div>
+</div>

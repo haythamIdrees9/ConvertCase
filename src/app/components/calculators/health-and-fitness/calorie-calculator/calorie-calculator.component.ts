@@ -1,15 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MetaService } from '../../../services/meta.service';
-import { InfoService } from './info.service';
-import { CALCOLATORS_PAGES } from '../calcolators-utils';
 
 
 @Component({
   selector: 'app-calorie-calculator',
   templateUrl: './calorie-calculator.component.html',
-  styleUrls: ['./calorie-calculator.component.scss', '../../../container.scss','../health.component.scss'],
-  providers: [InfoService]
+  styleUrls: ['./calorie-calculator.component.scss', '../../../container.scss','../../calculators.component.scss'],
+  providers: []
 })
 export class CalorieCalculator implements OnInit {
   selectedGender: string = 'female';
@@ -22,7 +20,6 @@ export class CalorieCalculator implements OnInit {
   avgHeight = '170';
   userForm!: FormGroup;
   isUSType = true;
-  pages = CALCOLATORS_PAGES;
   activity = [
     { key: 'sedentary', label: 'Little to no exercise' },
     { key: 'lightly_active', label: 'Light exercise 1-3 days a week' },
@@ -43,9 +40,9 @@ export class CalorieCalculator implements OnInit {
   }
 
   private handleSeo() {
-    // this.metaService.setTitle('Unlocking Your Potential: Understanding Basal Metabolic Rate (calorie)');
-    // this.metaService.setDescription(`Discover the Science Behind Basal Metabolic Rate (calorie) and Revolutionize Your Health Journey. Learn how to Calculate calorie, Set Personalized Fitness Goals, and Achieve Your Ideal Weight. Explore FAQs, Practical Applications, and Additional Resources for a Holistic Approach to Well-being.`);
-    // this.metaService.setKeywords("Basal Metabolic Rate (calorie), calorie Calculation, Understanding calorie, Fitness and calorie, calorie and Weight Management, Personalized Nutrition, calorie Calculator, Metabolic Health, Exercise Planning with calorie, Health and Fitness, Daily Caloric Needs, Weight Loss and calorie, Muscle Gain and calorie, calorie FAQs, Nutrition and calorie");
+    this.metaService.setTitle('Calorie Calculator - Estimate Daily Caloric Needs for Weight Management');
+    this.metaService.setDescription(`"Use our Calorie Calculator to estimate your daily caloric needs for effective weight management. Get guidance on maintaining, losing, or gaining weight through simple calorie guidelines.`);
+    this.metaService.setKeywords("Calorie Calculator, Daily Caloric Needs, Weight Management, Calorie Guidelines, Weight Loss, Weight Gain, Healthy Lifestyle");
   }
   setUnitType(isUSType: boolean) {
     this.isUSType = isUSType;

@@ -2,12 +2,15 @@
 @import '/src/styles/mixins';
 @import '/src/styles/responsive';
 
-.container.info {
-  padding-top: 0 !important;
+.container{
+  margin-top: 0 !important;
+  &.info {
+    padding-top: 0 !important;
+  }
 }
 .x-container{
   padding-top: 1rem !important;
-  padding-bottom: 1rem !important;
+  padding-bottom: 2rem !important;
   box-shadow: 0px 2px 5px -3px #848e89;
   justify-content: space-between;
 }
@@ -15,15 +18,15 @@
   width: min(950px,90vw);
   margin: 0 !important;
 }
-.health-container {
+.calcolator-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   width: min(950px,90vw);
   margin-top: 4rem;
-
-  .info-health {
+  min-height: 520px;
+  .info-calcolator {
     font-size: 16px;
 
     @include mobileFirst('sm') {
