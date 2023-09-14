@@ -27,6 +27,7 @@ export class TabsViewComponent implements OnInit {
   }
   titlesRef: { width: number, left: number }[] = [];
   @Input('mainPath') mainPath = ''
+  @Input('selectedTypeIndex') selectedTypeIndex = 0;
  
   @Input('pages') pages!: {
     title: string;
@@ -41,7 +42,6 @@ export class TabsViewComponent implements OnInit {
 
   openedMenu: number = -1;
   hoverIndexMenu: number = 0;
-  selectedTypeIndex = 0;
   isWebView = false;
   isMobileModalVisible = false;
 

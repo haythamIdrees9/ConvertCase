@@ -6,7 +6,7 @@ import { MetaService } from '../../../services/meta.service';
 @Component({
   selector: 'app-age',
   templateUrl: './age.component.html',
-  styleUrls: ['./age.component.scss', '../../../container.scss','../../calculators.component.scss'],
+  styleUrls: ['../../../container.scss','../../calculators.component.scss','./age.component.scss'],
   providers: []
 })
 export class AgeComponent implements OnInit {

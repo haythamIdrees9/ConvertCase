@@ -3,16 +3,16 @@
 .container.info {
   padding-top: 0;
 }
-
+.parent .x-container{
+  min-height: min(100vh - 15rem, 450px) !important;
+}
 .calcolator-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   max-width: 850px;
-
-  margin-top: 4rem;
-
+  min-height: 350px !important;
   .result {
     margin-top: 4rem;
     min-height: 410px;
