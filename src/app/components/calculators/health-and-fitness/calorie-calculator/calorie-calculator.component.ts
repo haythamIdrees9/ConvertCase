@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MetaService } from '../../../services/meta.service';
 import { InfoService } from './info.service';
+import { CALCOLATORS_PAGES } from '../calcolators-utils';
 
 
 @Component({
@@ -21,7 +22,7 @@ export class CalorieCalculator implements OnInit {
   avgHeight = '170';
   userForm!: FormGroup;
   isUSType = true;
-
+  pages = CALCOLATORS_PAGES;
   activity = [
     { key: 'sedentary', label: 'Little to no exercise' },
     { key: 'lightly_active', label: 'Light exercise 1-3 days a week' },

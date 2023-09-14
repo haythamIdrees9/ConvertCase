@@ -1,10 +1,9 @@
 <div class="parent">
   <div class="x-container">
-    <app-links-container>
-
-      <h1 #title>BMI Calcolator</h1>
-      <div class="container " #content>
-        <div class="health-container w-100p">
+    <h1 #title>BMI Calcolator</h1>
+    
+    <div class="container " #content>
+      <div class="health-container w-100p">
           <div class="form-container">
             <div class="options f-row">
               <button class="btn-theme" aria-label="Switch to US units" [class.selected]="isUSType" (click)="setUnitType(true)">US units</button>
@@ -66,8 +65,6 @@
           </div>
         </div>
       </div>
-    </app-links-container>
-
   </div>
   <div class="container info">
     <app-conent-card>

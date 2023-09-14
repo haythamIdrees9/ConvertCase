@@ -3,20 +3,24 @@
 @import '/src/styles/responsive';
 
 .container.info {
-  padding-top: 0;
-}
-.container{
-  margin-top: 2rem !important;
+  padding-top: 0 !important;
 }
 .x-container{
   padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
+  box-shadow: 0px 2px 5px -3px #848e89;
+  justify-content: space-between;
+}
+.tabs-view{
+  width: min(950px,90vw);
+  margin: 0 !important;
 }
 .health-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  max-width: 950px;
+  width: min(950px,90vw);
   margin-top: 4rem;
 
   .info-health {

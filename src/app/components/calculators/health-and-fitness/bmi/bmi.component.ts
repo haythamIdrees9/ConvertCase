@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MetaService } from '../../../services/meta.service';
 import { InfoService } from './info.service';
+import { CALCOLATORS_PAGES } from '../calcolators-utils';
 
 
 @Component({
@@ -17,6 +18,7 @@ export class BMIComponent implements OnInit {
   avgHeightInch = '7';
   avgHeight = '170';
   bmiForm: FormGroup;
+  pages = CALCOLATORS_PAGES;
   bmiResult: { bmi: number, category: string,status:string } = {bmi:16,category:'',status:''};
   isUSType = true;
   constructor(private metaService: MetaService, private formBuilder: FormBuilder) {
