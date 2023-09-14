@@ -2,17 +2,17 @@
         <app-search-dropdown [options]="days" 
         [selected]="selectedDay+''" [placeholder]="'Selected Day'" 
     [inputAriaLabelledBy]="'Selected Day'" [listAriaLabelledBy]="'Days list'"
-    [label]="'Day:'" [filterFn]="filterFn" [componentId]="'selected-day'+componentId" (selectedOption)="selectedDay = $event.key;onChange()" ></app-search-dropdown>
+    [label]="'Day:'" [filterFn]="filterDaysFn" [componentId]="'selected-day'+componentId" (selectedOption)="selectedDay = $event.key;onChange()" ></app-search-dropdown>
 
     
     
     <app-search-dropdown [options]="months" 
     [selected]="selectedMonth+''" [placeholder]="'Selected Month'" 
     [inputAriaLabelledBy]="'Selected Month'" [listAriaLabelledBy]="'Months list'"
-    [label]="'Month:'" [filterFn]="filterFn" [componentId]="'selected-month'+componentId" (selectedOption)="selectedMonth = $event.key;onMonthChange();onChange()" ></app-search-dropdown>
+    [label]="'Month:'" [filterFn]="filterMonthsFn" [componentId]="'selected-month'+componentId" (selectedOption)="selectedMonth = $event.key;onMonthChange();onChange()" ></app-search-dropdown>
     
     <app-search-dropdown [options]="years" 
     [selected]="selectedYear+''" [placeholder]="'Selected Years'" 
     [inputAriaLabelledBy]="'Selected Year'" [listAriaLabelledBy]="'Years list'"
-    [label]="'Year:'" [filterFn]="filterFn" [componentId]="'selected-year'+componentId" (selectedOption)="selectedYear = $event.key;onChange()" ></app-search-dropdown>
+    [label]="'Year:'" [filterFn]="filterYearFn" [componentId]="'selected-year'+componentId" (selectedOption)="selectedYear = $event.key;onChange()" ></app-search-dropdown>
 </div>

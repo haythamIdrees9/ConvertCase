@@ -106,7 +106,6 @@ export class CalorieCalculator implements OnInit {
       'very_active': 1.725,
       'super_active': 1.9
     };
-    console.log('activityLevel',activityLevel);
     
     // Calculate daily calorie needs by applying the activity factor
     if(typeof activityLevel === 'string'){
@@ -117,7 +116,6 @@ export class CalorieCalculator implements OnInit {
       { label: 'Mild weight loss', calories: Math.round(dailyCalories * 0.9), percentage: '90%' },
       { label: 'Weight loss', calories: Math.round(dailyCalories * 0.79), percentage: '79%' },
       { label: 'Extreme weight loss', calories: Math.round(dailyCalories * 0.59), percentage: '59%' }]
-      console.log(dailyCalories,'in',this.calorieResults,activityFactor,activityLevel);
     }
   
 

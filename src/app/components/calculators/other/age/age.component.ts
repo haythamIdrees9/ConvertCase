@@ -29,7 +29,7 @@ export class AgeComponent implements OnInit {
   };
   endDate = new Date();
   startDate = new Date(this.endDate.getFullYear() - 18,this.endDate.getMonth(),this.endDate.getDay());
-  
+  prevYear = this.startDate.getFullYear();
   constructor(private metaService:MetaService, private formBuilder: FormBuilder) {
 
 

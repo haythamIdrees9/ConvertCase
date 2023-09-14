@@ -5,6 +5,7 @@ import { BMRComponent } from './bmr.component';
 
 import { DropdownComponent } from 'src/app/UI/dropdown/dropdown.component';
 import { ContentModule } from 'src/app/UI/content/conent.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [BMRComponent],
@@ -12,6 +13,7 @@ import { ContentModule } from 'src/app/UI/content/conent.module';
     FormsModule,
     ReactiveFormsModule,    
     DropdownComponent,
+    CommonModule,
     ContentModule,
     RouterModule.forChild([{ path: '', component: BMRComponent }])]
 
