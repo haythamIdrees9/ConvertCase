@@ -14,7 +14,7 @@ export const CALCOLATORS_PAGES = [
       path: 'others',
       iconSrc: 'assets/images/list.svg',
       items: [
-        { path: 'age-calculator', title: 'Age Calcolator', iconSrc: 'assets/images/heart.svg' },
+        { path: 'age-calculator', title: 'Age Calcolator', iconSrc: 'assets/images/hadn-hold-heart.svg' },
       ]
     }
 
