@@ -30,7 +30,7 @@ export class AgeComponent implements OnInit {
   endDate = new Date();
   startDate = new Date(this.endDate.getFullYear() - 18,this.endDate.getMonth(),this.endDate.getDay());
   prevYear = this.startDate.getFullYear();
-  constructor(private metaService:MetaService, private formBuilder: FormBuilder) {
+  constructor(private metaService:MetaService) {
 
 
   }
@@ -41,9 +41,9 @@ export class AgeComponent implements OnInit {
   }
   
   private handleSeo() {
-    // this.metaService.setTitle('Unlocking Your Potential: Understanding Basal Metabolic Rate (BMR)');
-    // this.metaService.setDescription(`Discover the Science Behind Basal Metabolic Rate (BMR) and Revolutionize Your Health Journey. Learn how to Calculate BMR, Set Personalized Fitness Goals, and Achieve Your Ideal Weight. Explore FAQs, Practical Applications, and Additional Resources for a Holistic Approach to Well-being.`);
-    // this.metaService.setKeywords("Basal Metabolic Rate (BMR), BMR Calculation, Understanding BMR, Fitness and BMR, BMR and Weight Management, Personalized Nutrition, BMR Calculator, Metabolic Health, Exercise Planning with BMR, Health and Fitness, Daily Caloric Needs, Weight Loss and BMR, Muscle Gain and BMR, BMR FAQs, Nutrition and BMR");
+    this.metaService.setTitle('Discover Your Age: User Age Calculator');
+    this.metaService.setDescription(`Calculate your age instantly with our user-friendly Age Calculator tool. Simply enter your birthdate, and we'll provide you with your current age in years, months, and days. It's quick, accurate, and free. Try it now!`);
+    this.metaService.setKeywords("age calculator, calculate age, user age calculation, birthdate calculator, age in years and months, how old am I, accurate age calculation, online age calculator, age in days and months, birthday age tool");
   }
   
 
