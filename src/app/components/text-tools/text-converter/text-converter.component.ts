@@ -8,7 +8,7 @@ import { InfoService } from './info.service';
 @Component({
   selector: 'app-text-converter',
   templateUrl: './text-converter.component.html',
-  styleUrls: ['./text-converter.component.scss','../text-tools.scss'],
+  styleUrls: ['./text-converter.component.scss','../../container.scss'],
   providers:[InfoService]
 })
 export class TextConverterComponent implements OnInit {

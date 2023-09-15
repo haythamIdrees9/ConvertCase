@@ -1,5 +1,5 @@
-@import "../../../styles/mixins";
-
+@import '/src/styles/variables';
+@import '/src/styles/mixins';
 .back-link {
     img{
         transform: rotateZ(90deg);
@@ -8,7 +8,7 @@
 .expandable-container{
     height: 2rem;
     overflow: hidden;
-    border: 1px solid #144D30;
+    border: 1px solid $primary-color;
     border-right: 0;
     border-left: 0;
     transition: height 0.5s;

@@ -1,5 +1,6 @@
 @import '../../../../styles/responsive';
 @import '../../../../styles/mixins';
+@import '/src/styles/variables';
 
 :host {
     width: 100%;
@@ -33,36 +34,25 @@
             }
 
             right: 0;
-            border: 1px solid #144D30;
+            border: 1px solid $primary-color;
             padding: 0.25rem 1rem;
             border-radius: 0.5rem;
             font-size: 1.5rem;
-            color: #144D30;
+            color: $primary-color;
             box-sizing: border-box;
 
             img {
                 margin-left: 0.5rem;
             }
-
-            @media screen and (hover:hover) {
-                &:hover {
-                    background-color: #144D30;
-                    color: #f7f3ff;
-
-                    img {
-                        @include filter(brightness(0) saturate(100%) invert(95%) sepia(10%) saturate(1365%) hue-rotate(187deg) brightness(104%) contrast(101%));
-                    }
-                }
-            }
-
-            &:active {
-                background-color: #144D30;
+            @include activeHover{
+                background-color: $primary-color;
                 color: #f7f3ff;
 
                 img {
                     @include filter(brightness(0) saturate(100%) invert(95%) sepia(10%) saturate(1365%) hue-rotate(187deg) brightness(104%) contrast(101%));
                 }
             }
+
         }
 
         @include mobileFirst('xl') {
@@ -93,6 +83,7 @@
     .content {
         width: 100%;
         max-width: 900px;
+        padding-right: 0.5rem;
     }
 
     @include mobileFirst('lg') {

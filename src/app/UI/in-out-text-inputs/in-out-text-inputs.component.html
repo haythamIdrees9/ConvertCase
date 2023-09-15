@@ -9,16 +9,15 @@
 <div class="boxes f-col a-center">
     <div class="input-container f-col">
         <label for="input_1">From:</label>
-        <input id="input_1" [type]="type" type="number" #input_area [(ngModel)]="userText" (keyup)="onInputChange()"
-            [placeholder]="placeholder" aria-label="Input Text" aria-describedby="conversionInstructions">
+        <input id="input_1" [type]="type" #input_area [(ngModel)]="userText" (keyup)="onInputChange()"
+            [placeholder]="placeholder" aria-label="Input Text">
     </div>
     <a replaceUrl class="btn-resting c-pointer" [routerLink]="['../',switchLink]" aria-label="Switch units">
         <img class="switch" src="assets/images/switch.svg" height="16" width="20" alt="">
     </a>
     <div class="input-container f-col">
         <label for="input_1">To:</label>
-        <input [(ngModel)]="result" readonly placeholder="Converted result will appear here..." aria-label="result Text"
-            aria-describedby="conversionInstructions">
+        <input [(ngModel)]="result" readonly placeholder="Converted result will appear here..." aria-label="result Text">
     </div>
 
 </div>

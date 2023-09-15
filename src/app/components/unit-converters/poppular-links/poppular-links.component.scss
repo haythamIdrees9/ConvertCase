@@ -1,4 +1,5 @@
 @import "../../../../styles/responsive";
+@import '/src/styles/variables';
 
 h2{
     margin-bottom: 1rem;
@@ -17,6 +18,6 @@ ul{
     a{
         font-size: 1rem;
         text-decoration: none;
-        color: #144D30;
+        color: $primary-color;
     }
 }

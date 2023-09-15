@@ -1,8 +1,9 @@
-@import "../../../../../styles/mixins";
-@import "../../../../../styles/responsive";
+@import '/src/styles/variables';
+@import '/src/styles/responsive';
+@import '/src/styles/mixins';
 
 .back-link {
-    color: #144D30;
+    color: $primary-color;
     text-decoration: none;
     font-size: 1rem;
 
@@ -14,7 +15,7 @@
 
 .unit-container {
     width: min(600px, calc(100vw - 2rem));
-    color: #144D30;
+    color: $primary-color;
 
     h1 {
         text-align: center;
@@ -45,7 +46,7 @@
         }
 
         .result {
-            color: #144D30;
+            color: $primary-color;
 
             .label {
                 font-weight: bold;
@@ -61,7 +62,7 @@
         .user-input-cotnainer {
             width: 100%;
             box-sizing: border-box;
-            box-shadow: 0 0 2px 0px #144D30;
+            box-shadow: 0 0 2px 0px $primary-color;
             background-color: #EEEEEE;
             padding: 1rem;
             border-radius: 0.5rem;
@@ -81,7 +82,7 @@
     .units-box {
         width: 100%;
         box-sizing: border-box;
-        box-shadow: 0 0 2px 0px #144D30;
+        box-shadow: 0 0 2px 0px $primary-color;
         background-color: #EEEEEE;
         padding: 1rem;
         border-radius: 0.5rem;
@@ -142,7 +143,7 @@
             }
 
             th {
-                background-color: #144D30;
+                background-color: $primary-color;
                 color: white;
                 height: 24px;
                 font-weight: bold;
@@ -150,7 +151,7 @@
 
             tbody td {
                 height: 24px;
-                border: 1px solid #144D30;
+                border: 1px solid $primary-color;
                 padding: 4px;
             }
         }

@@ -10,6 +10,7 @@ const routes: Route[] = [
   {path:'text-tools',loadChildren: () => import('./components/text-tools/text-tools.module').then(m => m.TextToolsModule)},
   {path:'programming-tools',loadChildren:() => import('./components/programming-tools/programming-tools.module').then(m => m.ProgrammingToolsModule) },
   {path:'unit-converters',loadChildren:() => import('./components/unit-converters/unit-converters.module').then(m => m.UnitConvertersModule) },
+  {path:'calculators',loadChildren:() => import('./components/calculators/calculators.module').then(m => m.calculatorsModule) },
   {path:'**', redirectTo:'unit-converters',pathMatch:'full'},
 ]
 @NgModule({

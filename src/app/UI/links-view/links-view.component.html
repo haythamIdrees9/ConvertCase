@@ -1,6 +1,6 @@
 <div class="links-container {{mobStart}}">
 
-    <div class="shadow"  [class.show]="isLinksModalVisible" (click)="$event.stopPropagation()">
+    <div class="shadow"  [class.show]="isLinksModalVisible" >
         <button class="btn-resting" aria-label="Close modal" (click)="hideLinksModal()">
             <img src="assets/images/cancel.svg" width="36" height="36" alt="close modal">
         </button>
@@ -11,7 +11,7 @@
             <nav class="list-container">
                 <ul>
                     <li *ngFor="let page of pages">
-                        <a (click)="hideLinksModal()" [routerLink]="['',ParentPath,page.path]"
+                        <a replaceUrl (click)="hideLinksModal()" [routerLink]="page.pathPath"
                         [routerLinkActive]="['active']"> {{page.label}}</a>
                     </li>
                 </ul>

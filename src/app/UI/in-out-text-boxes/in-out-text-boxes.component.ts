@@ -1,4 +1,6 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { focusWeb } from 'src/app/utils/general';
 
 @Component({
   selector: 'app-in-out-text-boxes[result][storageKey]',
@@ -8,7 +10,7 @@ import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild }
 export class InOutTextBoxesComponent implements OnInit {
   @ViewChild('input_area') set inputRef(inputArea: ElementRef) {
     this.inputArea = inputArea;
-    this.inputArea?.nativeElement?.focus()
+    focusWeb(this.inputArea)
   }
   inputArea!: ElementRef;
   userText: string = '';
@@ -23,9 +25,13 @@ export class InOutTextBoxesComponent implements OnInit {
   userInputInfo: string = this.defaultInfo;
   outPutInputInfo: string = this.defaultInfo;
   
-  constructor() { }
+  constructor(private route:ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.route.params.subscribe(() => {
+      focusWeb(this.inputArea)
+    })
+
     const savedText = sessionStorage.getItem(this.storageKey);
     if (savedText?.trim().toLowerCase()) {
       setTimeout(() => {
@@ -36,8 +42,8 @@ export class InOutTextBoxesComponent implements OnInit {
     }
   }
 
-  focus() {
-    this.inputArea.nativeElement.focus()
+  focus(){
+    focusWeb(this.inputArea)
   }
 
   onInputChange() {
@@ -66,3 +72,5 @@ export class InOutTextBoxesComponent implements OnInit {
 
 
 }
+
+

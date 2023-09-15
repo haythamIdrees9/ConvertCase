@@ -1,0 +1,547 @@
+<div class="parent">
+  <div class="x-container">
+    <h1 #title>BMI Calcolator</h1>
+    
+    <div class="container " #content>
+      <div class="calcolator-container w-100p">
+          <div class="form-container">
+            <div class="options f-row">
+              <button class="btn-theme" aria-label="Switch to US units" [class.selected]="isUSType" (click)="setUnitType(true)">US units</button>
+              <button class="btn-theme" aria-label="Switch to Metric units" [class.selected]="!isUSType" (click)="setUnitType(false)">Metric units</button>
+            </div>
+            <form class="f-col" [formGroup]="bmiForm" (ngSubmit)="calculateBMI()" *ngIf="!isUSType">
+              <label class="f-col">
+                <div class="label">Height (in centimetre):</div>
+                <input type="number" [(ngModel)]="avgHeight" min="1" formControlName="height"
+                  placeholder="your Height..." aria-label="Your Height value">
+              </label>
+              <label class="f-col">
+                <div class="label">Weight (in kilograms):</div>
+                <input type="number" [(ngModel)]="avgWeight" min="1" formControlName="weight"
+                  placeholder="your Weight..." aria-label="Weight value value">
+              </label>
+              <button type="submit" aria-label="Calcolate BMI" class="submit-button" [disabled]="!bmiForm.valid">Calculate</button>
+            </form>
+
+            <form class="f-col" [formGroup]="bmiForm" (ngSubmit)="calculateBMI_US()" *ngIf="isUSType">
+              <div class="us-height f-row">
+                <label class="f-col">
+                  <div class="label">Feet:</div>
+                  <input type="number" [(ngModel)]="avgHeightFeet" min="1" formControlName="heightFeet"
+                    placeholder="your Feet Height..." aria-label="Your Height value">
+                </label>
+                <label class="f-col">
+                  <div class="label">Inches:</div>
+                  <input type="number" [(ngModel)]="avgHeightInch" min="0" formControlName="heightInch"
+                    placeholder="your Inches Height..." aria-label="Your Height value">
+                </label>
+              </div>
+              <label class="f-col">
+                <div class="label">Weight (in Pounds):</div>
+                <input type="number" [(ngModel)]="avgWeightPound" min="1" formControlName="weightPound"
+                  placeholder="your Weight..." aria-label="Weight value value">
+              </label>
+              <button type="submit" class="submit-button" aria-label="Calcolate BMI" [disabled]="!bmiForm.valid">Calculate</button>
+            </form>
+
+          </div>
+          <div class="result f-col j-between a-center">
+            <ng-container [ngTemplateOutlet]="bmi_chart"></ng-container>
+            <div class="score w-100p {{bmiResult.status}}">
+              <span class="f-row j-center">
+                BMI = {{bmiResult.bmi}} kg/m2
+              </span>
+
+              <section class="info-calcolator w-100p">
+                <h2>Understanding Your BMI</h2>
+                <p><strong>Healthy BMI range:</strong> 18.5 kg/m² - 25 kg/m²</p>
+                <p><strong>Healthy weight for the height:</strong> 59.9 kgs - 81.0 kgs</p>
+                <p><strong>BMI Prime:</strong> 0.8</p>
+                <p><strong>Ponderal Index:</strong> 11.1 kg/m³</p>
+              </section>
+
+            </div>
+            <div></div>
+          </div>
+        </div>
+      </div>
+  </div>
+  <div class="container info">
+    <app-conent-card>
+
+      <h2>What is BMI?</h2>
+
+      <p>Body Mass Index (BMI) is a numerical value that represents a person's weight in relation to their height. It is
+        a widely used indicator of whether a person has a healthy body weight, is underweight, overweight, or obese.</p>
+
+      <p>BMI is calculated by dividing a person's weight in kilograms by the square of their height in meters. The
+        result is a number expressed in units of kg/m², which provides a standardized way to assess an individual's
+        weight status.</p>
+
+      <p>It is important to note that BMI is a general screening tool and does not take into account factors such as
+        muscle mass, bone density, and distribution of weight. Therefore, while BMI is a useful tool for assessing
+        population trends and general health, it may not provide a complete picture of an individual's health and should
+        be interpreted alongside other health assessments.</p>
+
+      <p>BMI is commonly categorized into different ranges, such as underweight, normal weight, overweight, and obesity,
+        to help individuals and healthcare professionals assess whether a person's weight falls within a healthy range
+        for their height.</p>
+    </app-conent-card>
+
+    <app-conent-card>
+
+      <h2>BMI Calculation</h2>
+
+      <p>Body Mass Index (BMI) is calculated using a simple formula that takes into account an individual's weight and
+        height. The formula is as follows:</p>
+
+      <p>BMI = Weight (in kilograms) / (Height (in meters) × Height (in meters))</p>
+
+      <p>Here's a step-by-step breakdown of how to calculate BMI:</p>
+
+      <ol>
+        <li>Measure your weight in kilograms (kg).</li>
+        <li>Measure your height in meters (m).</li>
+        <li>Square your height by multiplying it by itself (Height × Height).</li>
+        <li>Divide your weight by the squared height (Weight / (Height × Height)).</li>
+        <li>The result is your BMI, expressed in units of kg/m².</li>
+      </ol>
+
+      <p>For example, if someone weighs 70 kilograms and has a height of 1.75 meters:</p>
+
+      <ol>
+        <li>Weight = 70 kg</li>
+        <li>Height = 1.75 m</li>
+        <li>Height × Height = 1.75 m × 1.75 m = 3.06 m²</li>
+        <li>BMI = 70 kg / 3.06 m² ≈ 22.83 kg/m²</li>
+      </ol>
+
+      <p>This calculated value represents the individual's BMI, which is used to assess their weight status and
+        determine whether it falls within the healthy BMI range or other categories such as underweight, overweight, or
+        obese.</p>
+
+    </app-conent-card>
+
+    <app-conent-card>
+      <h2>BMI Categories</h2>
+
+      <p>Body Mass Index (BMI) is divided into different categories based on the calculated BMI value. These categories
+        help assess an individual's weight status and provide a general indication of their health. The commonly used
+        BMI categories are as follows:</p>
+
+      <ol>
+        <li><strong>Underweight:</strong> BMI less than 18.5 kg/m²</li>
+        <li><strong>Normal Weight:</strong> BMI between 18.5 kg/m² and 24.9 kg/m²</li>
+        <li><strong>Overweight:</strong> BMI between 25 kg/m² and 29.9 kg/m²</li>
+        <li><strong>Obesity (Class I):</strong> BMI between 30 kg/m² and 34.9 kg/m²</li>
+        <li><strong>Obesity (Class II):</strong> BMI between 35 kg/m² and 39.9 kg/m²</li>
+        <li><strong>Obesity (Class III - Morbid Obesity):</strong> BMI 40 kg/m² or greater</li>
+      </ol>
+
+      <p>These categories provide a general guideline for assessing whether an individual's weight falls within a
+        healthy range for their height. However, it's essential to remember that BMI has limitations and doesn't account
+        for factors such as muscle mass, bone density, and overall body composition.</p>
+
+      <p>Individuals falling into the "Normal Weight" category generally have a lower risk of weight-related health
+        issues. Those in the "Underweight" category may need to consult a healthcare professional, as it could indicate
+        health concerns, while those in the "Overweight" or "Obese" categories may be at higher risk for various health
+        conditions and should consider lifestyle changes and medical guidance.</p>
+
+      <p>It's important to interpret BMI alongside other health assessments and consult a healthcare provider for
+        personalized advice on weight and health management.</p>
+
+
+    </app-conent-card>
+
+    <app-conent-card>
+      <h2>Healthy BMI Range</h2>
+
+      <p>The Healthy Body Mass Index (BMI) range is a specific range of BMI values that are associated with a healthy
+        weight and reduced risk of weight-related health problems. This range is commonly used as a guideline to
+        determine whether an individual's weight falls within a healthy range for their height.</p>
+
+      <p>The Healthy BMI Range is typically defined as follows:</p>
+
+      <ul>
+        <li><strong>Lower Limit:</strong> 18.5 kg/m²</li>
+        <li><strong>Upper Limit:</strong> 25 kg/m²</li>
+      </ul>
+
+      <p>Here's what these limits mean:</p>
+
+      <ul>
+        <li>If your BMI is <strong>less than 18.5 kg/m²</strong>, you may be categorized as
+          <strong>underweight</strong>, which could indicate a need for increased nutritional intake and medical
+          attention.</li>
+        <li>If your BMI falls <strong>between 18.5 kg/m² and 25 kg/m²</strong>, you are typically considered to be in
+          the <strong>Normal Weight</strong> category, which is associated with a lower risk of weight-related health
+          issues.</li>
+      </ul>
+
+      <p>Maintaining a BMI within this healthy range is often recommended for overall health and well-being. However,
+        it's important to keep in mind that BMI has its limitations and does not account for factors like muscle mass,
+        bone density, or body composition. Therefore, it should be interpreted alongside other health assessments and in
+        consultation with healthcare professionals.</p>
+
+      <p>Individuals with BMIs in the healthy range may still have varying levels of fitness and overall health, so it's
+        essential to focus on a holistic approach to health, including a balanced diet, regular physical activity, and
+        overall well-being.</p>
+
+
+    </app-conent-card>
+
+    <app-conent-card>
+      <h2>BMI Interpretation</h2>
+
+      <p>Interpreting your Body Mass Index (BMI) is essential for understanding how your weight relates to your health.
+        BMI provides a numerical value that indicates whether your weight falls within specific categories. Here's a
+        breakdown of how to interpret your BMI:</p>
+
+      <ul>
+        <li><strong>Underweight:</strong> If your BMI is less than 18.5 kg/m², it suggests that you may be underweight.
+          This could indicate insufficient nutrition or underlying health concerns. Consultation with a healthcare
+          professional is advisable.</li>
+
+        <li><strong>Normal Weight:</strong> A BMI between 18.5 kg/m² and 24.9 kg/m² is generally considered normal
+          weight. Falling within this range is associated with a lower risk of weight-related health issues.</li>
+
+        <li><strong>Overweight:</strong> If your BMI is between 25 kg/m² and 29.9 kg/m², it falls within the overweight
+          category. Being overweight may increase the risk of certain health conditions, and lifestyle changes may be
+          recommended.</li>
+
+        <li><strong>Obesity (Class I):</strong> A BMI in the range of 30 kg/m² to 34.9 kg/m² indicates obesity (Class
+          I). Individuals in this category may face an increased risk of health problems, and weight management
+          strategies are advised.</li>
+
+        <li><strong>Obesity (Class II):</strong> A BMI between 35 kg/m² and 39.9 kg/m² is classified as obesity (Class
+          II). This signifies a higher risk of weight-related health concerns, and medical attention is crucial for
+          managing health risks.</li>
+
+        <li><strong>Obesity (Class III - Morbid Obesity):</strong> A BMI of 40 kg/m² or greater is categorized as morbid
+          obesity (Class III). This is associated with the highest health risks, and comprehensive medical evaluation
+          and treatment are essential.</li>
+      </ul>
+
+      <p>It's important to note that while BMI is a useful screening tool, it has limitations. It doesn't account for
+        factors like muscle mass, bone density, or body composition. Therefore, it should be interpreted alongside other
+        health assessments, and consultation with healthcare professionals is advisable for personalized guidance on
+        weight and health management.</p>
+
+      <p>Your BMI provides a starting point for assessing your weight status, but it's only one aspect of your overall
+        health. A comprehensive approach to health includes factors such as diet, physical activity, genetics, and
+        lifestyle choices.</p>
+
+    </app-conent-card>
+
+    <app-conent-card>
+      <h2>Limitations of BMI</h2>
+
+      <p>While Body Mass Index (BMI) is a widely used tool for assessing weight and health, it has several limitations
+        that should be considered when interpreting its results:</p>
+
+      <ul>
+        <li><strong>Doesn't Account for Body Composition:</strong> BMI is a simple calculation based on weight and
+          height and does not take into account variations in body composition. It cannot distinguish between muscle,
+          fat, or bone density, which can lead to misclassifications.</li>
+
+        <li><strong>Doesn't Consider Distribution of Weight:</strong> BMI does not consider where weight is distributed
+          in the body. Two individuals with the same BMI can have different health risks depending on where their body
+          fat is located.</li>
+
+        <li><strong>Not Suitable for All Populations:</strong> BMI was originally designed for adult populations and may
+          not be appropriate for children, athletes, or the elderly. It can yield inaccurate results for these groups.
+        </li>
+
+        <li><strong>Static Measurement:</strong> BMI provides a single snapshot of weight and height and does not
+          account for changes over time. It does not consider factors like weight fluctuations or weight loss due to
+          illness.</li>
+      </ul>
+
+      <p>While BMI is a valuable screening tool, it should be used in conjunction with other health assessments and
+        clinical judgment to provide a more comprehensive view of an individual's health.</p>
+    </app-conent-card>
+    <app-conent-card>
+      <h2>BMI and Health Risks</h2>
+
+      <p>Body Mass Index (BMI) is commonly used to assess the potential health risks associated with an individual's
+        weight. Here's how BMI is often linked to health:</p>
+
+      <ul>
+        <li><strong>Higher BMI and Health Risks:</strong> Research has shown that individuals with a higher BMI are at
+          increased risk for various health conditions, including heart disease, type 2 diabetes, high blood pressure,
+          and certain types of cancer.</li>
+
+        <li><strong>Obesity-Related Health Issues:</strong> Obesity, indicated by a high BMI, is associated with a
+          higher likelihood of developing obesity-related health issues such as sleep apnea, fatty liver disease, and
+          joint problems.</li>
+
+        <li><strong>Weight Management:</strong> Understanding BMI can be a crucial step in managing weight and overall
+          health. Individuals with high BMIs may benefit from lifestyle changes, including diet modifications and
+          increased physical activity, to reduce health risks.</li>
+
+        <li><strong>Individual Variations:</strong> It's important to note that while BMI provides valuable insights,
+          individual variations exist. Some individuals with high BMIs may have good metabolic health, while others with
+          lower BMIs may still face health challenges.</li>
+      </ul>
+
+      <p>BMI is a helpful tool for identifying potential health risks related to weight, but it should be used alongside
+        other health assessments, including discussions with healthcare professionals, to create a personalized health
+        plan.</p>
+    </app-conent-card>
+
+    <app-conent-card>
+      <h2>BMI vs. Other Measures</h2>
+
+      <p>Body Mass Index (BMI) is a commonly used measure for assessing weight, but it's important to understand how it
+        compares to other measures of body composition and health:</p>
+
+      <ul>
+        <li><strong>BMI vs. Body Fat Percentage:</strong> While BMI is based on weight and height, body fat percentage
+          provides a more accurate assessment of the amount of fat in the body. Some individuals with a high BMI may
+          have a healthy body fat percentage, while others may have excess body fat.</li>
+
+        <li><strong>BMI vs. Waist-to-Hip Ratio:</strong> Waist-to-hip ratio is a measure of fat distribution. It takes
+          into account the ratio of waist circumference to hip circumference and can provide insights into the
+          distribution of body fat. BMI does not consider this factor.</li>
+
+        <li><strong>BMI vs. Muscle Mass:</strong> BMI cannot distinguish between muscle and fat. Athletes and
+          individuals with high muscle mass may have a higher BMI due to muscle weight, but this doesn't necessarily
+          indicate health problems.</li>
+
+        <li><strong>Complementary Measures:</strong> BMI can be a useful initial screening tool, but it is often used
+          alongside other measures like body fat percentage, waist circumference, and clinical assessments to provide a
+          more comprehensive view of an individual's health.</li>
+      </ul>
+
+      <p>It's important to recognize that no single measure can provide a complete picture of an individual's health.
+        Healthcare professionals may use a combination of measures to assess health and tailor recommendations
+        accordingly.</p>
+
+    </app-conent-card>
+    <app-conent-card>
+      <h2>BMI for Children</h2>
+
+      <p>Body Mass Index (BMI) is also used to assess the weight status of children and adolescents. However, the
+        interpretation of BMI for this age group differs from adults:</p>
+
+      <ul>
+        <li><strong>Age and Gender Consideration:</strong> BMI calculations for children and adolescents take into
+          account age and gender because growth patterns vary during childhood and adolescence.</li>
+
+        <li><strong>Percentiles:</strong> Instead of specific categories like adults, children's BMI values are often
+          compared to growth charts, and percentiles are used. A child's BMI percentile indicates where their BMI falls
+          relative to other children of the same age and gender.</li>
+
+        <li><strong>Interpretation:</strong> Children with BMIs in the 85th to 94th percentile are often considered
+          overweight, while those at or above the 95th percentile may be categorized as obese. It's important for
+          healthcare providers to consider growth trends over time rather than a single BMI value.</li>
+
+        <li><strong>Health Assessments:</strong> Pediatricians use BMI as one of several measures to assess a child's
+          growth and development. Factors like family history, dietary habits, and physical activity level are also
+          considered when evaluating a child's health.</li>
+      </ul>
+
+      <p>BMI for children is a valuable tool for identifying potential weight-related concerns and monitoring growth
+        trends. However, it should always be interpreted by healthcare professionals within the context of a child's
+        overall health and development.</p>
+
+    </app-conent-card>
+
+    <app-conent-card>
+      <h2>BMI for Athletes</h2>
+
+      <p>Body Mass Index (BMI) is a useful tool for assessing weight in the general population, but it has limitations
+        when applied to athletes and individuals with high muscle mass:</p>
+
+      <ul>
+        <li><strong>Muscle vs. Fat:</strong> BMI is based solely on weight and height and does not distinguish between
+          muscle mass and fat. Athletes often have higher muscle mass, which can lead to a higher BMI without indicating
+          excess body fat.</li>
+
+        <li><strong>Athletic Variation:</strong> Different sports and athletic disciplines require varying body
+          compositions. For example, a bodybuilder and a long-distance runner may have significantly different BMIs
+          despite both being highly fit.</li>
+
+        <li><strong>Health vs. Performance:</strong> While BMI can provide insights into health, it doesn't account for
+          performance factors. Athletes may prioritize performance and specific body compositions that deviate from
+          typical BMI categories.</li>
+
+        <li><strong>Comprehensive Assessment:</strong> When evaluating the health and fitness of athletes, healthcare
+          providers often use a combination of measures, including body fat percentage, muscle mass, and performance
+          metrics, in addition to BMI.</li>
+      </ul>
+
+      <p>It's important to recognize that a high BMI in athletes does not necessarily indicate health problems. Athletic
+        individuals should work with healthcare and sports professionals who understand the unique needs and goals of
+        athletes to ensure a holistic assessment of health and performance.</p>
+
+    </app-conent-card>
+
+    <app-conent-card>
+      <h2>BMI for Weight Management</h2>
+
+      <p>Body Mass Index (BMI) serves as a valuable tool for individuals seeking to manage their weight and overall
+        health:</p>
+
+      <ul>
+        <li><strong>Initial Assessment:</strong> Calculating your BMI provides an initial assessment of your weight
+          relative to your height. It can help you understand if you fall within the healthy BMI range.</li>
+
+        <li><strong>Goal Setting:</strong> If your BMI indicates that you are overweight or obese, it can serve as a
+          starting point for setting weight management goals. Achieving a healthy BMI can reduce the risk of
+          weight-related health issues.</li>
+
+        <li><strong>Lifestyle Changes:</strong> A higher BMI may prompt lifestyle changes, including modifications to
+          your diet and increased physical activity. These changes can contribute to weight loss and improved health.
+        </li>
+
+        <li><strong>Monitoring Progress:</strong> Tracking your BMI over time can help you assess your progress and
+          adjust your weight management strategies accordingly.</li>
+      </ul>
+
+      <p>It's important to remember that BMI is one of several tools for weight management. Factors like diet, exercise,
+        genetics, and overall well-being also play critical roles. Consulting with healthcare professionals can provide
+        personalized guidance on achieving and maintaining a healthy weight.</p>
+
+    </app-conent-card>
+
+    <app-conent-card>
+      <h2>BMI and Public Health</h2>
+
+      <p>Body Mass Index (BMI) plays a significant role in public health for several reasons:</p>
+
+      <ul>
+        <li><strong>Population Health Assessment:</strong> BMI is used to assess the overall health of populations and
+          track trends in weight-related conditions, including obesity and related diseases.</li>
+
+        <li><strong>Health Policy:</strong> Public health policies and initiatives often use BMI data to inform
+          strategies for obesity prevention and management.</li>
+
+        <li><strong>Health Education:</strong> Public health campaigns and educational programs frequently use BMI to
+          raise awareness about the importance of maintaining a healthy weight.</li>
+
+        <li><strong>Research:</strong> BMI data is essential for conducting research on the prevalence and impact of
+          obesity-related conditions, leading to improved healthcare interventions.</li>
+      </ul>
+
+      <p>By using BMI as a screening tool, public health organizations can identify populations at risk and implement
+        interventions to improve overall health and reduce the burden of obesity-related diseases.</p>
+
+    </app-conent-card>
+
+    <app-conent-card>
+      <h2>Calculating BMI - Example</h2>
+
+      <p>Calculating your Body Mass Index (BMI) is a straightforward process. Here's an example of how to calculate BMI
+        for an individual:</p>
+
+      <ol>
+        <li><strong>Measure Weight:</strong> First, measure your weight in kilograms (kg). Let's say your weight is 70
+          kg.</li>
+
+        <li><strong>Measure Height:</strong> Measure your height in meters (m). For example, if your height is 1.75
+          meters, you would square it: 1.75 m × 1.75 m = 3.06 m².</li>
+
+        <li><strong>Calculate BMI:</strong> Divide your weight by the squared height. In this example, it would be 70 kg
+          / 3.06 m² ≈ 22.83 kg/m².</li>
+      </ol>
+
+      <p>So, the calculated BMI for this individual is approximately 22.83 kg/m². This value can then be interpreted
+        using BMI categories to assess weight status.</p>
+
+      <p>Remember that BMI is a screening tool and should be used alongside other health assessments for a comprehensive
+        understanding of your health.</p>
+
+    </app-conent-card>
+
+    <app-conent-card>
+      <h2>BMI and Lifestyle</h2>
+
+      <p>Your Body Mass Index (BMI) is not just a number; it can also serve as a valuable indicator for making lifestyle
+        choices that promote better health:</p>
+
+      <ul>
+        <li><strong>Healthy Eating:</strong> If your BMI suggests that you are overweight or obese, it may be a signal
+          to focus on a balanced diet. Reducing calorie intake and making nutritious food choices can help you achieve
+          and maintain a healthy BMI.</li>
+
+        <li><strong>Regular Physical Activity:</strong> Combining a healthy diet with regular physical activity is key
+          to weight management. Exercise not only helps you shed excess weight but also improves overall health and
+          well-being.</li>
+
+        <li><strong>Setting Realistic Goals:</strong> BMI can guide you in setting achievable weight goals. Small,
+          gradual changes in your lifestyle are more likely to lead to long-term success.</li>
+
+        <li><strong>Monitoring Progress:</strong> By tracking your BMI over time, you can assess how your lifestyle
+          changes are affecting your weight. This feedback can help you stay motivated and make necessary adjustments.
+        </li>
+      </ul>
+
+      <p>Remember that BMI is a starting point for assessing your weight status. It's important to adopt a holistic
+        approach to health by considering factors like stress management, sleep quality, and overall well-being in
+        addition to diet and exercise.</p>
+
+    </app-conent-card>
+
+
+    <app-conent-card>
+      <h2>Consulting a Healthcare Professional</h2>
+
+      <p>When it comes to understanding your Body Mass Index (BMI) and managing your weight, seeking guidance from a
+        healthcare professional is often beneficial:</p>
+
+      <ul>
+        <li><strong>Interpretation:</strong> Healthcare providers can help you interpret your BMI in the context of your
+          overall health. They consider factors like your medical history, family history, and lifestyle when assessing
+          your weight status.</li>
+
+        <li><strong>Personalized Recommendations:</strong> A healthcare professional can provide personalized
+          recommendations for achieving and maintaining a healthy weight. They can tailor advice to your unique needs
+          and circumstances.</li>
+
+        <li><strong>Health Monitoring:</strong> Regular check-ups with a healthcare provider allow for ongoing
+          monitoring of your weight and health. This can help identify any changes or health risks early on.</li>
+
+        <li><strong>Addressing Underlying Issues:</strong> If your BMI suggests potential health concerns, healthcare
+          professionals can conduct further evaluations to address underlying issues and develop appropriate treatment
+          plans.</li>
+      </ul>
+
+      <p>Whether you have a high or low BMI, consulting a healthcare professional can provide you with the guidance and
+        support needed to make informed decisions about your health and well-being. They can help you navigate the
+        complexities of weight management and overall health.</p>
+
+    </app-conent-card>
+  </div>
+</div>
+
+<ng-template #bmi_chart>
+
+
+  <div class="bmi-chart" *ngIf="bmiResult" #char>
+    <!-- BMI = {{bmiResult.bmi}}
+    {{bmiResult.category}} -->
+    <div class="part obese-class-3">40</div>
+    <div class="part obese-class-2">35</div>
+    <div class="part obese-class-1">30</div>
+    <div class="part overweight">25</div>
+    <div class="part normal">18.5</div>
+    <div class="part mild-thinness">17</div>
+    <div class="part moderate-thinness">16</div>
+
+    <div class="label underweight">underweight</div>
+    <div class="label normal">normal</div>
+    <div class="label overweight">overweight</div>
+    <div class="label obesity">obesity</div>
+    <div class="score f-col j-center a-center {{bmiResult.status}}"
+      [ngStyle]="{'left':'max(min(100% , '+(bmiResult.bmi - 11) / 0.34 +'%),0px)'}">
+      <span>
+        {{bmiResult.bmi}}
+      </span>
+      <img src="assets/images/arrow.svg" width="24" height="24" alt="your score indicator">
+    </div>
+
+
+  </div>
+
+</ng-template>

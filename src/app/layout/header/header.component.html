@@ -13,18 +13,21 @@
 
     <div class="menu" [class.menu-opened]="isMenuOpened" >
         <div class="content f-col j-between" (click)="$event.stopPropagation()">
-            <nav>
+            <nav  aria-label="Navigate to Main Pages">
                 <ul>
                     <li class="w-100p" *ngFor="let route of menuRouts; let index = index"
                         >
                         <a class="w-100p f-row a-center" [routerLink]="route.path" [routerLinkActive]="'selected'" (click)="backToMainMode()">
-                            <img class="link-icon" [src]="route.icon" width="24" height="24" [alt]="route.alt" />
+                            <img class="link-icon" [src]="route.icon" [width]="route.width ?? 24" height="24" [alt]="route.alt" />
                             <span> {{ route.label }}</span></a>
                     </li>
                 </ul>
             </nav>
-            <div class="rights">
-            <span>© 2023-2023 Convert Case Tools Ltd. All Rights Reserved.</span>    
+            <div>
+                <div class="br"></div>
+                <div class="rights">
+                    <span>© 2023-2023 Convert Case Tools Ltd. All Rights Reserved.</span>    
+                </div>
             </div>
         </div>
     </div>
