@@ -1,15 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, HostListener, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { LinksViewComponent } from 'src/app/UI/links-view/links-view.component';
 import { webMinWidth } from 'src/app/utils/general';
+import { WebTabsComponent } from './web-tabs/web-tabs.component';
+import { MobileTabsComponent } from './mobile-tabs/mobile-tabs.component';
 
 @Component({
   selector: 'app-tabs-view[pages][mainPath]',
   templateUrl: './tabs-view.component.html',
   styleUrls: ['./tabs-view.component.scss'],
   standalone: true,
-  imports: [CommonModule, RouterModule]
+  imports: [CommonModule, RouterModule,WebTabsComponent,MobileTabsComponent]
 })
 export class TabsViewComponent implements OnInit {
 
@@ -26,7 +27,9 @@ export class TabsViewComponent implements OnInit {
     }
   }
   titlesRef: { width: number, left: number }[] = [];
-  @Input('mainPath') mainPath = ''
+  @Input('mainPath') mainPath = '';
+  @Input({required:true}) tabsTitle = ''
+
   @Input('selectedTypeIndex') selectedTypeIndex = 0;
  
   @Input('pages') pages!: {
@@ -56,22 +59,6 @@ export class TabsViewComponent implements OnInit {
     }
   }
 
-  showLinksModal() {
-    this.isMobileModalVisible = true;
-    const bodyElement = document.getElementById('body');
-    if (bodyElement) {
-      bodyElement.style.overflow = 'hidden';
-    }
-  }
 
-  @HostListener('document:click')
-  hideLinksModal() {
-    this.openedMenu = -1;
-    this.isMobileModalVisible = false;
-    const bodyElement = document.getElementById('body');
-    if (bodyElement) {
-      bodyElement.style.overflow = 'hidden auto';
-    }
-  }
 
 }

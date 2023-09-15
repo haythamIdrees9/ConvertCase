@@ -13,6 +13,10 @@
   align-items: center;
   max-width: 850px;
   min-height: 350px !important;
+  margin-top: 0;
+  @include mobileFirst('xmd'){
+    margin-top: 4rem;
+  }
   .result {
     font-size: 1.25rem;
   }

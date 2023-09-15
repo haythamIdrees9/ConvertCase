@@ -139,7 +139,9 @@
                         text-decoration: none;
                         color: black;
                         font-size: 1rem;
-
+                        color: $primary-color;
+                        font-size: 1rem;
+                        font-weight: bold;
                         @include activeHover {
                             background-color: rgb(231, 231, 231);
                         }

@@ -1,0 +1,31 @@
+<div class="links-mobile f-row j-end w-100p">
+    <button class="links-list f-row a-center btn-resting c-pointer" aria-label="Text Tools Pages"
+        (click)="showLinksModal();$event.stopPropagation()">{{tabsTitle}}<img class="green-icon" width="32"
+            height="32" src="assets/images/modal.svg" alt=""></button>
+
+    <div class="modal" [class.d-none]="!isMobileModalVisible">
+        <div class="shadow" [ngStyle]="{'min-height': list_container.offsetHeight +'px'}">
+            <button class="btn-resting" aria-label="Close modal" (click)="hideLinksModal()">
+                <img src="assets/images/cancel.svg" width="36" height="36" alt="close modal">
+            </button>
+        </div>
+        <nav class="list-container" #list_container>
+            <div class="main-title f-row a-center j-center">{{tabsTitle}} </div>
+            <nav class="items-container">
+                <ul class="item-container">
+                    <li *ngFor="let item of pages; let index = index" 
+                        (mouseenter)="hoverIndexMenu = index;"
+                        (mouseleave)="hoverIndexMenu = selectedTypeIndex;">
+                        <button class="f-row a-center btn-resting w-100p" #title
+                            >
+                            <a replaceUrl class="title f-row a-center" [routerLink]="['',mainPath,item.path]"
+                                [routerLinkActive]="['active']">
+                                <img [src]="item.iconSrc" width="18" height="18" alt="">
+                                {{item.title}}</a>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </nav>
+    </div>
+</div>

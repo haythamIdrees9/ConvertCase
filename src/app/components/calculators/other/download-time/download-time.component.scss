@@ -12,7 +12,10 @@
 .calcolator-container {
   max-width: 950px;
   min-height: 300px !important;
-
+  margin-top: 0;
+  @include mobileFirst('xmd'){
+    margin-top: 4rem;
+  }
   .result {
     font-size: 1rem;
     margin-top: 2rem;

@@ -1,19 +1,16 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, HostListener, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { Component, ElementRef, HostListener, Input, QueryList, ViewChildren } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { webMinWidth } from 'src/app/utils/general';
-import { MobileTabComponent } from './mobile-tab/mobile-tab.component';
-import { WebTabComponent } from './web-tab/web-tab.component';
 
 @Component({
-  selector: 'app-tab-view[pages][mainPath]',
-  templateUrl: './tab-view.component.html',
-  styleUrls: ['./tab-view.component.scss'],
-  standalone: true,
-  imports: [CommonModule, RouterModule,MobileTabComponent,WebTabComponent]
-})
-export class TabViewComponent implements OnInit {
+  selector: 'app-mobile-tab',
+  templateUrl: './mobile-tab.component.html',
+  styleUrls: ['./mobile-tab.component.scss'],
+  standalone:true,
+  imports:[CommonModule,RouterModule]
 
+})
+export class MobileTabComponent {
   @ViewChildren('title') set titleVal(titles: QueryList<ElementRef>) {
     if (titles) {
       let left = 0;
@@ -27,31 +24,19 @@ export class TabViewComponent implements OnInit {
     }
   }
   titlesRef: { width: number, left: number }[] = [];
-  @Input('mainPath') mainPath = ''
+  @Input({required:true}) mainPath = ''
   @Input({required:true}) tabsTitle = ''
-  @Input('selectedTypeIndex') selectedTypeIndex = 0;
- 
-  @Input('pages') pages!: {
+
+  @Input({required:true}) selectedTypeIndex = 0;
+  @Input({required:true,alias:'pages'})  pages!: {
     title: string;
     path: string;
     iconSrc: string;
   }[];
-
-  openedMenu: number = -1;
   hoverIndexMenu: number = 0;
-  isWebView = false;
   isMobileModalVisible = false;
 
-  ngOnInit() {
-    this.onResize();
-  }
 
-  @HostListener('window:resize', ['$event'])
-  onResize() {
-    if (window) {
-      this.isWebView = window.innerWidth >= webMinWidth;
-    }
-  }
 
   showLinksModal() {
     this.isMobileModalVisible = true;
@@ -63,12 +48,10 @@ export class TabViewComponent implements OnInit {
 
   @HostListener('document:click')
   hideLinksModal() {
-    this.openedMenu = -1;
     this.isMobileModalVisible = false;
     const bodyElement = document.getElementById('body');
     if (bodyElement) {
       bodyElement.style.overflow = 'hidden auto';
     }
   }
-
 }

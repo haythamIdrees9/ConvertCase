@@ -1,0 +1,21 @@
+<div class="links-web w-100p" >
+    <div class="active-item"
+        [ngStyle]="{
+        'left':(selectedTypeIndex >= 0 && titlesRef.length > selectedTypeIndex)?titlesRef[selectedTypeIndex].left +'px':'0px',
+        'width':(selectedTypeIndex >= 0 && titlesRef.length > selectedTypeIndex)?titlesRef[selectedTypeIndex].width +'px':'100px'}">
+    </div>
+    <nav >
+        <ul class="f-row">
+            <li class="parent" *ngFor="let item of pages; let index = index" [class.opened]="openedMenu === index"
+                (mouseenter)="hoverIndexMenu = index;" (mouseleave)="hoverIndexMenu = selectedTypeIndex;">
+                <button class="title f-row a-center btn-resting w-100p" #title (click)="openedMenu = index">
+                    <a replaceUrl class="f-row a-center" [routerLink]="['',mainPath,item.path]"
+                        [routerLinkActive]="['active']">
+                        <img [src]="item.iconSrc" width="18" height="18" alt="">
+                        {{item.title}}</a>
+                </button>
+
+            </li>
+        </ul>
+    </nav>
+</div>
