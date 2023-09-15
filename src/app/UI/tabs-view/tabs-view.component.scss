@@ -127,13 +127,13 @@
             @include activeHover {
                 .type-container {
                     display: unset;
-                    animation: show-up-list 0.5s forwards;
+                    animation: show-up-list 0.35s forwards;
                 }
             }
 
             @keyframes show-up-list {
                 from {
-                    opacity: 0;
+                    opacity: 0.4;
                 }
 
                 to {
