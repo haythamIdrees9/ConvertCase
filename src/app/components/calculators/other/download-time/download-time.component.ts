@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MetaService } from '../../../services/meta.service';
 
 
@@ -44,9 +43,9 @@ export class DownloadTimeComponent implements OnInit {
   }
 
   private handleSeo() {
-    // this.metaService.setTitle('Discover Your Age: User Age Calculator');
-    // this.metaService.setDescription(`Calculate your age instantly with our user-friendly Age Calculator tool. Simply enter your birthdate, and we'll provide you with your current age in years, months, and days. It's quick, accurate, and free. Try it now!`);
-    // this.metaService.setKeywords("age calculator, calculate age, user age calculation, birthdate calculator, age in years and months, how old am I, accurate age calculation, online age calculator, age in days and months, birthday age tool");
+    this.metaService.setTitle('Download & Upload Time Calculator: Estimate File Transfer Speed');
+    this.metaService.setDescription(`Estimate download and upload times with our calculator. Input file size, data type, bandwidth, and more. Optimize your file transfers easily.`);
+    this.metaService.setKeywords("download time, upload time, file transfer speed, file size calculator, bandwidth calculator, data transfer estimation, optimize file transfers, internet speed calculator");
   }
 
   calculateDownloadUploadTime(): any {
