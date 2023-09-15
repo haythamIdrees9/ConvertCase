@@ -1,3 +1,5 @@
+@import '/src/styles/variables';
+
 .main-container{
     width: min(600px,80vw);
     h1{
@@ -13,7 +15,7 @@
         a{
             font-size: 1.25rem;
             text-decoration: none;
-            color: #144D30;
+            color: $primary-color;
         }
     }
 }

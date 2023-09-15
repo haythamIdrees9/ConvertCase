@@ -1,0 +1,386 @@
+<div class="parent">
+  <div class="x-container">
+      <h1>Calorie Needs Calculator</h1>
+      <div class="container " #content>
+        <div class="calcolator-container w-100p">
+          <div class="form-container">
+            <div class="options f-row">
+              <button class="btn-theme" aria-label="Switch to US units" [class.selected]="isUSType"
+                (click)="setUnitType(true)">US units</button>
+              <button class="btn-theme" aria-label="Switch to Metric units" [class.selected]="!isUSType"
+                (click)="setUnitType(false)">Metric units</button>
+            </div>
+            <form class="f-col" [formGroup]="userForm" (ngSubmit)="calculateCalories()" *ngIf="!isUSType">
+              <app-dropdown [options]="activity" [selected]="selectedActivity" [placeholder]="'your Activity Level...'"
+              [inputAriaLabelledBy]="'Select Activity level'" [listAriaLabelledBy]="'Activity list'" [label]="'Activity:'"
+              [componentId]="'user-activity'" (selectedOption)="selectedActivity = $event.key"></app-dropdown>
+            <br>
+              <label style="display: none;">Gender:
+                <select id="gender" [(ngModel)]="selectedGender" name="gender" formControlName="gender"
+                  class="form-control">
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+              </label>
+              <app-dropdown [options]="[{key:'male',label:'Male'},{key:'female',label:'Female'}]"
+                [selected]="selectedGender" [placeholder]="'Selected your Gender'"
+                [inputAriaLabelledBy]="'Select Your gender'" [listAriaLabelledBy]="'Gender list'" [label]="'Gender:'"
+                [componentId]="'user-gender'" (selectedOption)="selectedGender = $event.key"></app-dropdown>
+              <br>
+              <label>Age (years):
+                <input type="number" id="age" [(ngModel)]="age" name="age" formControlName="age" class="form-control">
+              </label>
+              <label class="f-col">
+                <div class="label">Height (in centimetre):</div>
+                <input type="number" [(ngModel)]="avgHeight" min="1" formControlName="height"
+                  placeholder="your Height..." aria-label="Your Height value">
+              </label>
+              <label class="f-col">
+                <div class="label">Weight (in kilograms):</div>
+                <input type="number" [(ngModel)]="avgWeight" min="1" formControlName="weight"
+                  placeholder="your Weight..." aria-label="Weight value value">
+              </label>
+
+              <button type="submit" aria-label="Calcolate calorie" class="submit-button"
+                [disabled]="!userForm.valid">Calculate</button>
+            </form>
+
+            <form class="f-col" [formGroup]="userForm" (ngSubmit)="calculateCalories_US()" *ngIf="isUSType">
+              <app-dropdown [options]="activity" [selected]="selectedActivity" [placeholder]="'your Activity Level...'"
+              [inputAriaLabelledBy]="'Select Activity level'" [listAriaLabelledBy]="'Activity list'" [label]="'Activity:'"
+              [componentId]="'user-activity'" (selectedOption)="selectedActivity = $event.key"></app-dropdown>
+            <br>
+              <label style="display: none;">Gender:
+                <select id="gender" [(ngModel)]="selectedGender" name="gender" formControlName="gender"
+                  class="form-control">
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+              </label>
+              <app-dropdown [options]="[{key:'male',label:'Male'},{key:'female',label:'Female'}]"
+                [selected]="selectedGender" [placeholder]="'Selected your Gender'"
+                [inputAriaLabelledBy]="'Select Your gender'" [listAriaLabelledBy]="'Gender list'" [label]="'Gender:'"
+                [componentId]="'user-gender'"
+                (selectedOption)="selectedGender = selectedGender = $event.key"></app-dropdown>
+              <br> <label>Age (years):
+                <input type="number" id="age" [(ngModel)]="age" name="age" formControlName="age" class="form-control">
+              </label>
+              <div class="us-height f-row">
+                <label class="f-col">
+                  <div class="label">Feet:</div>
+                  <input type="number" [(ngModel)]="avgHeightFeet" min="1" formControlName="heightFeet"
+                    placeholder="your Feet Height..." aria-label="Your Height value">
+                </label>
+                <label class="f-col">
+                  <div class="label">Inches:</div>
+                  <input type="number" [(ngModel)]="avgHeightInch" min="0" formControlName="heightInch"
+                    placeholder="your Inches Height..." aria-label="Your Height value">
+                </label>
+              </div>
+              <label class="f-col">
+                <div class="label">Weight (in Pounds):</div>
+                <input type="number" [(ngModel)]="avgWeightPound" min="1" formControlName="weightPound"
+                  placeholder="your Weight..." aria-label="Weight value value">
+              </label>
+
+              <button type="submit" class="submit-button" aria-label="Calcolate calorie needed per day"
+                [disabled]="!userForm.valid">Calculate</button>
+            </form>
+
+          </div>
+          <div *ngIf="calorieResults.length">
+              <section id="calorie-results" class="results" aria-label="Calorie Results">
+                <h2>Result</h2>
+                <p>
+                  The results show a number of daily calorie estimates that can be used as a guideline for how many calories to consume each day to maintain, lose, or gain weight at a chosen rate.
+                </p>
+                
+                <table class="calorie-table">
+                  <thead>
+                    <tr>
+                      <th>Scenario</th>
+                      <th>Calories/Day</th>
+                      <th>Percentage</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let result of calorieResults">
+                      <td>{{ result.label }}</td>
+                      <td>{{ result.calories | number }}</td>
+                      <td>{{ result.percentage }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+            
+              </section>
+
+          </div>
+        </div>
+
+      </div>
+
+  </div>
+  <div class="container info">
+    <app-conent-card>
+      <section id="introduction-to-calorie-calculation" aria-label="Introduction to Calorie Calculation">
+        <h2>Introduction to Calorie Calculation</h2>
+        <p>
+          In this section, we introduce the concept of calorie calculation and its importance in maintaining a healthy lifestyle. We explain that calorie calculation is a fundamental tool that helps individuals understand their daily energy needs.
+        </p>
+        <p>
+          We discuss how calorie calculation plays a crucial role in weight management, whether someone wants to lose, gain, or maintain their weight. It sets the foundation for making informed decisions about diet and exercise.
+        </p>
+        <p>
+          Mention that this calculator considers factors such as age, gender, activity level, height, and weight to estimate daily calorie requirements. It's a personalized approach to health and fitness.
+        </p>
+        <p>
+          Highlight that the Calorie Calculator aims to simplify the process of determining daily caloric needs, making it accessible and easy to use for everyone.
+        </p>
+      </section>
+    </app-conent-card>
+    
+    <app-conent-card>
+      <section id="why-calorie-calculation-matters" aria-label="Why Calorie Calculation Matters">
+        <h2>Why Calorie Calculation Matters</h2>
+        <p>
+          This section delves into the significance of calorie calculation in achieving health and fitness goals. We emphasize the following points:
+        </p>
+        <ul>
+          <li><strong>Weight Management:</strong> Explain that understanding daily calorie needs is essential for those aiming to lose, gain, or maintain weight. Calorie calculation provides a roadmap for achieving these goals.</li>
+          <li><strong>Health and Nutrition:</strong> Discuss how calorie calculation is a cornerstone of healthy nutrition. It helps individuals make informed choices about portion sizes, food choices, and macronutrient balance.</li>
+          <li><strong>Energy Balance:</strong> Explain the concept of energy balance, where calories consumed should match calories expended. Calorie calculation helps individuals achieve this balance.</li>
+          <li><strong>Fitness Optimization:</strong> Mention that athletes and fitness enthusiasts rely on calorie calculation to tailor their nutrition and exercise routines for peak performance.</li>
+          <li><strong>Lifestyle Adaptation:</strong> Highlight that calorie calculation can adapt to changing lifestyles, such as transitioning from a sedentary job to a more active one.</li>
+        </ul>
+        <p>
+          These descriptions provide a solid introduction to the importance of calorie calculation and set the stage for further exploration of this topic on your page.
+        </p>
+      </section>
+    </app-conent-card>
+    <app-conent-card>
+      <section id="factors-affecting-daily-calorie-needs" aria-label="Factors Affecting Daily Calorie Needs">
+        <h2>Factors Affecting Daily Calorie Needs</h2>
+        <p>
+          Your daily calorie needs aren't a fixed number; they can vary significantly between individuals. Several factors influence your daily calorie requirements, and understanding these factors is essential for making informed choices about your diet and nutrition.
+        </p>
+        <p>
+          Some of the primary factors affecting daily calorie needs include age, gender, activity level, height, and weight. Let's take a closer look at each of these factors:
+        </p>
+        <ul>
+          <li><strong>Age:</strong> As you get older, your daily calorie needs may change. This is partly due to changes in metabolism and activity levels.</li>
+          <li><strong>Gender:</strong> Gender plays a role, with men typically having higher calorie needs than women. These differences can be attributed to variations in muscle mass and body composition.</li>
+          <li><strong>Activity Level:</strong> Your daily physical activity significantly affects calorie requirements. Those with more active lifestyles typically need more calories to support their energy expenditure.</li>
+          <li><strong>Height:</strong> Taller individuals may require more calories to maintain their body functions and activity levels compared to shorter individuals.</li>
+          <li><strong>Weight:</strong> Your current weight is a factor as well. Heavier individuals may have higher calorie needs to support their body mass.</li>
+        </ul>
+        <p>
+          These are some of the fundamental factors that come into play when determining your daily calorie requirements. In the following sections, we'll explore how to calculate these needs accurately and make the right choices for your health and well-being.
+        </p>
+      </section>
+    </app-conent-card>
+    <app-conent-card>
+      <section id="the-science-behind-calorie-calculation" aria-label="The Science Behind Calorie Calculation">
+        <h2>The Science Behind Calorie Calculation</h2>
+        <p>
+          Calorie calculation is grounded in scientific principles that help us understand how our bodies use energy. In this section, we'll delve into the science behind calorie calculation and explore the key concepts involved.
+        </p>
+        <p>
+          We'll discuss concepts such as Basal Metabolic Rate (BMR), which represents the number of calories your body needs at rest, and Total Daily Energy Expenditure (TDEE), which accounts for your daily activity level.
+        </p>
+        <p>
+          We'll also explore the energy balance equation, which forms the basis of calorie calculation. It's a simple but powerful concept that helps individuals achieve their weight and fitness goals.
+        </p>
+        <p>
+          Understanding the science behind calorie calculation empowers you to make informed decisions about your diet and lifestyle. It's the foundation of effective weight management and optimal health.
+        </p>
+      </section>
+    </app-conent-card>
+    <app-conent-card>
+      <section id="calculating-bmr" aria-label="Calculating Basal Metabolic Rate (BMR)">
+        <h2>Calculating Basal Metabolic Rate (BMR)</h2>
+        <p>
+          Basal Metabolic Rate (BMR) represents the number of calories your body needs to maintain basic functions while at rest. It's a critical component of calorie calculation, as it forms the foundation for estimating your daily energy needs.
+        </p>
+        <p>
+          In this section, we'll delve into the calculations behind BMR. We'll explore the Mifflin-St Jeor Equation and Harris-Benedict Equation, which are commonly used formulas to estimate BMR based on factors like age, gender, height, and weight.
+        </p>
+        <p>
+          Understanding how to calculate your BMR is the first step in tailoring your nutrition plan to your unique needs. It provides valuable insights into your body's baseline energy requirements.
+        </p>
+        <p>
+          We'll also discuss how to interpret your BMR and its significance in the context of your overall calorie needs. This knowledge empowers you to make informed choices about your diet and health.
+        </p>
+      </section>
+    </app-conent-card>
+    <app-conent-card>
+      <section id="determining-activity-factors" aria-label="Determining Activity Factors">
+        <h2>Determining Activity Factors</h2>
+        <p>
+          Your daily activity level plays a crucial role in determining your total daily calorie needs. Activity factors represent the multiplier applied to your Basal Metabolic Rate (BMR) to account for physical activity.
+        </p>
+        <p>
+          In this section, we'll explore different activity levels and how to determine which one best represents your daily life. We'll discuss sedentary, lightly active, moderately active, very active, and super active lifestyles, each with its associated activity factor.
+        </p>
+        <p>
+          Determining your activity factor is a key step in accurately estimating your daily calorie requirements. It ensures that your energy intake aligns with your activity level, helping you maintain, lose, or gain weight as desired.
+        </p>
+        <p>
+          We'll provide guidance on how to choose the right activity factor and how it influences your calorie goals. Understanding this aspect of calorie calculation empowers you to tailor your nutrition plan to your lifestyle.
+        </p>
+      </section>
+    </app-conent-card>
+    <app-conent-card>
+      <section id="setting-weight-goals" aria-label="Setting Weight Goals">
+        <h2>Setting Weight Goals</h2>
+        <p>
+          Achieving your desired weight and body composition involves setting clear and realistic goals. In this section, we'll discuss the importance of defining your weight goals and how they relate to calorie calculation.
+        </p>
+        <p>
+          We'll explore scenarios for maintaining, losing, or gaining weight and how your daily calorie needs align with these goals. Understanding the calorie deficit for weight loss or calorie surplus for weight gain is crucial.
+        </p>
+        <p>
+          We'll provide practical tips on how to set achievable weight goals based on your individual circumstances, preferences, and timelines. Effective goal setting is a key step in your journey toward a healthier lifestyle.
+        </p>
+        <p>
+          We'll also discuss the role of consistency, monitoring progress, and adjusting your plan as needed. These strategies are essential for staying on track and reaching your weight goals.
+        </p>
+      </section>
+    </app-conent-card>
+    <app-conent-card>
+      <section id="practical-applications-of-calorie-calculation" aria-label="Practical Applications of Calorie Calculation">
+        <h2>Practical Applications of Calorie Calculation</h2>
+        <p>
+          Calorie calculation isn't just a theoretical concept; it has practical applications in your daily life. In this section, we'll explore how to apply calorie calculation principles to make informed choices about your diet and fitness.
+        </p>
+        <p>
+          We'll discuss meal planning and portion control, highlighting how calorie knowledge empowers you to create balanced and nutritious meals that align with your goals.
+        </p>
+        <p>
+          We'll also delve into the role of exercise and physical activity in calorie management. You'll learn how to tailor your workout routines to support your calorie needs, whether you're aiming for weight loss, maintenance, or muscle gain.
+        </p>
+        <p>
+          Additionally, we'll touch on the importance of tracking your food intake and staying mindful of your daily calorie consumption. These practical applications ensure that you stay in control of your nutrition and health.
+        </p>
+        <p>
+          By the end of this section, you'll have a clear understanding of how calorie calculation translates into real-life choices that contribute to your well-being and fitness success.
+        </p>
+      </section>
+    </app-conent-card>
+    <app-conent-card>
+      <section id="balancing-diet-and-exercise" aria-label="Balancing Diet and Exercise">
+        <h2>Balancing Diet and Exercise</h2>
+        <p>
+          Achieving a healthy lifestyle involves a delicate balance between diet and exercise. In this section, we'll explore how to harmonize your nutrition and fitness routines to reach your health and fitness goals effectively.
+        </p>
+        <p>
+          We'll discuss the synergy between calorie calculation and workout planning. You'll learn how to align your calorie intake with your exercise routine, ensuring that your body has the energy it needs to perform optimally.
+        </p>
+        <p>
+          We'll delve into meal timing, pre- and post-workout nutrition, and the role of macronutrients (carbohydrates, proteins, and fats) in supporting your workouts and recovery.
+        </p>
+        <p>
+          Additionally, we'll provide guidance on how to adapt your diet and exercise plan based on your goals, whether it's weight loss, muscle gain, or overall fitness improvement.
+        </p>
+        <p>
+          By the end of this section, you'll have a comprehensive understanding of how to strike the right balance between diet and exercise to maximize your health and fitness outcomes.
+        </p>
+      </section>
+    </app-conent-card>
+    <app-conent-card>
+      <section id="interpreting-calorie-calculation-results" aria-label="Interpreting Calorie Calculation Results">
+        <h2>Interpreting Calorie Calculation Results</h2>
+        <p>
+          Calorie calculation provides you with valuable data, but understanding and interpreting the results is crucial. In this section, we'll guide you through the process of making sense of your calorie calculation outcomes.
+        </p>
+        <p>
+          We'll discuss the significance of calorie surplus and calorie deficit in the context of weight goals. You'll learn how to interpret these numbers and adjust your diet accordingly.
+        </p>
+        <p>
+          We'll explore the concept of maintenance calories and how they relate to maintaining your current weight. Understanding this value is key to preventing unintended weight changes.
+        </p>
+        <p>
+          We'll provide insights into the rate of weight loss or gain based on calorie differentials, helping you set realistic expectations for your journey.
+        </p>
+        <p>
+          By the end of this section, you'll be well-equipped to analyze your calorie calculation results and make informed decisions about your diet, exercise, and overall health.
+        </p>
+      </section>
+    </app-conent-card>
+    <app-conent-card>
+      <section id="maintaining-a-healthy-lifestyle" aria-label="Maintaining a Healthy Lifestyle">
+        <h2>Maintaining a Healthy Lifestyle</h2>
+        <p>
+          A healthy lifestyle isn't just about achieving a specific weight or fitness goal; it's a long-term commitment to well-being. In this section, we'll discuss the habits and practices that contribute to maintaining a healthy and balanced life.
+        </p>
+        <p>
+          We'll explore the importance of consistency in your diet and exercise routines. Consistency is the key to sustaining your progress and preventing setbacks.
+        </p>
+        <p>
+          We'll discuss the role of mindfulness in eating and exercise. Being present and attentive to your choices fosters a positive relationship with food and fitness.
+        </p>
+        <p>
+          We'll also touch on stress management, sleep, and hydration as essential components of a healthy lifestyle. These factors have a direct impact on your overall health and well-being.
+        </p>
+        <p>
+          By the end of this section, you'll have a comprehensive understanding of how to maintain a healthy lifestyle that goes beyond numbers and embraces holistic well-being.
+        </p>
+      </section>
+    </app-conent-card>
+    <app-conent-card>
+      <section id="frequently-asked-questions-faqs" aria-label="Frequently Asked Questions (FAQs)">
+        <h2>Frequently Asked Questions (FAQs)</h2>
+        <p>
+          This section addresses common questions and concerns related to calorie calculation, nutrition, and fitness. We've compiled answers to help you navigate your health and fitness journey effectively.
+        </p>
+        <ul>
+          <li>
+            <strong>Q: How do I calculate my Basal Metabolic Rate (BMR)?</strong><br>
+            A: To calculate your BMR, you can use formulas like the Mifflin-St Jeor Equation or the Harris-Benedict Equation. These equations take into account your age, gender, height, and weight to estimate your BMR.
+          </li>
+          <li>
+            <strong>Q: What is Total Daily Energy Expenditure (TDEE)?</strong><br>
+            A: TDEE represents the total number of calories your body needs in a day, considering your BMR and activity level. It's a crucial factor in determining your daily calorie requirements.
+          </li>
+          <li>
+            <strong>Q: How can I lose weight effectively?</strong><br>
+            A: Effective weight loss involves creating a calorie deficit by consuming fewer calories than you burn. A gradual and sustainable approach, combining a balanced diet with regular exercise, is recommended.
+          </li>
+          <li>
+            <strong>Q: Can calorie calculation help with muscle gain?</strong><br>
+            A: Yes, calorie calculation is useful for muscle gain. It ensures you consume enough calories and protein to support muscle growth while engaging in strength training exercises.
+          </li>
+          <li>
+            <strong>Q: Are there specific diets for calorie calculation?</strong><br>
+            A: Calorie calculation can be applied to various diets, including low-carb, high-protein, vegetarian, and more. The key is to balance your calorie intake with your dietary preferences and goals.
+          </li>
+        </ul>
+        <p>
+          Whether you're new to calorie calculation or looking to refine your approach, these FAQs provide valuable insights and guidance to support your goals. If you have a question that's not covered here, feel free to reach out, and we'll be happy to provide the information you need.
+        </p>
+      </section>
+    </app-conent-card>
+    
+    <app-conent-card>
+      <section id="conclusion" aria-label="Conclusion">
+        <h2>Conclusion</h2>
+        <p>
+          In this comprehensive guide to calorie calculation and its practical applications, you've gained valuable insights into understanding and managing your daily energy needs.
+        </p>
+        <p>
+          We've explored the factors affecting daily calorie requirements, the science behind calorie calculation, and how to apply this knowledge to set and achieve your weight and fitness goals.
+        </p>
+        <p>
+          Remember that calorie calculation is a powerful tool, but it's just one aspect of a holistic approach to health and well-being. Maintaining a balanced diet, staying active, managing stress, and getting quality sleep are all integral components of a healthy lifestyle.
+        </p>
+        <p>
+          Your journey toward optimal health and fitness is unique to you. Use the knowledge you've gained here as a foundation for making informed choices that align with your goals.
+        </p>
+        <p>
+          We encourage you to stay committed to your health, seek support and guidance when needed, and continue learning and adapting as you progress on your path to a healthier, happier life.
+        </p>
+      </section>
+    </app-conent-card>
+                                            
+
+  </div>
+</div>

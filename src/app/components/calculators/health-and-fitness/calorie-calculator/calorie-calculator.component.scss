@@ -1,0 +1,27 @@
+@import '/src/styles/responsive';
+
+.container.info {
+  padding-top: 0;
+}
+
+.calcolator-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 850px;
+  margin-top: 4rem;
+  .results {
+    width: min(374px,90vw);
+  }
+
+
+  @include mobileFirst('xmd') {
+    flex-direction: row;
+    align-items: flex-start;
+
+    .result {
+      margin-top: 0;
+    }
+  }
+}

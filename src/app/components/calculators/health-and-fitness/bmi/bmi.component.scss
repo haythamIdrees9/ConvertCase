@@ -1,0 +1,157 @@
+@import '/src/styles/variables';
+@import '/src/styles/mixins';
+@import '/src/styles/responsive';
+
+.calcolator-container {
+  .result {
+    margin-top: 4rem;
+    min-height: 410px;
+
+    .score {
+      font-size: 2rem;
+    }
+
+    .bmi-chart {
+      display: none;
+    }
+  }
+
+  @include mobileFirst('md') {
+    .result .bmi-chart {
+      display: unset;
+    }
+
+    .score {
+      font-size: 3rem;
+    }
+  }
+
+  .result {
+    .score {
+      &.normal-weight {
+
+        span {
+          color: #008137;
+        }
+
+        img {
+          @include filter(brightness(0) saturate(100%) invert(35%) sepia(41%) saturate(1374%) hue-rotate(103deg) brightness(92%) contrast(101%))
+        }
+      }
+
+      &.underweight, &.obese-class-2, &.moderate-thinness, &.obese-class-1, &.mild-thinness, &.overweight {
+        span {
+          color: #b92525;
+        }
+
+        img {
+          @include filter(brightness(0) saturate(100%) invert(23%) sepia(54%) saturate(3149%) hue-rotate(342deg) brightness(84%) contrast(99%))
+        }
+      }
+
+      // &.moderate-thinness,&.obese-class-1{
+      //   color: #d38c8c;
+      //   img{
+      //     @include filter(invert(61%) sepia(17%) saturate(937%) hue-rotate(314deg) brightness(104%) contrast(73%));
+      //   }
+      // }
+
+      // &.mild-thinness{
+      //   color: #ffe600;
+      //   img{
+      //     @include filter(invert(76%) sepia(93%) saturate(1185%) hue-rotate(2deg) brightness(106%) contrast(102%));
+      //   }
+      // }
+    }
+
+    .bmi-chart {
+      width: 500px;
+      height: 40px;
+      background: linear-gradient(to right, #b92525 14.75%, #d38c8c 14.75%, #d38c8c 17.65%, #ffe600 17.65%, #ffe600 22%,
+          #008137 22%, #008137 41.25%, #ffe600 41.25%, #ffe600 55.75%, #d38c8c 55.75%, #d38c8c 70.5%, #b92525 70.5%, #b92525 85.25%, #8b0606 85.25%, #8b0606 100%);
+      position: relative;
+      border-radius: 0.25rem;
+
+      .score {
+        position: absolute;
+        bottom: 110%;
+        font-weight: bold;
+        transform: translateX(-50%);
+        transition: all 0.5s;
+        font-size: 20px;
+
+        &.obese-class-3 {
+          color: #8b0606;
+
+          img {
+            @include filter(invert(5%) sepia(96%) saturate(7024%) hue-rotate(3deg) brightness(97%) contrast(96%))
+          }
+        }
+
+      }
+
+      .label {
+        position: absolute;
+        bottom: -30px;
+        transform: translate(-50%, -50%);
+        color: $primary-color;
+        text-shadow: 0 0 2px rgb(189, 188, 188), 0 0 5px $theme-color;
+        font-weight: bold;
+
+        &.underweight {
+          left: 11%;
+        }
+
+        &.normal {
+          left: 33%;
+        }
+
+        &.overweight {
+          left: 55%;
+        }
+
+        &.obesity {
+          left: 80%;
+        }
+      }
+
+      .part {
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        text-shadow: 0 0 2px rgb(189, 188, 188), 0 0 5px $theme-color;
+        font-size: 14px;
+        font-weight: bold;
+
+        &.obese-class-3 {
+          left: 85.3%;
+        }
+
+        &.obese-class-2 {
+          left: 70.4%;
+        }
+
+        &.obese-class-1 {
+          left: 55.75%;
+        }
+
+        &.overweight {
+          left: 41.25%;
+        }
+
+        &.normal {
+          left: 22.5%;
+
+        }
+
+        &.mild-thinness {
+          left: 17.65%;
+        }
+
+        &.moderate-thinness {
+          left: 14.25%;
+        }
+      }
+    }
+  }
+}

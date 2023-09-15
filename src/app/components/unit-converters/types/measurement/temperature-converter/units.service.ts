@@ -47,8 +47,6 @@ popularUnits = Object.freeze([
 
 
   constructor() {    
-      //  console.log('units',this.units.map(item => ({...item,abbreviation:this.test.find(i => i.key === item.key)?.abbreviation})));
-      //  console.log('units',this.units.map(item => (item.key)));   
   }
 
 

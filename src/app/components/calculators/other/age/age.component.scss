@@ -1,0 +1,57 @@
+@import '/src/styles/responsive';
+
+.container.info {
+  padding-top: 0;
+}
+.parent .x-container{
+  min-height: min(100vh - 15rem, 450px) !important;
+}
+.calcolator-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 850px;
+  min-height: 350px !important;
+  .result {
+    font-size: 1.25rem;
+  }
+
+  .date-container {
+    flex-direction: column;
+
+    .label {
+      margin-bottom: 1.5rem;
+      align-self: flex-start;
+    }
+  }
+
+  @include mobileFirst('md') {
+    .date-container {
+      flex-direction: row;
+
+      .label {
+        margin-bottom: 0;
+        align-self: unset;
+      }
+    }
+  }
+
+  @include mobileFirst('xmd') {
+    flex-direction: row;
+    align-items: flex-start;
+
+    .result {
+      margin-top: 0;
+    }
+  }
+
+  .label {
+    margin-right: 2rem;
+    margin-top: 1rem;
+  }
+
+  .mb-24px {
+    margin-bottom: 1.5rem;
+  }
+}

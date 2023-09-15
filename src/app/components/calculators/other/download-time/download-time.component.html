@@ -1,0 +1,223 @@
+<div class="parent">
+  <div class="x-container">
+    <h1>Download/Upload Time Calculator</h1>
+    <div class="container " #content>
+      <div class="calcolator-container w-100p">
+        <div class="form-container">
+          <div class="date-container mb-24px f-row a-center">
+            <strong class="label">File Size :</strong>
+            <label class="f-col">
+              File Size:
+              <input type="number" [(ngModel)]="fileSize" (ngModelChange)="calculateDownloadUploadTime()" placeholder="File Size..." aria-label="File Size">
+            </label>
+            <div class="size-type">
+              <app-dropdown [options]="dateTypes" [selected]="selectedDataType" [placeholder]="'Data Type'"
+                [inputAriaLabelledBy]="'Select Data Type'" [listAriaLabelledBy]="'Data Type'" [label]="'Data Type:'"
+                [componentId]="'data-type'" (selectedOption)="selectedDataType = $event.key;calculateDownloadUploadTime()"></app-dropdown>
+            </div>
+          </div>
+          <div class="br"></div>
+          <div class="date-container f-row a-center">
+            <strong class="label">Bandwidth:</strong>
+            <label class="f-col">
+              Bandwidth:
+              <input type="text" [(ngModel)]="bandwidth"  (ngModelChange)="calculateDownloadUploadTime()" placeholder="band width..." aria-label="bandwidth">
+            </label>
+            <div class="size-type">
+              <app-dropdown [options]="bandwidthTypes" [selected]="selectedBandWidthType"
+                [placeholder]="'Bandwidth Type'" [inputAriaLabelledBy]="'Bandwidth Type'"
+                [listAriaLabelledBy]="'Bandwidth Type'" [label]="'Bandwidth Type:'" [componentId]="'bandwidth-type'"
+                (selectedOption)="selectedBandWidthType = $event.key;calculateDownloadUploadTime()"></app-dropdown>
+            </div>
+          </div>
+        </div>
+        <div class="result">
+          <strong>Approx. Time (Download/Upload):</strong>  <br> 
+          <div>
+            Approximately  {{timeNeeded.hours > 0?timeNeeded.hours + 'hours ':''}}{{timeNeeded.minutes > 0?timeNeeded.minutes + 'minutes ':''}} {{timeNeeded.seconds > 0?timeNeeded.seconds + 'seconds ':''}}
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="container info">
+    <app-conent-card>
+      <section id="introduction-download-upload-time" aria-label="Introduction to Download/Upload Time Calculation">
+        <h2>Introduction to Download/Upload Time Calculation</h2>
+        <p>
+          Welcome to our Download/Upload Time Calculator! In this digital age, knowing how long it will take to download or upload
+          files is crucial for managing your time effectively. This tool allows you to estimate the time required based on
+          your file size and internet speed. Whether you're sharing files or downloading large documents, our calculator
+          simplifies the process.
+        </p>
+        <p>
+          By entering your file size and selecting the data type (byte, kilobyte, megabyte, gigabyte, terabyte) along with your
+          internet speed and bandwidth type, you can get quick and accurate estimates of download and upload times. Say goodbye
+          to uncertainty and hello to efficient file management.
+        </p>
+        <p>
+          Whether you're a professional handling large datasets or simply sharing media files with friends, our Download/Upload
+          Time Calculator is your go-to tool for planning your online activities. Let's dive in and learn how to make the most
+          of it.
+        </p>
+      </section>
+    </app-conent-card>
+    <app-conent-card>
+      <section id="understanding-file-size-data-types" aria-label="Understanding File Size and Data Types">
+        <h2>Understanding File Size and Data Types</h2>
+        <p>
+          Before we calculate download or upload times, it's essential to grasp the concept of file size and data types. File size
+          determines how much data needs to be transmitted, and data types help us measure it accurately. Different units, such
+          as bytes, kilobytes, megabytes, gigabytes, and terabytes, represent varying amounts of data.
+        </p>
+        <p>
+          - <strong>Byte (B):</strong> The smallest unit, typically used for small files.
+        </p>
+        <p>
+          - <strong>Kilobyte (KB):</strong> Equivalent to 1,024 bytes, suitable for small documents and images.
+        </p>
+        <p>
+          - <strong>Megabyte (MB):</strong> Approximately 1,024 KB or 1,048,576 bytes, common for media files.
+        </p>
+        <p>
+          - <strong>Gigabyte (GB):</strong> Roughly 1,024 MB or 1,073,741,824 bytes, ideal for large files and videos.
+        </p>
+        <p>
+          - <strong>Terabyte (TB):</strong> Around 1,024 GB or 1,099,511,627,776 bytes, used for extensive data storage.
+        </p>
+        <p>
+          In this section, we'll explore these data types and their significance in determining download and upload times. By
+          understanding file size and data units, you'll be better equipped to estimate how long your online tasks will take.
+        </p>
+      </section>
+    </app-conent-card>
+    <app-conent-card>
+      <section id="exploring-bandwidth-and-types" aria-label="Exploring Bandwidth and Bandwidth Types">
+        <h2>Exploring Bandwidth and Bandwidth Types</h2>
+        <p>
+          Bandwidth is a critical factor in determining how quickly you can download or upload files. It represents the capacity of
+          your internet connection to transmit data. Understanding bandwidth and its various types is essential for accurate time
+          calculations.
+        </p>
+        <p>
+          - <strong>Byte per second (Bbit/s):</strong> The smallest unit of bandwidth, often seen in basic connections.
+        </p>
+        <p>
+          - <strong>Kilobyte per second (KBbit/s):</strong> Equivalent to 1,024 Bbit/s, suitable for standard internet speeds.
+        </p>
+        <p>
+          - <strong>Megabyte per second (MBbit/s):</strong> Approximately 1,024 KBbit/s, common for broadband connections.
+        </p>
+        <p>
+          - <strong>Gigabyte per second (GBbit/s):</strong> Roughly 1,024 MBbit/s, representing high-speed internet.
+        </p>
+        <p>
+          - <strong>Terabyte per second (TBbit/s):</strong> Around 1,024 GBbit/s, used for ultra-fast connections like fiber optics.
+        </p>
+        <p>
+          In this section, we'll delve into the world of bandwidth and its variations. Whether you have a standard connection or
+          enjoy lightning-fast speeds, understanding bandwidth types will help you accurately estimate download and upload
+          times.
+        </p>
+      </section>
+    </app-conent-card>
+    <app-conent-card>
+      <section id="calculating-download-time" aria-label="Calculating Download Time">
+        <h2>Calculating Download Time</h2>
+        <p>
+          Now that we've covered the basics of file size, data types, bandwidth, and bandwidth types, let's dive into the practical
+          aspect: calculating download time. Whether you're eager to watch a movie, download software, or access important
+          documents, knowing how long it will take is valuable information.
+        </p>
+        <p>
+          In this section, we'll guide you through the step-by-step process of estimating download time. You'll learn how to use our
+          Download/Upload Time Calculator effectively, taking into account your specific file size, data type, bandwidth, and
+          bandwidth type. It's a straightforward process that empowers you to plan your online activities with confidence.
+        </p>
+        <p>
+          Stay tuned as we provide practical examples and insights to make the most of our tool. Say goodbye to guessing and
+          hello to precise download time estimates.
+        </p>
+      </section>
+    </app-conent-card>
+    <app-conent-card>
+      <section id="calculating-upload-time" aria-label="Calculating Upload Time">
+        <h2>Calculating Upload Time</h2>
+        <p>
+          Just as knowing how long it takes to download is valuable, estimating upload time is equally important. Whether you're
+          sharing large files with colleagues or uploading content to the internet, understanding the time required ensures
+          efficient data management.
+        </p>
+        <p>
+          In this section, we'll guide you through the process of calculating upload time using our Download/Upload Time Calculator.
+          You'll discover how to input your file size, data type, bandwidth, and bandwidth type to get precise upload time
+          estimates.
+        </p>
+        <p>
+          We'll also provide practical examples and tips to streamline your upload processes. With accurate upload time estimates
+          at your fingertips, you can confidently handle your data sharing and online contributions.
+        </p>
+      </section>
+    </app-conent-card>
+    <app-conent-card>
+      <section id="factors-affecting-download-upload-time" aria-label="Factors Affecting Download/Upload Time">
+        <h2>Factors Affecting Download/Upload Time</h2>
+        <p>
+          While our calculator provides estimates based on your inputs, it's essential to recognize that several factors can
+          influence actual download and upload times. These factors may affect your real-world experience.
+        </p>
+        <p>
+          - <strong>Network Congestion:</strong> The level of internet traffic at a given time can impact your download and
+          upload speeds. Peak usage times may result in slower connections.
+        </p>
+        <p>
+          - <strong>Server Speed:</strong> The speed and capacity of the server you're connecting to can affect how quickly
+          data is transferred. Faster servers generally lead to quicker downloads/uploads.
+        </p>
+        <p>
+          - <strong>Network Quality:</strong> The stability and quality of your internet connection play a significant role in
+          determining speed. A stable and high-quality connection leads to faster transfers.
+        </p>
+        <p>
+          - <strong>File Compression:</strong> Compressed files may take less time to download/upload due to reduced data size.
+          Understanding how file compression works can be beneficial.
+        </p>
+        <p>
+          In this section, we'll explore these factors and their impact on download and upload times. While our calculator
+          provides estimates, these real-world factors can influence your online experiences.
+        </p>
+      </section>
+    </app-conent-card>
+    <app-conent-card>
+      <section id="optimizing-download-upload-speed" aria-label="Optimizing Download/Upload Speed">
+        <h2>Optimizing Download/Upload Speed</h2>
+        <p>
+          Want to make the most of your download and upload experiences? Optimizing your internet speed is the key. In this section,
+          we'll share tips and strategies to enhance your connection and ensure faster transfers.
+        </p>
+        <p>
+          - <strong>Internet Service Provider (ISP):</strong> Choosing the right ISP and plan can significantly impact your
+          download and upload speeds. Explore options available in your area.
+        </p>
+        <p>
+          - <strong>Hardware Upgrades:</strong> Upgrading your modem, router, and network equipment can lead to better
+          performance. Invest in high-quality hardware for smoother connections.
+        </p>
+        <p>
+          - <strong>Network Security:</strong> Ensuring network security not only protects your data but also improves
+          performance. Safeguard your network against potential threats.
+        </p>
+        <p>
+          - <strong>File Management:</strong> Efficiently managing your files, including compression and organization, can
+          save time during transfers.
+        </p>
+        <p>
+          Discover these and other strategies to optimize your download and upload speed. Whether you're a casual user or rely on
+          fast connections for work, these tips will help you make the most of your online activities.
+        </p>
+      </section>
+    </app-conent-card>
+                            
+  </div>
+</div>

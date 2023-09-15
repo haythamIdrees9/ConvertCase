@@ -1,20 +1,21 @@
-<div class="search-dropdown" #container>
+  <div class="search-dropdown" #container>
     <label [for]="'search-input-'+componentId">{{label}}</label>
     <input
       type="text"
       [id]="'search-input-'+componentId"
       class="search-input"
       [(ngModel)]="searchQuery"
-      (click)="openDropdown()"
+      (click)="toggleDropdown()"
       (input)="filterOptions(searchQuery)"
       [placeholder]="placeholder"
       [attr.aria-labelledby]="inputAriaLabelledBy"
     />
+    <img class="dropdown-icon" (click)="toggleDropdown()" [class.opened]="isFilterShown" src="assets/images/arrow.svg" width="24" height="24" alt="drop down">
     <ul class="options-list custom-hover" tabindex="0" [class.shown]="isFilterShown" role="listbox" [attr.aria-label]="listAriaLabelledBy">
       <li
         *ngFor="let option of filteredOptions; let i = index"
         role="option"
-        [class.selected]="selected === option.key"
+        [class.selected]="selected == option.key"
         [attr.aria-posinset]="i + 1"
         [attr.aria-setsize]="filteredOptions.length"
         (click)="onSelectOption(option)"

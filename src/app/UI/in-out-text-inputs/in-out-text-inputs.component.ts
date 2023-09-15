@@ -1,5 +1,6 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { focusWeb } from 'src/app/utils/general';
 
 @Component({
   selector: 'app-in-out-text-inputs[result][storageKey]',
@@ -9,9 +10,8 @@ import { ActivatedRoute } from '@angular/router';
 export class InOutTextInputComponent implements OnInit {
   @ViewChild('input_area') set inputRef(inputArea:ElementRef){
     this.inputArea = inputArea;
-    if(!this.isMobile()){
-      this.inputArea?.nativeElement?.focus()
-    }
+    focusWeb(this.inputArea)
+  
   }
   inputArea!:ElementRef;
   @Input('result') result:string = '';
@@ -27,7 +27,7 @@ export class InOutTextInputComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(() => {
-      this.inputArea?.nativeElement?.focus()
+      focusWeb(this.inputArea)
     })
     const savedText = sessionStorage.getItem(this.storageKey);
     if (savedText) {
@@ -36,10 +36,6 @@ export class InOutTextInputComponent implements OnInit {
         this.onChangeEmitter.emit(this.userText)
       });
     }
-  }
-
-  focus(){
-    this.inputArea.nativeElement.focus()
   }
 
   onInputChange(){

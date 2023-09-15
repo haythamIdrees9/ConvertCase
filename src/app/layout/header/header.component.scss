@@ -1,6 +1,7 @@
-@import "../../../styles/responsive";
-@import "../../../styles/mixins";
-$bg-color: #144D30;
+@import '/src/styles/variables';
+@import '/src/styles/responsive';
+@import '/src/styles/mixins';
+
 
 .logo-container {
     width: max-content;
@@ -20,7 +21,7 @@ $bg-color: #144D30;
 }
 
 .header {
-    background-color: $bg-color;
+    background-color: $primary-color;
     height: 60px;
     position: fixed;
     top: 0;
@@ -31,7 +32,7 @@ $bg-color: #144D30;
 
     .support-me {
         button{
-            color: #7D4533;
+            color: black;
         }
 
         .coffee {
@@ -87,7 +88,7 @@ $bg-color: #144D30;
 
 
         .back-container {
-            background-color: $bg-color;
+            background-color: $theme-color;
             padding: 0.5rem 1rem;
             color: white;
             margin: 0;
@@ -170,31 +171,36 @@ $bg-color: #144D30;
                 text-align: center;
                 opacity: 0;
                 transition: all 0.15s;
+                color: #9e9e9e;
             }
         }
-
+        .br{
+            background-color: #c5c5c5;
+            width: 100%;
+            height: 1px;
+            opacity: 0;
+            transition: all 0.15s;
+        }
         &.menu-opened {
             width: 100vw;
             left: 0;
             background-color: rgba(0, 0, 0, 0.2);
             cursor: pointer;
-
             .content .rights {
                 width: max-content;
+            }
+            .br,.content .rights{
                 transition: all 0.55s 0.15s;
                 opacity: 1 !important;
             }
+
         }
 
         &.menu-opened .content {
             width: 300px;
             left: 0;
 
-            span {
-                width: max-content;
-            }
-
-            .rights {
+            span,.rights {
                 width: max-content;
             }
         }
@@ -213,6 +219,9 @@ $bg-color: #144D30;
 
                 .rights {
                     width: max-content;
+                }
+
+                .br,.rights{
                     transition: all 0.55s 0.15s;
                     opacity: 1 !important;
                 }
