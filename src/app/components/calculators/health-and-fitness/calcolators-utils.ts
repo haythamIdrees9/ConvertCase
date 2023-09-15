@@ -15,6 +15,8 @@ export const CALCOLATORS_PAGES = [
       iconSrc: 'assets/images/list.svg',
       items: [
         { path: 'age-calculator', title: 'Age Calcolator', iconSrc: 'assets/images/hadn-hold-heart.svg' },
+        { path: 'download-upload-time', title: 'Download Upload Time', iconSrc: 'assets/images/wifi.svg' },
+        
       ]
     }
 

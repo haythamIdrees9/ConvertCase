@@ -15,6 +15,8 @@ import { TabsViewComponent } from 'src/app/UI/tabs-view/tabs-view.component';
       {
         path: 'others', component: CalculatorParent, children: [
           { path: 'age-calculator', loadChildren: () => import('./other/age/age.module').then(m => m.AgeModule) },
+          { path: 'download-upload-time', loadChildren: () => import('./other/download-time/download-time.module').then(m => m.DownloadTimeModule) },
+          
         ]
       },
       {
