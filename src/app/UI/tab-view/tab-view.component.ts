@@ -1,17 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, HostListener, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { LinksViewComponent } from 'src/app/UI/links-view/links-view.component';
 import { webMinWidth } from 'src/app/utils/general';
 
 @Component({
-  selector: 'app-tabs-view[pages][mainPath]',
-  templateUrl: './tabs-view.component.html',
-  styleUrls: ['./tabs-view.component.scss'],
+  selector: 'app-tab-view[pages][mainPath]',
+  templateUrl: './tab-view.component.html',
+  styleUrls: ['./tab-view.component.scss'],
   standalone: true,
   imports: [CommonModule, RouterModule]
 })
-export class TabsViewComponent implements OnInit {
+export class TabViewComponent implements OnInit {
 
   @ViewChildren('title') set titleVal(titles: QueryList<ElementRef>) {
     if (titles) {
@@ -33,11 +32,6 @@ export class TabsViewComponent implements OnInit {
     title: string;
     path: string;
     iconSrc: string;
-    items: {
-      path: string;
-      title: string;
-      iconSrc: string;
-    }[];
   }[];
 
   openedMenu: number = -1;

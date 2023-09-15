@@ -19,7 +19,6 @@ export class CalculatorParent implements OnInit {
     this.route.url.subscribe((url) =>{
       if(url.length > 0 && url[0].path){
           this.selectedTypeIndex = Math.max(0,this.pages.findIndex(type => type.path === url[0].path));
-        console.log(this.selectedTypeIndex,'this.route.params',this.pages.findIndex(type => type.title === url[0].path));
       }
 
     })

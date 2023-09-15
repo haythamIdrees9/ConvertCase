@@ -5,13 +5,13 @@
             'width':(selectedTypeIndex >= 0 && titlesRef.length > selectedTypeIndex)?titlesRef[selectedTypeIndex].width +'px':'100px'}"></div>
         <nav class="f-row">
             <div class="parent" *ngFor="let page of pages; let index = index" [class.opened]="openedMenu === index" (mouseenter)="hoverIndexMenu = index;" (mouseleave)="hoverIndexMenu = selectedTypeIndex;">
-                <div class="title f-row a-center" #title   (click)="openedMenu = index; $event.stopPropagation()">
+                <button class="title f-row a-center btn-resting w-100p" #title   (click)="openedMenu = index; $event.stopPropagation()">
                     <img [src]="page.iconSrc" width="20" height="20" alt="">
                     {{page.title}}
-                </div>
+                </button>
                 <div class="type-container">
                     <div class="triangle"></div>
-                    <nav class="list-container">
+                    <div class="list-container">
                         <ul>
                             <li *ngFor="let item of page.items">
                                 <a replaceUrl  class="f-row a-center" [routerLink]="['',mainPath,page.path,item.path]"
@@ -20,7 +20,7 @@
                                     {{item.title}}</a>
                             </li>
                         </ul>
-                    </nav>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -43,10 +43,10 @@
                     <div class="main-title f-row a-center j-center">Calculator List </div>
                     <div class="items-container">
                         <div class="item-container" *ngFor="let page of pages; let index = index">
-                            <div class="title f-row a-center" #title   (click)="openedMenu = index; $event.stopPropagation()">
+                            <button class="title f-row a-center btn-resting w-100p" #title   (click)="openedMenu = index; $event.stopPropagation()">
                                 <img [src]="page.iconSrc" width="20" height="20" alt="">
                                 {{page.title}}
-                            </div>
+                            </button>
                             <ul >
                                 
                             <li *ngFor="let item of page.items">
