@@ -14,19 +14,29 @@
   max-width: 850px;
   min-height: 350px !important;
   margin-top: 0;
+
   @include mobileFirst('xmd'){
     margin-top: 4rem;
   }
   .result {
     font-size: 1.25rem;
   }
+  .form-container .form-content{
+      width: unset !important;
+      padding: 0.5rem;
 
-  .date-container {
-    flex-direction: column;
-
-    .label {
-      margin-bottom: 1.5rem;
-      align-self: flex-start;
+      .date-container {
+        flex-direction: column;
+        
+        .label {
+          margin-bottom: 1.5rem;
+          align-self: flex-start;
+        }
+      }
+  }
+  @include mobileFirst('xsm'){
+    .form-container .form-content{
+      padding: 2rem;
     }
   }
 
@@ -47,6 +57,9 @@
 
     .result {
       margin-top: 0;
+      h2{
+        margin-top: 0;
+      }
     }
   }
 

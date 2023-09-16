@@ -9,7 +9,7 @@
               <button class="btn-theme" aria-label="Switch to US units" [class.selected]="isUSType" (click)="setUnitType(true)">US units</button>
               <button class="btn-theme" aria-label="Switch to Metric units" [class.selected]="!isUSType" (click)="setUnitType(false)">Metric units</button>
             </div>
-            <form class="f-col" [formGroup]="bmiForm" (ngSubmit)="calculateBMI()" *ngIf="!isUSType">
+            <form class="f-col form-content" [formGroup]="bmiForm" (ngSubmit)="calculateBMI()" *ngIf="!isUSType">
               <label class="f-col">
                 <div class="label">Height (in centimetre):</div>
                 <input type="number" [(ngModel)]="avgHeight" min="1" formControlName="height"
@@ -23,7 +23,7 @@
               <button type="submit" aria-label="Calcolate BMI" class="submit-button" [disabled]="!bmiForm.valid">Calculate</button>
             </form>
 
-            <form class="f-col" [formGroup]="bmiForm" (ngSubmit)="calculateBMI_US()" *ngIf="isUSType">
+            <form class="f-col form-content" [formGroup]="bmiForm" (ngSubmit)="calculateBMI_US()" *ngIf="isUSType">
               <div class="us-height f-row">
                 <label class="f-col">
                   <div class="label">Feet:</div>

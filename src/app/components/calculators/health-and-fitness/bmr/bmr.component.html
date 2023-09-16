@@ -10,7 +10,7 @@
               <button class="btn-theme" aria-label="Switch to Metric units" [class.selected]="!isUSType"
                 (click)="setUnitType(false)">Metric units</button>
             </div>
-            <form class="f-col" [formGroup]="bmrForm" (ngSubmit)="calculateBMR()" *ngIf="!isUSType">
+            <form class="f-col form-content" [formGroup]="bmrForm" (ngSubmit)="calculateBMR()" *ngIf="!isUSType">
               <label style="display: none;">Gender:
                 <select  id="gender" [(ngModel)]="selectedGender" name="gender" formControlName="gender" class="form-control">
                   <option value="male">Male</option>
@@ -39,7 +39,7 @@
                 [disabled]="!bmrForm.valid">Calculate</button>
             </form>
 
-            <form class="f-col" [formGroup]="bmrForm" (ngSubmit)="calculateBMR_US()" *ngIf="isUSType">
+            <form class="f-col form-content" [formGroup]="bmrForm" (ngSubmit)="calculateBMR_US()" *ngIf="isUSType">
               <label style="display: none;">Gender:
                 <select  id="gender" [(ngModel)]="selectedGender" name="gender" formControlName="gender" class="form-control">
                   <option value="male">Male</option>

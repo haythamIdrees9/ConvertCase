@@ -4,6 +4,8 @@
     <div class="container " #content>
       <div class="calcolator-container w-100p">
         <div class="form-container">
+          <div class="form-content">
+            
           <div class="date-container mb-24px f-row a-center">
             <strong class="label">File Size :</strong>
             <label class="f-col">
@@ -30,6 +32,8 @@
                 (selectedOption)="selectedBandWidthType = $event.key;calculateDownloadUploadTime()"></app-dropdown>
             </div>
           </div>
+        </div>
+
         </div>
         <div class="result">
           <strong>Approx. Time (Download/Upload):</strong>  <br> 

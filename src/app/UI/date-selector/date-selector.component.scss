@@ -1,5 +1,9 @@
+@import '/src/styles/responsive';
 .f-row app-search-dropdown:not(:last-child){
-    margin-right: 1rem;
+    margin-right: 0.5rem;
+    @include mobileFirst('xsm'){
+        margin-right: 1rem;
+    }
 }
 
 .mw-400px{

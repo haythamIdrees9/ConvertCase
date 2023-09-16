@@ -132,9 +132,10 @@ export class TextManipulationComponent {
     this.columnWidth = columnWidth;
     const formattedText = [];
     for (let i = 0; i < this.originalText.length; i += columnWidth) {
-      const column = this.originalText.substring(i, columnWidth);
+      const column = this.originalText.substring(i, i + columnWidth);
       formattedText.push(column);
     }
+    
     this.text = formattedText.join('\n');
   }
 

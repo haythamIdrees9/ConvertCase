@@ -10,7 +10,7 @@
               <button class="btn-theme" aria-label="Switch to Metric units" [class.selected]="!isUSType"
                 (click)="setUnitType(false)">Metric units</button>
             </div>
-            <form class="f-col" [formGroup]="userForm" (ngSubmit)="calculateCalories()" *ngIf="!isUSType">
+            <form class="f-col form-content" [formGroup]="userForm" (ngSubmit)="calculateCalories()" *ngIf="!isUSType">
               <app-dropdown [options]="activity" [selected]="selectedActivity" [placeholder]="'your Activity Level...'"
               [inputAriaLabelledBy]="'Select Activity level'" [listAriaLabelledBy]="'Activity list'" [label]="'Activity:'"
               [componentId]="'user-activity'" (selectedOption)="selectedActivity = $event.key"></app-dropdown>
@@ -45,7 +45,7 @@
                 [disabled]="!userForm.valid">Calculate</button>
             </form>
 
-            <form class="f-col" [formGroup]="userForm" (ngSubmit)="calculateCalories_US()" *ngIf="isUSType">
+            <form class="f-col form-content" [formGroup]="userForm" (ngSubmit)="calculateCalories_US()" *ngIf="isUSType">
               <app-dropdown [options]="activity" [selected]="selectedActivity" [placeholder]="'your Activity Level...'"
               [inputAriaLabelledBy]="'Select Activity level'" [listAriaLabelledBy]="'Activity list'" [label]="'Activity:'"
               [componentId]="'user-activity'" (selectedOption)="selectedActivity = $event.key"></app-dropdown>

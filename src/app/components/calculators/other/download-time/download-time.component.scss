@@ -13,6 +13,7 @@
   max-width: 950px;
   min-height: 300px !important;
   margin-top: 0;
+  width: min(950px, (100vw - 32px)) !important;
   @include mobileFirst('xmd'){
     margin-top: 4rem;
   }
@@ -27,7 +28,9 @@
       margin-top: 0.5rem;
     }
   }
-
+  .form-container .form-content{
+    width: max-content !important;
+    padding: 1rem;
   .date-container {
     flex-direction: column;
 
@@ -51,6 +54,13 @@
       text-align: center;
     }
   }
+}
+
+@include mobileFirst('xsm'){
+  .form-container .form-content{
+    padding: 2rem;
+  }
+}
 
   .br {
     width: 100%;
@@ -70,7 +80,7 @@
 
       .size-type {
         margin-left: 1rem;
-        margin-top: 0;
+        margin-top:  0 !important;
       }
 
       strong {
@@ -85,7 +95,7 @@
     }
 
     .result {
-      font-size: 1.15rem;
+      font-size: 1rem;
     }
   }
 

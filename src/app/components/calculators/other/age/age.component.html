@@ -4,14 +4,16 @@
     <div class="container " #content>
       <div class="calcolator-container w-100p">
         <div class="form-container">
-          <div class="date-container mb-24px f-row a-center j-between">
-            <strong class="label">Date of Birth:</strong>
-            <app-date-selector [selectedYear]="prevYear"
+          <div class="form-content">
+            <div class="date-container mb-24px f-row a-center j-between">
+              <strong class="label">Date of Birth:</strong>
+              <app-date-selector [selectedYear]="prevYear"
               (onChangeEmitter)="onStartDateChange($event)"></app-date-selector>
-          </div>
-          <div class="date-container f-row a-center j-between">
-            <strong class="label">Age at the Date of:</strong>
-            <app-date-selector (onChangeEmitter)="onEndDateChange($event)"></app-date-selector>
+            </div>
+            <div class="date-container f-row a-center j-between">
+              <strong class="label">Age at the Date of:</strong>
+              <app-date-selector (onChangeEmitter)="onEndDateChange($event)"></app-date-selector>
+            </div>
           </div>
         </div>
         <div class="result">
