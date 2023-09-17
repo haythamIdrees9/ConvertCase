@@ -1,0 +1,29 @@
+@import "src/styles/responsive";
+
+:host {
+    width: 100%;
+}
+
+.img-container {
+    width: max-content;
+    margin: 0 auto;
+    .attribution {
+        font-size: 11px;
+        color: #999;
+
+        a {
+            font-size: 11px;
+            margin-left: 0.25rem;
+        }
+    }
+
+    img {
+        max-width: calc(100vw - 32px);
+        height: auto;
+        @include mobileFirst('xmd'){
+            max-height: 500px !important;
+            width: auto !important;
+            max-width: 750px;
+        } 
+    }
+}
