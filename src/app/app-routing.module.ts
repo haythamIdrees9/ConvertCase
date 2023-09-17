@@ -8,6 +8,7 @@ const routes: Route[] = [
   {path:'encode-decode' ,redirectTo:'programming-tools/encode-decode'},
  
   {path:'text-tools',loadChildren: () => import('./components/text-tools/text-tools.module').then(m => m.TextToolsModule)},
+  {path:'blogs', loadChildren: () => import('./blogs/blogs.module').then(m => m.BlogsModule)},
   {path:'programming-tools',loadChildren:() => import('./components/programming-tools/programming-tools.module').then(m => m.ProgrammingToolsModule) },
   {path:'unit-converters',loadChildren:() => import('./components/unit-converters/unit-converters.module').then(m => m.UnitConvertersModule) },
   {path:'calculators',loadChildren:() => import('./components/calculators/calculators.module').then(m => m.calculatorsModule) },
