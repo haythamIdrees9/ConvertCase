@@ -4,8 +4,12 @@
 
 .calcolator-container {
   .result {
-    margin-top: 4rem;
+    margin-top: 1rem;
     min-height: 410px;
+
+    .res-label {
+      margin-bottom: 0;
+    }
 
     .score {
       font-size: 2rem;
@@ -17,12 +21,22 @@
   }
 
   @include mobileFirst('md') {
-    .result .bmi-chart {
-      display: unset;
+    .result {
+      margin-top: 4rem;
+
+      .bmi-chart {
+        display: unset;
+      }
     }
 
     .score {
       font-size: 3rem;
+    }
+  }
+
+  @include mobileFirst('xmd') {
+    .result {
+      margin-top: 0;
     }
   }
 

@@ -47,6 +47,7 @@
           </div>
           <div class="result f-col j-between a-center">
             <ng-container [ngTemplateOutlet]="bmi_chart"></ng-container>
+            <h2 class="w-100p res-label">Result:</h2>
             <div class="score w-100p {{bmiResult.status}}">
               <span class="f-row j-center">
                 BMI = {{bmiResult.bmi}} kg/m2

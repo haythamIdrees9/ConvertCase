@@ -17,8 +17,8 @@
           </div>
         </div>
         <div class="result">
-          <h2>Age:</h2>
-          <p>{{ result.years  | number: '1.0-0'}} years <span *ngIf="result.months % 12 > 0"> {{ result.months % 12 }} months</span> </p>
+          <h2>Your Age:</h2>
+          <p>{{ result.years  | number: '1.0-0'}} years <span *ngIf="result.months % 12 > 0"> {{ result.months % 12 }} months </span> <span *ngIf="result.days % 7 > 0">{{ result.days % 7 }} days</span> </p>
           <p>{{ result.months  | number: '1.0-0'}} months <span *ngIf=" result.days % 30 > 0">{{ result.days % 30 }} days</span> </p>
           <p>{{ result.weeks  | number: '1.0-0'}} weeks <span *ngIf="result.days % 7 > 0">{{ result.days % 7 }} days</span> </p>
           <p>{{ result.days  | number: '1.0-0'}} days</p>
