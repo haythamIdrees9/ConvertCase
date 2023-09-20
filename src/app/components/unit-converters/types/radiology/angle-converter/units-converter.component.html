@@ -1,32 +1,55 @@
-<app-generic-units-converter [conversionRate]="conversionRate"[popularUnits]="popularUnits" [units]="units" (updateResult)="updateResult($event)"
-     [linkUnitType]="linkUnitType" [result]="result" [unitType]="'Angle'">
-     <section id="angle-converter" aria-label="Angle Converter Description">
-          <h2>Angle Converter</h2>
-     
-          <p>The Angle Converter is a versatile tool that allows you to convert angle measurements from one unit to another. It's an invaluable resource for various fields, including mathematics, physics, engineering, and navigation.</p>
-     
-          <p>Using the Angle Converter is straightforward. Follow these steps to accurately convert angles:</p>
-     
-          <ol>
-              <li>Enter the value you want to convert in the input field. This value represents the angle you wish to convert.</li>
-              <li>Select the unit you are converting from in the "From" dropdown list. This specifies the initial unit of angle measurement.</li>
-              <li>Select the unit you want to convert to in the "To" dropdown list. This designates the desired angle unit for the conversion.</li>
-              <li>The converted value will be displayed in the result field, providing you with an accurate angle conversion result.</li>
-          </ol>
-     
-          <p>For example, if you need to convert <strong>{{linkUnitLabels[0]}} to {{linkUnitLabels[1]}}</strong>, enter the value in <strong>{{linkUnitLabels[0]}}</strong>. select <strong>"{{linkUnitLabels[0]}}"</strong> as the "From" unit, and <strong>"{{linkUnitLabels[1]}}"</strong> as the "To" unit.  and you will see the equivalent angle measurement in <strong>{{linkUnitLabels[1]}}</strong>.</p>
-     
-          <p>The Angle Converter supports a wide range of angle units, including degrees, radians, minutes of arc, and seconds of arc, making it an indispensable tool for professionals, students, and enthusiasts who require precise angle conversions for their tasks and projects.</p>
-     </section>
-     <br>
-     <br>
+<app-generic-units-converter [conversionRate]="conversionRate" [popularUnits]="popularUnits" [units]="units"
+    (updateResult)="updateResult($event)" [linkUnitType]="linkUnitType" [result]="result" [unitType]="'Angle'">
+    <section id="angle-converter" aria-label="Angle Converter Description">
+        <h2>Angle Converter</h2>
 
-     <ng-container *ngFor="let unitDescription of unitsDescription">
+
+
+
+
+        <p>
+            The Angle Converter is a flexible tool that allows you to convert angle measurements from one unit to any
+            other. It's a useful resource for numerous fields, which includes arithmetic, physics, engineering, and
+            navigation.
+        </p>
+        <p>
+            Using the Angle Converter is easy. Follow those steps to as it should be convert angles:
+
+        </p>
+
+        <ol>
+            <li>Enter the value you need to transform in the enter area. This fee represents the attitude you wish to
+                convert.</li>
+            <li>Select the unit you're converting from in the "From" dropdown list. This specifies the initial unit of
+                angle size.</li>
+            <li>Select the unit you want to transform to inside the "To" dropdown list. This designates the desired
+                angle unit for the conversion.</li>
+            <li>The transformed price may be displayed within the result area, presenting you with an accurate attitude
+                conversion end result.</li>
+        </ol>
+        <p>
+            For instance, if you want to convert <strong>{{linkUnitLabels[0]}} to {{linkUnitLabels[1]}}</strong>, enter
+            the price in <strong>{{linkUnitLabels[0]}}</strong>.
+            Pick <strong>"{{linkUnitLabels[0]}}"</strong> because the "From" unit, and
+            <strong>"{{linkUnitLabels[1]}}"</strong> as the "To" unit.
+            And you may see the equal angle dimension in <strong>{{linkUnitLabels[1]}}</strong>.
+
+        </p>
+
+        <p>The Angle Converter helps a wide range of perspective devices, consisting of degrees, radians, minutes of
+            arc, and seconds of arc, making it an crucial tool for specialists, students, and fans who require unique
+            angle conversions for their duties and tasks.
+        </p>
+    </section>
+    <br>
+    <br>
+
+    <ng-container *ngFor="let unitDescription of unitsDescription">
         <div [innerHTML]="unitDescription"></div>
         <br>
     </ng-container>
-    
- 
- 
- 
+
+
+
+
 </app-generic-units-converter>

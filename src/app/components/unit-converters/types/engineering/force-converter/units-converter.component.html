@@ -1,30 +1,48 @@
-<app-generic-units-converter [conversionRate]="conversionRate"[popularUnits]="popularUnits" [units]="units" (updateResult)="updateResult($event)"
-     [linkUnitType]="linkUnitType" [result]="result" [unitType]="'Force'">
-     <section id="force-converter" aria-label="Force Converter Description">
-        <h2>Force Converter</h2>
-   
-        <p>The Force Converter is a powerful tool that allows you to convert measurements of force from one unit to another. It's an essential resource for various fields, including physics, engineering, and everyday applications.</p>
-   
-        <p>Using the Force Converter is a simple process. Just follow these steps:</p>
-   
-        <ol>
-            <li>Enter the value you want to convert in the input field.</li>
-            <li>Select the unit you are converting from in the "From" dropdown list.</li>
-            <li>Select the unit you want to convert to in the "To" dropdown list.</li>
-            <li>The converted value will be displayed in the result field.</li>
-        </ol>
-   
-        <p>For instance, if you need to convert <strong>{{linkUnitLabels[0]}}  to  {{linkUnitLabels[1]}}</strong>, enter the value in <strong>{{linkUnitLabels[0]}}</strong>. select <strong>"{{linkUnitLabels[0]}}"</strong> as the "From" unit, and <strong>"{{linkUnitLabels[1]}}"</strong> as the "To" unit.  and you will see the equivalent force in <strong>{{linkUnitLabels[1]}}</strong>.</p>
-   
-        <p>The Force Converter supports a wide range of force units, including Newtons, Pounds, Dynes, and more, making it an indispensable tool for professionals, students, and anyone needing precise force conversions for their projects.</p>
-   </section>
-    <br>
-   <br>
-   <ng-container *ngFor="let unitDescription of unitsDescription" >
-    <div [innerHTML]="unitDescription"></div>
-    <br>
-</ng-container>
+<app-generic-units-converter [conversionRate]="conversionRate" [popularUnits]="popularUnits" [units]="units"
+    (updateResult)="updateResult($event)" [linkUnitType]="linkUnitType" [result]="result" [unitType]="'Force'">
+    <section id="force-converter" aria-label="Force Converter Description">
 
-    
-    
+
+
+
+        <h2>Force Converter</h2>
+
+        <p>
+            The Force Converter is an incredibly useful calculator that converts units of force from one measurement to
+            the other. A must-have tool in fields as diverse as physics, engineering and daily life.
+        </p>
+
+        <p>
+            With the Force Converter, it’s as easy as it gets. Just follow these steps:
+
+        </p>
+
+        <ol>
+            <li> Type the amount you want to convert into the box.</li>
+            <li> Choose the unit you want to convert from the “From” dropdown.</li>
+            <li> Choose the unit you want as the outcome in the “To” listing.</li>
+            <li> The converted value shall be shown on the result field.</li>
+        </ol>
+        <p>
+            E.g. if you want to change <strong>{{linkUnitLabels[0]}} to {{linkUnitLabels[1]}}</strong>, insert the
+            amount of {{linkUnitLabels[0]}}. Select <strong>“{{linkUnitLabels[0]}}”</strong> as the “From”,
+            and <strong>“{{linkUnitLabels[1]}}”</strong> as the “To”. and {{linkUnitLabels[1]}} is shown as the
+            equivalent load.
+
+
+        </p>
+        <p>
+            This handy force converter converts between many different units, such as N, lbf, dyn, so you can use it for
+            your professional, university or hobby tasks.
+        </p>
+    </section>
+    <br>
+    <br>
+    <ng-container *ngFor="let unitDescription of unitsDescription">
+        <div [innerHTML]="unitDescription"></div>
+        <br>
+    </ng-container>
+
+
+
 </app-generic-units-converter>

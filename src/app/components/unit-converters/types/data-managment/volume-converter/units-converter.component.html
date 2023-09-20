@@ -1,31 +1,48 @@
-<app-generic-units-converter [conversionRate]="conversionRate"[popularUnits]="popularUnits" [units]="units" (updateResult)="updateResult($event)"
-     [linkUnitType]="linkUnitType" [result]="result" [unitType]="'Volume'">
+<app-generic-units-converter [conversionRate]="conversionRate" [popularUnits]="popularUnits" [units]="units"
+    (updateResult)="updateResult($event)" [linkUnitType]="linkUnitType" [result]="result" [unitType]="'Volume'">
 
-     <section id="volume-converter" aria-label="Volume Converter Description">
-          <h2>Volume Converter</h2>
-          
-          <p>The Volume Converter is a versatile tool that allows you to convert measurements of volume from one unit to another. It is an essential resource in various fields, including cooking, engineering, chemistry, and everyday life when you need to work with different volume units.</p>
-          
-          <p>Using the Volume Converter is easy. Follow these steps:</p>
-          
-          <ol>
-              <li>Enter the value you want to convert in the input field.</li>
-              <li>Select the unit you are converting from in the "From" dropdown list.</li>
-              <li>Select the unit you want to convert to in the "To" dropdown list.</li>
-              <li>The converted value will be displayed in the result field.</li>
-          </ol>
-          
-          <p>For example, if you need to convert <strong>{{linkUnitLabels[0]}} to {{linkUnitLabels[1]}}</strong>, enter the value in <strong>{{linkUnitLabels[0]}}</strong>, select <strong>"{{linkUnitLabels[0]}}"</strong> as the "From" unit, and <strong>"{{linkUnitLabels[1]}}"</strong> as the "To" unit.  and you will see the equivalent volume in <strong>{{linkUnitLabels[1]}}</strong>.</p>
-          
-          <p>The Volume Converter supports a wide range of volume units, making it a valuable tool for chefs, engineers, students, and anyone who needs to perform precise volume conversions for their specific tasks.</p>
-      </section>
-      <br>
-      <br>
-      
-      
-      <ng-container *ngFor="let unitDescription of unitsDescription" >
+    <section id="volume-converter" aria-label="Volume Converter Description">
+
+
+
+
+
+
+
+
+        <h2>Volume Converter</h2>
+
+        <p>
+            The Volume Converter is an all-in-one converter tool for units used in volume measurement conversion. It’s a
+            valuable reference tool in the culinary world, as well as in engineering, chemistry, and even in daily life
+            if you have any volume unit conversions.
+        </p>
+
+        <p>Using the Volume Converter is simple. Follow these steps:</p>
+
+        <ol>
+            <li>Put the amount you want to convert into the input field.</li>
+            <li>In “From” select the unit that you want to convert.</li>
+            <li>Choose the unit into which you require to transform on the “To” dropdown listing.</li>
+            <li>The converted value will be available within the result field.</li>
+        </ol>
+
+        <p>
+        For instance, if it is necessary for <strong>{{linkUnitLabels[0]}} to {{linkUnitLabels[1]}}</strong> conversions, type in the value in <strong>{{linkUnitLabels[0]}}</strong>,
+        set <strong>“{{linkUnitLabels[0]}}“</strong>  as the from unit, and set <strong>“{{linkUnitLabels[1]}}“</strong> as the target unit and we will show that amount in
+        <strong>{{linkUnitLabels[1]}}</strong>.</p>
+
+        <p>        This feature-rich online tool provides support for several volume units, including the metric system, US
+            customary system, UK imperial system, and other international systems such as liter, gallon, oz, etc., rendering
+            it a versatile converter for chefs, engineers, students or any professional</p>
+    </section>
+    <br>
+    <br>
+
+
+    <ng-container *ngFor="let unitDescription of unitsDescription">
         <div [innerHTML]="unitDescription"></div>
         <br>
     </ng-container>
-      
+
 </app-generic-units-converter>

@@ -1,30 +1,50 @@
-<app-generic-units-converter [conversionRate]="conversionRate"[popularUnits]="popularUnits" [units]="units" (updateResult)="updateResult($event)"
-     [linkUnitType]="linkUnitType" [result]="result" [unitType]="'Velocity'">
+<app-generic-units-converter [conversionRate]="conversionRate" [popularUnits]="popularUnits" [units]="units"
+    (updateResult)="updateResult($event)" [linkUnitType]="linkUnitType" [result]="result" [unitType]="'Velocity'">
 
-     <section id="velocity-converter" aria-label="Velocity Converter Description">
+    <section id="velocity-converter" aria-label="Velocity Converter Description">
         <h2>Velocity Converter</h2>
-   
-        <p>The Velocity Converter is a versatile tool that allows you to convert velocity measurements from one unit to another. It's an invaluable resource for a wide range of applications, including physics, engineering, sports, and transportation.</p>
-   
-        <p>Using the Velocity Converter is straightforward. Follow these steps to accurately convert velocity values:</p>
-   
-        <ol>
-            <li>Enter the value you want to convert in the input field. This value represents the velocity you wish to convert.</li>
-            <li>Select the unit you are converting from in the "From" dropdown list. This specifies the initial velocity unit of measurement.</li>
-            <li>Select the unit you want to convert to in the "To" dropdown list. This designates the desired velocity unit for the conversion, such as converting from meters per second (m/s) to kilometers per hour (km/h).</li>
-            <li>The converted value will be displayed in the result field, providing you with an accurate velocity conversion result.</li>
-        </ol>
-   
-        <p>For example, if you need to convert a velocity from <strong>{{linkUnitLabels[0]}} to {{linkUnitLabels[1]}}</strong>, enter the velocity in <strong>{{linkUnitLabels[0]}}</strong>. select <strong>"{{linkUnitLabels[0]}}"</strong> as the "From" unit, and <strong>"{{linkUnitLabels[1]}}"</strong> as the "To" unit.  and you will see the equivalent velocity in <strong>{{linkUnitLabels[1]}}</strong>.</p>
-   
-        <p>The Velocity Converter supports a wide range of velocity units, including meters per second, kilometers per hour, miles per hour, feet per second, and more, making it an indispensable tool for scientists, engineers, athletes, and enthusiasts who need precise velocity conversions for their tasks and projects.</p>
-   </section>
 
-   <br>
-   <br>
-   <ng-container *ngFor="let unitDescription of unitsDescription" >
-    <div [innerHTML]="unitDescription"></div>
+
+
+
+
+        <p>
+            The Velocity Converter is very flexible and can be used to convert velocity values between different units.
+            Its utility extends to multiple disciplines like physics, engineering, sports, and transportation.
+        </p>
+
+        <p>
+            The Velocity Converter is very simple to use. Follow these steps to accurately convert velocity values:
+        </p>
+
+        <ol>
+            <li>Enter the quantity you wish to convert into the form. The conversion velocity for this value will be
+                this number.</li>
+            <li>Choose the unit you’re converting from in the “From” drop-down list . Specifying an
+                initial_velocity_unit. !/1 — this is used to specify the initial velocity unit of measure.</li>
+            <li>Choose the type of unit to convert into for the “To” dropdown menu. Specifies what velocity unit is
+                desired for conversion, such as converting from meters/second (m/s) to km//hour (km/h).</li>
+            <li>Converted value is displayed in “Result” field showing correct velocity conversion.</li>
+        </ol>
+        <p>
+            For instance, if you need to Convert <strong>{{linkUnitLabels[0]}} To {{linkUnitLabels[1]}}</strong>, type
+            the velocity into <strong>{{linkUnitLabels[0]}}</strong>.
+            Select <strong>“{{linkUnitLabels[1]}}“</strong> from as the “From” Unit and the
+            <strong>“{{linkUnitLabels[0]}}”</strong> as the “To” Unit.
+            and this will show you the equivalent speed in <strong>{{linkUnitLabels[1]}}</strong>.
+        </p>
+        <p>
+            The Velocity Converter supports numerous velocity systems including meters per second, kilometers per hour,
+            miles per hour, feet per second, and many others, making it an invaluable tool for scientists, engineers,
+            athletes, and enthusiasts requiring precise velocity conversion values for their respective
+        </p>
+    </section>
+
     <br>
-</ng-container>
+    <br>
+    <ng-container *ngFor="let unitDescription of unitsDescription">
+        <div [innerHTML]="unitDescription"></div>
+        <br>
+    </ng-container>
 
 </app-generic-units-converter>

@@ -1,34 +1,51 @@
+<app-generic-units-converter [conversionRate]="conversionRate" [popularUnits]="popularUnits" [units]="units"
+    (updateResult)="updateResult($event)" [linkUnitType]="linkUnitType" [result]="result" [unitType]="'Energy'">
 
-<app-generic-units-converter [conversionRate]="conversionRate"[popularUnits]="popularUnits" [units]="units" (updateResult)="updateResult($event)"
-     [linkUnitType]="linkUnitType" [result]="result" [unitType]="'Energy'">
+
+    <section id="energy-converter" aria-label="Energy Converter Description">
 
 
-     <section id="energy-converter" aria-label="Energy Converter Description">
-          <h2>Energy Converter</h2>
-          
-          <p>The Energy Converter is a versatile tool that enables you to convert measurements of energy from one unit to another. It plays a crucial role in various fields, including physics, engineering, and everyday energy-related calculations.</p>
-          
-          <p>Using the Energy Converter is simple. Follow these steps:</p>
-          
-          <ol>
-              <li>Enter the value you want to convert in the input field.</li>
-              <li>Select the unit you are converting from in the "From" dropdown list.</li>
-              <li>Select the unit you want to convert to in the "To" dropdown list.</li>
-              <li>The converted value will be displayed in the result field.</li>
-          </ol>
-          
-          <p>For instance, if you need to convert <strong>{{linkUnitLabels[0]}} to {{linkUnitLabels[1]}}</strong>, enter the value in <strong>{{linkUnitLabels[0]}}</strong>. select <strong>"{{linkUnitLabels[0]}}"</strong> as the "From" unit, and <strong>"{{linkUnitLabels[1]}}"</strong> as the "To" unit.  and you will see the equivalent energy in <strong>{{linkUnitLabels[1]}}</strong>.</p>
-          
-          <p>The Energy Converter supports a comprehensive range of energy units, making it an essential tool for professionals, researchers, and students who require precise energy conversions for their projects and calculations.</p>
-      </section>
-      <br><br>
-      <ng-container *ngFor="let unitDescription of unitsDescription" >
-          <div [innerHTML]="unitDescription"></div>
-          <br>
-      </ng-container>
 
-     
-     
+
+        <h2>Energy Converter</h2>
+
+        <p>
+            The Energy Converter is a very versatile tool which allows conversion between units of Energy measured on
+            the Y-Axis. It is of central importance across an incredible range of fields: from quantum physics to
+            electrical engineering, as well as many “everyday” power considerations.
+        </p>
+
+        <p>Using the Energy Converter is easy. Follow these steps:</p>
+
+        <ol>
+            <li>Input: Convert Value of Value.</li>
+            <li>From the conversion “From” dropdown menu.</li>
+            <li>Click the “To” dropdown list and choose the desired unit system to convert to.</li>
+            <li>Conversion is done, and the result field will display what you entered with “convertsTo” appended after
+                “type.”</li>
+        </ol>
+        <p>
+            For example, should you want to convert between <strong>{{linkUnitLabels[0]}} and
+                {{linkUnitLabels[1]}}</strong>, input the number in {{linkUnitLabels[0]}}.
+            from <strong>{{linkUnitLabels[0]}}</strong> to {{linkUnitLabels[1]}}:. and you’ll notice its equivalent in
+            {{linkUnitLabels[1]}}.
+
+        </p>
+
+        <p>
+            The Energy Converter comes with all the necessary converters to make this the ultimate tool for both
+            professionals, researchers as well as students looking to perform more precise energy conversions as part of
+            their projects or calculations.
+        </p>
+    </section>
+    <br><br>
+    <ng-container *ngFor="let unitDescription of unitsDescription">
+        <div [innerHTML]="unitDescription"></div>
+        <br>
+    </ng-container>
+
+
+
 
 
 </app-generic-units-converter>

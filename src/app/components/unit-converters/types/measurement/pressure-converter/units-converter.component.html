@@ -1,24 +1,41 @@
-<app-generic-units-converter [conversionRate]="conversionRate"[popularUnits]="popularUnits" [units]="units" (updateResult)="updateResult($event)"
-     [linkUnitType]="linkUnitType" 
-    [result]="result" [unitType]="'Pressure'">
+<app-generic-units-converter [conversionRate]="conversionRate" [popularUnits]="popularUnits" [units]="units"
+    (updateResult)="updateResult($event)" [linkUnitType]="linkUnitType" [result]="result" [unitType]="'Pressure'">
 
     <section id="pressure-converter" aria-label="Pressure Converter Description">
         <h2>Pressure Converter</h2>
-        
-        <p>The Pressure Converter is a valuable tool that allows you to convert measurements of pressure from one unit to another. It is essential in various scientific, engineering, and industrial applications where accurate pressure conversions are needed.</p>
-        
-        <p>Using the Pressure Converter is straightforward. Follow these steps:</p>
-        
+
+
+
+
+        <p> The Pressure Converter is a treasured device that lets in you to transform measurements of pressure from one
+            unit to every other. It is essential in diverse clinical, engineering, and industrial programs wherein
+            accurate stress conversions are wanted.
+        </p>
+
+        <p>
+            Using the Pressure Converter is easy. Follow these steps:
+
+        </p>
+
         <ol>
-            <li>Enter the value you want to convert in the input field.</li>
-            <li>Select the unit you are converting from in the "From" dropdown list.</li>
-            <li>Select the unit you want to convert to in the "To" dropdown list.</li>
-            <li>The converted value will be displayed in the result field.</li>
+            <li>Enter the value you want to convert within the enter subject.</li>
+            <li>Select the unit you are changing from in the "From" dropdown list.</li>
+            <li>Select the unit you need to convert to within the "To" dropdown list.</li>
+            <li>The transformed value can be displayed in the end result discipline.</li>
         </ol>
-        
-        <p>For example, if you need to convert <strong>{{linkUnitLabels[0]}} to {{linkUnitLabels[1]}}</strong>, enter the value in <strong>{{linkUnitLabels[0]}}</strong>, select <strong>"{{linkUnitLabels[0]}}"</strong> as the "From" unit, and <strong>"{{linkUnitLabels[1]}}"</strong> as the "To" unit.  and you will see the equivalent pressure in <strong>{{linkUnitLabels[1]}}</strong>.</p>
-        
-        <p>The Pressure Converter supports a wide range of pressure units, making it a vital tool for professionals, engineers, scientists, and students who require precise pressure conversions for their work or studies.</p>
+
+        <p>
+            For instance, in case you need to transform <strong>{{linkUnitLabels[0]}} to {{linkUnitLabels[1]}}</strong>,
+            enter the value in {{linkUnitLabels[0]}}, pick out <strong>"{{linkUnitLabels[0]}}"</strong>
+            because the "From" unit, and <strong>"{{linkUnitLabels[1]}}"</strong> because the "To" unit. And you'll see
+            the equivalent stress in <strong>{{linkUnitLabels[1]}}</strong>.
+
+        </p>
+        <p>
+            The Pressure Converter supports a extensive range of stress devices, making it a crucial tool for
+            professionals, engineers, scientists, and students who require unique stress conversions for his or her work
+            or research.
+        </p>
     </section>
     <br>
     <br>
@@ -26,7 +43,7 @@
     <ng-container *ngFor="let unitDescription of unitsDescription">
         <div [innerHTML]="unitDescription"></div>
         <br>
-   </ng-container>  
+    </ng-container>
 
 
 

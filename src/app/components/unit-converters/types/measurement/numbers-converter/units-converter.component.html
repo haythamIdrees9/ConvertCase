@@ -1,30 +1,60 @@
-<app-generic-units-converter [tableValues]="tableValues"  [errorMessage]="errorMessage" [popularUnits]="popularUnits" [units]="units" (updateResult)="updateResult($event)"
-     [linkUnitType]="linkUnitType" [result]="result" [unitType]="'Numbers'">
+<app-generic-units-converter [tableValues]="tableValues" [errorMessage]="errorMessage" [popularUnits]="popularUnits"
+     [units]="units" (updateResult)="updateResult($event)" [linkUnitType]="linkUnitType" [result]="result"
+     [unitType]="'Numbers'">
      <section id="numbers-converter" aria-label="Numbers Converter Description">
           <h2>Numbers Converter</h2>
-     
-          <p>The Numbers Converter is a versatile tool that allows you to convert numbers between different numerical systems, such as decimal, binary, octal, and hexadecimal. It's an invaluable resource for programmers, mathematicians, and anyone working with numerical data in various formats.</p>
-     
-          <p>Using the Numbers Converter is straightforward. Follow these steps to accurately convert numbers:</p>
-     
+
+
+
+
+
+
+
+          <p>
+               You may convert numbers between many numerical systems, including decimal, binary, octal, and
+               hexadecimal, with the Numbers Converter, a flexible tool. Programmers, mathematicians, and anybody else
+               dealing with numerical data in multiple forms will find it to be a priceless tool.
+          </p>
+
+          <p>
+               It's simple to use the Numbers Converter. To convert numbers accurately, adhere to following steps:
+          </p>
+
           <ol>
-              <li>Enter the value you want to convert in the input field. This value represents the number you wish to convert.</li>
-              <li>Select the numerical system you are converting from in the "From" dropdown list. This specifies the initial numerical base of the input value.</li>
-              <li>Select the numerical system you want to convert to in the "To" dropdown list. This designates the desired numerical base for the conversion, such as converting from binary to hexadecimal.</li>
-              <li>The converted value will be displayed in the result field, providing you with an accurate numerical system conversion result.</li>
+               <li>In the input area, type the value you want to convert. The value here corresponds to the amount you
+                    want to convert.</li>
+               <li>In the "From" selection list, choose the numeral system you are converting from. This indicates the
+                    input value's original numerical basis.</li>
+               <li>In the "To" drop-down menu, choose the numeral system you want to convert from. The intended number
+                    base for the conversion is indicated here, such as switching from binary to hexadecimal</li>
+               <li>
+                    You will see the converted value in the result field along with the result of the precise numerical
+                    system conversion.
+
+               </li>
           </ol>
-     
-          <p>For example, if you need to convert a <strong>{{linkUnitLabels[0]}} to its {{linkUnitLabels[1]}}</strong>, enter the <strong>{{linkUnitLabels[0]}}</strong> value, select <strong>"{{linkUnitLabels[0]}}"</strong> as the "From" system, and <strong>"{{linkUnitLabels[1]}}"</strong> as the "To" system.  and you will see the equivalent <strong>{{linkUnitLabels[1]}}</strong> representation.</p>
-     
-          <p>The Numbers Converter supports a wide range of numerical systems, including decimal, binary, octal, hexadecimal, and custom bases, making it an indispensable tool for programmers, students, and enthusiasts who work with different numerical systems for their tasks and projects.</p>
+
+
+          <p>
+               You can input the <strong>{{linkUnitLabels[0]}}</strong> value, choose
+               <strong>"{{linkUnitLabels[0]}}"</strong> as the "From" system,
+               and choose <strong>"{{linkUnitLabels[1]}}"</strong> as the "To" system, for instance, if you need to
+               convert a <strong>{{linkUnitLabels[0]}} to its {{linkUnitLabels[1]}}</strong>
+               . and the corresponding <strong>{{linkUnitLabels[1]}}</strong> representation will appear.
+          </p>
+
+          <p>
+               The Numbers Converter is an essential tool for programmers, students, and hobbyists who use many number
+               systems for their duties and projects since it supports a broad range of numerical systems, including
+               decimal, binary, octal, hexadecimal, and custom bases.
+          </p>
      </section>
      <br>
      <br>
      <ng-container *ngFor="let unitDescription of unitsDescription">
-        <div [innerHTML]="unitDescription"></div>
-        <br>
-   </ng-container>  
-    
-      
-</app-generic-units-converter>
+          <div [innerHTML]="unitDescription"></div>
+          <br>
+     </ng-container>
 
+
+</app-generic-units-converter>

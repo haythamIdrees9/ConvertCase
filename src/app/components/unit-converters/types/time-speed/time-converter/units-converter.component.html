@@ -1,32 +1,53 @@
-<app-generic-units-converter [conversionRate]="conversionRate"[popularUnits]="popularUnits" [units]="units" (updateResult)="updateResult($event)"
-     [linkUnitType]="linkUnitType" [result]="result" [unitType]="'Time'">
-   
-     <section id="time-converter" aria-label="Time Converter Description">
-          <h2>Time Converter</h2>
-     
-          <p>The Time Converter is a versatile tool that allows you to convert time measurements from one unit to another. It's a valuable resource for a wide range of applications, including scheduling, travel planning, and mathematical calculations.</p>
-     
-          <p>Using the Time Converter is straightforward. Just follow these simple steps:</p>
-     
-          <ol>
-              <li>Enter the value you want to convert in the input field. This value represents the time duration you wish to convert.</li>
-              <li>Select the unit you are converting from in the "From" dropdown list. This specifies the initial unit of time measurement.</li>
-              <li>Select the unit you want to convert to in the "To" dropdown list. This designates the desired time unit for the conversion.</li>
-              <li>The converted value will be displayed in the result field, providing you with an accurate time conversion result.</li>
-          </ol>
-     
-          <p>For example, if you need to convert <strong>{{linkUnitLabels[0]}} to {{linkUnitLabels[1]}}</strong>, enter the value in <strong>{{linkUnitLabels[0]}}</strong>. select <strong>"{{linkUnitLabels[0]}}"</strong> as the "From" unit, and <strong>"{{linkUnitLabels[1]}}"</strong> as the "To" unit.  and you will see the equivalent time duration in <strong>{{linkUnitLabels[1]}}</strong>.</p>
-     
-          <p>The Time Converter supports a wide range of time units, making it an indispensable tool for professionals, travelers, students, and anyone who needs precise time conversions for their tasks and projects.</p>
-     </section>
-     <br>
-     <br>
-     <ng-container *ngFor="let unitDescription of unitsDescription">
-         <div [innerHTML]="unitDescription"></div>
-         <br>
-     </ng-container>
-     
-   
-      
-      
+<app-generic-units-converter [conversionRate]="conversionRate" [popularUnits]="popularUnits" [units]="units"
+    (updateResult)="updateResult($event)" [linkUnitType]="linkUnitType" [result]="result" [unitType]="'Time'">
+
+    <section id="time-converter" aria-label="Time Converter Description">
+        <h2>Time Converter</h2>
+
+
+
+
+
+
+
+        <p>You may convert time measurements between different units with the flexible Time Converter. It's a useful
+            tool for many different purposes, such as scheduling, trip planning, and mathematical computations.</p>
+        <p>The Time Converter is simple to use. Just adhere to these easy steps:</p>
+
+        <ol>
+            <li>In the input area, type the value you want to convert. You can transform the time period represented by
+                this number.</li>
+            <li>In the "From" dropdown list, choose the unit you are converting from. The basic unit of time measurement
+                is defined by this.</li>
+            <li>From the "To" drop-down menu, choose the unit you wish to convert to. This specifies the conversion's
+                preferred time unit.</li>
+            <li>
+                You will receive an exact time conversion result and the converted value will be shown in the result
+                field.
+            </li>
+        </ol>
+
+        <p>
+            For instance, put the value in Second if you need to convert from <strong>{{linkUnitLabels[0]}} to
+                {{linkUnitLabels[1]}}</strong>.
+            Choose the units <strong>"{{linkUnitLabels[0]}}"</strong> for the "From" and
+            <strong>"{{linkUnitLabels[1]}}"</strong> for the "To". and you will see the corresponding
+            <strong>{{linkUnitLabels[1]}}</strong> time length.
+        </p>
+
+        <p>
+            The Time Converter is a vital tool for professionals, travellers, students, and anybody else who requires
+            accurate time conversions for their jobs and projects since it supports a large variety of time units.
+        </p>
+    </section>
+    <br>
+    <br>
+    <ng-container *ngFor="let unitDescription of unitsDescription">
+        <div [innerHTML]="unitDescription"></div>
+        <br>
+    </ng-container>
+
+
+
+
 </app-generic-units-converter>
