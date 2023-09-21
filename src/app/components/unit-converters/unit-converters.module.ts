@@ -11,37 +11,38 @@ import { LinksViewComponent } from 'src/app/UI/links-view/links-view.component';
 @NgModule({
   declarations: [UnitConvertersComponent, MainComponent],
   imports: [
-      FormsModule,
-      ResultActionsBtnComponent,
-      ExpandablePanalModule,
-      CommonModule,
-      LinksViewComponent,
-       RouterModule.forChild([
-        { path: '', component: UnitConvertersComponent,children:[
-          // {path:'',component:MainComponent},
-          {path:'',redirectTo:'temperature', pathMatch:'full'},
-          {path: 'length', loadChildren: () => import('./types/measurement/length-converter/length-converter.module').then(m => m.LengthConverterModule)},
-          {path: 'temperature', loadChildren: () => import('./types/measurement/temperature-converter/temperature-converter.module').then(m => m.TemperatureConverterModule)},
-          {path: 'area', loadChildren: () => import('./types/measurement/area-converter/area-converter.module').then(m => m.AreaConverterModule)},
-          {path: 'pressure', loadChildren: () => import('./types/measurement/pressure-converter/pressure-converter.module').then(m => m.PressureConverterModule)},
-          {path: 'numbers', loadChildren: () => import('./types/measurement/numbers-converter/numbers-converter.module').then(m => m.NumbersConverterModule)},
-          {path: 'weight-and-mass', loadChildren: () => import('./types/data-managment/weight-converter/weight-converter.module').then(m => m.WeightConverterModule)},
-          {path: 'volume', loadChildren: () => import('./types/data-managment/volume-converter/volume-converter.module').then(m => m.VolumeConverterModule)},
-          {path: 'fuel-consumption', loadChildren: () => import('./types/data-managment/fuel-consumption-converter/fuel-consumption-converter.module').then(m => m.FuelConsumptionConverterModule)},
-          {path: 'data-storage', loadChildren: () => import('./types/data-managment/data-storage-converter/data-storage-converter.module').then(m => m.dataStorageConverterModule)},
-          {path: 'energy', loadChildren: () => import('./types/engineering/energy-converter/energy-converter.module').then(m => m.EnergyConverterModule)},
-          {path: 'power', loadChildren: () => import('./types/engineering/power-converter/power-converter.module').then(m => m.PowerConverterModule)},
-          {path: 'force', loadChildren: () => import('./types/engineering/force-converter/force-converter.module').then(m => m.ForceConverterModule)},
-          {path: 'velocity', loadChildren: () => import('./types/engineering/velocity-converter/velocity-converter.module').then(m => m.VelocityConverterModule)},
-          {path: 'time', loadChildren: () => import('./types/time-speed/time-converter/time-converter.module').then(m => m.TimeConverterModule)},
-          {path: 'speed', loadChildren: () => import('./types/time-speed/speed-converter/speed-converter.module').then(m => m.SpeedConverterModule)},
-          {path: 'angle', loadChildren: () => import('./types/radiology/angle-converter/angle-converter.module').then(m => m.AngleConverterModule)},
-          
+    FormsModule,
+    ResultActionsBtnComponent,
+    ExpandablePanalModule,
+    CommonModule,
+    LinksViewComponent,
+    RouterModule.forChild([
+      {
+        path: '', component: UnitConvertersComponent, children: [
+          { path: '', pathMatch: 'full', loadChildren: () => import('./units-root/units-root.module').then(m => m.UnitsRootModule) },
+          { path: 'length', loadChildren: () => import('./types/measurement/length-converter/length-converter.module').then(m => m.LengthConverterModule) },
+          { path: 'temperature', loadChildren: () => import('./types/measurement/temperature-converter/temperature-converter.module').then(m => m.TemperatureConverterModule) },
+          { path: 'area', loadChildren: () => import('./types/measurement/area-converter/area-converter.module').then(m => m.AreaConverterModule) },
+          { path: 'pressure', loadChildren: () => import('./types/measurement/pressure-converter/pressure-converter.module').then(m => m.PressureConverterModule) },
+          { path: 'numbers', loadChildren: () => import('./types/measurement/numbers-converter/numbers-converter.module').then(m => m.NumbersConverterModule) },
+          { path: 'weight-and-mass', loadChildren: () => import('./types/data-managment/weight-converter/weight-converter.module').then(m => m.WeightConverterModule) },
+          { path: 'volume', loadChildren: () => import('./types/data-managment/volume-converter/volume-converter.module').then(m => m.VolumeConverterModule) },
+          { path: 'fuel-consumption', loadChildren: () => import('./types/data-managment/fuel-consumption-converter/fuel-consumption-converter.module').then(m => m.FuelConsumptionConverterModule) },
+          { path: 'data-storage', loadChildren: () => import('./types/data-managment/data-storage-converter/data-storage-converter.module').then(m => m.dataStorageConverterModule) },
+          { path: 'energy', loadChildren: () => import('./types/engineering/energy-converter/energy-converter.module').then(m => m.EnergyConverterModule) },
+          { path: 'power', loadChildren: () => import('./types/engineering/power-converter/power-converter.module').then(m => m.PowerConverterModule) },
+          { path: 'force', loadChildren: () => import('./types/engineering/force-converter/force-converter.module').then(m => m.ForceConverterModule) },
+          { path: 'velocity', loadChildren: () => import('./types/engineering/velocity-converter/velocity-converter.module').then(m => m.VelocityConverterModule) },
+          { path: 'time', loadChildren: () => import('./types/time-speed/time-converter/time-converter.module').then(m => m.TimeConverterModule) },
+          { path: 'speed', loadChildren: () => import('./types/time-speed/speed-converter/speed-converter.module').then(m => m.SpeedConverterModule) },
+          { path: 'angle', loadChildren: () => import('./types/radiology/angle-converter/angle-converter.module').then(m => m.AngleConverterModule) },
+          { path: '**', redirectTo: 'temperature', pathMatch: 'full' },
+
         ],
-          
-        }
-      ])
-    ]
+
+      }
+    ])
+  ]
 
 })
 export class UnitConvertersModule { }

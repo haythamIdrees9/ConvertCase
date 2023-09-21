@@ -5,7 +5,7 @@
 }
 
 .img-container {
-    width: max-content;
+    width: 100%;
     margin: 0 auto;
     .attribution {
         font-size: 11px;
@@ -18,12 +18,13 @@
     }
 
     img {
-        max-width: calc(100vw - 32px);
+        max-width: 100%;
         height: auto;
-        @include mobileFirst('xmd'){
-            max-height: 500px !important;
-            width: auto !important;
-            max-width: 750px;
-        } 
+        width: 100%;
+        // @include mobileFirst('xmd'){
+        //     max-height: 500px !important;
+        //     width: auto !important;
+        //     max-width: 750px;
+        // } 
     }
 }
