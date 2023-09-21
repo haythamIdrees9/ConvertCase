@@ -32,6 +32,9 @@
         img{
             margin-left: 0.5rem;
         }
+        &.root{
+            top: -8px;
+        }
         @media screen and (hover:hover) {
             &:hover{
                 background-color: $primary-color;
