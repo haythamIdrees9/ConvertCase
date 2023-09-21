@@ -1,6 +1,9 @@
 <div class="x-container">
   <h1>Encoding and Decoding</h1>
+  <div class="input-container">
+  </div>
   <div class="container">
+
     <app-in-out-text-boxes #boxes [result]="text" [storageKey]="storageKey"
       (onChangeEmitter)="setOriginalText($event)"></app-in-out-text-boxes>
     <div class="buttons" role="group" aria-labelledby="conversionInstructions">

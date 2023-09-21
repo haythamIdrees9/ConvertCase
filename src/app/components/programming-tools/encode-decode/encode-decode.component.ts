@@ -8,7 +8,7 @@ import { InfoService } from './info.service';
 @Component({
   selector: 'app-encode-decode',
   templateUrl: './encode-decode.component.html',
-  styleUrls: ['./encode-decode.component.scss'],
+  styleUrls: ['./encode-decode.component.scss','../../container.scss'],
   providers: [InfoService]
 
 })
