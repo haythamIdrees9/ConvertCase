@@ -68,8 +68,6 @@ body {
   
     @include mobileFirst('xsm') {
       .container {
-        margin-top: 3rem;
-  
         button {
           font-size: 1rem;
         }
@@ -78,7 +76,6 @@ body {
   
     @include mobileFirst('md') {
       .container {
-        margin-top: 5rem;
   
         .buttons {
           grid-template-columns: repeat(3, 1fr);
@@ -88,7 +85,6 @@ body {
   
       @include mobileFirst('mlg') {
         .container {
-          margin-top: 5rem;
           max-width: unset;
           max-width: 1155px;
   

@@ -1,37 +1,54 @@
-<app-generic-units-converter [conversionRate]="conversionRate" [errorMessage]="errorMessage"  [popularUnits]="popularUnits" [units]="units"
-     (updateResult)="updateResult($event)" [linkUnitType]="linkUnitType" [result]="result" [unitType]="'Data Storage'">
+<app-generic-units-converter [conversionRate]="conversionRate" [errorMessage]="errorMessage"
+     [popularUnits]="popularUnits" [units]="units" (updateResult)="updateResult($event)" [linkUnitType]="linkUnitType"
+     [result]="result" [unitType]="'Data Storage'">
      <section id="data-storage-converter" aria-label="Data Storage Converter Description">
+
+
+
+
+
+
           <h2>Data Storage Converter</h2>
 
-          <p>The Data Storage Converter is a versatile tool that allows you to convert data storage measurements from
-               one unit to another. It's a valuable resource for anyone working with digital data, including IT
-               professionals, data scientists, and everyday computer users.</p>
+          <p>
+               Data Storage —Converter is a multi-function converter that can convert data storage measurements between
+               units. It is an invaluable reference for any data professional — IT personnel, Data Scientists, database
+               administrators and anyone who has ever worked with or will ever work with digital data.</p>
 
-          <p>Using the Data Storage Converter is straightforward. Follow these steps to accurately convert data storage
-               values:</p>
+          <p>
+
+               With the Data Storage Converter you can use it very easily. Follow these steps to accurately convert data
+               storage values:
+          </p>
 
           <ol>
-               <li>Enter the value you want to convert in the input field. This value represents the data storage amount
-                    you wish to convert.</li>
-               <li>Select the unit you are converting from in the "From" dropdown list. This specifies the initial data
-                    storage unit of measurement.</li>
-               <li>Select the unit you want to convert to in the "To" dropdown list. This designates the desired data
-                    storage unit for the conversion, such as converting from megabytes (MB) to gigabytes (GB).</li>
-               <li>The converted value will be displayed in the result field, providing you with an accurate data
-                    storage conversion result.</li>
+               <li>Type the number you want convert on input. This is how many data units you wish to convert.
+               </li>
+               <li>Choose the unit you’re converting from the From dropdown list. This is defined as the primary measure
+                    for data storage.
+               </li>
+               <li>Select to which unit you want to convert from the “To” dropdown list. Specifies the target data
+                    storage unit to convert from, e.g., MB to GB.
+               </li>
+               <li>This will result in the converted value being displayed to give you a true representation of what it
+                    is stored as in the target datastore.
+               </li>
           </ol>
 
-          <p>For example, if you need to convert a value from <strong>{{linkUnitLabels[0]}} to {{linkUnitLabels[1]}}</strong>, enter the value in
-               <strong>{{linkUnitLabels[0]}}</strong>, select <strong>"{{linkUnitLabels[0]}}"</strong> as the "From" unit, and <strong>"{{linkUnitLabels[1]}}"</strong> as the "To" unit.  and
-               you will see the equivalent value in <strong>{{linkUnitLabels[1]}}</strong>.</p>
+          <p>For instance, to convert a <strong>{{linkUnitLabels[0]}} to {{linkUnitLabels[1]}}</strong>, enter the
+               <strong>{{linkUnitLabels[0]}}</strong> value, choose <strong>"{{linkUnitLabels[0]}}"</strong> as the
+               "From" unit, and <strong>"{{linkUnitLabels[1]}}"</strong> as the "To" unit.
+               then you should see equivalent of this <strong>{{linkUnitLabels[1]}}</strong>.
+          </p>
 
-          <p>The Data Storage Converter supports a wide range of data storage units, including bytes, kilobytes,
-               megabytes, gigabytes, terabytes, and more, making it an indispensable tool for managing digital data and
-               ensuring accurate conversions for data-related tasks and projects.</p>
+          <p>It is a Data Storage Converter that includes conversion support for almost every popular unit in the data
+               storage space, from bytes and kilobytes to megabytes, gigabytes and terabytes, making it essential for
+               any digital data management role or task where precise data conversions count!
+          </p>
      </section>
      <br>
      <br>
-     <ng-container *ngFor="let unitDescription of unitsDescription" >
+     <ng-container *ngFor="let unitDescription of unitsDescription">
           <div [innerHTML]="unitDescription"></div>
           <br>
      </ng-container>

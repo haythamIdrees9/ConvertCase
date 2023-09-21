@@ -1,28 +1,42 @@
-<app-generic-units-converter [conversionRate]="conversionRate"[popularUnits]="popularUnits" [units]="units" (updateResult)="updateResult($event)"
-     [linkUnitType]="linkUnitType" [result]="result" [unitType]="'Power'">
+<app-generic-units-converter [conversionRate]="conversionRate" [popularUnits]="popularUnits" [units]="units"
+    (updateResult)="updateResult($event)" [linkUnitType]="linkUnitType" [result]="result" [unitType]="'Power'">
 
-     <section id="energy-converter" aria-label="Energy Converter Description">
-          <h2>Energy Converter</h2>
-          
-          <p>The Energy Converter is a versatile tool that allows you to convert measurements of energy from one unit to another. It plays a crucial role in various fields, including physics, engineering, and environmental sciences, where precise energy conversions are essential.</p>
-          
-          <p>Using the Energy Converter is straightforward. Follow these steps:</p>
-          
-          <ol>
-              <li>Enter the value you want to convert in the input field.</li>
-              <li>Select the unit you are converting from in the "From" dropdown list.</li>
-              <li>Select the unit you want to convert to in the "To" dropdown list.</li>
-              <li>The converted value will be displayed in the result field.</li>
-          </ol>
-          
-          <p>For example, if you need to convert <strong>{{linkUnitLabels[0]}} to {{linkUnitLabels[1]}}</strong>, enter the value in <strong>{{linkUnitLabels[0]}}</strong>. select <strong>"{{linkUnitLabels[0]}}"</strong> as the "From" unit, and <strong>"{{linkUnitLabels[1]}}"</strong> as the "To" unit.  and you will see the equivalent energy in <strong>{{linkUnitLabels[1]}}</strong>.</p>
-          
-          <p>The Energy Converter supports a wide range of energy units, including kilowatts (kW), megawatts (MW), gigawatts (GW), terawatts (TW), and watts (W), making it an invaluable tool for scientists, engineers, students, and professionals working with energy-related calculations.</p>
-      </section>
-<br>
-      <br>
+    <section id="power-converter" aria-label="Power Converter Description">
+        <h2>Power Converter</h2>
+      
 
-      <ng-container *ngFor="let unitDescription of unitsDescription" >
+        <p>
+            Power Converter converts power measurement units into desired ones! . It is useful in different fields such
+            as engineering, physics, power management, and the automotive industry.
+        </p>
+
+        <p>
+            It’s pretty easy to do. Follow these steps to accurately convert power values:
+
+        </p>
+
+        <ol>
+            <li>Enter the amount you would like to convert into the input field. This is your power to be converted!
+            </li>
+            <li>From the Convert from dropdown select the unit you want to convert. This defines what constitutes an
+                initial unit of power.</li>
+            <li>Choose from the dropdown “To” what unit you wish converted into. This indicates whether we want to
+                convert into Power Unit (POWER Unit — like converting Watts (W) to Horses Power (HP)) or not.</li>
+            <li>The converted value shows in a result field and gives correct power conversion.</li>
+        </ol>
+
+        <p>        In this case, you would want to convert your power value from <strong>{{linkUnitLabels[0]}} into {{linkUnitLabels[1]}}</strong>, 
+            so plug in the power value in <strong>{{linkUnitLabels[0]}}</strong>, select <strong>“{{linkUnitLabels[0]}}“</strong> as the “From” unit, and <strong>“{{linkUnitLabels[0]}}“</strong>
+             Convert and we’ll show you the power
+            value converted to <strong>{{linkUnitLabels[1]}}</strong>.</p>
+
+        <p>  It converts the power into various units, i.e., watts, kilowatts, megawatts, horsepower, and many others; hence
+            it is a highly useful device for engineers, energy analyst, and all those specialized in energy domains.</p>
+    </section>
+    <br>
+    <br>
+
+    <ng-container *ngFor="let unitDescription of unitsDescription">
         <div [innerHTML]="unitDescription"></div>
         <br>
     </ng-container>

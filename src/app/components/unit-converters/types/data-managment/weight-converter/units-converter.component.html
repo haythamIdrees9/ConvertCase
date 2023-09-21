@@ -1,29 +1,47 @@
-<app-generic-units-converter [conversionRate]="conversionRate"[popularUnits]="popularUnits" [units]="units" (updateResult)="updateResult($event)"
-     [linkUnitType]="linkUnitType" 
-    [result]="result" [unitType]="'Weight and Mass'">
+<app-generic-units-converter [conversionRate]="conversionRate" [popularUnits]="popularUnits" [units]="units"
+    (updateResult)="updateResult($event)" [linkUnitType]="linkUnitType" [result]="result"
+    [unitType]="'Weight and Mass'">
 
     <section id="weight-converter" aria-label="Weight Converter Description">
+
+
+
         <h2>Weight Converter</h2>
-        
-        <p>The Weight Converter is a useful tool that allows you to convert measurements of weight or mass from one unit to another. It is indispensable in various applications, including cooking, science, engineering, and everyday tasks where precise weight conversions are required.</p>
-        
-        <p>Using the Weight Converter is straightforward. Follow these steps:</p>
-        
+
+        <p>
+            Weight Converter — a tool for converting weight or mass measures in various units of measurement. Without
+            it, we can not use it in various applications of cooking, research, engineering or in daily life where
+            accurate weight conversion is needed.
+        </p>
+
+        <p>
+            Using Weight Converter couldn’t be simpler! Follow these steps:
+        </p>
+
         <ol>
-            <li>Enter the value you want to convert in the input field.</li>
-            <li>Select the unit you are converting from in the "From" dropdown list.</li>
-            <li>Select the unit you want to convert to in the "To" dropdown list.</li>
-            <li>The converted value will be displayed in the result field.</li>
+            <li>In this example enter the desired number that is converted.</li>
+            <li>In case of From, choose the unit which is to be converted to.</li>
+            <li>“Choose the units you want to convert from and “To” in the dropdown list.</li>
+            <li>The value will be converted and displayed in the result input.</li>
         </ol>
-        
-        <p>For example, if you need to convert <strong>{{linkUnitLabels[0]}} to {{linkUnitLabels[1]}}</strong>, enter the value in <strong>{{linkUnitLabels[0]}}</strong>, select <strong>"{{linkUnitLabels[0]}}"</strong> as the "From" unit, and <strong>"{{linkUnitLabels[1]}}"</strong> as the "To" unit.  and you will see the equivalent weight in <strong>{{linkUnitLabels[1]}}</strong>.</p>
-        
-        <p>The Weight Converter supports a comprehensive range of weight units, making it an essential tool for cooks, scientists, students, and anyone who needs to perform accurate weight conversions for their specific needs.</p>
+        <p>
+            For instance, you should enter the value into <strong>{{linkUnitLabels[0]}}</strong>, select
+            <strong>“{{linkUnitLabels[0]}}“</strong> for the From unit, and then,
+            choose <strong>“{{linkUnitLabels[1]}}“</strong> as the To Unit. and the corresponding weight in
+            <strong>{{linkUnitLabels[1]}}</strong>.
+
+        </p>
+        <p>
+            As the Weight Converter supports all the major weight units, this makes it indispensable not only for chefs,
+            but also for scientist, students and other professionals in converting weights per their particular
+            requirements.
+
+        </p>
     </section>
     <br><br>
-    <ng-container *ngFor="let unitDescription of unitsDescription" >
+    <ng-container *ngFor="let unitDescription of unitsDescription">
         <div [innerHTML]="unitDescription"></div>
         <br>
     </ng-container>
-    
+
 </app-generic-units-converter>
