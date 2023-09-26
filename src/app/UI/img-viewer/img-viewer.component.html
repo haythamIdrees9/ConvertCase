@@ -1,4 +1,4 @@
 <div class="f-col j-center img-container">
     <img [src]="src" width="800" height="600" loading="lazy" [alt]="alt">
-    <div class="f-row j-end attribution">Designed by  <a [href]="attribution.externalLink"> {{attribution.name}}</a> </div> 
+    <div class="f-row j-end attribution">{{attribution.prefix ?? ""}}  <a [href]="attribution.externalLink" target="_blank"> {{attribution.name}} </a> {{attribution.suffix ?? ""}} </div> 
 </div>

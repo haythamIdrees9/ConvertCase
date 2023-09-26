@@ -10,5 +10,5 @@ export class ImgViewerComponent {
 
   @Input({required:true,alias:'src'}) src!:string;
   @Input({required:true,alias:'alt'}) alt!:string;
-  @Input({required:true,alias:'attribution'}) attribution!:{name:string,externalLink:string};
+  @Input({required:true,alias:'attribution'}) attribution!:{name:string,externalLink:string,prefix?:string,suffix?:string};
 }
