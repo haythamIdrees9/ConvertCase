@@ -29,6 +29,17 @@ ConvertCase boasts a modular and extensible architecture, built using [Your_Fram
 
 Explore the live demo [here](https://convertcase.me).to experience the capabilities of ConvertCase.
 
+## License
+
+ConvertCase is licensed under the [MIT License](LICENSE.md). 
+
+The MIT License is a permissive open-source license that allows for the use, modification, and distribution of this software for any purpose. The only requirement is that users include the original copyright and license notice in any copy of the software or substantial portion of it.
+
+See the [LICENSE.md](LICENSE.md) file for the full text.
+
+If you use or adapt this code, please provide attribution to the original author, [Your GitHub Profile Name].
+
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
