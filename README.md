@@ -2,7 +2,7 @@
 
 ## Overview
 
-Welcome to ConvertCase, a versatile open-source application designed to handle a wide range of text-related tasks. From basic text conversion to BMI and BMR calculations, ConvertCase is your go-to tool for various transformations.
+Welcome to [ConvertCase](https://convertcase.me), a versatile open-source application designed to handle a wide range of text-related tasks. From basic text conversion to BMI and BMR calculations, ConvertCase is your go-to tool for various transformations.
 
 ### Key Features
 
